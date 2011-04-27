@@ -1,0 +1,3 @@
+5cc8a02be988615b049f5abecba2f3a0 *module\autoupdate\.htpasswd
+5cc8a02be988615b049f5abe2ba2f3a0 *module\autoupdate\.htpasswd
+5cc8a02be988615b049f5abecba2f3a0 *module\autoupdate\.htpasswd2
