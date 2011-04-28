@@ -1,9 +1,11 @@
-rem Сделать локализацию на рус и англ
-rem Проверялка новой версии
-rem Логирование cmake и msbuild в папку log (создать в начале)
-
-
 @echo off
+setlocal enabledelayedexpansion
+
+:: LOG=false output cmake and vs output to console
+:: LOG=true log cmake and vs output to cmake.log, visualstudio.log
+set LOG=false
+
+
 TITLE PvPGN Magic Builder for Windows
 echo.
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -12,11 +14,16 @@ echo  http://harpywar.com
 echo.
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-setlocal enabledelayedexpansion
-@call module\i18n.bat
+:: localization
+@call module\i18n.inc.bat
+set i18n=module\i18n.inc.bat
 
 :: ----------- VARIABLES ------------
+@set URL_UPDATE=http://pvpgn-magic-builder.googlecode.com/svn/trunk/
+
+:: path where this batch placed
 @set CUR_PATH=%~dp0%~1
+
 @set PVPGN_SOURCE=source\
 @set PVPGN_BUILD=build\
 @set PVPGN_RELEASE=release\
@@ -26,6 +33,7 @@ setlocal enabledelayedexpansion
 @set ZLIB_PATH=module\include\zlib\125\
 @set SUPPORTFILES_PATH=module\include\pvpgn-support-1.2\
 @set VCEXPRESS_INCLUDE_PATH=%CUR_PATH%module\include\vsexpress_include\
+
 
 
 :: try to find a visual studio
@@ -38,55 +46,67 @@ if not ["%VS80COMNTOOLS%"]==[""] set VSCOMNTOOLS=%VS80COMNTOOLS%& set GENERATOR=
 if not ["%VS90COMNTOOLS%"]==[""] set VSCOMNTOOLS=%VS90COMNTOOLS%& set GENERATOR=Visual Studio 9 2008& set VSVER=v90
 if not ["%VS100COMNTOOLS%"]==[""] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10& set VSVER=v100
 
-if ["%VSCOMNTOOLS%"]==[""] echo   Visual Studio was not found & goto THEEND
+if ["%VSCOMNTOOLS%"]==[""] call %i18n% 1_1 & goto THEEND
 
 
 
-if ["%GENERATOR%"]==[""] echo Visual Studio C++ environment was not found! & goto THEEND
+if ["%GENERATOR%"]==[""] call %i18n% 1_2 & goto THEEND
+
+:: ----------- SETUP ------------
+echo.
+echo ______________________________[ U P D A T E ]___________________________________
+
+:: check for update 
+@call module\autoupdate\check_for_update.inc.bat %URL_UPDATE%
+
+echo.
 
 
 :: ----------- SETUP ------------
 echo.
 echo _______________________________[ S E T U P ]____________________________________
 
-set /p CHOICE_SVN=Download/update the latest PvPGN source from the SVN? (y/n): 
+call %i18n% 1_3
+set /p CHOICE_SVN= (y/n): 
 
 :: if not "n", set to "y"
 if not [%CHOICE_SVN%]==[n] ( 
 	set CHOICE_SVN=y
-	echo   PvPGN will update from the SVN
+	call %i18n% 1_4
 ) else (
-	echo   PvPGN will not update
+	call %i18n% 1_5
 )
 
 echo.
-echo -------------------------------------------------------------------------------
+echo --------------------------------------------------------------------------------
 
 
 
 :choose_interface
-echo Select a PvPGN interface: 
-echo    1) Console (defaut)
-echo    2) GUI
+call %i18n% 1_6
+call %i18n% 1_7
+call %i18n% 1_8
 echo.
-set /p CHOICE_INTERFACE=Choose a number: 
+call %i18n% 1_9
+set /p CHOICE_INTERFACE=: 
 
 :: if not gui, set a console
 if not [%CHOICE_INTERFACE%]==[2] (
 	set CHOICE_INTERFACE=1
-	echo   Set PvPGN interface as Console
+	call %i18n% 1_10
 ) else (
-	echo   Set PvPGN interface as GUI (Graphical User Interface)
+	call %i18n% 1_11
 )
 echo.
 echo --------------------------------------------------------------------------------
 
 :choose_dbtype
-echo Select a database type: 
-echo    1) Plain (default)
-echo    2) MySQL
+call %i18n% 1_12
+call %i18n% 1_13
+call %i18n% 1_14
 echo.
-set /p CHOICE_DBTYPE=Choose a number: 
+call %i18n% 1_9
+set /p CHOICE_DBTYPE=: 
 
 :: if not any db selected, use plain
 if not [%CHOICE_DBTYPE%]==[2] set CHOICE_DBTYPE=1
@@ -94,13 +114,13 @@ if not [%CHOICE_DBTYPE%]==[2] set CHOICE_DBTYPE=1
 :: Plain
 if [%CHOICE_DBTYPE%]==[1] (
 	set CMAKE_DB_VARS=WITH_ANSI=true
-	echo   PvPGN will build without database support
+	call %i18n% 1_15
 )
 
 :: MySQL
 if [%CHOICE_DBTYPE%]==[2] (
 	echo.
-	@call module\dbchoice.bat MySQL module\include\mysql\
+	@call module\dbchoice.inc.bat MySQL module\include\mysql\
 	:: set user's choice as version
 	set DB_VERSION=!CHOICE_DB!
 	:: path to directory with db headers and libs
@@ -115,29 +135,32 @@ echo.
 echo _____________________________[ S T A R T ]______________________________________
 
 :: ----------- DOWNLOAD ------------
-
+if [%LOG%]==[true] set svn_log=^>svn.log
 @mkdir %PVPGN_SOURCE%
 
 :: download latest pvpgn from the svn
-if [%CHOICE_SVN%]==[y] module\tortoisesvn\svn.exe checkout %PVPGN_SVN% %PVPGN_SOURCE%
+if [%CHOICE_SVN%]==[y] module\tortoisesvn\svn.exe checkout %PVPGN_SVN% %PVPGN_SOURCE% %svn_log%
 
 
 :: ----------- MAKE ------------
 echo.
 echo ______________________[ C M A K E  C O N F I G U R E ]__________________________
-
+if [%LOG%]==[true] set cmake_log= ^>cmake.log
 @mkdir %PVPGN_BUILD%
 
 :: use win32 configs
-@call :rename_conf
+@call :backup_conf
 
 :: delete cmake cache
 @del %PVPGN_BUILD%CMakeCache.txt
 
-:: configure and generate solution
-module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_DB_VARS% -D WITH_WIN32_GUI=false -D SYSCONF_INSTALL_DIR="" -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD%
+if [%CHOICE_INTERFACE%]==[1] ( set with_gui=false ) else ( set with_gui=true )
 
-echo -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_DB_VARS% -D WITH_WIN32_GUI=false -H%PVPGN_SOURCE% -B%PVPGN_BUILD%
+:: configure and generate solution
+module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_DB_VARS% -D WITH_WIN32_GUI=%with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %cmake_log%
+
+
+
 
 :: restore unix configs
 @call :restore_conf
@@ -145,8 +168,11 @@ echo -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%
 :: ----------- BUILD ------------
 echo.
 echo ______________[ B U I L D  W I T H  V I S U A L  S T U D I O ]__________________
+:build
+if [%LOG%]==[true] set vs_log=^>visualstudio.log
+
 :: check solution for exists 
-IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & echo CMake failed & goto THEEND
+IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
 
 :: load visual studio variables
 @call "%VSCOMNTOOLS%vsvars32.bat"
@@ -167,7 +193,7 @@ if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
 
 :: compile the solution
 :: FIXME:  /maxcpucount is supports only vs2010
-"%FrameworkDir%\%FrameworkVersion%\MSBuild.exe" %PVPGN_BUILD%pvpgn.sln /t:Rebuild /p:Configuration=Release;%useEnv%;PlatformToolset=%VSVER% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal
+"%FrameworkDir%\%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %vs_log%
 
 
 
@@ -201,19 +227,19 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 
 :: copy conf directory
 @mkdir %PVPGN_RELEASE%conf
-@copy %PVPGN_BUILD%conf\*.conf %PVPGN_RELEASE%conf
-@copy %PVPGN_BUILD%conf\*.plain %PVPGN_RELEASE%conf
-@copy %PVPGN_BUILD%conf\*.txt %PVPGN_RELEASE%conf
-@copy %PVPGN_SOURCE%conf\d2server.ini %PVPGN_RELEASE%conf
+@copy /Y %PVPGN_BUILD%conf\*.conf %PVPGN_RELEASE%conf
+@copy /Y %PVPGN_BUILD%conf\*.plain %PVPGN_RELEASE%conf
+@copy /Y %PVPGN_BUILD%conf\*.txt %PVPGN_RELEASE%conf
+@copy /Y %PVPGN_SOURCE%conf\d2server.ini %PVPGN_RELEASE%conf
 
 :: copy files directory
 @mkdir %PVPGN_RELEASE%files
-@copy %PVPGN_SOURCE%files %PVPGN_RELEASE%files
+@copy /Y %PVPGN_SOURCE%files %PVPGN_RELEASE%files
 @del %PVPGN_RELEASE%files\CMakeLists.txt
 @del %PVPGN_RELEASE%files\Makefile.am
 
 :: copy pvpgnsupport to files directory
-@copy %SUPPORTFILES_PATH% %PVPGN_RELEASE%files
+@copy /Y %SUPPORTFILES_PATH% %PVPGN_RELEASE%files
 
 :: copy var directories (they're empty)
 @xcopy %PVPGN_BUILD%\files\var\* %PVPGN_RELEASE%\var\ /E
@@ -221,19 +247,24 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 
 goto THEEND
 
-:rename_conf
+:backup_conf
 	:: erase build and release directories
-	@erase %PVPGN_RELEASE%
-	@erase %PVPGN_BUILD%
-
+	@erase /S /Q %PVPGN_RELEASE%*.*>nul
+	@erase /S /Q %PVPGN_BUILD%*.*>nul
+	::@rmdir /s /q %PVPGN_RELEASE%*.*
+	::@rmdir /s /q %PVPGN_RELEASE%*.*
+	
 	:: rename .in to .in.bak
 	@ren %PVPGN_SOURCE%conf\bnetd.conf.in bnetd.conf.in.bak
 	@ren %PVPGN_SOURCE%conf\d2cs.conf.in d2cs.conf.in.bak
 	@ren %PVPGN_SOURCE%conf\d2dbs.conf.in d2dbs.conf.in.bak
 	:: copy .win32 to .in
-	@copy %PVPGN_SOURCE%conf\bnetd.conf.win32 %PVPGN_SOURCE%conf\bnetd.conf.in
-	@copy %PVPGN_SOURCE%conf\d2cs.conf.win32 %PVPGN_SOURCE%conf\d2cs.conf.in
-	@copy %PVPGN_SOURCE%conf\d2dbs.conf.win32 %PVPGN_SOURCE%conf\d2dbs.conf.in
+	@copy /Y %PVPGN_SOURCE%conf\bnetd.conf.win32 %PVPGN_SOURCE%conf\bnetd.conf.in
+	@copy /Y %PVPGN_SOURCE%conf\d2cs.conf.win32 %PVPGN_SOURCE%conf\d2cs.conf.in
+	@copy /Y %PVPGN_SOURCE%conf\d2dbs.conf.win32 %PVPGN_SOURCE%conf\d2dbs.conf.in
+	
+	@call :_backup_cmake_module
+
 	exit /b 0
 
 :restore_conf
@@ -245,8 +276,28 @@ goto THEEND
 	@ren %PVPGN_SOURCE%conf\bnetd.conf.in.bak bnetd.conf.in
 	@ren %PVPGN_SOURCE%conf\d2cs.conf.in.bak d2cs.conf.in
 	@ren %PVPGN_SOURCE%conf\d2dbs.conf.in.bak d2dbs.conf.in
+	
+	@call :_restore_cmake_module
 	exit /b 0
 
+:_backup_cmake_module
+	:: replace path from /etc to conf in the file
+	set DefineInstallationPaths=%PVPGN_SOURCE%\cmake\Modules\DefineInstallationPaths.cmake
+	set str_find=/etc
+	set str_replace=conf
+	
+	:: backup cmake file
+	copy /Y %DefineInstallationPaths% %DefineInstallationPaths%.bak
+	
+	:: replace str_find -> str_replace
+	for /f "delims=" %%a in ('cscript module\replace.vbs "%DefineInstallationPaths%" "%str_find%" "%str_replace%"') do set res=%%a
+	exit /b 0
+	
+:_restore_cmake_module
+	:: restore original cmake file
+	move /Y %DefineInstallationPaths%.bak %DefineInstallationPaths%
+	exit /b 0
+	
 :THEEND
 echo.
 echo ___________________________[ C O M P L E T E ]__________________________________
