@@ -1,7 +1,7 @@
 @echo off
 :: Gets localization strings depending user's system locale
 :: Batch files encoding should be "OEM 866"
-
+::  Language abbreveations: http://blogs.msdn.com/b/jeffreyzeng/archive/2008/04/30/language-code-and-abbreviation.aspx
 
 set Key="HKEY_CURRENT_USER\Control Panel\International"
 for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE=%%a
@@ -10,13 +10,13 @@ for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE
 
 
 :: default is English
-goto ENG
+goto ENU
 
 :switch_lang
 :: switch languages
 if [%LANGUAGE%]==[RUS] goto RUS
 if [%LANGUAGE%]==[NLD] goto NLD
-::if [%LANGUAGE%]==[POL] goto POL
+::if [%LANGUAGE%]==[PLK] goto PLK
 
 :echo_phrase
 if not [%1]==[] echo !PHRASE_%1!
@@ -24,7 +24,10 @@ if not [%1]==[] echo !PHRASE_%1!
 
 goto :eof
 
-:ENG
+:: English US
+:ENU
+	set CONF_LANGUAGE=enUS
+
 	set PHRASE_1_1= Visual Studio is not installed
 	set PHRASE_1_2= Visual Studio C++ environment was not found!
 	set PHRASE_1_3=Download/update the latest PvPGN source from the SVN (in "source" directory)?
@@ -46,6 +49,13 @@ goto :eof
 	set PHRASE_2_2=   Choose a number
 	set PHRASE_2_3=   Wrong choice... try again
 	set PHRASE_2_4=   PvPGN will compile with support %2 v%3
+	set PHRASE_2_5=Do you want to configure settings for %2 now?
+	set PHRASE_2_6=    Connection host:
+	set PHRASE_2_7=    Connection user:
+	set PHRASE_2_8=    Connection password:
+	set PHRASE_2_9=    Database name:
+	set PHRASE_2_10=    Tables prefix (leave empty if it does not need):
+	set PHRASE_2_11=%2 configuration saved
 	
 	set PHRASE_3_1=Checking for update ...
 	set PHRASE_3_2="v%2" is your version
@@ -59,8 +69,11 @@ goto :eof
 	set PHRASE_3_10=Please, check file "version-history.txt" for more information about changes
 
 	goto switch_lang
-	
+
+:: Russian
 :RUS
+	set CONF_LANGUAGE=ruRU
+
 	set PHRASE_1_1=  Visual Studio не установлен
 	set PHRASE_1_2=  Среда Visual Studio C++ не найдена
 	set PHRASE_1_3=Скачать/обновить последние исходники PvPGN из SVN (в папке "source")?
@@ -82,6 +95,13 @@ goto :eof
 	set PHRASE_2_2=   Введите номер
 	set PHRASE_2_3=   Неправильный номер... попробуйте ещё раз
 	set PHRASE_2_4=   PvPGN будет скомпилирован с поддержкой %2 v%3
+	set PHRASE_2_5=Добавить сейчас настройки для %2?
+	set PHRASE_2_6=    Адрес сервера:
+	set PHRASE_2_7=    Пользователь:
+	set PHRASE_2_8=    Пароль:
+	set PHRASE_2_9=    Название базы данных:
+	set PHRASE_2_10=    Префикс для таблиц (оставьте пустым, если не нужно):
+	set PHRASE_2_11=Конфигурация %2 сохранена
 	
 	set PHRASE_3_1=Проверка обновлений ...
 	set PHRASE_3_2="v%2" ваша версия
@@ -96,8 +116,11 @@ goto :eof
 	
 	goto echo_phrase
 	
-:: translation by MusicDemon
+	
+:: Dutch translation by MusicDemon
 :NLD
+	set CONF_LANGUAGE=nlNL
+
 	set PHRASE_1_1= Visual Studio is niet geinstaleerd
 	set PHRASE_1_2= Visual Studio C++ omgeving was niet gevonden!
 	set PHRASE_1_3=Download/update de laatste PvPGN broncode van de SVN (in de "source" directory)?
@@ -119,6 +142,13 @@ goto :eof
 	set PHRASE_2_2=   Kies een nummer
 	set PHRASE_2_3=   Verkeerde keuze... Probeer het opnieuw
 	set PHRASE_2_4=   PvPGN word gebouwd met %2 ondersteuning op v%3
+	set PHRASE_2_5=Wilt u %2 nu configureren?
+	set PHRASE_2_6=    Connectie host:
+	set PHRASE_2_7=    Connectie gebruiker:
+	set PHRASE_2_8=    Connectie wachtwoord:
+	set PHRASE_2_9=    Database naam:
+	set PHRASE_2_10=    Tafel voorvoegsel (Table prefix) (Laat leeg als u dit niet gebruikt)
+	set PHRASE_2_11=%2 configuratie opgeslagen
    
 	set PHRASE_3_1=Checken voor updates...
 	set PHRASE_3_2=U hebt versie "v%2"
@@ -132,3 +162,49 @@ goto :eof
 	set PHRASE_3_10=Controleer het bestand "version-history.txt" voor meer informatie over wijzigingen
    
 	goto echo_phrase   
+
+:: Polish
+:PLK
+	set CONF_LANGUAGE=plPL
+	goto echo_phrase   
+	
+:: Czech
+:CSY
+	set CONF_LANGUAGE=csCZ
+	goto echo_phrase   
+	
+:: Spanish
+:ESN
+	set CONF_LANGUAGE=esES
+	goto echo_phrase   
+	
+:: French
+:FRA
+	set CONF_LANGUAGE=frFR
+	goto echo_phrase   
+	
+:: German
+:DEU
+	set CONF_LANGUAGE=deDE
+	goto echo_phrase   
+	
+:: Portuguese - Brazil
+:PTB
+	set CONF_LANGUAGE=ptBR
+	goto echo_phrase   
+	
+:: Portuguese - Portugal
+:PTG
+	goto PTB
+	
+:: Chinese - China
+:CHS
+	set CONF_LANGUAGE=zhCN
+	goto echo_phrase   
+	
+:: Chinese - Taiwan
+:CHT
+	set CONF_LANGUAGE=zhTW
+	goto echo_phrase   
+	
+	
