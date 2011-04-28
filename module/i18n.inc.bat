@@ -16,7 +16,15 @@ goto ENU
 :: switch languages
 if [%LANGUAGE%]==[RUS] goto RUS
 if [%LANGUAGE%]==[NLD] goto NLD
-::if [%LANGUAGE%]==[PLK] goto PLK
+if [%LANGUAGE%]==[PLK] goto PLK
+if [%LANGUAGE%]==[CSY] goto CSY
+if [%LANGUAGE%]==[ESN] goto ESN
+if [%LANGUAGE%]==[FRA] goto FRA
+if [%LANGUAGE%]==[DEU] goto DEU
+if [%LANGUAGE%]==[PTB] goto PTB
+if [%LANGUAGE%]==[PTG] goto PTG
+if [%LANGUAGE%]==[CHS] goto CHS
+if [%LANGUAGE%]==[CHT] goto CHT
 
 :echo_phrase
 if not [%1]==[] echo !PHRASE_%1!
@@ -26,7 +34,7 @@ goto :eof
 
 :: English US
 :ENU
-	set CONF_LANGUAGE=enUS
+	set MOTD_LANGUAGE=enUS
 
 	set PHRASE_1_1= Visual Studio is not installed
 	set PHRASE_1_2= Visual Studio C++ environment was not found!
@@ -72,7 +80,7 @@ goto :eof
 
 :: Russian
 :RUS
-	set CONF_LANGUAGE=ruRU
+	set MOTD_LANGUAGE=ruRU
 
 	set PHRASE_1_1=  Visual Studio не установлен
 	set PHRASE_1_2=  Среда Visual Studio C++ не найдена
@@ -119,7 +127,7 @@ goto :eof
 	
 :: Dutch translation by MusicDemon
 :NLD
-	set CONF_LANGUAGE=nlNL
+	set MOTD_LANGUAGE=nlNL
 
 	set PHRASE_1_1= Visual Studio is niet geinstaleerd
 	set PHRASE_1_2= Visual Studio C++ omgeving was niet gevonden!
@@ -165,32 +173,32 @@ goto :eof
 
 :: Polish
 :PLK
-	set CONF_LANGUAGE=plPL
+	set MOTD_LANGUAGE=plPL
 	goto echo_phrase   
 	
 :: Czech
 :CSY
-	set CONF_LANGUAGE=csCZ
+	set MOTD_LANGUAGE=csCZ
 	goto echo_phrase   
 	
 :: Spanish
 :ESN
-	set CONF_LANGUAGE=esES
+	set MOTD_LANGUAGE=esES
 	goto echo_phrase   
 	
 :: French
 :FRA
-	set CONF_LANGUAGE=frFR
+	set MOTD_LANGUAGE=frFR
 	goto echo_phrase   
 	
 :: German
 :DEU
-	set CONF_LANGUAGE=deDE
+	set MOTD_LANGUAGE=deDE
 	goto echo_phrase   
 	
 :: Portuguese - Brazil
 :PTB
-	set CONF_LANGUAGE=ptBR
+	set MOTD_LANGUAGE=ptBR
 	goto echo_phrase   
 	
 :: Portuguese - Portugal
@@ -199,12 +207,12 @@ goto :eof
 	
 :: Chinese - China
 :CHS
-	set CONF_LANGUAGE=zhCN
+	set MOTD_LANGUAGE=zhCN
 	goto echo_phrase   
 	
 :: Chinese - Taiwan
 :CHT
-	set CONF_LANGUAGE=zhTW
+	set MOTD_LANGUAGE=zhTW
 	goto echo_phrase   
 	
 	
