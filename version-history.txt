@@ -1,6 +1,7 @@
 1.1 (29.04.2011)
 - bnmotd.txt creates from the determined OS language
 - interactive configuring database connection settings (optional)
+- patch applying by ID from the http://developer.berlios.de/patch/?group_id=2291
 - Dutch translation added (thanks to MusicDemon)
 
 1.0 (28.04.2011)
