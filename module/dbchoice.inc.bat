@@ -99,10 +99,3 @@ set CONF_storage_path=storage_path = sql:mode=%_db_mode%;host=%_db_host%;name=%_
 
 :: SQLite
 if [%DB_ENGINE%]==[SQLite] set CONF_storage_path=storage_path = sql:mode=%_db_mode%;name=%_db_name%;default=0;prefix=%_db_prefix%
-
-
-if [%CHOICE_DB_CONF%]==[y] (
-	for /f "delims=" %%a in ('cscript module\replace_line.vbs "%PVPGN_RELEASE%conf\bnetd.conf" "storage_path" "%CONF_storage_path%"') do set res=%%a
-	if ["%res%"]==["ok"] ( echo storage_path updated in bnetd.conf ) else ( echo Error: storage_path was not updated in bnetd.conf )
-)
-

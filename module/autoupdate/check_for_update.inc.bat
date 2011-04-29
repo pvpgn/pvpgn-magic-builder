@@ -41,7 +41,7 @@ if not ["%res%"]==["ok"] echo   %res% & goto :eof
 :: iterate filelist.txt
 for /f "tokens=1,2 delims=: " %%a in ('%LOCAL_PATH%md5sum.exe -c %LOCAL_PATH%filelist.txt') do (
 	:: if checksum is wrong or file is not exists, do update
-	if [%%b]==[FAILED] @call :download %%a
+	if ["%%b"]==["FAILED"] @call :download %%a
 )
 
 call %i18n% 3_9

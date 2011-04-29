@@ -283,7 +283,6 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 if [%CHOICE_DB_CONF%]==[y] (
 	for /f "delims=" %%a in ('cscript module\replace_line.vbs "release\conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
 	if ["!res!"]==["ok"] ( echo storage_path updated in bnetd.conf ) else ( echo Error: storage_path was not updated in bnetd.conf )
-	echo !res!
 )
 
 goto THEEND
