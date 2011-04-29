@@ -30,9 +30,6 @@ if [%CHOICE_UPDATE%]==[n] call %i18n% 3_6 & goto :eof
 call %i18n% 3_7
 echo.
 
-:: download version.txt
-for /f "delims=" %%a in ('cscript %LOCAL_PATH%wget.vbs /f %REMOTE_PATH%version.txt %LOCAL_PATH%version.txt') do set res=%%a
-if not ["%res%"]==["ok"] echo   %res% & goto :eof
 
 :: download filelist.txt
 for /f "delims=" %%a in ('cscript %LOCAL_PATH%wget.vbs /f %REMOTE_PATH%filelist.txt %LOCAL_PATH%filelist.txt') do set res=%%a
@@ -43,6 +40,10 @@ for /f "tokens=1,2 delims=: " %%a in ('%LOCAL_PATH%md5sum.exe -c %LOCAL_PATH%fil
 	:: if checksum is wrong or file is not exists, do update
 	if ["%%b"]==["FAILED"] @call :download %%a
 )
+
+:: download version.txt 
+for /f "delims=" %%a in ('cscript %LOCAL_PATH%wget.vbs /f %REMOTE_PATH%version.txt %LOCAL_PATH%version.txt') do set res=%%a
+if not ["%res%"]==["ok"] echo   %res% & goto :eof
 
 call %i18n% 3_9
 call %i18n% 3_10

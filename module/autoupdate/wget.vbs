@@ -36,9 +36,12 @@ if args < 2 then
 	wscript.Quit 1
 end if
 Destination = wscript.Arguments.Item(2)
+CreatePathDirs(Destination)
 
 ' download file
 If client.Status = 200 Then 
+	
+
 	Set stream = CreateObject("ADODB.Stream") 
 	Const adTypeBinary = 1
 	Const adSaveCreateOverWrite = 2
@@ -61,6 +64,23 @@ if  Err.Number <> 0  then
 	wscript.Echo "unknown error: " & err.Number
 	wscript.Quit 1
 end if
+
+' creates directories in each section of path, if not exists
+Sub CreatePathDirs(ByVal path)
+	Dim objFSO, strPath
+	Set objFSO = CreateObject("Scripting.FileSystemObject")
+	sections=Split(path,"\")
+	
+	if UBound(sections) > 0 then
+		For i = 0 To UBound(sections) - 1
+			strPath = strPath & sections(i) & "\" 
+			If Not objFSO.FolderExists(strPath) Then
+			   objFSO.CreateFolder(strPath)
+			End If
+		Next
+	end if
+End sub
+
 
 ' encode html symbols to "_" (for batch)
 Function HTMLEncode(ByVal sVal)

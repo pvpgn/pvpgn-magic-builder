@@ -46,9 +46,9 @@ call %i18n% 2_4 %DB_ENGINE% %CHOICE_DB%
 :: default values
 set _db_host=127.0.0.1
 set _db_user=pvpgn
-set _db_password=
+set _db_password=pvpgnrocks
 set _db_name=pvpgn
-set _db_prefix=
+set _db_prefix=pvpgn_
 
 echo.
 call module\i18n.inc.bat 2_5 %DB_ENGINE%
@@ -72,14 +72,13 @@ if not [%DB_ENGINE%]==[SQLite] (
 	echo.
 	call module\i18n.inc.bat 2_8
 	set /p _db_password=: 
+	
+	:: database name (sqlite uses var\users.db)
+	echo.
+	call module\i18n.inc.bat 2_9
+	set /p _db_name=: 
 )
 
-:: SQLite has dbname as a filename, so let's print this info
-if [%DB_ENGINE%]==[SQLite] set _tmp_dbfile=(for example: var\users.db)
-:: database name
-echo.
-call module\i18n.inc.bat 2_9
-set /p _db_name=%_tmp_dbfile%: 
 
 :: database tables prefix
 echo.
@@ -98,4 +97,4 @@ if [%DB_ENGINE%]==[SQLite] set _db_mode=sqlite3
 set CONF_storage_path=storage_path = sql:mode=%_db_mode%;host=%_db_host%;name=%_db_name%;user=%_db_user%;pass=%_db_password%;default=0;prefix=%_db_prefix%
 
 :: SQLite
-if [%DB_ENGINE%]==[SQLite] set CONF_storage_path=storage_path = sql:mode=%_db_mode%;name=%_db_name%;default=0;prefix=%_db_prefix%
+if [%DB_ENGINE%]==[SQLite] set CONF_storage_path=storage_path = sql:mode=%_db_mode%;name=var\users.db;default=0;prefix=%_db_prefix%

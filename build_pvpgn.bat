@@ -104,8 +104,8 @@ echo ---------------------------------------------------------------------------
 call %i18n% 1_12
 call %i18n% 1_13
 echo     2) MySQL
-::echo     3) PostgreSQL
-::echo     4) SQLite
+echo     3) PostgreSQL
+echo     4) SQLite
 echo.
 call %i18n% 1_9
 set /p CHOICE_DBTYPE=: 
@@ -136,30 +136,30 @@ if [%CHOICE_DBTYPE%]==[2] (
 :: TODO: PostgreSQL
 if [%CHOICE_DBTYPE%]==[3] (
 	echo.
-	rem @call module\dbchoice.inc.bat PostgreSQL module\include\pgsql\
+	@call module\dbchoice.inc.bat PostgreSQL module\include\pgsql\
 	:: set user's choice as version
-	rem set DB_VERSION=!CHOICE_DB!
+	set DB_VERSION=!CHOICE_DB!
 	:: path to directory with db headers and libs
-	rem set DB_PATH=module\include\pgsql\!DB_VERSION!\
+	set DB_PATH=module\include\pgsql\!DB_VERSION!\
 	:: lib filename without extension (.lib and .dll)
-	rem set DB_LIB=libmysql
+	set DB_LIB=libpq
 
 	:: cmake vars to add to command line
-	rem set CMAKE_DB_VARS=-D MYSQL_INCLUDE_DIR=!DB_PATH! -D MYSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_MYSQL=true -D WITH_ANSI=false
+	set CMAKE_DB_VARS=-D PGSQL_INCLUDE_DIR=!DB_PATH! -D PGSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_PGSQL=true
 )
 :: TODO: SQLite
 if [%CHOICE_DBTYPE%]==[4] (
 	echo.
-	rem @call module\dbchoice.inc.bat SQLite module\include\sqlite\
+	@call module\dbchoice.inc.bat SQLite module\include\sqlite\
 	:: set user's choice as version
-	rem set DB_VERSION=!CHOICE_DB!
+	set DB_VERSION=!CHOICE_DB!
 	:: path to directory with db headers and libs
-	rem set DB_PATH=module\include\sqlite\!DB_VERSION!\
+	set DB_PATH=module\include\sqlite\!DB_VERSION!\
 	:: lib filename without extension (.lib and .dll)
-	rem set DB_LIB=libmysql
+	set DB_LIB=sqlite3
 
 	:: cmake vars to add to command line
-	rem set CMAKE_DB_VARS=-D MYSQL_INCLUDE_DIR=!DB_PATH! -D MYSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_MYSQL=true -D WITH_ANSI=false
+	set CMAKE_DB_VARS=-D SQLITE3_INCLUDE_DIR=!DB_PATH! -D SQLITE3_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_SQLITE3=true
 )
 
 

@@ -62,7 +62,7 @@ goto :eof
 	set PHRASE_2_7=    Connection user
 	set PHRASE_2_8=    Connection password
 	set PHRASE_2_9=    Database name
-	set PHRASE_2_10=    Tables prefix (leave empty if it does not need)
+	set PHRASE_2_10=    Tables prefix (default is "pvpgn_")
 	set PHRASE_2_11=%2 configuration saved
 	
 	set PHRASE_3_1=Checking for update ...
@@ -108,7 +108,7 @@ goto :eof
 	set PHRASE_2_7=    Пользователь
 	set PHRASE_2_8=    Пароль
 	set PHRASE_2_9=    Название базы данных
-	set PHRASE_2_10=    Префикс для таблиц (оставьте пустым, если не нужно):
+	set PHRASE_2_10=    Префикс для таблиц (по-умолчанию "pvpgn_"):
 	set PHRASE_2_11=Конфигурация %2 сохранена
 	
 	set PHRASE_3_1=Проверка обновлений ...
@@ -155,7 +155,7 @@ goto :eof
 	set PHRASE_2_7=    Connectie gebruiker
 	set PHRASE_2_8=    Connectie wachtwoord
 	set PHRASE_2_9=    Database naam
-	set PHRASE_2_10=    Tafel voorvoegsel (Table prefix) (Laat leeg als u dit niet gebruikt)
+	set PHRASE_2_10=    Tafel voorvoegsel (Table prefix, standaard is "pvpgn_")
 	set PHRASE_2_11=%2 configuratie opgeslagen
    
 	set PHRASE_3_1=Checken voor updates...
