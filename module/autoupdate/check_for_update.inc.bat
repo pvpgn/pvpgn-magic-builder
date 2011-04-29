@@ -58,7 +58,7 @@ goto :eof
 
 	call %i18n% 3_8 %f_local%
 	:: download file from the remote url to local url
-	for /f "delims=" %%a in ('cscript %LOCAL_PATH%wget.vbs /f %f_remote% %f_local%') do set f_res=%%a
+	for /f "delims=" %%a in ('cscript "%LOCAL_PATH%wget.vbs" /f "%f_remote%" "%f_local%"') do set f_res=%%a
 	echo    %f_res%
 	echo.
 	
