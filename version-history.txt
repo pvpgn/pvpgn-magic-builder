@@ -1,6 +1,12 @@
+1.2 (30.04.2011)
+- autoupdate fix (now it creates directories in the middle of the path, if it's not exists)
+- added support for PostgreSQL
+- added support for SQLite3
+
 1.1 (29.04.2011)
 - bnmotd.txt creates from the determined OS language
 - interactive configuring database connection settings (optional)
+- patch applying by ID from the http://developer.berlios.de/patch/?group_id=2291
 - Dutch translation added (thanks to MusicDemon)
 
 1.0 (28.04.2011)
