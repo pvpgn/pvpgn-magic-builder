@@ -1,5 +1,5 @@
 a3bd037f422aed60a24763370e81eb91 *build_pvpgn.bat
-4758a884e71f3da9f6809da8647429c2 *version-history.txt
+765b854c41f3292160c4f34e76b3bcd5 *version-history.txt
 de5131a3509e94a183958501fe640701 *module\dbchoice.inc.bat
 aaa329f23ae1aeaca0153a0a584dbcb1 *module\i18n.inc.bat
 5c832cbef0bcdb4e76de63102bb72aae *module\replace.vbs
