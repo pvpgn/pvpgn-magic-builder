@@ -2,7 +2,7 @@
 ' arguments:
 '  1 - filename
 '  2 - find string
-'  3 - replace sting
+'  3 - replace string
 
 Const ForReading = 1    
 Const ForWriting = 2

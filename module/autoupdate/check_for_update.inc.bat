@@ -32,11 +32,11 @@ echo.
 
 :: download version.txt
 for /f "delims=" %%a in ('cscript %LOCAL_PATH%wget.vbs /f %REMOTE_PATH%version.txt %LOCAL_PATH%version.txt') do set res=%%a
-if not [%res%]==[ok] echo   %res% & goto :eof
+if not ["%res%"]==["ok"] echo   %res% & goto :eof
 
 :: download filelist.txt
 for /f "delims=" %%a in ('cscript %LOCAL_PATH%wget.vbs /f %REMOTE_PATH%filelist.txt %LOCAL_PATH%filelist.txt') do set res=%%a
-if not [%res%]==[ok] echo   %res% & goto :eof
+if not ["%res%"]==["ok"] echo   %res% & goto :eof
 
 :: iterate filelist.txt
 for /f "tokens=1,2 delims=: " %%a in ('%LOCAL_PATH%md5sum.exe -c %LOCAL_PATH%filelist.txt') do (

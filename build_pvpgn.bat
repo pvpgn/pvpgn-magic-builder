@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: LOG=false output cmake and vs output to console
-:: LOG=true log cmake and vs output to cmake.log, visualstudio.log
+:: LOG=true logs cmake and vs output to cmake.log, visualstudio.log
 set LOG=false
 
 
@@ -103,13 +103,15 @@ echo ---------------------------------------------------------------------------
 :choose_dbtype
 call %i18n% 1_12
 call %i18n% 1_13
-call %i18n% 1_14
+echo     2) MySQL
+::echo     3) PostgreSQL
+::echo     4) SQLite
 echo.
 call %i18n% 1_9
 set /p CHOICE_DBTYPE=: 
 
 :: if not any db selected, use plain
-if not [%CHOICE_DBTYPE%]==[2] set CHOICE_DBTYPE=1
+if not [%CHOICE_DBTYPE%]==[2] if not [%CHOICE_DBTYPE%]==[3] if not [%CHOICE_DBTYPE%]==[4] set CHOICE_DBTYPE=1
 
 :: Plain
 if [%CHOICE_DBTYPE%]==[1] (
@@ -131,6 +133,36 @@ if [%CHOICE_DBTYPE%]==[2] (
 	:: cmake vars to add to command line
 	set CMAKE_DB_VARS=-D MYSQL_INCLUDE_DIR=!DB_PATH! -D MYSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_MYSQL=true -D WITH_ANSI=false
 )
+:: TODO: PostgreSQL
+if [%CHOICE_DBTYPE%]==[3] (
+	echo.
+	rem @call module\dbchoice.inc.bat PostgreSQL module\include\pgsql\
+	:: set user's choice as version
+	rem set DB_VERSION=!CHOICE_DB!
+	:: path to directory with db headers and libs
+	rem set DB_PATH=module\include\pgsql\!DB_VERSION!\
+	:: lib filename without extension (.lib and .dll)
+	rem set DB_LIB=libmysql
+
+	:: cmake vars to add to command line
+	rem set CMAKE_DB_VARS=-D MYSQL_INCLUDE_DIR=!DB_PATH! -D MYSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_MYSQL=true -D WITH_ANSI=false
+)
+:: TODO: SQLite
+if [%CHOICE_DBTYPE%]==[4] (
+	echo.
+	rem @call module\dbchoice.inc.bat SQLite module\include\sqlite\
+	:: set user's choice as version
+	rem set DB_VERSION=!CHOICE_DB!
+	:: path to directory with db headers and libs
+	rem set DB_PATH=module\include\sqlite\!DB_VERSION!\
+	:: lib filename without extension (.lib and .dll)
+	rem set DB_LIB=libmysql
+
+	:: cmake vars to add to command line
+	rem set CMAKE_DB_VARS=-D MYSQL_INCLUDE_DIR=!DB_PATH! -D MYSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_MYSQL=true -D WITH_ANSI=false
+)
+
+
 echo.
 echo _____________________________[ S T A R T ]______________________________________
 
@@ -202,7 +234,15 @@ echo.
 echo ______________________________[ R E L E A S E ]_________________________________
 @mkdir %PVPGN_RELEASE%
 
-:: copy binary files to release directory, without prompt
+:: copy conf directory
+@mkdir %PVPGN_RELEASE%conf
+@copy /Y %PVPGN_BUILD%conf\*.conf %PVPGN_RELEASE%conf
+@copy /Y %PVPGN_BUILD%conf\*.plain %PVPGN_RELEASE%conf
+@copy /Y %PVPGN_BUILD%conf\*.txt %PVPGN_RELEASE%conf
+@copy /Y %PVPGN_SOURCE%conf\d2server.ini %PVPGN_RELEASE%conf
+
+
+:: copy libraries to release directory, without prompt
 @copy /B /Y %ZLIB_PATH%*.dll %PVPGN_RELEASE%
 if not [%DB_LIB%]==[] @copy /B /Y %DB_PATH%*.dll %PVPGN_RELEASE%
 
@@ -224,14 +264,6 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 @copy /B /Y %PVPGN_BUILD%src\client\Release\bnftp.exe %PVPGN_RELEASE%
 @copy /B /Y %PVPGN_BUILD%src\client\Release\bnstat.exe %PVPGN_RELEASE%
 
-
-:: copy conf directory
-@mkdir %PVPGN_RELEASE%conf
-@copy /Y %PVPGN_BUILD%conf\*.conf %PVPGN_RELEASE%conf
-@copy /Y %PVPGN_BUILD%conf\*.plain %PVPGN_RELEASE%conf
-@copy /Y %PVPGN_BUILD%conf\*.txt %PVPGN_RELEASE%conf
-@copy /Y %PVPGN_SOURCE%conf\d2server.ini %PVPGN_RELEASE%conf
-
 :: copy files directory
 @mkdir %PVPGN_RELEASE%files
 @copy /Y %PVPGN_SOURCE%files %PVPGN_RELEASE%files
@@ -244,6 +276,15 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 :: copy var directories (they're empty)
 @xcopy %PVPGN_BUILD%\files\var\* %PVPGN_RELEASE%\var\ /E
 
+:: create bnmotd from the determined language
+@copy /Y %PVPGN_RELEASE%conf\bnmotd-%MOTD_LANGUAGE%.txt %PVPGN_RELEASE%conf\bnmotd.txt
+
+:: replace "storage_path"
+if [%CHOICE_DB_CONF%]==[y] (
+	for /f "delims=" %%a in ('cscript module\replace_line.vbs "release\conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
+	if ["!res!"]==["ok"] ( echo storage_path updated in bnetd.conf ) else ( echo Error: storage_path was not updated in bnetd.conf )
+	echo !res!
+)
 
 goto THEEND
 

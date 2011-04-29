@@ -13,7 +13,7 @@ for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE
 goto ENU
 
 :switch_lang
-:: switch languages
+:: switch to another language, if it's found
 if [%LANGUAGE%]==[RUS] goto RUS
 if [%LANGUAGE%]==[NLD] goto NLD
 if [%LANGUAGE%]==[PLK] goto PLK
@@ -32,13 +32,13 @@ if not [%1]==[] echo !PHRASE_%1!
 
 goto :eof
 
-:: English US
+:: English
 :ENU
 	set MOTD_LANGUAGE=enUS
 
 	set PHRASE_1_1= Visual Studio is not installed
-	set PHRASE_1_2= Visual Studio C++ environment was not found!
-	set PHRASE_1_3=Download/update the latest PvPGN source from the SVN (in "source" directory)?
+	set PHRASE_1_2= Visual C++ environment was not found!
+	set PHRASE_1_3=Do you want to download/update the latest PvPGN source from the SVN (in "source" directory)?
 	set PHRASE_1_4=  PvPGN will update from the SVN
 	set PHRASE_1_5=  PvPGN will not update
 	set PHRASE_1_6=Select a PvPGN interface: 
@@ -49,7 +49,7 @@ goto :eof
 	set PHRASE_1_11=  Set PvPGN interface as GUI (Graphical User Interface)
 	set PHRASE_1_12= Select a database type: 
 	set PHRASE_1_13=   1) Plain (default)
-	set PHRASE_1_14=   2) MySQL
+	set PHRASE_1_14=
 	set PHRASE_1_15=  PvPGN will build without database support
 	set PHRASE_1_16=CMake configuration failed
 	
@@ -58,11 +58,11 @@ goto :eof
 	set PHRASE_2_3=   Wrong choice... try again
 	set PHRASE_2_4=   PvPGN will compile with support %2 v%3
 	set PHRASE_2_5=Do you want to configure settings for %2 now?
-	set PHRASE_2_6=    Connection host:
-	set PHRASE_2_7=    Connection user:
-	set PHRASE_2_8=    Connection password:
-	set PHRASE_2_9=    Database name:
-	set PHRASE_2_10=    Tables prefix (leave empty if it does not need):
+	set PHRASE_2_6=    Connection host
+	set PHRASE_2_7=    Connection user
+	set PHRASE_2_8=    Connection password
+	set PHRASE_2_9=    Database name
+	set PHRASE_2_10=    Tables prefix (leave empty if it does not need)
 	set PHRASE_2_11=%2 configuration saved
 	
 	set PHRASE_3_1=Checking for update ...
@@ -82,8 +82,8 @@ goto :eof
 :RUS
 	set MOTD_LANGUAGE=ruRU
 
-	set PHRASE_1_1=  Visual Studio не установлен
-	set PHRASE_1_2=  Среда Visual Studio C++ не найдена
+	set PHRASE_1_1=  Visual Studio не установлена
+	set PHRASE_1_2=  Среда Visual C++ не найдена
 	set PHRASE_1_3=Скачать/обновить последние исходники PvPGN из SVN (в папке "source")?
 	set PHRASE_1_4=   PvPGN будет обновлен из SVN
 	set PHRASE_1_5=   PvPGN не будет обновлен
@@ -95,7 +95,7 @@ goto :eof
 	set PHRASE_1_11=   Для PvPGN выбран оконный интерфейс
 	set PHRASE_1_12= Выберите тип базы данных: 
 	set PHRASE_1_13=    1) Текстовые файлы (по-умолчанию)
-	set PHRASE_1_14=    2) MySQL
+	set PHRASE_1_14=
 	set PHRASE_1_15=   PvPGN будет собран без поддержки базы данных
 	set PHRASE_1_16=При конфигурации CMake возникли ошибки
 
@@ -103,11 +103,11 @@ goto :eof
 	set PHRASE_2_2=   Введите номер
 	set PHRASE_2_3=   Неправильный номер... попробуйте ещё раз
 	set PHRASE_2_4=   PvPGN будет скомпилирован с поддержкой %2 v%3
-	set PHRASE_2_5=Добавить сейчас настройки для %2?
-	set PHRASE_2_6=    Адрес сервера:
-	set PHRASE_2_7=    Пользователь:
-	set PHRASE_2_8=    Пароль:
-	set PHRASE_2_9=    Название базы данных:
+	set PHRASE_2_5=Изменить сейчас настройки для %2?
+	set PHRASE_2_6=    Адрес сервера (хост)
+	set PHRASE_2_7=    Пользователь
+	set PHRASE_2_8=    Пароль
+	set PHRASE_2_9=    Название базы данных
 	set PHRASE_2_10=    Префикс для таблиц (оставьте пустым, если не нужно):
 	set PHRASE_2_11=Конфигурация %2 сохранена
 	
@@ -125,12 +125,12 @@ goto :eof
 	goto echo_phrase
 	
 	
-:: Dutch translation by MusicDemon
+:: Dutch - translation by MusicDemon
 :NLD
 	set MOTD_LANGUAGE=nlNL
 
 	set PHRASE_1_1= Visual Studio is niet geinstaleerd
-	set PHRASE_1_2= Visual Studio C++ omgeving was niet gevonden!
+	set PHRASE_1_2= Visual C++ omgeving was niet gevonden!
 	set PHRASE_1_3=Download/update de laatste PvPGN broncode van de SVN (in de "source" directory)?
 	set PHRASE_1_4=  PvPGN zal updaten van de SVN
 	set PHRASE_1_5=  PvPGN zal niet worden geupdate
@@ -142,7 +142,7 @@ goto :eof
 	set PHRASE_1_11=  Set PvPGN interface as GUI (Graphical User Interface) Zet PvPGN omgeving als GUI ()
 	set PHRASE_1_12= Selecteer een database type:
 	set PHRASE_1_13=   1) Normaal (Text) (Standaard)
-	set PHRASE_1_14=   2) MySQL
+	set PHRASE_1_14=
 	set PHRASE_1_15=  PvPGN zal gebouwen worden zonder database ondersteuning
 	set PHRASE_1_16=CMake configuratie mislukt
    
@@ -151,10 +151,10 @@ goto :eof
 	set PHRASE_2_3=   Verkeerde keuze... Probeer het opnieuw
 	set PHRASE_2_4=   PvPGN word gebouwd met %2 ondersteuning op v%3
 	set PHRASE_2_5=Wilt u %2 nu configureren?
-	set PHRASE_2_6=    Connectie host:
-	set PHRASE_2_7=    Connectie gebruiker:
-	set PHRASE_2_8=    Connectie wachtwoord:
-	set PHRASE_2_9=    Database naam:
+	set PHRASE_2_6=    Connectie host
+	set PHRASE_2_7=    Connectie gebruiker
+	set PHRASE_2_8=    Connectie wachtwoord
+	set PHRASE_2_9=    Database naam
 	set PHRASE_2_10=    Tafel voorvoegsel (Table prefix) (Laat leeg als u dit niet gebruikt)
 	set PHRASE_2_11=%2 configuratie opgeslagen
    
@@ -196,15 +196,6 @@ goto :eof
 	set MOTD_LANGUAGE=deDE
 	goto echo_phrase   
 	
-:: Portuguese - Brazil
-:PTB
-	set MOTD_LANGUAGE=ptBR
-	goto echo_phrase   
-	
-:: Portuguese - Portugal
-:PTG
-	goto PTB
-	
 :: Chinese - China
 :CHS
 	set MOTD_LANGUAGE=zhCN
@@ -215,4 +206,12 @@ goto :eof
 	set MOTD_LANGUAGE=zhTW
 	goto echo_phrase   
 	
+:: Portuguese - Brazil
+:PTB
+	set MOTD_LANGUAGE=ptBR
+	goto echo_phrase   
 	
+:: Portuguese - Portugal
+:PTG
+	goto PTB
+
