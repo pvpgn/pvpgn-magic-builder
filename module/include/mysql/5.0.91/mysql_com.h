@@ -219,6 +219,16 @@ typedef struct st_net {
 
   my_bool report_error; /* We should report error (we have unreported error) */
   my_bool return_errno;
+#if defined(MYSQL_SERVER) && !defined(EMBEDDED_LIBRARY)
+  /*
+    Controls whether a big packet should be skipped.
+
+    Initially set to FALSE by default. Unauthenticated sessions must have
+    this set to FALSE so that the server can't be tricked to read packets
+    indefinitely.
+  */
+  my_bool skip_big_packet;
+#endif
 } NET;
 
 #define packet_error (~(unsigned long) 0)
@@ -387,12 +397,16 @@ typedef struct st_udf_args
 
 typedef struct st_udf_init
 {
-  my_bool maybe_null;			/* 1 if function can return NULL */
-  unsigned int decimals;		/* for real functions */
-  unsigned long max_length;		/* For string functions */
-  char	  *ptr;				/* free pointer for function data */
-  my_bool const_item;			/* 0 if result is independent of arguments */
+  my_bool maybe_null;          /* 1 if function can return NULL */
+  unsigned int decimals;       /* for real functions */
+  unsigned long max_length;    /* For string functions */
+  char *ptr;                   /* free pointer for function data */
+  my_bool const_item;          /* 1 if function always returns the same value */
 } UDF_INIT;
+/* 
+  TODO: add a notion for determinism of the UDF. 
+  See Item_udf_func::update_used_tables ()
+*/
 
   /* Constants when using compression */
 #define NET_HEADER_SIZE 4		/* standard header size */
