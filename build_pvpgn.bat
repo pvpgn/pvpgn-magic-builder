@@ -7,12 +7,14 @@ set LOG=false
 
 
 TITLE PvPGN Magic Builder for Windows
+color 1f
 echo.
-echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo  Copyright 2011, HarpyWar (harpywar@gmail.com)
-echo  http://harpywar.com
-echo.
-echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+echo ******************* P v P G N  M a g i c  B u i l d e r ***********************
+echo *                                                                             *
+echo *   Copyright 2011, HarpyWar (harpywar@gmail.com)                             *
+echo *   http://harpywar.com                                                       *
+echo *                                                                             *
+echo *******************************************************************************
 
 :: localization
 @call module\i18n.inc.bat
@@ -67,7 +69,8 @@ echo.
 echo _______________________________[ S E T U P ]____________________________________
 
 call %i18n% 1_3
-set /p CHOICE_SVN= (y/n): 
+choice
+if %errorlevel%==2 set CHOICE_SVN=n
 
 :: if not "n", set to "y"
 if not [%CHOICE_SVN%]==[n] ( 
@@ -88,11 +91,11 @@ call %i18n% 1_7
 call %i18n% 1_8
 echo.
 call %i18n% 1_9
-set /p CHOICE_INTERFACE=: 
+choice /c:12
+set CHOICE_INTERFACE=%errorlevel%
 
-:: if not gui, set a console
+:: gui or console has choosen
 if not [%CHOICE_INTERFACE%]==[2] (
-	set CHOICE_INTERFACE=1
 	call %i18n% 1_10
 ) else (
 	call %i18n% 1_11
@@ -106,12 +109,14 @@ call %i18n% 1_13
 echo     2) MySQL
 echo     3) PostgreSQL
 echo     4) SQLite
+echo     5) ODBC
 echo.
 call %i18n% 1_9
-set /p CHOICE_DBTYPE=: 
+choice /c:12345
+set CHOICE_DBTYPE=%errorlevel%
 
 :: if not any db selected, use plain
-if not [%CHOICE_DBTYPE%]==[2] if not [%CHOICE_DBTYPE%]==[3] if not [%CHOICE_DBTYPE%]==[4] set CHOICE_DBTYPE=1
+if not [%CHOICE_DBTYPE%]==[2] if not [%CHOICE_DBTYPE%]==[3] if not [%CHOICE_DBTYPE%]==[4] if not [%CHOICE_DBTYPE%]==[5] set CHOICE_DBTYPE=1
 
 :: Plain
 if [%CHOICE_DBTYPE%]==[1] (
@@ -133,7 +138,7 @@ if [%CHOICE_DBTYPE%]==[2] (
 	:: cmake vars to add to command line
 	set CMAKE_DB_VARS=-D MYSQL_INCLUDE_DIR=!DB_PATH! -D MYSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_MYSQL=true -D WITH_ANSI=false
 )
-:: TODO: PostgreSQL
+:: PostgreSQL
 if [%CHOICE_DBTYPE%]==[3] (
 	echo.
 	@call module\dbchoice.inc.bat PostgreSQL module\include\pgsql\
@@ -147,7 +152,7 @@ if [%CHOICE_DBTYPE%]==[3] (
 	:: cmake vars to add to command line
 	set CMAKE_DB_VARS=-D PGSQL_INCLUDE_DIR=!DB_PATH! -D PGSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_PGSQL=true
 )
-:: TODO: SQLite
+:: SQLite
 if [%CHOICE_DBTYPE%]==[4] (
 	echo.
 	@call module\dbchoice.inc.bat SQLite module\include\sqlite\
@@ -161,47 +166,55 @@ if [%CHOICE_DBTYPE%]==[4] (
 	:: cmake vars to add to command line
 	set CMAKE_DB_VARS=-D SQLITE3_INCLUDE_DIR=!DB_PATH! -D SQLITE3_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_SQLITE3=true
 )
+:: ODBC
+if [%CHOICE_DBTYPE%]==[5] (
+	echo.
+	@call module\dbchoice.inc.bat ODBC module\include\odbc\
+	:: set user's choice as version
+	set DB_VERSION=!CHOICE_DB!
+	:: path to directory with db headers and libs
+	set DB_PATH=module\include\odbc\!DB_VERSION!\
+	:: lib filename without extension (.lib, ODBC does not need a dll, because it already exists in the system32)
+	set DB_LIB=odbc32
 
+	:: cmake vars to add to command line
+	set CMAKE_DB_VARS=-D ODBC_INCLUDE_DIR=!DB_PATH! -D ODBC_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_ODBC=true
+)
 
 echo.
 echo _____________________________[ S T A R T ]______________________________________
 
 :: ----------- DOWNLOAD ------------
-if [%LOG%]==[true] set svn_log=^>svn.log
-@mkdir %PVPGN_SOURCE%
+if [%LOG%]==[true] set _svn_log=^>svn.log
+mkdir %PVPGN_SOURCE%
 
 :: download latest pvpgn from the svn
-if [%CHOICE_SVN%]==[y] module\tortoisesvn\svn.exe checkout %PVPGN_SVN% %PVPGN_SOURCE% %svn_log%
+if [%CHOICE_SVN%]==[y] module\tortoisesvn\svn.exe checkout %PVPGN_SVN% %PVPGN_SOURCE% %_svn_log%
 
 
 :: ----------- MAKE ------------
 echo.
 echo ______________________[ C M A K E  C O N F I G U R E ]__________________________
-if [%LOG%]==[true] set cmake_log= ^>cmake.log
-@mkdir %PVPGN_BUILD%
+if [%LOG%]==[true] set _cmake_log= ^>cmake.log
+mkdir %PVPGN_BUILD%
 
 :: use win32 configs
 @call :backup_conf
 
 :: delete cmake cache
-@del %PVPGN_BUILD%CMakeCache.txt
+del %PVPGN_BUILD%CMakeCache.txt
 
-if [%CHOICE_INTERFACE%]==[1] ( set with_gui=false ) else ( set with_gui=true )
+if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 
 :: configure and generate solution
-module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_DB_VARS% -D WITH_WIN32_GUI=%with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %cmake_log%
+module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_DB_VARS% -D WITH_WIN32_GUI=%_with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
-
-
-
-:: restore unix configs
-@call :restore_conf
 
 :: ----------- BUILD ------------
 echo.
 echo ______________[ B U I L D  W I T H  V I S U A L  S T U D I O ]__________________
 :build
-if [%LOG%]==[true] set vs_log=^>visualstudio.log
+if [%LOG%]==[true] set _vs_log=^>visualstudio.log
 
 :: check solution for exists 
 IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
@@ -212,7 +225,7 @@ IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
 :: vcexpress include dir
 set INCLUDE=%VCEXPRESS_INCLUDE_PATH%;%INCLUDE%
 :: use environments is different on each visual studio
-if ["%VSVER%"]==["v100"] ( set useEnv=UseEnv=true ) else ( set useEnv=VCBuildUseEnvironment=true )
+if ["%VSVER%"]==["v100"] ( set useEnv=UseEnv=true) else ( set useEnv=VCBuildUseEnvironment=true)
 
 
 if ["%FrameworkDir%"]==[""] set FrameworkDir=%FrameworkDir32% & set FrameworkVersion=%FrameworkVersion32%
@@ -225,13 +238,17 @@ if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
 
 :: compile the solution
 :: FIXME:  /maxcpucount is supports only vs2010
-"%FrameworkDir%\%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %vs_log%
+"%FrameworkDir%\%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_vs_log%
 
 
 
 :: ----------- RELEASE ------------
 echo.
 echo ______________________________[ R E L E A S E ]_________________________________
+
+:: restore unix configs (only after build! because it uses source directory while compile)
+@call :restore_conf
+
 @mkdir %PVPGN_RELEASE%
 
 :: copy conf directory
@@ -276,12 +293,15 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 :: copy var directories (they're empty)
 @xcopy %PVPGN_BUILD%\files\var\* %PVPGN_RELEASE%\var\ /E
 
+:: replace some conf files, like versioncheck
+@copy /Y module\include\conf\* %PVPGN_RELEASE%conf\
+
 :: create bnmotd from the determined language
 @copy /Y %PVPGN_RELEASE%conf\bnmotd-%MOTD_LANGUAGE%.txt %PVPGN_RELEASE%conf\bnmotd.txt
 
 :: replace "storage_path"
 if [%CHOICE_DB_CONF%]==[y] (
-	for /f "delims=" %%a in ('cscript module\replace_line.vbs "release\conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
+	for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "release\conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
 	if ["!res!"]==["ok"] ( echo storage_path updated in bnetd.conf ) else ( echo Error: storage_path was not updated in bnetd.conf )
 )
 
@@ -289,53 +309,74 @@ goto THEEND
 
 :backup_conf
 	:: erase build and release directories
-	@erase /S /Q %PVPGN_RELEASE%*.*>nul
-	@erase /S /Q %PVPGN_BUILD%*.*>nul
+	erase /S /Q %PVPGN_RELEASE%*.*>nul
+	erase /S /Q %PVPGN_BUILD%*.*>nul
 	::@rmdir /s /q %PVPGN_RELEASE%*.*
 	::@rmdir /s /q %PVPGN_RELEASE%*.*
 	
-	:: rename .in to .in.bak
-	@ren %PVPGN_SOURCE%conf\bnetd.conf.in bnetd.conf.in.bak
-	@ren %PVPGN_SOURCE%conf\d2cs.conf.in d2cs.conf.in.bak
-	@ren %PVPGN_SOURCE%conf\d2dbs.conf.in d2dbs.conf.in.bak
+	:: backup .in files (ren (not move or copy), because if compile will fail, *.bak will save and restore in the "restore" section)
+	ren %PVPGN_SOURCE%conf\bnetd.conf.in bnetd.conf.in.bak
+	ren %PVPGN_SOURCE%conf\d2cs.conf.in d2cs.conf.in.bak
+	ren %PVPGN_SOURCE%conf\d2dbs.conf.in d2dbs.conf.in.bak
 	:: copy .win32 to .in
-	@copy /Y %PVPGN_SOURCE%conf\bnetd.conf.win32 %PVPGN_SOURCE%conf\bnetd.conf.in
-	@copy /Y %PVPGN_SOURCE%conf\d2cs.conf.win32 %PVPGN_SOURCE%conf\d2cs.conf.in
-	@copy /Y %PVPGN_SOURCE%conf\d2dbs.conf.win32 %PVPGN_SOURCE%conf\d2dbs.conf.in
+	copy /Y %PVPGN_SOURCE%conf\bnetd.conf.win32 %PVPGN_SOURCE%conf\bnetd.conf.in
+	copy /Y %PVPGN_SOURCE%conf\d2cs.conf.win32 %PVPGN_SOURCE%conf\d2cs.conf.in
+	copy /Y %PVPGN_SOURCE%conf\d2dbs.conf.win32 %PVPGN_SOURCE%conf\d2dbs.conf.in
 	
-	@call :_backup_cmake_module
+	@call :_backup_cmake_files
 
 	exit /b 0
 
 :restore_conf
-	:: delete .in
-	@del %PVPGN_SOURCE%conf\bnetd.conf.in
-	@del %PVPGN_SOURCE%conf\d2cs.conf.in
-	@del %PVPGN_SOURCE%conf\d2dbs.conf.in
-	:: rename .in.bak to .in
-	@ren %PVPGN_SOURCE%conf\bnetd.conf.in.bak bnetd.conf.in
-	@ren %PVPGN_SOURCE%conf\d2cs.conf.in.bak d2cs.conf.in
-	@ren %PVPGN_SOURCE%conf\d2dbs.conf.in.bak d2dbs.conf.in
+	:: move from .in.bak to .in
+	move /Y %PVPGN_SOURCE%conf\bnetd.conf.in.bak %PVPGN_SOURCE%conf\bnetd.conf.in
+	move /Y %PVPGN_SOURCE%conf\d2cs.conf.in.bak %PVPGN_SOURCE%conf\d2cs.conf.in
+	move /Y %PVPGN_SOURCE%conf\d2dbs.conf.in.bak %PVPGN_SOURCE%conf\d2dbs.conf.in
 	
-	@call :_restore_cmake_module
+	@call :_restore_cmake_files
 	exit /b 0
 
-:_backup_cmake_module
+:_backup_cmake_files
 	:: replace path from /etc to conf in the file
-	set DefineInstallationPaths=%PVPGN_SOURCE%\cmake\Modules\DefineInstallationPaths.cmake
-	set str_find=/etc
-	set str_replace=conf
+	@set DefineInstallationPaths=
+	@set str_find=/etc
+	@set str_replace=conf
 	
-	:: backup cmake file
-	copy /Y %DefineInstallationPaths% %DefineInstallationPaths%.bak
+	:: backup DefineInstallationPaths file
+	ren %PVPGN_SOURCE%cmake\Modules\DefineInstallationPaths.cmake DefineInstallationPaths.cmake.bak
+	:: replace with our
+	copy /Y module\include\cmake_conf_replace\cmake\Modules\DefineInstallationPaths.cmake %PVPGN_SOURCE%cmake\Modules\DefineInstallationPaths.cmake
 	
-	:: replace str_find -> str_replace
-	for /f "delims=" %%a in ('cscript module\replace.vbs "%DefineInstallationPaths%" "%str_find%" "%str_replace%"') do set res=%%a
+	:: ODBC support files (PvPGN in the SVN does not supported it yet)
+	if [%CHOICE_DBTYPE%]==[5] (
+		:: backup original
+		::  FindODBC.cmake is not exist, but in case if it will added in the SVN, we should try to rename it too
+		ren %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake FindODBC.cmake.bak
+		ren %PVPGN_SOURCE%ConfigureChecks.cmake ConfigureChecks.cmake.bak
+		ren %PVPGN_SOURCE%src\CMakeLists.txt CMakeLists.txt.bak
+		ren %PVPGN_SOURCE%src\bnetd\CMakeLists.txt CMakeLists.txt.bak
+		:: replace with ours
+		copy /Y module\include\cmake_conf_replace\cmake\Modules\FindODBC.cmake %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake
+		copy /Y module\include\cmake_conf_replace\ConfigureChecks.cmake %PVPGN_SOURCE%ConfigureChecks.cmake
+		copy /Y module\include\cmake_conf_replace\src\CMakeLists.txt %PVPGN_SOURCE%src\CMakeLists.txt
+		copy /Y module\include\cmake_conf_replace\src\bnetd\CMakeLists.txt %PVPGN_SOURCE%src\bnetd\CMakeLists.txt
+	)
+	
 	exit /b 0
 	
-:_restore_cmake_module
+:_restore_cmake_files
 	:: restore original cmake file
-	move /Y %DefineInstallationPaths%.bak %DefineInstallationPaths%
+	move /Y %PVPGN_SOURCE%cmake\Modules\DefineInstallationPaths.cmake.bak %PVPGN_SOURCE%cmake\Modules\DefineInstallationPaths.cmake
+	
+	:: ODBC support, restore original files
+	if [%CHOICE_DBTYPE%]==[5] (
+		:: del FindODBC.cmake, because it not yet in the SVN (but if yes, then try to restore .bak)
+		del /Q %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake
+		move /Y %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake.bak %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake
+		move /Y %PVPGN_SOURCE%ConfigureChecks.cmake.bak %PVPGN_SOURCE%ConfigureChecks.cmake
+		move /Y %PVPGN_SOURCE%src\CMakeLists.txt.bak %PVPGN_SOURCE%src\CMakeLists.txt
+		move /Y %PVPGN_SOURCE%src\bnetd\CMakeLists.txt.bak %PVPGN_SOURCE%src\bnetd\CMakeLists.txt
+	)
 	exit /b 0
 	
 :THEEND
