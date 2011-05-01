@@ -69,8 +69,8 @@ b83a01c58711060a798b7c57beb81649 *module\include\mysql\5.0.91\mysql_version.h
 07cff66a2da8a3e8b6aed794f71351c0 *module\include\mysql\5.0.91\my_alloc.h
 a122c49b9ce955ac16ecd2434d2a5c40 *module\include\mysql\5.0.91\my_list.h
 35bc549a34171163e1ff73eb2142665a *module\include\mysql\5.0.91\typelib.h
-6c6c38b2965bc0a29f9695ee4de4128f *module\include\odbc\Microsoft\odbc32.lib
-1b711552643755cf396c6becd97f0930 *module\include\odbc\Microsoft\sql.h
-152c26584d80946e7c527396dbadf6bc *module\include\odbc\Microsoft\sqlext.h
-773c511dac48369295eda516f34a4112 *module\include\odbc\Microsoft\sqltypes.h
-d581f19530f242b48e3a1d0d182ccc04 *module\include\odbc\Microsoft\sqlucode.h
+6c6c38b2965bc0a29f9695ee4de4128f *module\include\odbc\7.0A\odbc32.lib
+1b711552643755cf396c6becd97f0930 *module\include\odbc\7.0A\sql.h
+152c26584d80946e7c527396dbadf6bc *module\include\odbc\7.0A\sqlext.h
+773c511dac48369295eda516f34a4112 *module\include\odbc\7.0A\sqltypes.h
+d581f19530f242b48e3a1d0d182ccc04 *module\include\odbc\7.0A\sqlucode.h
