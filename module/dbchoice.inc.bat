@@ -56,7 +56,7 @@ set _db_prefix=pvpgn_
 echo.
 call module\i18n.inc.bat 2_5 %DB_ENGINE%
 module\choice 
-if %errorlevel%==2 ( set CHOICE_DB_CONF=n & goto :eof ) else ( set CHOICE_DB_CONF=y )
+if %errorlevel%==2 ( set CHOICE_DB_CONF=n & goto :eof) else ( set CHOICE_DB_CONF=y)
 
 :: SQLite and ODBC has not connection settings
 if not [%DB_ENGINE%]==[SQLite] if not [%DB_ENGINE%]==[ODBC] (

@@ -1,6 +1,6 @@
 4888f88e7297defef64d019bca90234a *build_pvpgn.bat
 7088df0bc180542c9c28339ba91edabb *version-history.txt
-aaa329f23ae1aeaca0153a0a584dbcb1 *module\dbchoice.inc.bat
+9e0eb99060bb7b9912066fe3b5fa6e01 *module\dbchoice.inc.bat
 aaa329f23ae1aeaca0153a0a584dbcb1 *module\i18n.inc.bat
 5c832cbef0bcdb4e76de63102bb72aae *module\replace.vbs
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
