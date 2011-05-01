@@ -5,7 +5,6 @@ setlocal enabledelayedexpansion
 :: LOG=true logs cmake and vs output to cmake.log, visualstudio.log
 set LOG=false
 
-
 TITLE PvPGN Magic Builder for Windows
 color 1f
 echo.
@@ -15,6 +14,7 @@ echo *   Copyright 2011, HarpyWar (harpywar@gmail.com)                          
 echo *   http://harpywar.com                                                       *
 echo *                                                                             *
 echo *******************************************************************************
+cd /D %~dp0
 
 :: localization
 @call module\i18n.inc.bat
@@ -293,14 +293,11 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 :: copy var directories (they're empty)
 @xcopy %PVPGN_BUILD%\files\var\* %PVPGN_RELEASE%\var\ /E
 
-:: replace some conf files, like versioncheck
-@copy /Y module\include\conf\* %PVPGN_RELEASE%conf\
-
 :: create bnmotd from the determined language
 @copy /Y %PVPGN_RELEASE%conf\bnmotd-%MOTD_LANGUAGE%.txt %PVPGN_RELEASE%conf\bnmotd.txt
 
 :: replace "storage_path"
-if [%CHOICE_DB_CONF%]==[y] (
+if ["%CHOICE_DB_CONF%"]==["y"] (
 	for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "release\conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
 	if ["!res!"]==["ok"] ( echo storage_path updated in bnetd.conf ) else ( echo Error: storage_path was not updated in bnetd.conf )
 )
@@ -314,70 +311,13 @@ goto THEEND
 	::@rmdir /s /q %PVPGN_RELEASE%*.*
 	::@rmdir /s /q %PVPGN_RELEASE%*.*
 	
-	:: backup .in files (ren (not move or copy), because if compile will fail, *.bak will save and restore in the "restore" section)
-	ren %PVPGN_SOURCE%conf\bnetd.conf.in bnetd.conf.in.bak
-	ren %PVPGN_SOURCE%conf\d2cs.conf.in d2cs.conf.in.bak
-	ren %PVPGN_SOURCE%conf\d2dbs.conf.in d2dbs.conf.in.bak
-	:: copy .win32 to .in
-	copy /Y %PVPGN_SOURCE%conf\bnetd.conf.win32 %PVPGN_SOURCE%conf\bnetd.conf.in
-	copy /Y %PVPGN_SOURCE%conf\d2cs.conf.win32 %PVPGN_SOURCE%conf\d2cs.conf.in
-	copy /Y %PVPGN_SOURCE%conf\d2dbs.conf.win32 %PVPGN_SOURCE%conf\d2dbs.conf.in
-	
-	@call :_backup_cmake_files
-
+	@call module\recursive_copy.inc.bat module\include\source_replace\ ..\..\..\source\ backup
 	exit /b 0
 
 :restore_conf
-	:: move from .in.bak to .in
-	move /Y %PVPGN_SOURCE%conf\bnetd.conf.in.bak %PVPGN_SOURCE%conf\bnetd.conf.in
-	move /Y %PVPGN_SOURCE%conf\d2cs.conf.in.bak %PVPGN_SOURCE%conf\d2cs.conf.in
-	move /Y %PVPGN_SOURCE%conf\d2dbs.conf.in.bak %PVPGN_SOURCE%conf\d2dbs.conf.in
-	
-	@call :_restore_cmake_files
+	@call module\recursive_copy.inc.bat module\include\source_replace\ ..\..\..\source\ restore
 	exit /b 0
 
-:_backup_cmake_files
-	:: replace path from /etc to conf in the file
-	@set DefineInstallationPaths=
-	@set str_find=/etc
-	@set str_replace=conf
-	
-	:: backup DefineInstallationPaths file
-	ren %PVPGN_SOURCE%cmake\Modules\DefineInstallationPaths.cmake DefineInstallationPaths.cmake.bak
-	:: replace with our
-	copy /Y module\include\cmake_conf_replace\cmake\Modules\DefineInstallationPaths.cmake %PVPGN_SOURCE%cmake\Modules\DefineInstallationPaths.cmake
-	
-	:: ODBC support files (PvPGN in the SVN does not supported it yet)
-	if [%CHOICE_DBTYPE%]==[5] (
-		:: backup original
-		::  FindODBC.cmake is not exist, but in case if it will added in the SVN, we should try to rename it too
-		ren %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake FindODBC.cmake.bak
-		ren %PVPGN_SOURCE%ConfigureChecks.cmake ConfigureChecks.cmake.bak
-		ren %PVPGN_SOURCE%src\CMakeLists.txt CMakeLists.txt.bak
-		ren %PVPGN_SOURCE%src\bnetd\CMakeLists.txt CMakeLists.txt.bak
-		:: replace with ours
-		copy /Y module\include\cmake_conf_replace\cmake\Modules\FindODBC.cmake %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake
-		copy /Y module\include\cmake_conf_replace\ConfigureChecks.cmake %PVPGN_SOURCE%ConfigureChecks.cmake
-		copy /Y module\include\cmake_conf_replace\src\CMakeLists.txt %PVPGN_SOURCE%src\CMakeLists.txt
-		copy /Y module\include\cmake_conf_replace\src\bnetd\CMakeLists.txt %PVPGN_SOURCE%src\bnetd\CMakeLists.txt
-	)
-	
-	exit /b 0
-	
-:_restore_cmake_files
-	:: restore original cmake file
-	move /Y %PVPGN_SOURCE%cmake\Modules\DefineInstallationPaths.cmake.bak %PVPGN_SOURCE%cmake\Modules\DefineInstallationPaths.cmake
-	
-	:: ODBC support, restore original files
-	if [%CHOICE_DBTYPE%]==[5] (
-		:: del FindODBC.cmake, because it not yet in the SVN (but if yes, then try to restore .bak)
-		del /Q %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake
-		move /Y %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake.bak %PVPGN_SOURCE%cmake\Modules\FindODBC.cmake
-		move /Y %PVPGN_SOURCE%ConfigureChecks.cmake.bak %PVPGN_SOURCE%ConfigureChecks.cmake
-		move /Y %PVPGN_SOURCE%src\CMakeLists.txt.bak %PVPGN_SOURCE%src\CMakeLists.txt
-		move /Y %PVPGN_SOURCE%src\bnetd\CMakeLists.txt.bak %PVPGN_SOURCE%src\bnetd\CMakeLists.txt
-	)
-	exit /b 0
 	
 :THEEND
 echo.

@@ -1,29 +1,25 @@
 @echo off
-:: Copying files recursively from one directory to other
-::  Copyright 2011, HarpyWar (harpywar@gmail.com)
-::  http://harpywar.com
+
+setlocal enabledelayedexpansion
 
 :: where to get files
 ::  for example: module\include\source_replace\
-set SRC=%1
+set DIR_1=%1
 :: where to copy these files with .bak ext
 ::  for examle: ..\..\..\source\
-set DST=%2
-::  backup || restore
-set ACTION=%3
-
+set DIR_2=%2
 
 set dir=module\include\source_replace\
 
 rem 1) set dir
-pushd %SRC%
+cd %dir%
 
 rem 2) iterate dir recursively
 @call :iterate_files
 @call :iterate_dirs
 
-rem 3) set dir to current, where script run (should do it in the parent script)
-popd
+rem 3) set dir to current
+cd %~dp0
 
 goto :eof
 :iterate_dirs
@@ -37,15 +33,9 @@ goto :eof
 :iterate_files
 	:: iterate files in the directory %1
 	for /f %%v in ('dir /B /A-D-H %1') do (
-		set _dir=%1
-		set _file=%%v
-		if [%ACTION%]==[backup] (
-			ren !DST!!_dir!!_file! !_file!.bak
-			copy /Y !_dir!!_file! !DST!!_dir!!_file!
-		)
-		if [%ACTION%]==[restore] (
-			move /Y !DST!!_dir!!_file!.bak !DST!!_dir!!_file!
-		)
+		rem copy file
+		rem echo %1%%v
+		copy /Y %1%%v ..\..\..\source\%1%%v.bak
 	)
 	exit /b 0
 
