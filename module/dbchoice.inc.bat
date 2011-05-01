@@ -13,17 +13,19 @@ call %i18n% 2_1 %DB_ENGINE%
 
 :choose_db
 :: iterate and display directories, filling array
-set version_list[0]=0
+set numbers=
 set /A counter=0
 for /F %%v in ('dir /B /AD-H %DB_DIR%') do (
 	set /A counter+=1
+	set numbers=!numbers!!counter!
 	if not [%%v]==[""] echo    !counter!^) %%v
 )
 
 echo.
 :: user input is number of directory 
 call %i18n% 2_2
-set /p choice=: 
+choice /c:%numbers%
+set choice=%errorlevel%
 
 :: iterate again to search chosen number of directory
 set /A counter=0
@@ -33,6 +35,7 @@ for /F %%v in ('dir /B /AD-H %DB_DIR%') do (
 )
 
 :: check for wrong input
+::  FIXME: it's not need, because choice.com don't allow wrong input
 if [%CHOICE_DB%]==[] call %i18n% 2_3  &  echo.  &  goto choose_db
 
 call %i18n% 2_4 %DB_ENGINE% %CHOICE_DB%
@@ -52,17 +55,16 @@ set _db_prefix=pvpgn_
 
 echo.
 call module\i18n.inc.bat 2_5 %DB_ENGINE%
-set /p CHOICE_DB_CONF=(y/n): 
+choice 
+if %errorlevel%==2 set CHOICE_DB_CONF=n & goto :eof
 
-if not [%CHOICE_DB_CONF%]==[y] goto :eof
-
-:: SQLite has not connection settings
-if not [%DB_ENGINE%]==[SQLite] (
+:: SQLite and ODBC has not connection settings
+if not [%DB_ENGINE%]==[SQLite] if not [%DB_ENGINE%]==[ODBC] (
 	:: connection host
 	echo.
 	call module\i18n.inc.bat 2_6
 	set /p _db_host=: 
-
+	
 	:: connection username
 	echo.
 	call module\i18n.inc.bat 2_7 
@@ -72,8 +74,10 @@ if not [%DB_ENGINE%]==[SQLite] (
 	echo.
 	call module\i18n.inc.bat 2_8
 	set /p _db_password=: 
-	
-	:: database name (sqlite uses var\users.db)
+)
+:: (sqlite uses var\users.db)
+if not [%DB_ENGINE%]==[SQLite] (
+	:: database name
 	echo.
 	call module\i18n.inc.bat 2_9
 	set /p _db_name=: 
@@ -92,9 +96,13 @@ call module\i18n.inc.bat 2_11 %DB_ENGINE%
 if [%DB_ENGINE%]==[MySQL] set _db_mode=mysql
 if [%DB_ENGINE%]==[PostgreSQL] set _db_mode=pgsql
 if [%DB_ENGINE%]==[SQLite] set _db_mode=sqlite3
+if [%DB_ENGINE%]==[ODBC] set _db_mode=odbc
 
 :: SET CONFIG VAR 
 set CONF_storage_path=storage_path = sql:mode=%_db_mode%;host=%_db_host%;name=%_db_name%;user=%_db_user%;pass=%_db_password%;default=0;prefix=%_db_prefix%
 
 :: SQLite
 if [%DB_ENGINE%]==[SQLite] set CONF_storage_path=storage_path = sql:mode=%_db_mode%;name=var\users.db;default=0;prefix=%_db_prefix%
+:: ODBC
+if [%DB_ENGINE%]==[ODBC] set CONF_storage_path=storage_path = sql:mode=%_db_mode%;name=%_db_name%;default=0;prefix=%_db_prefix%
+
