@@ -70,11 +70,10 @@ echo _______________________________[ S E T U P ]_______________________________
 
 call %i18n% 1_3
 module\choice
-if %errorlevel%==2 set CHOICE_SVN=n
+if %errorlevel%==2 ( set CHOICE_SVN=n) else ( set CHOICE_SVN=y)
 
 :: if not "n", set to "y"
 if not [%CHOICE_SVN%]==[n] ( 
-	set CHOICE_SVN=y
 	call %i18n% 1_4
 ) else (
 	call %i18n% 1_5
