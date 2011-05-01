@@ -24,7 +24,7 @@ for /F %%v in ('dir /B /AD-H %DB_DIR%') do (
 echo.
 :: user input is number of directory 
 call %i18n% 2_2
-choice /c:%numbers%
+module\choice /c:%numbers%
 set choice=%errorlevel%
 
 :: iterate again to search chosen number of directory
@@ -35,7 +35,7 @@ for /F %%v in ('dir /B /AD-H %DB_DIR%') do (
 )
 
 :: check for wrong input
-::  FIXME: it's not need, because choice.com don't allow wrong input
+::  FIXME: it's not need, because choice.exe don't allow wrong input
 if [%CHOICE_DB%]==[] call %i18n% 2_3  &  echo.  &  goto choose_db
 
 call %i18n% 2_4 %DB_ENGINE% %CHOICE_DB%
@@ -55,7 +55,7 @@ set _db_prefix=pvpgn_
 
 echo.
 call module\i18n.inc.bat 2_5 %DB_ENGINE%
-choice 
+module\choice 
 if %errorlevel%==2 set CHOICE_DB_CONF=n & goto :eof
 
 :: SQLite and ODBC has not connection settings

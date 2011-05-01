@@ -69,7 +69,7 @@ echo.
 echo _______________________________[ S E T U P ]____________________________________
 
 call %i18n% 1_3
-choice
+module\choice
 if %errorlevel%==2 set CHOICE_SVN=n
 
 :: if not "n", set to "y"
@@ -91,7 +91,7 @@ call %i18n% 1_7
 call %i18n% 1_8
 echo.
 call %i18n% 1_9
-choice /c:12
+module\choice /c:12
 set CHOICE_INTERFACE=%errorlevel%
 
 :: gui or console has choosen
@@ -112,7 +112,7 @@ echo     4) SQLite
 echo     5) ODBC
 echo.
 call %i18n% 1_9
-choice /c:12345
+module\choice /c:12345
 set CHOICE_DBTYPE=%errorlevel%
 
 :: if not any db selected, use plain

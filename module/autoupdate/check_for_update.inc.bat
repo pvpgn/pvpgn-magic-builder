@@ -24,7 +24,7 @@ if ["%l_version%"]==["%r_version%"] call %i18n% 3_4 & goto :eof
 
 :: if versions are not equals, ask user to update or not
 call %i18n% 3_5
-choice 
+module\choice 
 if %errorlevel%==2 set CHOICE_UPDATE=n & call %i18n% 3_6 & goto :eof
 
 call %i18n% 3_7
@@ -47,7 +47,7 @@ if not ["%res%"]==["ok"] echo   %res% & goto :eof
 
 call %i18n% 3_9
 call %i18n% 3_10
-
+goto THEEND
 goto :eof
 
 :: downloads a file %1
