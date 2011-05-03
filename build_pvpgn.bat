@@ -105,10 +105,10 @@ echo ---------------------------------------------------------------------------
 :choose_dbtype
 call %i18n% 1_12
 call %i18n% 1_13
-echo     2) MySQL
-echo     3) PostgreSQL
-echo     4) SQLite
-echo     5) ODBC
+echo    2) MySQL
+echo    3) PostgreSQL
+echo    4) SQLite
+echo    5) ODBC
 echo.
 call %i18n% 1_9
 module\choice /c:12345
@@ -228,16 +228,15 @@ if ["%VSVER%"]==["v100"] ( set useEnv=UseEnv=true) else ( set useEnv=VCBuildUseE
 
 
 if ["%FrameworkDir%"]==[""] set FrameworkDir=%FrameworkDir32% & set FrameworkVersion=%FrameworkVersion32%
-:: add slash if not vs2010
-if not ["%VSVER%"]==["v100"] set FrameworkDir=%FrameworkDir%\
+:: add slash if not vs2010, /maxcpucount is supports only vs2010 msbuild
+if not ["%VSVER%"]==["v100"] set FrameworkDir=%FrameworkDir%\ & set _max_cpu=/maxcpucount
 :: use framework 3.5 with vs2008
 if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
 :: INFO: each environment should compile with own framework (e.g. 2010 can't compile with 3.5)
 
 
 :: compile the solution
-:: FIXME:  /maxcpucount is supports only vs2010
-"%FrameworkDir%\%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_vs_log%
+"%FrameworkDir%\%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
 
 
 
@@ -305,10 +304,8 @@ goto THEEND
 
 :backup_conf
 	:: erase build and release directories
-	erase /S /Q %PVPGN_RELEASE%*.*>nul
-	erase /S /Q %PVPGN_BUILD%*.*>nul
-	::@rmdir /s /q %PVPGN_RELEASE%*.*
-	::@rmdir /s /q %PVPGN_RELEASE%*.*
+	@erase /S /Q %PVPGN_RELEASE%*.*>nul
+	@erase /S /Q %PVPGN_BUILD%*.*>nul
 	
 	@call module\recursive_copy.inc.bat module\include\source_replace\ ..\..\..\source\ backup
 	exit /b 0
