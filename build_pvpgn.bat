@@ -37,23 +37,6 @@ set i18n=module\i18n.inc.bat
 @set VCEXPRESS_INCLUDE_PATH=%CUR_PATH%module\include\vsexpress_include\
 
 
-
-:: try to find a visual studio
-::  cmake generator name (Visual Studio 7 .NET 2003, Visual Studio 8 2005, Visual Studio 9 2008, Visual Studio 10)
-::  visual studio version to build (v71 (2003), v80 (2005), v90 (2008), v100 (2010))
-::  2003 is not supported, 2005 is full version required (express is not supported), 2008 and 2010 fully supports
-::    If you want to use VSExpress 2005, you should follow this instructions http://social.msdn.microsoft.com/forums/en-US/Vsexpressvc/thread/c5c3afad-f4c6-4d27-b471-0291e099a742/
-if not ["%VS71COMNTOOLS%"]==[""] set VSCOMNTOOLS=%VS71COMNTOOLS%& set GENERATOR=Visual Studio 7 .NET 2003& set VSVER=v71
-if not ["%VS80COMNTOOLS%"]==[""] set VSCOMNTOOLS=%VS80COMNTOOLS%& set GENERATOR=Visual Studio 8 2005& set VSVER=v80
-if not ["%VS90COMNTOOLS%"]==[""] set VSCOMNTOOLS=%VS90COMNTOOLS%& set GENERATOR=Visual Studio 9 2008& set VSVER=v90
-if not ["%VS100COMNTOOLS%"]==[""] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10& set VSVER=v100
-
-if ["%VSCOMNTOOLS%"]==[""] call %i18n% 1_1 & goto THEEND
-
-
-
-if ["%GENERATOR%"]==[""] call %i18n% 1_2 & goto THEEND
-
 :: ----------- SETUP ------------
 echo.
 echo ______________________________[ U P D A T E ]___________________________________
@@ -68,7 +51,17 @@ echo.
 echo.
 echo _______________________________[ S E T U P ]____________________________________
 
-call %i18n% 1_3
+
+:: try to find a visual studio
+@call module\select_generator.inc.bat
+if [VS_NOT_INSTALLED]==[true] call %i18n% 1_1 & goto THEEND
+
+
+echo.
+echo --------------------------------------------------------------------------------
+
+
+call %i18n% 1_3 "source"
 module\choice
 if %errorlevel%==2 ( set CHOICE_SVN=n) else ( set CHOICE_SVN=y)
 
@@ -235,17 +228,23 @@ set INCLUDE=%VCEXPRESS_INCLUDE_PATH%;%INCLUDE%
 :: use environments is different on each visual studio
 if ["%VSVER%"]==["v100"] ( set useEnv=UseEnv=true) else ( set useEnv=VCBuildUseEnvironment=true)
 
-
-if ["%FrameworkDir%"]==[""] set FrameworkDir=%FrameworkDir32% & set FrameworkVersion=%FrameworkVersion32%
+:: vars correction from the vcvars32.bat
+if ["%FrameworkDir%"]==[""] (
+	set FrameworkDir=%FrameworkDir32%
+	set FrameworkVersion=%FrameworkVersion32%
+)
 :: add slash if not vs2010, /maxcpucount is supports only vs2010 msbuild
-if not ["%VSVER%"]==["v100"] set FrameworkDir=%FrameworkDir%\ & set _max_cpu=/maxcpucount
+if not ["%VSVER%"]==["v100"] (
+	set FrameworkDir=%FrameworkDir%\
+	set _max_cpu=/maxcpucount
+)
 :: use framework 3.5 with vs2008
 if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
 :: INFO: each environment should compile with own framework (e.g. 2010 can't compile with 3.5)
 
 
 :: compile the solution
-"%FrameworkDir%\%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
+"%FrameworkDir%%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
 
 
 
@@ -324,6 +323,7 @@ goto THEEND
 	exit /b 0
 
 	
+
 :THEEND
 echo.
 echo ___________________________[ C O M P L E T E ]__________________________________

@@ -8,7 +8,7 @@ set DB_ENGINE=%1
 :: directory where to list directories
 set DB_DIR=%2
 
-call %i18n% 2_1 %DB_ENGINE%
+call %i18n% 2_1 %DB_ENGINE% "modules\include\%DB_ENGINE%"
 
 
 :choose_db
@@ -86,7 +86,7 @@ if not [%DB_ENGINE%]==[SQLite] (
 
 :: database tables prefix
 echo.
-call module\i18n.inc.bat 2_10
+call module\i18n.inc.bat 2_10 "pvpgn_"
 set /p _db_prefix=: 
 
 echo.
