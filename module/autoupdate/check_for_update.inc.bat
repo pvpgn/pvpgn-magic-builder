@@ -46,9 +46,9 @@ for /f "delims=" %%a in ('cscript "%LOCAL_PATH%wget.vbs" /f "%REMOTE_PATH%versio
 if not ["%res%"]==["ok"] echo   %res% & goto :eof
 
 call %i18n% 3_9
-call %i18n% 3_10
-goto THEEND
-goto :eof
+call %i18n% 3_10 "version-history.txt"
+pause
+exit 0
 
 :: downloads a file %1
 :download
@@ -57,7 +57,7 @@ goto :eof
 	set f_tmp=%URL_UPDATE%%f_local%
 	set f_remote=%f_tmp:\=/%
 
-	call %i18n% 3_8 %f_local%
+	call %i18n% 3_8 "%f_local%"
 	:: download file from the remote url to local url
 	for /f "delims=" %%a in ('cscript "%LOCAL_PATH%wget.vbs" /f "%f_remote%" "%f_local%"') do set f_res=%%a
 	echo    %f_res%
