@@ -1,13 +1,14 @@
-4888f88e7297defef64d019bca90234a *build_pvpgn.bat
+391f49d89b0d62b2d65f58ddfd27eca5 *build_pvpgn.bat
 7088df0bc180542c9c28339ba91edabb *version-history.txt
 9e0eb99060bb7b9912066fe3b5fa6e01 *module\dbchoice.inc.bat
 aaa329f23ae1aeaca0153a0a584dbcb1 *module\i18n.inc.bat
 5c832cbef0bcdb4e76de63102bb72aae *module\replace.vbs
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
-cc3c1aab4c8f14d23ee8173c30a4e912 *module\recursive_copy.inc.bat
-9ae903cd78e83c0fd4539dfbcda3e30d *module\autoupdate\check_for_update.inc.bat
+4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
+9359faae2ce4aebb2d267c0994518a66 *module\autoupdate\check_for_update.inc.bat
 b7040a0ac51a6946e9bab939df1cec39 *module\autoupdate\wget.vbs
 733a2f58c4325eb856de21dd60387628 *module\choice.exe
+5849916d365e69b2bfbcfffd37c206d2 *module\tortoisesvn\patch_source.inc.bat
 
 32122e1f4540ac37e3f4b8a65c074feb *module\include\source_replace\CMakeLists.txt
 b70429bc2b344431ff1df78c1f468363 *module\include\source_replace\ConfigureChecks.cmake
@@ -69,8 +70,13 @@ b83a01c58711060a798b7c57beb81649 *module\include\mysql\5.0.91\mysql_version.h
 07cff66a2da8a3e8b6aed794f71351c0 *module\include\mysql\5.0.91\my_alloc.h
 a122c49b9ce955ac16ecd2434d2a5c40 *module\include\mysql\5.0.91\my_list.h
 35bc549a34171163e1ff73eb2142665a *module\include\mysql\5.0.91\typelib.h
-6c6c38b2965bc0a29f9695ee4de4128f *module\include\odbc\7.0A\odbc32.lib
-1b711552643755cf396c6becd97f0930 *module\include\odbc\7.0A\sql.h
-152c26584d80946e7c527396dbadf6bc *module\include\odbc\7.0A\sqlext.h
-773c511dac48369295eda516f34a4112 *module\include\odbc\7.0A\sqltypes.h
-d581f19530f242b48e3a1d0d182ccc04 *module\include\odbc\7.0A\sqlucode.h
+6c6c38b2965bc0a29f9695ee4de4128f *module\include\odbc\3.8\odbc32.lib
+1b711552643755cf396c6becd97f0930 *module\include\odbc\3.8\sql.h
+152c26584d80946e7c527396dbadf6bc *module\include\odbc\3.8\sqlext.h
+773c511dac48369295eda516f34a4112 *module\include\odbc\3.8\sqltypes.h
+d581f19530f242b48e3a1d0d182ccc04 *module\include\odbc\3.8\sqlucode.h
+9b36a02f4396017e39272291e116679b *module\include\odbc\3.52\odbc32.lib
+7b7bb415c46e556e0ada494f0ee7c817 *module\include\odbc\3.52\sql.h
+203dd664b581c147dba1f1a67d20c942 *module\include\odbc\3.52\sqlext.h
+05f77907395e8ccbbcc99b9c44878f3e *module\include\odbc\3.52\sqltypes.h
+c5425e5eafa8294588dc56be70d222e6 *module\include\odbc\3.52\sqlucode.h

@@ -181,21 +181,30 @@ if [%CHOICE_DBTYPE%]==[5] (
 )
 
 echo.
-echo _____________________________[ S T A R T ]______________________________________
+echo _____________________[ P V P G N  S O U R C E  C O D E]_________________________
+
+:: do you want to apply patches? 
+call %i18n% 4_1
+module\choice
+if %errorlevel%==2 ( set CHOICE_PATCH=n) else ( set CHOICE_PATCH=y)
 
 :: ----------- DOWNLOAD ------------
 if [%LOG%]==[true] set _svn_log=^>svn.log
-mkdir %PVPGN_SOURCE%
+if not exist %PVPGN_SOURCE% mkdir %PVPGN_SOURCE%
 
 :: download latest pvpgn from the svn
 if [%CHOICE_SVN%]==[y] module\tortoisesvn\svn.exe checkout %PVPGN_SVN% %PVPGN_SOURCE% %_svn_log%
+
+:: applying patches
+if [%CHOICE_PATCH%]==[y] @call module\tortoisesvn\patch_source.inc.bat
+
 
 
 :: ----------- MAKE ------------
 echo.
 echo ______________________[ C M A K E  C O N F I G U R E ]__________________________
 if [%LOG%]==[true] set _cmake_log= ^>cmake.log
-mkdir %PVPGN_BUILD%
+if not exist "%PVPGN_BUILD%" mkdir "%PVPGN_BUILD%"
 
 :: use win32 configs
 @call :backup_conf
@@ -247,52 +256,52 @@ echo ______________________________[ R E L E A S E ]____________________________
 :: restore unix configs (only after build! because it uses source directory while compile)
 @call :restore_conf
 
-@mkdir %PVPGN_RELEASE%
+if not exist "%PVPGN_RELEASE%" mkdir "%PVPGN_RELEASE%"
 
 :: copy conf directory
-@mkdir %PVPGN_RELEASE%conf
-@copy /Y %PVPGN_BUILD%conf\*.conf %PVPGN_RELEASE%conf
-@copy /Y %PVPGN_BUILD%conf\*.plain %PVPGN_RELEASE%conf
-@copy /Y %PVPGN_BUILD%conf\*.txt %PVPGN_RELEASE%conf
-@copy /Y %PVPGN_SOURCE%conf\d2server.ini %PVPGN_RELEASE%conf
+if not exist "%PVPGN_RELEASE%conf" mkdir "%PVPGN_RELEASE%conf"
+@copy /Y "%PVPGN_BUILD%conf\*.conf" "%PVPGN_RELEASE%conf"
+@copy /Y "%PVPGN_BUILD%conf\*.plain" "%PVPGN_RELEASE%conf"
+@copy /Y "%PVPGN_BUILD%conf\*.txt" "%PVPGN_RELEASE%conf"
+@copy /Y "%PVPGN_SOURCE%conf\d2server.ini" %PVPGN_RELEASE%conf"
 
 
 :: copy libraries to release directory, without prompt
-@copy /B /Y %ZLIB_PATH%*.dll %PVPGN_RELEASE%
+@copy /B /Y "%ZLIB_PATH%*.dll" "%PVPGN_RELEASE%"
 if not [%DB_LIB%]==[] @copy /B /Y %DB_PATH%*.dll %PVPGN_RELEASE%
 
 if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 
 :: copy release binaries
-@copy /B /Y %PVPGN_BUILD%src\bnetd\Release\bnetd.exe %PVPGN_RELEASE%PvPGN%postfix%.exe
-@copy /B /Y %PVPGN_BUILD%src\d2cs\Release\d2cs.exe %PVPGN_RELEASE%d2cs%postfix%.exe
-@copy /B /Y %PVPGN_BUILD%src\d2dbs\Release\d2dbs.exe %PVPGN_RELEASE%d2dbs%postfix%.exe
-@copy /B /Y %PVPGN_BUILD%src\bniutils\Release\bni2tga.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\bniutils\Release\bnibuild.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\bniutils\Release\bniextract.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\bniutils\Release\bnilist.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\bniutils\Release\tgainfo.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\bnpass\Release\bnpass.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\bnpass\Release\sha1hash.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\client\Release\bnbot.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\client\Release\bnchat.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\client\Release\bnftp.exe %PVPGN_RELEASE%
-@copy /B /Y %PVPGN_BUILD%src\client\Release\bnstat.exe %PVPGN_RELEASE%
+@copy /B /Y "%PVPGN_BUILD%src\bnetd\Release\bnetd.exe" "%PVPGN_RELEASE%PvPGN%postfix%.exe"
+@copy /B /Y "%PVPGN_BUILD%src\d2cs\Release\d2cs.exe" "%PVPGN_RELEASE%d2cs%postfix%.exe"
+@copy /B /Y "%PVPGN_BUILD%src\d2dbs\Release\d2dbs.exe" "%PVPGN_RELEASE%d2dbs%postfix%.exe"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bni2tga.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bnibuild.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bniextract.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bnilist.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\tgainfo.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bnpass\Release\bnpass.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bnpass\Release\sha1hash.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\Release\bnbot.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\Release\bnchat.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\Release\bnftp.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\Release\bnstat.exe" "%PVPGN_RELEASE%"
 
 :: copy files directory
-@mkdir %PVPGN_RELEASE%files
-@copy /Y %PVPGN_SOURCE%files %PVPGN_RELEASE%files
-@del %PVPGN_RELEASE%files\CMakeLists.txt
-@del %PVPGN_RELEASE%files\Makefile.am
+if not exist "%PVPGN_RELEASE%files" mkdir "%PVPGN_RELEASE%files"
+@copy /Y "%PVPGN_SOURCE%files" "%PVPGN_RELEASE%files"
+@del "%PVPGN_RELEASE%files\CMakeLists.txt"
+@del "%PVPGN_RELEASE%files\Makefile.am"
 
 :: copy pvpgnsupport to files directory
-@copy /Y %SUPPORTFILES_PATH% %PVPGN_RELEASE%files
+@copy /Y "%SUPPORTFILES_PATH%" "%PVPGN_RELEASE%files"
 
 :: copy var directories (they're empty)
-@xcopy %PVPGN_BUILD%\files\var\* %PVPGN_RELEASE%\var\ /E
+@xcopy "%PVPGN_BUILD%\files\var\*" "%PVPGN_RELEASE%\var\" /E
 
 :: create bnmotd from the determined language
-@copy /Y %PVPGN_RELEASE%conf\bnmotd-%MOTD_LANGUAGE%.txt %PVPGN_RELEASE%conf\bnmotd.txt
+@copy /Y "%PVPGN_RELEASE%conf\bnmotd-%MOTD_LANGUAGE%.txt" "%PVPGN_RELEASE%conf\bnmotd.txt"
 
 :: replace "storage_path"
 if ["%CHOICE_DB_CONF%"]==["y"] (
@@ -304,8 +313,8 @@ goto THEEND
 
 :backup_conf
 	:: erase build and release directories
-	@erase /S /Q %PVPGN_RELEASE%*.*>nul
-	@erase /S /Q %PVPGN_BUILD%*.*>nul
+	@erase /S /Q "%PVPGN_RELEASE%*.*">nul
+	@erase /S /Q "%PVPGN_BUILD%*.*">nul
 	
 	@call module\recursive_copy.inc.bat module\include\source_replace\ ..\..\..\source\ backup
 	exit /b 0

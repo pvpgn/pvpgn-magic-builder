@@ -28,7 +28,7 @@ popd
 goto :eof
 :iterate_dirs
 	:: iterate directory %1
-	for /F %%v in ('dir /B /AD-H %1') do (
+	for /F "tokens=* delims= " %%v in ('dir /B /AD-H "%1"') do (
 		@call :iterate_dirs %1%%v\
 		@call :iterate_files %1%%v\
 	)
@@ -36,15 +36,15 @@ goto :eof
 	
 :iterate_files
 	:: iterate files in the directory %1
-	for /f %%v in ('dir /B /A-D-H %1') do (
+	for /f "tokens=* delims= " %%v in ('dir /B /A-D-H "%1"') do (
 		set _dir=%1
 		set _file=%%v
 		if [%ACTION%]==[backup] (
-			ren !DST!!_dir!!_file! !_file!.bak
-			copy /Y !_dir!!_file! !DST!!_dir!!_file!
+			ren "!DST!!_dir!!_file!" !_file!.bak
+			copy /Y "!_dir!!_file!" "!DST!!_dir!!_file!"
 		)
 		if [%ACTION%]==[restore] (
-			move /Y !DST!!_dir!!_file!.bak !DST!!_dir!!_file!
+			move /Y "!DST!!_dir!!_file!.bak" "!DST!!_dir!!_file!"
 		)
 	)
 	exit /b 0

@@ -14,7 +14,7 @@ call %i18n% 3_2 %l_version%
 :: get remote version
 for /f "delims=" %%a in ('cscript "%LOCAL_PATH%wget.vbs" /s "%REMOTE_PATH%version.txt"') do set r_version=%%a
 set error=%r_version:~0,5%
-if [%error%]==[error] echo  Can not connect to update server & goto :eof
+if [%error%]==[error] call %i18n% 3_6_1 & goto :eof
 
 call %i18n% 3_3 %r_version%
 echo.

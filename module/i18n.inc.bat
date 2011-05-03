@@ -71,11 +71,22 @@ goto :eof
 	set PHRASE_3_4= You have the latest PvPGN Magic Builder
 	set PHRASE_3_5=Remote version of PvPGN Magic Builder is not equals with yours. Do you want to automatically update to the new version?
 	set PHRASE_3_6= Update was cancelled by user
+	set PHRASE_3_6_1= Can not connect to update server
 	set PHRASE_3_7=Starting update ...
 	set PHRASE_3_8= Downloading file "%2" ...
 	set PHRASE_3_9=Update finished
 	set PHRASE_3_10=Please, check file "version-history.txt" for more information about changes
 
+	set PHRASE_4_1=Do you want to apply patch(es) to your PvPGN source code?
+	set PHRASE_4_2=Please, first put your patch files to the "%2" directory. You could download patches from the url: %3
+	set PHRASE_4_3=*** WARNING ***
+	set PHRASE_4_4=Paths into your *.patch files should set to relative of the root to the source code (it placed in the SVN at %2)
+	set PHRASE_4_5=For example: you want to apply patch to %2, so path to this file should be %3
+	set PHRASE_4_6=Are you ready to patch?
+	set PHRASE_4_7=Applying patch %2 ...
+	set PHRASE_4_8=Finished. Please, check for conflicts.
+	set PHRASE_4_9=Do you want to continue building a PvPGN?
+	
 	goto switch_lang
 
 :: Russian
@@ -117,10 +128,21 @@ goto :eof
 	set PHRASE_3_4= У вас последний PvPGN Magic Builder
 	set PHRASE_3_5=Версия PvPGN Magic Builder на сервере не совпадает с вашей. Хотите автоматически обновиться до последней версии?
 	set PHRASE_3_6= Обновление отменено пользователем
+	set PHRASE_3_6_1= Нет соединения с сервером обновлений
 	set PHRASE_3_7=Начинаю обновление ...
 	set PHRASE_3_8= Загрузка файла "%2" ...
 	set PHRASE_3_9=Обновление завершено
 	set PHRASE_3_10=Информацию об изменениях можно посмотреть в файле "version-history.txt"
+	
+	set PHRASE_4_1=Вы хотите применить патч(и) к исходному коду PvPGN?
+	set PHRASE_4_2=Для начала, положите файлы патчей в папку %2. Скачать патчи можно по ссылке: %3
+	set PHRASE_4_3=*** ОБРАТИТЕ ВНИМАНИЕ ***
+	set PHRASE_4_4=Пути внутри ваших *.patch файлах должны быть установлены относительно корневой папки к исходному коду (в SVN он размещается в %2)
+	set PHRASE_4_5=Например: вы хотите применить патч к файлу %2, тогда путь к этому файлу должен быть %3
+	set PHRASE_4_6=Вы готовы начать применение патчей?
+	set PHRASE_4_7=Применяется патч %2 ...
+	set PHRASE_4_8=Завершено. Проверьте наличие конфликтов.
+	set PHRASE_4_9=Продолжить построение PvPGN?
 	
 	goto echo_phrase
 	
