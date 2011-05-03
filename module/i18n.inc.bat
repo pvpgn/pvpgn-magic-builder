@@ -47,7 +47,7 @@ goto :eof
 	set PHRASE_1_9=Choose a number
 	set PHRASE_1_10=  Set PvPGN interface as Console
 	set PHRASE_1_11=  Set PvPGN interface as GUI (Graphical User Interface)
-	set PHRASE_1_12= Select a database type: 
+	set PHRASE_1_12=Select a database type: 
 	set PHRASE_1_13=   1) Plain (default)
 	set PHRASE_1_14=
 	set PHRASE_1_15=  PvPGN will build without database support
@@ -88,13 +88,13 @@ goto :eof
 	set PHRASE_1_4=   PvPGN будет обновлен из SVN
 	set PHRASE_1_5=   PvPGN не будет обновлен
 	set PHRASE_1_6=Выберите интерфейс для PvPGN: 
-	set PHRASE_1_7=    1) Консольный (по-умолчанию)
-	set PHRASE_1_8=    2) Оконный
+	set PHRASE_1_7=   1) Консольный (по-умолчанию)
+	set PHRASE_1_8=   2) Оконный
 	set PHRASE_1_9=Введите номер
 	set PHRASE_1_10=   Для PvPGN выбран консольный интерфейс
 	set PHRASE_1_11=   Для PvPGN выбран оконный интерфейс
-	set PHRASE_1_12= Выберите тип базы данных: 
-	set PHRASE_1_13=    1) Текстовые файлы (по-умолчанию)
+	set PHRASE_1_12=Выберите тип базы данных: 
+	set PHRASE_1_13=   1) Текстовые файлы (по-умолчанию)
 	set PHRASE_1_14=
 	set PHRASE_1_15=   PvPGN будет собран без поддержки базы данных
 	set PHRASE_1_16=При конфигурации CMake возникли ошибки
@@ -140,7 +140,7 @@ goto :eof
 	set PHRASE_1_9=Kies een nummer
 	set PHRASE_1_10=  Zet PvPGN omgeving als Console
 	set PHRASE_1_11=  Set PvPGN interface as GUI (Graphical User Interface) Zet PvPGN omgeving als GUI ()
-	set PHRASE_1_12= Selecteer een database type:
+	set PHRASE_1_12=Selecteer een database type:
 	set PHRASE_1_13=   1) Normaal (Text) (Standaard)
 	set PHRASE_1_14=
 	set PHRASE_1_15=  PvPGN zal gebouwen worden zonder database ondersteuning
