@@ -1,11 +1,12 @@
-391f49d89b0d62b2d65f58ddfd27eca5 *build_pvpgn.bat
-7088df0bc180542c9c28339ba91edabb *version-history.txt
-9e0eb99060bb7b9912066fe3b5fa6e01 *module\dbchoice.inc.bat
-aaa329f23ae1aeaca0153a0a584dbcb1 *module\i18n.inc.bat
+0eb5b128da8d72706931a144288bc857 *build_pvpgn.bat
+fc45525bdc0015143656b8b81fdc5005 *version-history.txt
+3fe8536bb70cfac27f9abe27a1b0df55 *module\dbchoice.inc.bat
+5d0e4fd2fea7ebb62a0ed1300d23a837 *module\i18n.inc.bat
 5c832cbef0bcdb4e76de63102bb72aae *module\replace.vbs
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
+b9fb43a28245135744f11b49c7f69681 *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
-9359faae2ce4aebb2d267c0994518a66 *module\autoupdate\check_for_update.inc.bat
+b756fdaea606e207a0db7fadef3295a7 *module\autoupdate\check_for_update.inc.bat
 b7040a0ac51a6946e9bab939df1cec39 *module\autoupdate\wget.vbs
 733a2f58c4325eb856de21dd60387628 *module\choice.exe
 5849916d365e69b2bfbcfffd37c206d2 *module\tortoisesvn\patch_source.inc.bat

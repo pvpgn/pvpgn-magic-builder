@@ -63,31 +63,31 @@ if not [%DB_ENGINE%]==[SQLite] if not [%DB_ENGINE%]==[ODBC] (
 	:: connection host
 	echo.
 	call module\i18n.inc.bat 2_6
-	set /p _db_host=: 
+	set /p _db_host=:
 	
 	:: connection username
 	echo.
 	call module\i18n.inc.bat 2_7 
-	set /p _db_user=: 
+	set /p _db_user=:
 
 	:: connection password
 	echo.
 	call module\i18n.inc.bat 2_8
-	set /p _db_password=: 
+	set /p _db_password=:
 )
 :: (sqlite uses var\users.db)
 if not [%DB_ENGINE%]==[SQLite] (
 	:: database name
 	echo.
 	call module\i18n.inc.bat 2_9
-	set /p _db_name=: 
+	set /p _db_name=:
 )
 
 
 :: database tables prefix
 echo.
 call module\i18n.inc.bat 2_10 "pvpgn_"
-set /p _db_prefix=: 
+set /p _db_prefix=:
 
 echo.
 call module\i18n.inc.bat 2_11 %DB_ENGINE%

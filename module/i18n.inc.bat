@@ -36,22 +36,22 @@ goto :eof
 :ENU
 	set MOTD_LANGUAGE=enUS
 
-	set PHRASE_1_0= Visual Studio is not installed
+	set PHRASE_1_0=  Visual Studio is not installed
 	set PHRASE_1_1=Select a Visual Studio version to build PvPGN:
 	set PHRASE_1_2=%2 chosen as a build environment
 	set PHRASE_1_3=Do you want to download/update the latest PvPGN source from the SVN (in %2 directory)?
-	set PHRASE_1_4=  PvPGN will update from the SVN
-	set PHRASE_1_5=  PvPGN will not update
+	set PHRASE_1_4=   PvPGN will update from the SVN
+	set PHRASE_1_5=   PvPGN will not update
 	set PHRASE_1_6=Select a PvPGN interface: 
 	set PHRASE_1_7=   1) Console (defaut)
 	set PHRASE_1_8=   2) GUI
 	set PHRASE_1_9=Choose a number
-	set PHRASE_1_10=  Set PvPGN interface as Console
-	set PHRASE_1_11=  Set PvPGN interface as GUI (Graphical User Interface)
+	set PHRASE_1_10=   Set PvPGN interface as Console
+	set PHRASE_1_11=   Set PvPGN interface as GUI (Graphical User Interface)
 	set PHRASE_1_12=Select a database type: 
 	set PHRASE_1_13=   1) Plain (default)
 	set PHRASE_1_14=
-	set PHRASE_1_15=  PvPGN will build without database support
+	set PHRASE_1_15=   PvPGN will build without database support
 	set PHRASE_1_16=CMake configuration failed
 
 	set PHRASE_2_1=Available %2 versions (you can add your own into %3):
@@ -137,7 +137,7 @@ goto :eof
 	set PHRASE_3_10=Информацию об изменениях можно посмотреть в файле %2
 
 	set PHRASE_4_1=Вы хотите применить патч(и) к исходному коду PvPGN?
-	set PHRASE_4_2=Для начала, поместите файлы патчей в папку %2. Скачать патчи можно по ссылке: %3
+	set PHRASE_4_2=Сначала поместите файлы патчей в папку %2. Скачать патчи можно по ссылке: %3
 	set PHRASE_4_3=*** ОБРАТИТЕ ВНИМАНИЕ ***
 	set PHRASE_4_4=Пути внутри ваших *.patch файлов должны быть установлены относительно корневой папки к исходному коду (в SVN он размещается в %2)
 	set PHRASE_4_5=Например: вы хотите применить патч к файлу %2, тогда путь к этому файлу должен быть %3
@@ -156,8 +156,8 @@ goto :eof
 	set PHRASE_1_1=Selecteer een Visual Studio versie om PvPGN te bouwen:
     set PHRASE_1_2=%2 is gekozen als bouw omgeving
 	set PHRASE_1_3=Download/update de laatste PvPGN broncode van de SVN (in de %2 directory)?
-	set PHRASE_1_4=  PvPGN zal updaten van de SVN
-	set PHRASE_1_5=  PvPGN zal niet worden geupdate
+	set PHRASE_1_4=   PvPGN zal updaten van de SVN
+	set PHRASE_1_5=   PvPGN zal niet worden geupdate
 	set PHRASE_1_6=Selecteer PvPGN omgeving:
 	set PHRASE_1_7=   1) Console (defaut)
 	set PHRASE_1_8=   2) GUI
@@ -211,9 +211,62 @@ goto :eof
 	set MOTD_LANGUAGE=plPL
 	goto echo_phrase
 	
-:: German - translation by 
+:: German - translation by SKY777
 :DEU
 	set MOTD_LANGUAGE=deDE
+	
+	set PHRASE_1_0=  Visual Studio ist nicht installiert
+	set PHRASE_1_1=Wahlen Sie eine Visual Studio-Version fur die PvPGN-Compilierung:
+	set PHRASE_1_2=%2 wurde als Compiler gewahlt
+	set PHRASE_1_3=Mochten Sie die letzten PvPGN-Programmcoden aus SVN (im %2-Ordner) herunterladen / aktualisieren?
+	set PHRASE_1_4=   PvPGN wird aus SVN aktualisiert werden
+	set PHRASE_1_5=   PvPGN wird nicht aktualisieret werden
+	set PHRASE_1_6=Wahlen Sie eine Schnittstelle fur PvPGN: 
+	set PHRASE_1_7=   1) Konsolenschnittstelle (Standardeinstellung)
+	set PHRASE_1_8=   2) Fensterschnittstelle
+	set PHRASE_1_9=Geben Sie eine Nummer ein
+	set PHRASE_1_10=   Fur PvPGN wurde die Konsolenschnittstelle gewahlt
+	set PHRASE_1_11=   Fur PvPGN wurde die Fensterschnittstelle gewahlt
+	set PHRASE_1_12=Wahlen Sie den Datenbanktyp: 
+	set PHRASE_1_13=   1) Textdateien (Standardeinstellung)
+	set PHRASE_1_14=
+	set PHRASE_1_15=   PvPGN wird ohne Datenbankunterstutzung gewahlt
+	set PHRASE_1_16=Bei der CMake-Konfiguration entstanden die Fehler 
+	
+	set PHRASE_2_1=Zugangliche %2 -Versionen (man kann seine Version in den %3 hinzufugen):
+	set PHRASE_2_2=   Geben Sie eine Nummer ein
+	set PHRASE_2_3=   Falsche Nummer... versuchen Sie noch einmal 
+	set PHRASE_2_4=   PvPGN wird mit der %2 v%3-Unterstutzung kompiliert
+	set PHRASE_2_5=Mochten Sie jetzt die %2-Einstellungen andern?
+	set PHRASE_2_6=    Serveradresse (Host)
+	set PHRASE_2_7=    Benutzer
+	set PHRASE_2_8=    Passwort
+	set PHRASE_2_9=    Datenbankname
+	set PHRASE_2_10=    Vorsatzkode fur Tabellen (Standardeinstellung %2)
+	set PHRASE_2_11=Die %2 -Konfiguration wurde gespeichert
+
+	set PHRASE_3_1=Update-Prufung ...
+	set PHRASE_3_2=Ihre "v%2"-Version 
+	set PHRASE_3_3=Letzte "v%2"-Version
+	set PHRASE_3_4=Sie haben ein letzes PvPGN Magic Builder
+	set PHRASE_3_5=Die  PvPGN Magic Builder-Version im Server stimmt mit Ihrer Version nicht uberein. Mochten Sie automatisch bis zur letzten Version aktualisieren?
+	set PHRASE_3_6=Das Update wurde vom Benutzer zuruckgesetzt 
+	set PHRASE_3_6_1=Keine Verbindung mit dem Update-Server
+	set PHRASE_3_7=Das Update start ...
+	set PHRASE_3_8= Herunterladen der %2-Datei ...
+	set PHRASE_3_9=Das Update wurde beendet 
+	set PHRASE_3_10=Die Information uber die Anderungen kann man im %2-Datei sehen
+	
+	set PHRASE_4_1=Mochten Sie  Patch(es) auf die PvPGN-Programmcode anwenden?
+	set PHRASE_4_2=Bringen Sie zuerst die Patch-Dateien in den %2-Order. Die Patches konnen per Link %3 heruntergeladen werden: 
+	set PHRASE_4_3=*** BEACHTEN SIE BITTE***
+	set PHRASE_4_4=Die Pfade in Ihren Patch-Dateien (*.patch) sollen bezuglich auf den Ordner zur Programmcode eingestellt werden (in SVN wird sie in %2 platziert)
+	set PHRASE_4_5=Zum Beispiel: Sie mochten einen Patch auf die %2-Datei anwenden, dann soll der Pfad zu dieser Datei %3 sein
+	set PHRASE_4_6=Sind Sie bereit, Patches anzuwenden?
+	set PHRASE_4_7=Der Patch %2 wird angewendet ...
+	set PHRASE_4_8=Beendet. Prufen Sie, ob es Konflikte gibt.
+	set PHRASE_4_9=Mochten Sie die PvPGN-Compilierung fortsetzen?
+	
 	goto echo_phrase
 	
 :: Czech

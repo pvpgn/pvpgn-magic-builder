@@ -26,7 +26,6 @@ if %_vs_count% equ 0 set VS_NOT_INSTALLED=true& goto :eof
 
 :: if more then one vs installed, give user to choose it
 if %_vs_count% gtr 1 (
-	echo.
 	call %i18n% 1_1
 	echo.
 
@@ -48,6 +47,7 @@ if %_vs_count% gtr 1 (
 	set /a _t=!errorlevel!-1
 	@call :_substr !_c! !_t! 1
 	set _vs_choice=!_result!
+	echo.
 )
 
 :: set VS VARS
@@ -56,7 +56,7 @@ if [%_vs_choice%]==[2] set VSCOMNTOOLS=%VS80COMNTOOLS%& set GENERATOR=Visual Stu
 if [%_vs_choice%]==[3] set VSCOMNTOOLS=%VS90COMNTOOLS%& set GENERATOR=Visual Studio 9 2008& set VSVER=v90
 if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10& set VSVER=v100
 
-echo.
+
 call %i18n% 1_2 "%GENERATOR%"
 
 goto :eof

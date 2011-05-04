@@ -1,19 +1,31 @@
-1.3 (01.05.2011)
+PvPGN Magic Builder. Version history.
+http://code.google.com/p/pvpgn-magic-builder/
+---------------------------------------------
+
+v1.4 (04.05.2011)
+- capability to apply patches to your source code (optional)
+- capability to set a Visual Studio version to compile a PvPGN (if you've have several Studious)
+- now compilation with Visual Studio 2010 is faster on multiprocessor systems
+- added files for ODBC 3.8
+- added files for ODBC 3.52
+- added German translation (thanks to SKY777)
+
+v1.3 (01.05.2011)
 - more user-friendly interface, choose an action is become more comfortable
 - added support for ODBC
 - added latest versioncheck.conf
 - added files for MySQL 4.1.21
 - added files for MySQL 5.0.91
 
-1.2 (30.04.2011)
+v1.2 (30.04.2011)
 - autoupdate fix (now it creates directories in the middle of the path, if it's not exists)
 - added support for PostgreSQL
 - added support for SQLite3
 
-1.1 (29.04.2011)
+v1.1 (29.04.2011)
 - bnmotd.txt creates from the determined OS language
 - interactive configuring database connection settings (optional)
-- Dutch translation added (thanks to MusicDemon)
+- added Dutch translation (thanks to MusicDemon)
 
-1.0 (28.04.2011)
+v1.0 (28.04.2011)
 - first release
