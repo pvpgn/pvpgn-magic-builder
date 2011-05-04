@@ -211,7 +211,7 @@ goto :eof
 	set MOTD_LANGUAGE=plPL
 	goto echo_phrase
 	
-:: German - translation by SKY777
+:: German - translation by Natalya Lyovkina (SKY777)
 :DEU
 	set MOTD_LANGUAGE=deDE
 	
