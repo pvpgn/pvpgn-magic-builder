@@ -2,6 +2,9 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 ---------------------------------------------
 
+v1.41 (07.05.2011)
+- added Polish translation (thanks to Naki-BoT)
+
 v1.4 (04.05.2011)
 - capability to apply patches to your source code (optional)
 - capability to set a Visual Studio version to compile a PvPGN (if you've have several Studious)
