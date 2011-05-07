@@ -39,7 +39,7 @@ goto :eof
 	echo.
 	call %i18n% 4_7 %1
 	:: cleanup source
-	module\tortoisesvn\svn.exe cleanup %PVPGN_SOURCE%
+	module\tortoisesvn\svn.exe cleanup %PVPGN_SOURCE% %_svn_log%
 	:: apply downloaded patch
-	module\tortoisesvn\svn.exe patch %1 %PVPGN_SOURCE%
+	module\tortoisesvn\svn.exe patch %1 %PVPGN_SOURCE% %_svn_log%
 	exit /b 0
