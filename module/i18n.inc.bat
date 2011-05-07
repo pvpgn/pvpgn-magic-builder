@@ -13,7 +13,7 @@ for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE
 goto ENU
 
 :switch_lang
-:: switch to another language, if it's found
+:: switch to another language, if found
 if [%LANGUAGE%]==[RUS] goto RUS
 if [%LANGUAGE%]==[NLD] goto NLD
 if [%LANGUAGE%]==[PLK] goto PLK
@@ -39,7 +39,7 @@ goto :eof
 	set PHRASE_1_0=  Visual Studio is not installed
 	set PHRASE_1_1=Select a Visual Studio version to build PvPGN:
 	set PHRASE_1_2=%2 chosen as a build environment
-	set PHRASE_1_3=Do you want to download/update the latest PvPGN source from the SVN (in %2 directory)?
+	set PHRASE_1_3=Do you want to download/update the latest PvPGN source from the SVN (into %2 directory)?
 	set PHRASE_1_4=   PvPGN will update from the SVN
 	set PHRASE_1_5=   PvPGN will not update
 	set PHRASE_1_6=Select a PvPGN interface: 
@@ -304,7 +304,7 @@ goto :eof
 	set PHRASE_3_4=Sie haben ein letzes PvPGN Magic Builder
 	set PHRASE_3_5=Die  PvPGN Magic Builder-Version im Server stimmt mit Ihrer Version nicht uberein. Mochten Sie automatisch bis zur letzten Version aktualisieren?
 	set PHRASE_3_6=Das Update wurde vom Benutzer zuruckgesetzt 
-	set PHRASE_3_6_1=Keine Verbindung mit dem Update-Server
+	set PHRASE_3_6_1= Keine Verbindung mit dem Update-Server
 	set PHRASE_3_7=Das Update start ...
 	set PHRASE_3_8= Herunterladen der %2-Datei ...
 	set PHRASE_3_9=Das Update wurde beendet 

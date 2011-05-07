@@ -14,11 +14,24 @@ echo *   Copyright 2011, HarpyWar (harpywar@gmail.com)                          
 echo *   http://harpywar.com                                                       *
 echo *                                                                             *
 echo *******************************************************************************
-cd /D %~dp0
+set CURRENT_PATH=%~dp0
+:: change path to where script was run
+cd /D "%CURRENT_PATH%"
+
 
 :: localization
 @call module\i18n.inc.bat
 set i18n=module\i18n.inc.bat
+
+
+:: do not allow spaces in the path
+if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
+	echo.
+	echo Please, put all the files into directory without spaces and unicode letters. 
+	echo For example C:\pvpgn_magic_builder\
+	goto THEEND
+)
+
 
 :: ----------- VARIABLES ------------
 @set URL_UPDATE=http://pvpgn-magic-builder.googlecode.com/svn/trunk/
@@ -262,12 +275,12 @@ if not exist "%PVPGN_RELEASE%conf" mkdir "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_BUILD%conf\*.conf" "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_BUILD%conf\*.plain" "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_BUILD%conf\*.txt" "%PVPGN_RELEASE%conf"
-@copy /Y "%PVPGN_SOURCE%conf\d2server.ini" %PVPGN_RELEASE%conf"
+@copy /Y "%PVPGN_SOURCE%conf\d2server.ini" "%PVPGN_RELEASE%conf"
 
 
 :: copy libraries to release directory, without prompt
 @copy /B /Y "%ZLIB_PATH%*.dll" "%PVPGN_RELEASE%"
-if not [%DB_LIB%]==[] @copy /B /Y %DB_PATH%*.dll %PVPGN_RELEASE%
+if not [%DB_LIB%]==[] @copy /B /Y "%DB_PATH%*.dll" "%PVPGN_RELEASE%"
 
 if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 
