@@ -206,9 +206,62 @@ goto :eof
 
 	goto echo_phrase
 
-:: Polish - translation by 
+:: Polish - translation by Grzegorz Nakonieczny (Naki-BoT)
 :PLK
 	set MOTD_LANGUAGE=plPL
+
+	set PHRASE_1_0=  Program Visual Studio nie jest zainstalowany na komputerze
+	set PHRASE_1_1=Wybierz wersje programu Visual Studio przy uzyciu ktorej chcesz skompilowac PvPGN:
+	set PHRASE_1_2=Wybrano %2 jako srodowisko programistyczne
+	set PHRASE_1_3=Czy chcesz pobrac/zaktualizowac PvPGN do najnowszej wersji z repozytorium SVN (w katalogu %2)?
+	set PHRASE_1_4=   PvPGN zostanie zaktualizowany do najnowszej wersji z repozytorium SVN
+	set PHRASE_1_5=   PvPGN nie zostanie zaktualizowany
+	set PHRASE_1_6=Wybierz interfejs PvPGN jaki chcesz uzywac: 
+	set PHRASE_1_7=   1) Konsola - Wiersz polecen (domyslnie)
+	set PHRASE_1_8=   2) GUI - Interfejs graficzny
+	set PHRASE_1_9=Podaj liczbe
+	set PHRASE_1_10=   Wybrany interfejs: Wiersz polecen
+	set PHRASE_1_11=   Wybrany interfejs: Interfejs graficzny
+	set PHRASE_1_12=Wybierz typ bazy danych: 
+	set PHRASE_1_13=   1) Pliki (domyslnie)
+	set PHRASE_1_14=
+	set PHRASE_1_15=   PvPGN zostanie skompilowany bez obslugi bazy danych
+	set PHRASE_1_16=Blad podczas konfiguracji CMake
+
+	set PHRASE_2_1=Dostepne wersje %2 (mozesz dodac wlasne w katalogu %3):
+	set PHRASE_2_2=   Podaj liczbe
+	set PHRASE_2_3=   Bledny wybor... sprobuj ponownie
+	set PHRASE_2_4=   PvPGN zostanie skompilowany z obsluga %2 v%3
+	set PHRASE_2_5=Czy chcesz teraz dokonac konfiguracji %2?
+	set PHRASE_2_6=    Adres serwera bazy danych
+	set PHRASE_2_7=    Nazwa uzytkownika bazy danych
+	set PHRASE_2_8=    Haslo do bazy danych
+	set PHRASE_2_9=    Nazwa bazy danych
+	set PHRASE_2_10=    Prefiks tabel w bazie danych (domyslny %2)
+	set PHRASE_2_11=Konfiguracja %2 zapisana
+
+	set PHRASE_3_1=Sprawdzanie aktualizacji ...
+	set PHRASE_3_2=Twoja wersja "v%2"
+	set PHRASE_3_3=Aktualna wersja "v%2"
+	set PHRASE_3_4= Posiadasz najnowsza wersje PvPGN Magic Builder
+	set PHRASE_3_5=Aktualna wersja PvPGN Magic Builder jest inna niz Twoja, czy chcesz dokonac aktualizacji?
+	set PHRASE_3_6= Aktualizacja zostala anulowana przez uzytkownika
+	set PHRASE_3_6_1= Brak polaczenia z serwerem
+	set PHRASE_3_7=Trwa aktualizacja ...
+	set PHRASE_3_8= Pobieranie pliku %2 ...
+	set PHRASE_3_9=Aktualizacja zakonczona
+	set PHRASE_3_10=Aby dowiedziec sie wiecej o wprowadzonych zmianach sprawdz plik %2
+
+	set PHRASE_4_1=Czy chcesz zastosowac dodatkowe latki do kodu zrodlowego PvPGN?
+	set PHRASE_4_2=Umiesc latki w katalogu %2. Latki mozesz pobrac ze strony: %3
+	set PHRASE_4_3=*** UWAGA ***
+	set PHRASE_4_4=Sciezki w plikach *.patch powinny byc relatywne do katalogu glownego kodu zrodlowego (w repozytorium SVN znajduje sie on w %2)
+	set PHRASE_4_5=Przykladowo: jesli chcesz zastosowac latke do pliku %2, sciezka do niego powinna byc %3
+	set PHRASE_4_6=Czy jestes gotowy zastosowac latki?
+	set PHRASE_4_7=Nakladanie latki %2 ...
+	set PHRASE_4_8=Zakonczono. Prosze sprawdzic czy nie wystapily konflikty.
+	set PHRASE_4_9=Czy chcesz kontynuowac kompilowanie PvPGN?
+
 	goto echo_phrase
 	
 :: German - translation by Natalya Lyovkina (SKY777)
