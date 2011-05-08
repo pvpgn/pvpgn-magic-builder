@@ -7,11 +7,11 @@ if not exist %PATCH_DIR% @mkdir %PATCH_DIR%
 
 echo.
 echo.
-call %i18n% 4_2 "patches" "http//developer.berlios.de/patch/?group_id=2291"
+call %i18n% 4_2 "patches" "http://developer.berlios.de/patch/?group_id=2291"
 echo.
 call %i18n% 4_3
 call %i18n% 4_4 "trunk/pvpgn/"
-call %i18n% 4_5 "message.cpp" "src/bnet/message.php"
+call %i18n% 4_5 "message.cpp" "src/bnet/message.cpp"
 echo.
 call %i18n% 4_6
 module\choice
