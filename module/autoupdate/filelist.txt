@@ -1,7 +1,7 @@
-0eb5b128da8d72706931a144288bc857 *build_pvpgn.bat
-03e227ff18d734a6d5bcb4edbf2b3868 *version-history.txt
+bfc59c1c5b2b1fb722d8fde145bea1ac *build_pvpgn.bat
+3cfc325aecbc103af690743daedb475b *version-history.txt
 3fe8536bb70cfac27f9abe27a1b0df55 *module\dbchoice.inc.bat
-89690224b0a2121a222a58415f5f3f41 *module\i18n.inc.bat
+414cae7e632d887523d07018ee6cf1b0 *module\i18n.inc.bat
 5c832cbef0bcdb4e76de63102bb72aae *module\replace.vbs
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
 b9fb43a28245135744f11b49c7f69681 *module\select_generator.inc.bat
@@ -9,7 +9,7 @@ b9fb43a28245135744f11b49c7f69681 *module\select_generator.inc.bat
 b756fdaea606e207a0db7fadef3295a7 *module\autoupdate\check_for_update.inc.bat
 b7040a0ac51a6946e9bab939df1cec39 *module\autoupdate\wget.vbs
 733a2f58c4325eb856de21dd60387628 *module\choice.exe
-5849916d365e69b2bfbcfffd37c206d2 *module\tortoisesvn\patch_source.inc.bat
+374a332578a48f31246a17e89169f3bf *module\tortoisesvn\patch_source.inc.bat
 
 32122e1f4540ac37e3f4b8a65c074feb *module\include\source_replace\CMakeLists.txt
 b70429bc2b344431ff1df78c1f468363 *module\include\source_replace\ConfigureChecks.cmake
