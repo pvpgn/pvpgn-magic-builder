@@ -22,6 +22,8 @@ fc5245ecb93095a0e2a4d17f9cb07d88 *module\include\source_replace\conf\bnetd.conf.
 78420f7409a04fe2bb0ce1a67d8a7770 *module\include\source_replace\cmake\Modules\DefineInstallationPaths.cmake
 af4b1101fe7569e71a70327ba301f2e9 *module\include\source_replace\cmake\Modules\FindODBC.cmake
 
+bf38660a9125935658cfa3e53fdc7d65 *module\tortoisesvn\msvcr100.dll
+
 fc7db46484442ed0deb46f93f58cf573 *module\include\sqlite\3.7.6\sqlite3.dll
 369a57a487c181044b68b09024b91ce5 *module\include\sqlite\3.7.6\sqlite3.h
 5bb932714edd04945e4c0eb781cd3799 *module\include\sqlite\3.7.6\sqlite3.lib
