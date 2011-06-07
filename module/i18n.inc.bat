@@ -322,6 +322,64 @@ goto :eof
 	
 	goto echo_phrase
 	
+:: Serbian - translation by kingW3
+:SRB
+	set MOTD_LANGUAGE=enUS
+
+	set PHRASE_1_0=  Visual Studio nije instaliran
+	set PHRASE_1_1=Izaberi kojom verzijom Visual Studia ces da Napravis pvpgn:
+	set PHRASE_1_2=%2 izabran kao kompajler
+	set PHRASE_1_3=da li zelis da downloadujes/updejtujes zadnji pvpgn iz svn-a (u %2 folder)?
+	set PHRASE_1_4=   PvPGN ce updejtovati iz svn-a
+	set PHRASE_1_5=   PvPGN nece updejtovati iz svn-a
+	set PHRASE_1_6=Izaberi PvPGN izgled: 
+	set PHRASE_1_7=   1) Consola (defaut)
+	set PHRASE_1_8=   2) GUI(Graficki prikaz)
+	set PHRASE_1_9=Izaberi broj
+	set PHRASE_1_10=   izaberi PvPGN izgled as Console
+	set PHRASE_1_11=   izaveri PvPGN izgled as GUI (Graficki izgled)
+	set PHRASE_1_12=izaberi vrstu baze podataka: 
+	set PHRASE_1_13=   1) Plain (default)
+	set PHRASE_1_14=   2) MySql
+	set PHRASE_1_15=   PvPGN ce praviti bez baze podataka
+	set PHRASE_1_16=CMake konfigurisanje nije uspelo
+
+	set PHRASE_2_1=Dostupne %2 verzije (mozes dodati svoju verziju %3):
+	set PHRASE_2_2=   izaberi broj
+	set PHRASE_2_3=   lose izabrano... probajte opet
+	set PHRASE_2_4=   PvPGN ce compilirati pomocu %2 v%3
+	set PHRASE_2_5=dali zelite da konfigurisete %2 now?
+	set PHRASE_2_6=    host baze podataka
+	set PHRASE_2_7=    korisnik baze podataka
+	set PHRASE_2_8=    pasvord korisnika
+	set PHRASE_2_9=    ime baze podataka
+	set PHRASE_2_10=    prefix tabele (default is %2)
+	set PHRASE_2_11=%2 konfiguracija sacuvana
+
+	set PHRASE_3_1=Gledanje za updejt ...
+	set PHRASE_3_2="v%2" je tvoja verzija
+	set PHRASE_3_3="v%2" je zadnja verzija
+	set PHRASE_3_4= Imas zadnju verziju PvPGN Magic Builder-a
+	set PHRASE_3_5=Verzija PvPGN Magic Builder nije jednaka tvojoj. Dali zelite da automatski updejtuje na zadnju verziju?
+	set PHRASE_3_6= Korisnik je zaustavio Updejt
+	set PHRASE_3_6_1= Can not connect to Updejt server
+	set PHRASE_3_7=pocinje Updejt ...
+	set PHRASE_3_8= skidanje fajlova %2 ...
+	set PHRASE_3_9=Updejt zavrsen
+	set PHRASE_3_10=Molimo vas, proverite fajl %2 za vise informacija oko promena
+
+	set PHRASE_4_1=Dali zelite da primenite patch u sourcu fajl ?
+	set PHRASE_4_2=Molimo vas, prvo stavite patch fajl(ove) u %2 directorijum. Mozete skinuti patchs sa ove webstranice: %3
+	set PHRASE_4_3=*** Upozorenje ***
+	set PHRASE_4_4=Lokacije u vasim *.patch fajlovima treba staviti kao u source codu (its placed in the SVN at %2)
+	set PHRASE_4_5=Na primer: dali zelite da primenite patch to %2, tako da lokacija za ovaj fajl treba da bude %3
+	set PHRASE_4_6=dali ste spremni da patcujete?
+	set PHRASE_4_7=primenjuje patch %2 ...
+	set PHRASE_4_8=Zavrseno. Molimo vas, pogledajte da nema sukoba.
+	set PHRASE_4_9=Dali zelite da nastavite pravljenjem pvpgn-a?
+
+	goto echo_phrase
+	
 :: Czech
 :CSY
 	set MOTD_LANGUAGE=csCZ
