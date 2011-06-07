@@ -25,6 +25,7 @@ if [%LANGUAGE%]==[PTB] goto PTB
 if [%LANGUAGE%]==[PTG] goto PTG
 if [%LANGUAGE%]==[CHS] goto CHS
 if [%LANGUAGE%]==[CHT] goto CHT
+if [%LANGUAGE%]==[SRB] goto SRB
 
 :echo_phrase
 if not [%1]==[] echo !PHRASE_%1!
