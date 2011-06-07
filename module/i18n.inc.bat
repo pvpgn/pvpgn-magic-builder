@@ -1,7 +1,7 @@
 @echo off
 :: Gets localization strings depending user's system locale
 :: Batch files encoding should be "OEM 866"
-::  Language abbreveations: http://blogs.msdn.com/b/jeffreyzeng/archive/2008/04/30/language-code-and-abbreviation.aspx
+::  Language abbreveations: http://msdn.microsoft.com/en-us/library/ms903928.aspx
 
 set Key="HKEY_CURRENT_USER\Control Panel\International"
 for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE=%%a
@@ -15,23 +15,60 @@ goto ENU
 :switch_lang
 :: switch to another language, if found
 if [%LANGUAGE%]==[RUS] goto RUS
-if [%LANGUAGE%]==[NLD] goto NLD
 if [%LANGUAGE%]==[PLK] goto PLK
 if [%LANGUAGE%]==[CSY] goto CSY
-if [%LANGUAGE%]==[ESN] goto ESN
 if [%LANGUAGE%]==[FRA] goto FRA
+:: Dutch
+if [%LANGUAGE%]==[NLD] goto NLD
+if [%LANGUAGE%]==[NLB] goto NLD
+:: German
 if [%LANGUAGE%]==[DEU] goto DEU
-if [%LANGUAGE%]==[PTB] goto PTB
-if [%LANGUAGE%]==[PTG] goto PTG
+if [%LANGUAGE%]==[DEA] goto DEU
+if [%LANGUAGE%]==[DEC] goto DEU
+if [%LANGUAGE%]==[DEL] goto DEU
+if [%LANGUAGE%]==[DES] goto DEU
+:: Serbian
+if [%LANGUAGE%]==[SRL] goto SRL
+if [%LANGUAGE%]==[SRB] goto SRL
+if [%LANGUAGE%]==[HRV] goto SRL
+:: Chinese
 if [%LANGUAGE%]==[CHS] goto CHS
 if [%LANGUAGE%]==[CHT] goto CHT
-if [%LANGUAGE%]==[SRB] goto SRB
+if [%LANGUAGE%]==[ZHH] goto CHS
+if [%LANGUAGE%]==[ZHM] goto CHS
+if [%LANGUAGE%]==[ZHI] goto CHS
+:: Portuguese
+if [%LANGUAGE%]==[PTB] goto PTB
+if [%LANGUAGE%]==[PTG] goto PTB
+:: Spanish
+if [%LANGUAGE%]==[ESN] goto ESN
+if [%LANGUAGE%]==[ESS] goto ESN
+if [%LANGUAGE%]==[ESB] goto ESN
+if [%LANGUAGE%]==[ESL] goto ESN
+if [%LANGUAGE%]==[ESO] goto ESN
+if [%LANGUAGE%]==[ESC] goto ESN
+if [%LANGUAGE%]==[ESD] goto ESN
+if [%LANGUAGE%]==[ESF] goto ESN
+if [%LANGUAGE%]==[ESE] goto ESN
+if [%LANGUAGE%]==[ESG] goto ESN
+if [%LANGUAGE%]==[ESH] goto ESN
+if [%LANGUAGE%]==[ESM] goto ESN
+if [%LANGUAGE%]==[ESI] goto ESN
+if [%LANGUAGE%]==[ESA] goto ESN
+if [%LANGUAGE%]==[ESZ] goto ESN
+if [%LANGUAGE%]==[ESR] goto ESN
+if [%LANGUAGE%]==[ESU] goto ESN
+if [%LANGUAGE%]==[ESP] goto ESN
+if [%LANGUAGE%]==[ESY] goto ESN
+if [%LANGUAGE%]==[ESV] goto ESN
 
+
+:: print phrase and exit file
 :echo_phrase
 if not [%1]==[] echo !PHRASE_%1!
 
-
 goto :eof
+
 
 :: English
 :ENU
@@ -206,7 +243,7 @@ goto :eof
 	set PHRASE_4_9=Wilt u doorgaan met het bouwen van PvPGN?
 
 	goto echo_phrase
-
+	
 :: Polish - translation by Grzegorz Nakonieczny (Naki-BoT)
 :PLK
 	set MOTD_LANGUAGE=plPL
@@ -322,9 +359,9 @@ goto :eof
 	set PHRASE_4_9=Mochten Sie die PvPGN-Compilierung fortsetzen?
 	
 	goto echo_phrase
-	
+
 :: Serbian - translation by kingW3
-:SRB
+:SRL
 	set MOTD_LANGUAGE=enUS
 
 	set PHRASE_1_0=  Visual Studio nije instaliran
@@ -380,7 +417,7 @@ goto :eof
 	set PHRASE_4_9=Dali zelite da nastavite pravljenjem pvpgn-a?
 
 	goto echo_phrase
-	
+
 :: Czech
 :CSY
 	set MOTD_LANGUAGE=csCZ
@@ -395,7 +432,6 @@ goto :eof
 :FRA
 	set MOTD_LANGUAGE=frFR
 	goto echo_phrase
-	
 
 :: Chinese - China
 :CHS
@@ -407,12 +443,8 @@ goto :eof
 	set MOTD_LANGUAGE=zhTW
 	goto echo_phrase
 	
-:: Portuguese - Brazil
+:: Portuguese
 :PTB
 	set MOTD_LANGUAGE=ptBR
 	goto echo_phrase
-	
-:: Portuguese - Portugal
-:PTG
-	goto PTB
 
