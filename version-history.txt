@@ -2,6 +2,9 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 ---------------------------------------------
 
+v1.43 (07.06.2011)
+- added Serbian translation (thanks to kingW3)
+
 v1.42 (09.05.2011)
 - restriction to spaces in the path
 
