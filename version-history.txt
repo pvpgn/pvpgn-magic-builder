@@ -2,6 +2,11 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 ---------------------------------------------
 
+v1.5 (11.06.2011)
+- added ability with no action rebuild pvpgn through "rebuild_pvpgn.bat"
+- now after first database configuration, values saves in "[db].conf.bat" file
+- fixed selection for all languages to copy native MOTD file
+
 v1.43 (07.06.2011)
 - added Serbian translation (thanks to kingW3)
 
