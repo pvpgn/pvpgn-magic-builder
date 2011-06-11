@@ -50,6 +50,14 @@ if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
 @set VCEXPRESS_INCLUDE_PATH=%CUR_PATH%module\include\vsexpress_include\
 
 
+:: PARAMETERS TO REBUILD
+::  !order is important!
+set PARAM_REBUILD=%1
+set PARAM_VS=%2
+set PARAM_INTERFACE=%3
+set PARAM_DBTYPE=%4
+
+
 :: ----------- SETUP ------------
 echo.
 echo ______________________________[ U P D A T E ]___________________________________
@@ -73,6 +81,8 @@ if [VS_NOT_INSTALLED]==[true] call %i18n% 1_1 & goto THEEND
 echo.
 echo --------------------------------------------------------------------------------
 
+:: {PARAMETER}, if not empty, miss SVN update
+if not [%PARAM_REBUILD%]==[] goto :choose_interface
 
 call %i18n% 1_3 "source"
 module\choice
@@ -88,9 +98,11 @@ if not [%CHOICE_SVN%]==[n] (
 echo.
 echo --------------------------------------------------------------------------------
 
-
-
 :choose_interface
+:: {PARAMETER}, if not empty replace value and miss choice
+if not [%PARAM_INTERFACE%]==[] set CHOICE_INTERFACE=%PARAM_INTERFACE%& goto :interface_chosen
+
+
 call %i18n% 1_6
 call %i18n% 1_7
 call %i18n% 1_8
@@ -98,8 +110,10 @@ echo.
 call %i18n% 1_9
 module\choice /c:12
 set CHOICE_INTERFACE=%errorlevel%
+set PARAM_INTERFACE=%CHOICE_INTERFACE%
 
 :: gui or console has choosen
+:interface_chosen
 if not [%CHOICE_INTERFACE%]==[2] (
 	call %i18n% 1_10
 ) else (
@@ -107,6 +121,9 @@ if not [%CHOICE_INTERFACE%]==[2] (
 )
 echo.
 echo --------------------------------------------------------------------------------
+
+:: {PARAMETER}, if not empty replace value and miss choice
+if not [%PARAM_DBTYPE%]==[] set CHOICE_DBTYPE=%PARAM_DBTYPE%& goto :dbtype_chosen
 
 :choose_dbtype
 call %i18n% 1_12
@@ -119,6 +136,9 @@ echo.
 call %i18n% 1_9
 module\choice /c:12345
 set CHOICE_DBTYPE=%errorlevel%
+set PARAM_DBTYPE=%CHOICE_DBTYPE%
+
+:dbtype_chosen
 
 :: if not any db selected, use plain
 if not [%CHOICE_DBTYPE%]==[2] if not [%CHOICE_DBTYPE%]==[3] if not [%CHOICE_DBTYPE%]==[4] if not [%CHOICE_DBTYPE%]==[5] set CHOICE_DBTYPE=1
@@ -133,8 +153,6 @@ if [%CHOICE_DBTYPE%]==[1] (
 if [%CHOICE_DBTYPE%]==[2] (
 	echo.
 	@call module\dbchoice.inc.bat MySQL module\include\mysql\
-	:: set user's choice as version
-	set DB_VERSION=!CHOICE_DB!
 	:: path to directory with db headers and libs
 	set DB_PATH=module\include\mysql\!DB_VERSION!\
 	:: lib filename without extension (.lib and .dll)
@@ -147,8 +165,6 @@ if [%CHOICE_DBTYPE%]==[2] (
 if [%CHOICE_DBTYPE%]==[3] (
 	echo.
 	@call module\dbchoice.inc.bat PostgreSQL module\include\pgsql\
-	:: set user's choice as version
-	set DB_VERSION=!CHOICE_DB!
 	:: path to directory with db headers and libs
 	set DB_PATH=module\include\pgsql\!DB_VERSION!\
 	:: lib filename without extension (.lib and .dll)
@@ -161,8 +177,6 @@ if [%CHOICE_DBTYPE%]==[3] (
 if [%CHOICE_DBTYPE%]==[4] (
 	echo.
 	@call module\dbchoice.inc.bat SQLite module\include\sqlite\
-	:: set user's choice as version
-	set DB_VERSION=!CHOICE_DB!
 	:: path to directory with db headers and libs
 	set DB_PATH=module\include\sqlite\!DB_VERSION!\
 	:: lib filename without extension (.lib and .dll)
@@ -175,8 +189,6 @@ if [%CHOICE_DBTYPE%]==[4] (
 if [%CHOICE_DBTYPE%]==[5] (
 	echo.
 	@call module\dbchoice.inc.bat ODBC module\include\odbc\
-	:: set user's choice as version
-	set DB_VERSION=!CHOICE_DB!
 	:: path to directory with db headers and libs
 	set DB_PATH=module\include\odbc\!DB_VERSION!\
 	:: lib filename without extension (.lib, ODBC does not need a dll, because it already exists in the system32)
@@ -185,6 +197,10 @@ if [%CHOICE_DBTYPE%]==[5] (
 	:: cmake vars to add to command line
 	set CMAKE_DB_VARS=-D ODBC_INCLUDE_DIR=!DB_PATH! -D ODBC_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_ODBC=true
 )
+
+
+:: {PARAMETER}, if not empty, miss SVN checkout and CMake configure
+if not [%PARAM_REBUILD%]==[] goto :build
 
 echo.
 echo _____________________[ P V P G N  S O U R C E  C O D E]_________________________
@@ -228,6 +244,7 @@ module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_P
 echo.
 echo ______________[ B U I L D  W I T H  V I S U A L  S T U D I O ]__________________
 :build
+set PARAM_REBUILD=rebuild
 if [%LOG%]==[true] set _vs_log=^>visualstudio.log
 
 :: check solution for exists 
@@ -266,7 +283,11 @@ echo.
 echo ______________________________[ R E L E A S E ]_________________________________
 
 :: restore unix configs (only after build! because it uses source directory while compile)
-@call :restore_conf
+
+:: {PARAMETER}, :restore_conf only if clean build (not rebuild). Because :backup_conf calls on clean build only
+if [%PARAM_REBUILD%]==[] @call :restore_conf
+
+@call :save_rebuild_config
 
 if not exist "%PVPGN_RELEASE%" mkdir "%PVPGN_RELEASE%"
 
@@ -335,8 +356,18 @@ goto THEEND
 	@call module\recursive_copy.inc.bat module\include\source_replace\ ..\..\..\source\ restore
 	exit /b 0
 
-	
 
+:save_rebuild_config
+	set fileName=rebuild_pvpgn.bat
+	:: if DB_ENGINE is not empty
+	if not [%DB_ENGINE%]==[] set fileName=rebuild_pvpgn_with_%DB_ENGINE%.bat
+	
+	:: save to file
+	echo @echo off>!fileName!
+	echo build_pvpgn.bat !PARAM_REBUILD! !PARAM_VS! !PARAM_INTERFACE! !PARAM_DBTYPE!>>!fileName!
+	exit /b 0
+
+	
 :THEEND
 echo.
 echo ___________________________[ C O M P L E T E ]__________________________________

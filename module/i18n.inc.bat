@@ -14,10 +14,15 @@ goto ENU
 
 :switch_lang
 :: switch to another language, if found
-if [%LANGUAGE%]==[RUS] goto RUS
 if [%LANGUAGE%]==[PLK] goto PLK
 if [%LANGUAGE%]==[CSY] goto CSY
 if [%LANGUAGE%]==[FRA] goto FRA
+:: Russian
+if [%LANGUAGE%]==[RUS] goto RUS
+if [%LANGUAGE%]==[UZB] goto RUS
+if [%LANGUAGE%]==[KKZ] goto RUS
+if [%LANGUAGE%]==[TTT] goto RUS
+if [%LANGUAGE%]==[UKR] goto RUS
 :: Dutch
 if [%LANGUAGE%]==[NLD] goto NLD
 if [%LANGUAGE%]==[NLB] goto NLD

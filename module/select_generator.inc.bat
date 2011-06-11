@@ -5,7 +5,6 @@
 ::  cmake generator name (Visual Studio 7 .NET 2003, Visual Studio 8 2005, Visual Studio 9 2008, Visual Studio 10)
 ::  visual studio version to build (v71 (2003), v80 (2005), v90 (2008), v100 (2010))
 ::  2003 is not supported, 2005 is full version required (express is not supported), 2008 and 2010 fully supports
-::    If you want to use VSExpress 2005, you should follow this instructions http://social.msdn.microsoft.com/forums/en-US/Vsexpressvc/thread/c5c3afad-f4c6-4d27-b471-0291e099a742/
 
 
 :: fill array-map with vs names
@@ -15,6 +14,7 @@ set _vs_installed=
 set _vs_choice=0
 set /a _vs_count=0
 
+:: fill array with installed vs
 set _vs_num=1& if not ["%VS71COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
 set _vs_num=2& if not ["%VS80COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
 set _vs_num=3& if not ["%VS90COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
@@ -23,6 +23,9 @@ set _vs_num=4& if not ["%VS100COMNTOOLS%"]==[""] set _vs_installed=%_vs_installe
 
 :: if no vs found
 if %_vs_count% equ 0 set VS_NOT_INSTALLED=true& goto :eof
+
+:: {PARAMETER}, if not empty replace value and miss choice
+if not [%PARAM_VS%]==[] set _vs_choice=%PARAM_VS%& goto :select_vs
 
 :: if more then one vs installed, give user to choose it
 if %_vs_count% gtr 1 (
@@ -51,11 +54,12 @@ if %_vs_count% gtr 1 (
 )
 
 :: set VS VARS
+:select_vs
 if [%_vs_choice%]==[1] set VSCOMNTOOLS=%VS71COMNTOOLS%& set GENERATOR=Visual Studio 7 .NET 2003& set VSVER=v71
 if [%_vs_choice%]==[2] set VSCOMNTOOLS=%VS80COMNTOOLS%& set GENERATOR=Visual Studio 8 2005& set VSVER=v80
 if [%_vs_choice%]==[3] set VSCOMNTOOLS=%VS90COMNTOOLS%& set GENERATOR=Visual Studio 9 2008& set VSVER=v90
 if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10& set VSVER=v100
-
+set PARAM_VS=%_vs_choice%
 
 call %i18n% 1_2 "%GENERATOR%"
 
