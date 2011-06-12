@@ -58,6 +58,9 @@ set PARAM_INTERFACE=%3
 set PARAM_DBTYPE=%4
 
 
+:: {PARAMETER}, if not empty, skip autoupdate
+if not [%PARAM_REBUILD%]==[] goto :select_vs
+
 :: ----------- SETUP ------------
 echo.
 echo ______________________________[ U P D A T E ]___________________________________
@@ -72,7 +75,7 @@ echo.
 echo.
 echo _______________________________[ S E T U P ]____________________________________
 
-
+:select_vs
 :: try to find a visual studio
 @call module\select_generator.inc.bat
 if [VS_NOT_INSTALLED]==[true] call %i18n% 1_1 & goto THEEND
@@ -81,7 +84,7 @@ if [VS_NOT_INSTALLED]==[true] call %i18n% 1_1 & goto THEEND
 echo.
 echo --------------------------------------------------------------------------------
 
-:: {PARAMETER}, if not empty, miss SVN update
+:: {PARAMETER}, if not empty, skip SVN update
 if not [%PARAM_REBUILD%]==[] goto :choose_interface
 
 call %i18n% 1_3 "source"
@@ -99,7 +102,7 @@ echo.
 echo --------------------------------------------------------------------------------
 
 :choose_interface
-:: {PARAMETER}, if not empty replace value and miss choice
+:: {PARAMETER}, if not empty replace value and skip choice
 if not [%PARAM_INTERFACE%]==[] set CHOICE_INTERFACE=%PARAM_INTERFACE%& goto :interface_chosen
 
 
@@ -122,7 +125,7 @@ if not [%CHOICE_INTERFACE%]==[2] (
 echo.
 echo --------------------------------------------------------------------------------
 
-:: {PARAMETER}, if not empty replace value and miss choice
+:: {PARAMETER}, if not empty replace value and skip choice
 if not [%PARAM_DBTYPE%]==[] set CHOICE_DBTYPE=%PARAM_DBTYPE%& goto :dbtype_chosen
 
 :choose_dbtype
@@ -199,7 +202,7 @@ if [%CHOICE_DBTYPE%]==[5] (
 )
 
 
-:: {PARAMETER}, if not empty, miss SVN checkout and CMake configure
+:: {PARAMETER}, if not empty, skip SVN checkout and CMake configure
 if not [%PARAM_REBUILD%]==[] goto :build
 
 echo.

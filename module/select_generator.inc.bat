@@ -24,7 +24,7 @@ set _vs_num=4& if not ["%VS100COMNTOOLS%"]==[""] set _vs_installed=%_vs_installe
 :: if no vs found
 if %_vs_count% equ 0 set VS_NOT_INSTALLED=true& goto :eof
 
-:: {PARAMETER}, if not empty replace value and miss choice
+:: {PARAMETER}, if not empty replace value and skip choice
 if not [%PARAM_VS%]==[] set _vs_choice=%PARAM_VS%& goto :select_vs
 
 :: if more then one vs installed, give user to choose it
