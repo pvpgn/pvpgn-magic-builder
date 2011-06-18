@@ -133,7 +133,7 @@ call %i18n% 1_12
 call %i18n% 1_13
 echo    2) MySQL
 echo    3) PostgreSQL
-echo    4) SQLite
+echo    4) SQLite3
 echo    5) ODBC
 echo.
 call %i18n% 1_9
@@ -148,7 +148,6 @@ if not [%CHOICE_DBTYPE%]==[2] if not [%CHOICE_DBTYPE%]==[3] if not [%CHOICE_DBTY
 
 :: Plain
 if [%CHOICE_DBTYPE%]==[1] (
-	set CMAKE_DB_VARS=WITH_ANSI=true
 	call %i18n% 1_15
 )
 
@@ -297,8 +296,9 @@ if not exist "%PVPGN_RELEASE%" mkdir "%PVPGN_RELEASE%"
 :: copy conf directory
 if not exist "%PVPGN_RELEASE%conf" mkdir "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_BUILD%conf\*.conf" "%PVPGN_RELEASE%conf"
-@copy /Y "%PVPGN_BUILD%conf\*.plain" "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_BUILD%conf\*.txt" "%PVPGN_RELEASE%conf"
+@copy /Y "%PVPGN_BUILD%conf\bnetd_default_user.plain" "%PVPGN_RELEASE%conf"
+@copy /Y "%PVPGN_SOURCE%conf\bnetd_default_user.cdb" "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_SOURCE%conf\d2server.ini" "%PVPGN_RELEASE%conf"
 
 
