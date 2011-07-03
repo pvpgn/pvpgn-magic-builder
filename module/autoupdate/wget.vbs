@@ -1,6 +1,11 @@
 ' Downloads a file from arg0 to arg1
 '  Copyright 2011 HarpyWar (harpywar@gmail.com)
 '  http://harpywar.com
+'
+' examples:
+'  wget.vbs /s http://example.com/test.txt
+'  wget.vbs /f [source] [destination]
+' if local path not exists, wget.vbs will create it.
 On Error Resume Next
 
 Dim args
