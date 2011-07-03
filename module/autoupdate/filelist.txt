@@ -2,7 +2,6 @@
 81dbbd1ae82e8f844951c7b01865e6fb *version-history.txt
 e7aabccc0455a0ebce9bb9c59289fe98 *module\dbchoice.inc.bat
 923555d6363e32f389a71e36d236adbf *module\i18n.inc.bat
-5c832cbef0bcdb4e76de63102bb72aae *module\replace.vbs
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
 0b230cc3d26d0e42cd659b9f1c2a38da *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat

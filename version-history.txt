@@ -3,9 +3,9 @@ http://code.google.com/p/pvpgn-magic-builder/
 ---------------------------------------------
 
 v1.5 (11.06.2011)
-- added ability with no action rebuild pvpgn through "rebuild_pvpgn.bat"
+- added ability to rebuild pvpgn with no action through "rebuild_pvpgn.bat"
 - now after first database configuration, values saves in "[db].conf.bat" file
-- fixed selection for all languages to copy native MOTD file
+- fixed selection for all languages
 
 v1.43 (07.06.2011)
 - added Serbian translation (thanks to kingW3)
@@ -26,15 +26,15 @@ v1.4 (04.05.2011)
 
 v1.3 (01.05.2011)
 - more user-friendly interface, choose an action is become more comfortable
-- added support for ODBC
+- added ODBC support
 - added latest versioncheck.conf
 - added files for MySQL 4.1.21
 - added files for MySQL 5.0.91
 
 v1.2 (30.04.2011)
 - autoupdate fix (now it creates directories in the middle of the path, if it's not exists)
-- added support for PostgreSQL
-- added support for SQLite3
+- added PostgreSQL support
+- added SQLite3 support
 
 v1.1 (29.04.2011)
 - bnmotd.txt creates from the determined OS language
