@@ -139,6 +139,17 @@
  1.16.1.0 \
  0x02623d85 \
  STAR_1161
+ 
+# Starcraft - Broodwar (Expansion) 1.16.1 - (Broodwar mode) - MAC
+ "A=2521522835 B=3428392135 C=218673704 4 A=A^S B=B-C C=C+A A=A-B" \
+ "XMACver1.mpq" \
+ XMAC \
+ SEXP \
+ "Starcraft (Carbon) 100/50/58 100:50:46 1402780" \
+ 0x000000d3 \
+ 0x010a6425 \
+ 0xd6802c9e \
+ SEXP_1161
 
 # -=-=-=-=-=- Older Versions -=-=-=-=-=-=- Update Required -=-=-=-=-=-
 
