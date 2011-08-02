@@ -92,7 +92,7 @@ goto :eof
 	set PHRASE_1_10=   Set PvPGN interface as Console
 	set PHRASE_1_11=   Set PvPGN interface as GUI (Graphical User Interface)
 	set PHRASE_1_12=Select a database type: 
-	set PHRASE_1_13=   1) Plain (default)
+	set PHRASE_1_13=   1) Plain / CDB (default)
 	set PHRASE_1_14=
 	set PHRASE_1_15=   PvPGN will build without database support
 	set PHRASE_1_16=CMake configuration failed
@@ -150,7 +150,7 @@ goto :eof
 	set PHRASE_1_10=   Для PvPGN выбран консольный интерфейс
 	set PHRASE_1_11=   Для PvPGN выбран оконный интерфейс
 	set PHRASE_1_12=Выберите тип базы данных: 
-	set PHRASE_1_13=   1) Текстовые файлы (по-умолчанию)
+	set PHRASE_1_13=   1) Текстовые файлы / CDB (по-умолчанию)
 	set PHRASE_1_14=
 	set PHRASE_1_15=   PvPGN будет собран без поддержки базы данных
 	set PHRASE_1_16=При конфигурации CMake возникли ошибки
@@ -208,7 +208,7 @@ goto :eof
 	set PHRASE_1_10=  Zet PvPGN omgeving als Console
 	set PHRASE_1_11=  Set PvPGN interface as GUI (Graphical User Interface) Zet PvPGN omgeving als GUI ()
 	set PHRASE_1_12=Selecteer een database type:
-	set PHRASE_1_13=   1) Normaal (Text) (Standaard)
+	set PHRASE_1_13=   1) Normaal (Text / CDB) (Standaard)
 	set PHRASE_1_14=
 	set PHRASE_1_15=  PvPGN zal gebouwen worden zonder database ondersteuning
 	set PHRASE_1_16=CMake configuratie mislukt
@@ -266,7 +266,7 @@ goto :eof
 	set PHRASE_1_10=   Wybrany interfejs: Wiersz polecen
 	set PHRASE_1_11=   Wybrany interfejs: Interfejs graficzny
 	set PHRASE_1_12=Wybierz typ bazy danych: 
-	set PHRASE_1_13=   1) Pliki (domyslnie)
+	set PHRASE_1_13=   1) Pliki / CDB (domyslnie)
 	set PHRASE_1_14=
 	set PHRASE_1_15=   PvPGN zostanie skompilowany bez obslugi bazy danych
 	set PHRASE_1_16=Blad podczas konfiguracji CMake
@@ -324,7 +324,7 @@ goto :eof
 	set PHRASE_1_10=   Fur PvPGN wurde die Konsolenschnittstelle gewahlt
 	set PHRASE_1_11=   Fur PvPGN wurde die Fensterschnittstelle gewahlt
 	set PHRASE_1_12=Wahlen Sie den Datenbanktyp: 
-	set PHRASE_1_13=   1) Textdateien (Standardeinstellung)
+	set PHRASE_1_13=   1) Textdateien / CDB (Standardeinstellung)
 	set PHRASE_1_14=
 	set PHRASE_1_15=   PvPGN wird ohne Datenbankunterstutzung gewahlt
 	set PHRASE_1_16=Bei der CMake-Konfiguration entstanden die Fehler 
@@ -382,7 +382,7 @@ goto :eof
 	set PHRASE_1_10=   izaberi PvPGN izgled as Console
 	set PHRASE_1_11=   izaveri PvPGN izgled as GUI (Graficki izgled)
 	set PHRASE_1_12=izaberi vrstu baze podataka: 
-	set PHRASE_1_13=   1) Plain (default)
+	set PHRASE_1_13=   1) Plain / CDB (default)
 	set PHRASE_1_14=   2) MySql
 	set PHRASE_1_15=   PvPGN ce praviti bez baze podataka
 	set PHRASE_1_16=CMake konfigurisanje nije uspelo
