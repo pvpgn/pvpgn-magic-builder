@@ -1,9 +1,9 @@
-76f20f144de5fb09f4c3490a7fab0235 *build_pvpgn.bat
-81dbbd1ae82e8f844951c7b01865e6fb *version-history.txt
-e7aabccc0455a0ebce9bb9c59289fe98 *module\dbchoice.inc.bat
-923555d6363e32f389a71e36d236adbf *module\i18n.inc.bat
+293c4f881f70b5dc3095449253baab45 *build_pvpgn.bat
+a6cbb2e919058451a6ef601e30a9888f *version-history.txt
+8e70e9f66e2f6c9da8e08626e703374d *module\dbchoice.inc.bat
+6891789dad27e3347a341e97fb5c9c1c *module\i18n.inc.bat
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
-0b230cc3d26d0e42cd659b9f1c2a38da *module\select_generator.inc.bat
+aa823eeacdffae234889198ba7abeaaa *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
 b756fdaea606e207a0db7fadef3295a7 *module\autoupdate\check_for_update.inc.bat
 b7040a0ac51a6946e9bab939df1cec39 *module\autoupdate\wget.vbs
@@ -17,15 +17,15 @@ b79d824aef3d961b28cc78fa1c632bdd *module\include\source_replace\src\bnetd\CMakeL
 fc5245ecb93095a0e2a4d17f9cb07d88 *module\include\source_replace\conf\bnetd.conf.in
 12e2359d0f2a0a8c27474f8f91da81c0 *module\include\source_replace\conf\d2cs.conf.in
 2cfe56ab715f8f62149ed5fcb9c8725d *module\include\source_replace\conf\d2dbs.conf.in
-57b5ef068f4fb1820b98c664da33188d *module\include\source_replace\conf\versioncheck.conf.in
+6e49deef9bffd83373ecaa09c3770ef1 *module\include\source_replace\conf\versioncheck.conf.in
 78420f7409a04fe2bb0ce1a67d8a7770 *module\include\source_replace\cmake\Modules\DefineInstallationPaths.cmake
 af4b1101fe7569e71a70327ba301f2e9 *module\include\source_replace\cmake\Modules\FindODBC.cmake
 
 bf38660a9125935658cfa3e53fdc7d65 *module\tortoisesvn\msvcr100.dll
 
-fc7db46484442ed0deb46f93f58cf573 *module\include\sqlite\3.7.6\sqlite3.dll
-369a57a487c181044b68b09024b91ce5 *module\include\sqlite\3.7.6\sqlite3.h
-5bb932714edd04945e4c0eb781cd3799 *module\include\sqlite\3.7.6\sqlite3.lib
+8e9758cc0f272009ba08216f8c47dc8f *module\include\sqlite\3.7.7\sqlite3.dll
+bfb6e3e7dd6b368e1ae0fd02281dea7f *module\include\sqlite\3.7.7\sqlite3.h
+434c0696bbb9c1c0862f4aedabecc86e *module\include\sqlite\3.7.7\sqlite3.lib
 87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.3.1\comerr32.dll
 20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.3.1\gssapi32.dll
 960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.3.1\k5sprt32.dll
@@ -72,6 +72,12 @@ b83a01c58711060a798b7c57beb81649 *module\include\mysql\5.0.91\mysql_version.h
 07cff66a2da8a3e8b6aed794f71351c0 *module\include\mysql\5.0.91\my_alloc.h
 a122c49b9ce955ac16ecd2434d2a5c40 *module\include\mysql\5.0.91\my_list.h
 35bc549a34171163e1ff73eb2142665a *module\include\mysql\5.0.91\typelib.h
+afb5ffb1e78dc7909a7f3c9b9bd83a95 *module\include\mysql\5.5.15\libmysql.dll
+8cfeff155e8e9a477e9e4ad6278c64f5 *module\include\mysql\5.5.15\libmysql.lib
+75d22f03c20bf9f97331d35f2724f4ba *module\include\mysql\5.5.15\mysql.h
+9bd77350e4da356b61a0ade2ab697e49 *module\include\mysql\5.5.15\mysql_com.h
+a1c579412cba83f2ce8c3b1a0a3d7d41 *module\include\mysql\5.5.15\mysql_time.h
+072c117a4c93db828188da77fbe814f1 *module\include\mysql\5.5.15\mysql_version.h
 6c6c38b2965bc0a29f9695ee4de4128f *module\include\odbc\3.8\odbc32.lib
 1b711552643755cf396c6becd97f0930 *module\include\odbc\3.8\sql.h
 152c26584d80946e7c527396dbadf6bc *module\include\odbc\3.8\sqlext.h

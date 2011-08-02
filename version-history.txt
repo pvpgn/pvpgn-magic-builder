@@ -1,6 +1,11 @@
 PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
----------------------------------------------
+=============================================
+
+v1.51 (02.08.2011)
+- skip Magic Builder update on pvpgn rebuild
+- added mysql v5.5.15 headers and lib
+- added sqlite v3.7.7 headers and lib
 
 v1.5 (11.06.2011)
 - added ability to rebuild pvpgn with no action through "rebuild_pvpgn.bat"
