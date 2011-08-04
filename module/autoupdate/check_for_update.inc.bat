@@ -47,6 +47,8 @@ if not ["%res%"]==["ok"] echo   %res% & goto :eof
 
 call %i18n% 3_9
 call %i18n% 3_10 "version-history.txt"
+echo.
+
 pause
 exit 0
 
