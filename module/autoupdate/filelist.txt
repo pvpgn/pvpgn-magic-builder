@@ -1,11 +1,11 @@
 293c4f881f70b5dc3095449253baab45 *build_pvpgn.bat
-a6cbb2e919058451a6ef601e30a9888f *version-history.txt
-8e70e9f66e2f6c9da8e08626e703374d *module\dbchoice.inc.bat
+1624de11576aa5f59bf8435c5c1b85ff *version-history.txt
+fe688964b4ec2550327189c8d6830701 *module\dbchoice.inc.bat
 6891789dad27e3347a341e97fb5c9c1c *module\i18n.inc.bat
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
 aa823eeacdffae234889198ba7abeaaa *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
-b756fdaea606e207a0db7fadef3295a7 *module\autoupdate\check_for_update.inc.bat
+e692631f2ccf569810704b53b6e93360 *module\autoupdate\check_for_update.inc.bat
 b7040a0ac51a6946e9bab939df1cec39 *module\autoupdate\wget.vbs
 733a2f58c4325eb856de21dd60387628 *module\choice.exe
 374a332578a48f31246a17e89169f3bf *module\tortoisesvn\patch_source.inc.bat
@@ -78,6 +78,9 @@ afb5ffb1e78dc7909a7f3c9b9bd83a95 *module\include\mysql\5.5.15\libmysql.dll
 9bd77350e4da356b61a0ade2ab697e49 *module\include\mysql\5.5.15\mysql_com.h
 a1c579412cba83f2ce8c3b1a0a3d7d41 *module\include\mysql\5.5.15\mysql_time.h
 072c117a4c93db828188da77fbe814f1 *module\include\mysql\5.5.15\mysql_version.h
+b6e84c12ea72b972f39866394389660f *module\include\mysql\5.5.15\my_alloc.h
+5a849989a9d60263bf9e00c9614feaed *module\include\mysql\5.5.15\my_list.h
+9cd4d930dafefade2f0fdc4dc49e09b9 *module\include\mysql\5.5.15\typelib.h
 6c6c38b2965bc0a29f9695ee4de4128f *module\include\odbc\3.8\odbc32.lib
 1b711552643755cf396c6becd97f0930 *module\include\odbc\3.8\sql.h
 152c26584d80946e7c527396dbadf6bc *module\include\odbc\3.8\sqlext.h

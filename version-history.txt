@@ -2,6 +2,9 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 =============================================
 
+v1.52 (04.08.2011)
+- hotfix for the latest mysql headers (VC++ 2008 needs 3 files more then 2010)
+
 v1.51 (02.08.2011)
 - skip Magic Builder update on pvpgn rebuild
 - added mysql v5.5.15 headers and lib
