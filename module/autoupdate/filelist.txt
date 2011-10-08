@@ -14,7 +14,7 @@ b7040a0ac51a6946e9bab939df1cec39 *module\autoupdate\wget.vbs
 b70429bc2b344431ff1df78c1f468363 *module\include\source_replace\ConfigureChecks.cmake
 d09fe9af29b9ccb7c2c8757328ee05da *module\include\source_replace\src\CMakeLists.txt
 b79d824aef3d961b28cc78fa1c632bdd *module\include\source_replace\src\bnetd\CMakeLists.txt
-c91621e7e66652017f43f1aef62525ec *module\include\source_replace\conf\bnetd.conf.in
+82b933e23fd456a8e4ce24971d32209e *module\include\source_replace\conf\bnetd.conf.in
 4064eab42df02006190616448a8df28e *module\include\source_replace\conf\bnmotd-ruRU.txt.in
 12e2359d0f2a0a8c27474f8f91da81c0 *module\include\source_replace\conf\d2cs.conf.in
 2cfe56ab715f8f62149ed5fcb9c8725d *module\include\source_replace\conf\d2dbs.conf.in
