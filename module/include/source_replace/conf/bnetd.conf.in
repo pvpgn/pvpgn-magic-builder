@@ -106,7 +106,7 @@ fortunecmd  = bin\fortune.exe
 #   error
 #   fatal
 #loglevels = fatal,error,warn,info,debug,trace
-loglevels = fatal,error
+loglevels = fatal,error,warn,info,debug,trace
 
 #                                                                            #
 ##############################################################################
