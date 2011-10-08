@@ -57,7 +57,6 @@ b5f419cb2d41271cc7d2ec366a23e225 *module\include\pgsql\9.0.5\libpq.lib
 f0916ce17f26a197442fcc362a2a8266 *module\include\pgsql\9.1.1\libpq-fe.h
 89b885625096a367973bad767e32c82f *module\include\pgsql\9.1.1\libpq.dll
 a8c567e34cf6673367dae1ab5808b813 *module\include\pgsql\9.1.1\libpq.lib
-eb574b236133e60c989c6f472f07827b *module\include\pgsql\9.1.1\md5sum.exe
 49b1a8226c7f0d3c89de874baa26826f *module\include\pgsql\9.1.1\postgres_ext.h
 96a9beb7b7c93d87db8a64a07d156e5b *module\include\mysql\4.1.21\libmySQL.dll
 2cc5ee9b831743ef964d65adddbfead3 *module\include\mysql\4.1.21\libmysql.lib
