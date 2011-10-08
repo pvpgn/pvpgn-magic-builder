@@ -186,11 +186,11 @@ allowed_clients = all
 # than 109.  Starting with version 109 the clients will always do version
 # checking since they do not function properly if the server does not
 # request it.
-skip_versioncheck = false
+skip_versioncheck = true
 
 # If you enable the version checks but want to allow clients that don't pass
 # the checksum test then enable this.
-allow_bad_version = false
+allow_bad_version = true
 
 # If you enable the version checks but want to allow clients that aren't
 # listed in the versioncheck configuration file then enable this.  Unless
