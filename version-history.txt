@@ -2,6 +2,9 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 =============================================
 
+v1.54 (15.10.2011)
+- hot fix - svn path was changed
+
 v1.53 (06.10.2011)
 - added russian motd
 - updated includes for MySQL (5.5.15 -> 5.5.16)
