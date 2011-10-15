@@ -43,7 +43,7 @@ if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
 @set PVPGN_BUILD=build\
 @set PVPGN_RELEASE=release\
 
-@set PVPGN_SVN=http://svn.berlios.de/svnroot/repos/pvpgn/trunk
+@set PVPGN_SVN=http://svn.berlios.de/svnroot/repos/pvpgn/trunk/pvpgn
 
 @set ZLIB_PATH=module\include\zlib\125\
 @set SUPPORTFILES_PATH=module\include\pvpgn-support-1.2\
