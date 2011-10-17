@@ -246,7 +246,7 @@ module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_P
 echo.
 echo ______________[ B U I L D  W I T H  V I S U A L  S T U D I O ]__________________
 :build
-set PARAM_REBUILD=rebuild
+
 if [%LOG%]==[true] set _vs_log=^>visualstudio.log
 
 :: check solution for exists 
@@ -367,7 +367,7 @@ goto THEEND
 	
 	:: save to file
 	echo @echo off>!fileName!
-	echo build_pvpgn.bat !PARAM_REBUILD! !PARAM_VS! !PARAM_INTERFACE! !PARAM_DBTYPE!>>!fileName!
+	echo build_pvpgn.bat rebuild !PARAM_VS! !PARAM_INTERFACE! !PARAM_DBTYPE!>>!fileName!
 	exit /b 0
 
 	
@@ -375,4 +375,5 @@ goto THEEND
 echo.
 echo ___________________________[ C O M P L E T E ]__________________________________
 :: wait for any key
-Pause
+echo %PARAM_REBUILD%
+if not [%PARAM_REBUILD%]==[rebuild_total] Pause
