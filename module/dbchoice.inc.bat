@@ -14,7 +14,7 @@ set config_file=%DB_ENGINE%.conf.bat
 if exist %config_file% @call %config_file%
 
 :: {PARAMETER}, if not empty skip db configuration choice
-if not [%DB_VERSION%]==[] goto :db_configured
+if not [%DB_VERSION%]==[] set CHOICE_DB_CONF=y& goto :db_configured
 
 call %i18n% 2_1 %DB_ENGINE% "module\include\%DB_ENGINE%"
 
