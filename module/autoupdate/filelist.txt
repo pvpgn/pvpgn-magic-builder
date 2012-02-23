@@ -1,6 +1,6 @@
 1065c3e5fd4e10faa2d1639c9efac7f3 *build_pvpgn.bat
-7081d1289ae019c7e1468cd7447926fe *version-history.txt
-fe688964b4ec2550327189c8d6830701 *module\dbchoice.inc.bat
+550c6b4f1964d1900cc565ae81cffab5 *version-history.txt
+1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
 6891789dad27e3347a341e97fb5c9c1c *module\i18n.inc.bat
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
 aa823eeacdffae234889198ba7abeaaa *module\select_generator.inc.bat
@@ -24,41 +24,48 @@ af4b1101fe7569e71a70327ba301f2e9 *module\include\source_replace\cmake\Modules\Fi
 
 bf38660a9125935658cfa3e53fdc7d65 *module\tortoisesvn\msvcr100.dll
 
-d9e9f9baf324bb1b954751fb22884b41 *module\include\sqlite\3.7.8\sqlite3.dll
-dc54e40dd31978de6b9c0a312aeb24e0 *module\include\sqlite\3.7.8\sqlite3.h
-d266cecc80be835be2b8c0a07131fa51 *module\include\sqlite\3.7.8\sqlite3.lib
-87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.3.1\comerr32.dll
-20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.3.1\gssapi32.dll
-960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.3.1\k5sprt32.dll
-ba0093dcda4d0b299ee2be305a978abd *module\include\pgsql\8.3.1\krb5_32.dll
-205c285cb7f954e472ab601d3617e93a *module\include\pgsql\8.3.1\libiconv-2.dll
-2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\8.3.1\libintl-8.dll
-f8b892a21e0cb94d49a37eea692ec056 *module\include\pgsql\8.3.1\libpq-fe.h
-e7f28a64dbd580649decfefca41c3e8f *module\include\pgsql\8.3.1\libpq.dll
-77db8984fd0a9da5d97f0e0d7b20fdf9 *module\include\pgsql\8.3.1\libpq.lib
-9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.3.1\postgres_ext.h
-87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.4.8\comerr32.dll
-20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.4.8\gssapi32.dll
-960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.4.8\k5sprt32.dll
-ba0093dcda4d0b299ee2be305a978abd *module\include\pgsql\8.4.8\krb5_32.dll
-205c285cb7f954e472ab601d3617e93a *module\include\pgsql\8.4.8\libiconv-2.dll
-2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\8.4.8\libintl-8.dll
-6085b6b9477c0379326aaae48790efc9 *module\include\pgsql\8.4.8\libpq-fe.h
-3c38b251c7dae1c00a96445e2a225f08 *module\include\pgsql\8.4.8\libpq.dll
-f41e0d3a099ba18d902ae31fb512e517 *module\include\pgsql\8.4.8\libpq.lib
-9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.4.8\postgres_ext.h
-205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.0.5\libiconv-2.dll
-2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.0.5\libintl-8.dll
-d2775a244287dc9f918921e05429b798 *module\include\pgsql\9.0.5\libpq-fe.h
-79091deb9309a21195b43413512049b4 *module\include\pgsql\9.0.5\libpq.dll
-b5f419cb2d41271cc7d2ec366a23e225 *module\include\pgsql\9.0.5\libpq.lib
-9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\9.0.5\postgres_ext.h
-205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.1.1\libiconv-2.dll
-2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.1.1\libintl-8.dll
-f0916ce17f26a197442fcc362a2a8266 *module\include\pgsql\9.1.1\libpq-fe.h
-89b885625096a367973bad767e32c82f *module\include\pgsql\9.1.1\libpq.dll
-a8c567e34cf6673367dae1ab5808b813 *module\include\pgsql\9.1.1\libpq.lib
-49b1a8226c7f0d3c89de874baa26826f *module\include\pgsql\9.1.1\postgres_ext.h
+c7e5bea0c29b515484b57d68bfba1c73 *module\include\sqlite\3.7.10\sqlite3.dll
+9743f0cf00f8b30fe5ce26a4181f0855 *module\include\sqlite\3.7.10\sqlite3.h
+c34b510bad3af2d9b9ec40a10120b4c7 *module\include\sqlite\3.7.10\sqlite3.lib
+
+
+87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.3.17\comerr32.dll
+20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.3.17\gssapi32.dll
+960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.3.17\k5sprt32.dll
+ba0093dcda4d0b299ee2be305a978abd *module\include\pgsql\8.3.17\krb5_32.dll
+205c285cb7f954e472ab601d3617e93a *module\include\pgsql\8.3.17\libiconv-2.dll
+2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\8.3.17\libintl-8.dll
+f8b892a21e0cb94d49a37eea692ec056 *module\include\pgsql\8.3.17\libpq-fe.h
+8621954d0d591e1c0461c6a8abe3646e *module\include\pgsql\8.3.17\libpq.dll
+db2505edcfa082d149e3f8251d3e7d30 *module\include\pgsql\8.3.17\libpq.lib
+9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.3.17\postgres_ext.h
+
+87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.4.10\comerr32.dll
+20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.4.10\gssapi32.dll
+960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.4.10\k5sprt32.dll
+ba0093dcda4d0b299ee2be305a978abd *module\include\pgsql\8.4.10\krb5_32.dll
+205c285cb7f954e472ab601d3617e93a *module\include\pgsql\8.4.10\libiconv-2.dll
+2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\8.4.10\libintl-8.dll
+6085b6b9477c0379326aaae48790efc9 *module\include\pgsql\8.4.10\libpq-fe.h
+038330e05b9a52fa6ad52e3209e53a22 *module\include\pgsql\8.4.10\libpq.dll
+6b9fcd82caeb92cc7a587b644f3e24fa *module\include\pgsql\8.4.10\libpq.lib
+9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.4.10\postgres_ext.h
+
+205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.0.6\libiconv-2.dll
+2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.0.6\libintl-8.dll
+d2775a244287dc9f918921e05429b798 *module\include\pgsql\9.0.6\libpq-fe.h
+ac876e7da5bf10dccab3cba0dc1e9a2e *module\include\pgsql\9.0.6\libpq.dll
+c66f10b047b2265f2d0078efdc77725f *module\include\pgsql\9.0.6\libpq.lib
+9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\9.0.6\postgres_ext.h
+
+205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.1.2\libiconv-2.dll
+2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.1.2\libintl-8.dll
+f0916ce17f26a197442fcc362a2a8266 *module\include\pgsql\9.1.2\libpq-fe.h
+1ff8ce621694819bf7918fdaf450dcca *module\include\pgsql\9.1.2\libpq.dll
+22bb0fde61333a9455fb026aecb2abfd *module\include\pgsql\9.1.2\libpq.lib
+49b1a8226c7f0d3c89de874baa26826f *module\include\pgsql\9.1.2\postgres_ext.h
+
+
 96a9beb7b7c93d87db8a64a07d156e5b *module\include\mysql\4.1.21\libmySQL.dll
 2cc5ee9b831743ef964d65adddbfead3 *module\include\mysql\4.1.21\libmysql.lib
 e59cee268766e0f16e07ababc6f2e37c *module\include\mysql\4.1.21\mysql.h
@@ -68,6 +75,7 @@ c52a58e87fcb811051e7defa1d763f53 *module\include\mysql\4.1.21\mysql_version.h
 18f883ad9be9ef2a1bc7e497a337fcf3 *module\include\mysql\4.1.21\my_alloc.h
 219eedde35ec3229532ef498c8c44918 *module\include\mysql\4.1.21\my_list.h
 d82901bddd0dde186b06965aa7e74912 *module\include\mysql\4.1.21\typelib.h
+
 3ae016da108bfa521497475a3579e2d7 *module\include\mysql\5.0.91\libmySQL.dll
 90f4da23ac0ef4134501ea59f67324a4 *module\include\mysql\5.0.91\libmysql.lib
 24dcdb92e144dd0ec2dc96a00f3a2bff *module\include\mysql\5.0.91\mysql.h
@@ -77,15 +85,18 @@ b83a01c58711060a798b7c57beb81649 *module\include\mysql\5.0.91\mysql_version.h
 07cff66a2da8a3e8b6aed794f71351c0 *module\include\mysql\5.0.91\my_alloc.h
 a122c49b9ce955ac16ecd2434d2a5c40 *module\include\mysql\5.0.91\my_list.h
 35bc549a34171163e1ff73eb2142665a *module\include\mysql\5.0.91\typelib.h
-c8d89ba7ad22c88b8a1c0f96996a1976 *module\include\mysql\5.5.16\libmysql.dll
-c4e2e072c678422346a60da7306c336c *module\include\mysql\5.5.16\libmysql.lib
-75d22f03c20bf9f97331d35f2724f4ba *module\include\mysql\5.5.16\mysql.h
-9bd77350e4da356b61a0ade2ab697e49 *module\include\mysql\5.5.16\mysql_com.h
-a1c579412cba83f2ce8c3b1a0a3d7d41 *module\include\mysql\5.5.16\mysql_time.h
-724cb7a787ea754b23f4f0a6a4adf4bd *module\include\mysql\5.5.16\mysql_version.h
-b6e84c12ea72b972f39866394389660f *module\include\mysql\5.5.16\my_alloc.h
-5a849989a9d60263bf9e00c9614feaed *module\include\mysql\5.5.16\my_list.h
-9cd4d930dafefade2f0fdc4dc49e09b9 *module\include\mysql\5.5.16\typelib.h
+
+d3278b0a73cfd50b46bdae1455303796 *module\include\mysql\5.5.21\libmysql.dll
+80ff66cdaf59f6c64cbef072d2e4b715 *module\include\mysql\5.5.21\libmysql.lib
+75d22f03c20bf9f97331d35f2724f4ba *module\include\mysql\5.5.21\mysql.h
+9bd77350e4da356b61a0ade2ab697e49 *module\include\mysql\5.5.21\mysql_com.h
+a1c579412cba83f2ce8c3b1a0a3d7d41 *module\include\mysql\5.5.21\mysql_time.h
+b83dfcfae16b34891ef830b74fbf4117 *module\include\mysql\5.5.21\mysql_version.h
+b6e84c12ea72b972f39866394389660f *module\include\mysql\5.5.21\my_alloc.h
+5a849989a9d60263bf9e00c9614feaed *module\include\mysql\5.5.21\my_list.h
+9cd4d930dafefade2f0fdc4dc49e09b9 *module\include\mysql\5.5.21\typelib.h
+
+
 6c6c38b2965bc0a29f9695ee4de4128f *module\include\odbc\3.8\odbc32.lib
 1b711552643755cf396c6becd97f0930 *module\include\odbc\3.8\sql.h
 152c26584d80946e7c527396dbadf6bc *module\include\odbc\3.8\sqlext.h
