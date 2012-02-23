@@ -6,7 +6,7 @@
 aa823eeacdffae234889198ba7abeaaa *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
 e692631f2ccf569810704b53b6e93360 *module\autoupdate\check_for_update.inc.bat
-b7040a0ac51a6946e9bab939df1cec39 *module\autoupdate\wget.vbs
+b3a7555a97efdf9b9f147e144227b02c *module\autoupdate\wget.vbs
 733a2f58c4325eb856de21dd60387628 *module\choice.exe
 374a332578a48f31246a17e89169f3bf *module\tortoisesvn\patch_source.inc.bat
 
