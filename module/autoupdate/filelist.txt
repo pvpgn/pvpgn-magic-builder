@@ -1,7 +1,7 @@
-1065c3e5fd4e10faa2d1639c9efac7f3 *build_pvpgn.bat
+3e5dd7349bab3185fb70cfeecdbc7023 *build_pvpgn.bat
 550c6b4f1964d1900cc565ae81cffab5 *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
-6891789dad27e3347a341e97fb5c9c1c *module\i18n.inc.bat
+723d94906e7ff7fa09e905864ac2a3d1 *i18n.inc.bat
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
 aa823eeacdffae234889198ba7abeaaa *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
@@ -15,12 +15,26 @@ b70429bc2b344431ff1df78c1f468363 *module\include\source_replace\ConfigureChecks.
 d09fe9af29b9ccb7c2c8757328ee05da *module\include\source_replace\src\CMakeLists.txt
 b79d824aef3d961b28cc78fa1c632bdd *module\include\source_replace\src\bnetd\CMakeLists.txt
 82b933e23fd456a8e4ce24971d32209e *module\include\source_replace\conf\bnetd.conf.in
-4064eab42df02006190616448a8df28e *module\include\source_replace\conf\bnmotd-ruRU.txt.in
 12e2359d0f2a0a8c27474f8f91da81c0 *module\include\source_replace\conf\d2cs.conf.in
 2cfe56ab715f8f62149ed5fcb9c8725d *module\include\source_replace\conf\d2dbs.conf.in
 6e49deef9bffd83373ecaa09c3770ef1 *module\include\source_replace\conf\versioncheck.conf.in
 78420f7409a04fe2bb0ce1a67d8a7770 *module\include\source_replace\cmake\Modules\DefineInstallationPaths.cmake
 af4b1101fe7569e71a70327ba301f2e9 *module\include\source_replace\cmake\Modules\FindODBC.cmake
+4a1279faba492338326b44fe1f5d301b *module\include\source_replace\conf\bnmotd-bgBG.txt.in
+e9e6cf2d47211fa0a2d2e443796d1983 *module\include\source_replace\conf\bnmotd-csCZ.txt.in
+591c075c7a0d64e5a86bc612652d583f *module\include\source_replace\conf\bnmotd-deDE.txt.in
+aea8ba1b7f0bd18f4a64f84662d410fb *module\include\source_replace\conf\bnmotd-enUS.txt.in
+deb75b1106d790e0435787380f61e022 *module\include\source_replace\conf\bnmotd-esES.txt.in
+d1f491a9732ffa9542cf82cfa3cc38a6 *module\include\source_replace\conf\bnmotd-frFR.txt.in
+9218721ef648215e9097f02923d0e70e *module\include\source_replace\conf\bnmotd-jaJA.txt.in
+a4413d81ea55abab523a502e3cb54420 *module\include\source_replace\conf\bnmotd-koKR.txt.in
+a4d25e4de88b7adbcc656cc9e737181f *module\include\source_replace\conf\bnmotd-nlNL.txt.in
+7ac0244407866fcc88e625a118ce302a *module\include\source_replace\conf\bnmotd-plPL.txt.in
+b6a39af277f9262dd259087253bf1933 *module\include\source_replace\conf\bnmotd-ptBR.txt.in
+4064eab42df02006190616448a8df28e *module\include\source_replace\conf\bnmotd-ruRU.txt.in
+ded3065c76355e308f7cd4ef88800cd2 *module\include\source_replace\conf\bnmotd-svSE.txt.in
+812862267cd02aa46ce7717f26ccd426 *module\include\source_replace\conf\bnmotd-zhCN.txt.in
+b75b95b94e301f5723533465b034f1ff *module\include\source_replace\conf\bnmotd-zhTW.txt.in
 
 bf38660a9125935658cfa3e53fdc7d65 *module\tortoisesvn\msvcr100.dll
 

@@ -1,7 +1,8 @@
 @echo off
 :: Gets localization strings depending user's system locale
 :: Batch files encoding should be "OEM 866"
-::  Language abbreveations: http://msdn.microsoft.com/en-us/library/ms903928.aspx
+::  Windows Language abbreveations - http://msdn.microsoft.com/en-us/library/ms903928.aspx
+::	MOTD Language identifiers - http://www.i18nguy.com/unicode/language-identifiers.html
 
 set Key="HKEY_CURRENT_USER\Control Panel\International"
 for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE=%%a
@@ -42,9 +43,16 @@ if [%LANGUAGE%]==[CHT] goto CHT
 if [%LANGUAGE%]==[ZHH] goto CHS
 if [%LANGUAGE%]==[ZHM] goto CHS
 if [%LANGUAGE%]==[ZHI] goto CHS
+:: Japanese
+if [%LANGUAGE%]==[JPN] goto JPN
 :: Portuguese
 if [%LANGUAGE%]==[PTB] goto PTB
 if [%LANGUAGE%]==[PTG] goto PTB
+:: Bulgarian
+if [%LANGUAGE%]==[BGR] goto BGR
+:: Swedish
+if [%LANGUAGE%]==[SVF] goto SVF
+if [%LANGUAGE%]==[SVE] goto SVF
 :: Spanish
 if [%LANGUAGE%]==[ESN] goto ESN
 if [%LANGUAGE%]==[ESS] goto ESN
@@ -448,8 +456,22 @@ goto :eof
 	set MOTD_LANGUAGE=zhTW
 	goto echo_phrase
 	
+:: Japanese
+:JPN
+	set MOTD_LANGUAGE=jpJA
+	goto echo_phrase
+
 :: Portuguese
 :PTB
 	set MOTD_LANGUAGE=ptBR
 	goto echo_phrase
 
+:: Bulgarian
+:BGR
+	set MOTD_LANGUAGE=bgBG
+	goto echo_phrase
+
+:: Swedish
+:SVF
+	set MOTD_LANGUAGE=svSE
+	goto echo_phrase
