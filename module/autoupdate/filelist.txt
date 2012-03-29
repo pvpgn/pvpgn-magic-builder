@@ -26,7 +26,7 @@ e9e6cf2d47211fa0a2d2e443796d1983 *module\include\source_replace\conf\bnmotd-csCZ
 aea8ba1b7f0bd18f4a64f84662d410fb *module\include\source_replace\conf\bnmotd-enUS.txt.in
 deb75b1106d790e0435787380f61e022 *module\include\source_replace\conf\bnmotd-esES.txt.in
 d1f491a9732ffa9542cf82cfa3cc38a6 *module\include\source_replace\conf\bnmotd-frFR.txt.in
-9218721ef648215e9097f02923d0e70e *module\include\source_replace\conf\bnmotd-jaJA.txt.in
+9218721ef648215e9097f02923d0e70e *module\include\source_replace\conf\bnmotd-jpJA.txt.in
 a4413d81ea55abab523a502e3cb54420 *module\include\source_replace\conf\bnmotd-koKR.txt.in
 a4d25e4de88b7adbcc656cc9e737181f *module\include\source_replace\conf\bnmotd-nlNL.txt.in
 7ac0244407866fcc88e625a118ce302a *module\include\source_replace\conf\bnmotd-plPL.txt.in
