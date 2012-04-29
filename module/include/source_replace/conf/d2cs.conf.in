@@ -132,7 +132,7 @@ check_multilogin	=	0
 # Max allowed value is 18 (enforced by server)
 maxchar			=	8
 
-# Character sorting. Options are: level, mtime, name, none. (none assumed if
+# Character sorting. Options are: level, ctime, mtime, name, none. (none assumed if
 # not specified).
 #charlist_sort = "none"
 

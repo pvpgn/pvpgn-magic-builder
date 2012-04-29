@@ -1,13 +1,30 @@
 ##############################################################################
-# bnetd.conf  -  Configuration file for the Unix Battle.net daemon           #
+# bnetd.conf  -  Configuration file for the main PvPGN service               #
 #----------------------------------------------------------------------------#
 #                                                                            #
-# This file is an example configuration and may require modification to      #
-# suit your needs or your site.  Blank lines and lines starting with a "#"   #
-# are ignored.  Use quotes around values that contain spaces.                #
+# ############ READ THIS ######### READ THIS ########## READ THIS ############
+# This file is an example configuration that should work UNMODIFIED for most #
+# of the PvPGN setups and may require modification to suit your needs.       #
+# Blank lines and everything after a "#" are ignored.  Use quotes around     #
+# values that contain spaces.                                                #
 #                                                                            #
 ##############################################################################
 
+
+##############################################################################
+# Privileges to work under                                                   #
+# Use either the names from the corresponding files or numerical id's (with  #
+# a leading '#').  If none are specified, the userid will not be changed.    #
+#----------------------------------------------------------------------------#
+
+#effective_user  = games
+#effective_group = games
+
+# effective_user  = #12
+# effective_group = #20
+
+#                                                                            #
+##############################################################################
 
 ##############################################################################
 # Storage section                                                            #
@@ -16,9 +33,9 @@
 #                                                                            #
 # Syntax:                                                                    #
 # * for plain file driver:                                                   #
-#  storage_path = file:mode=plain;dir=<path_to_user_files>;clan=<path_to_clan_files>;team=<path_to_team_files>;default=/path/to/default/account #
+#  storage_path = file:mode=plain;dir=<path_to_user_files>;clan=<path_to_clan_files>;default=/path/to/default/account #
 # * for cdb file driver:                                                     #
-#  storage_path = file:mode=cdb;dir=<path_to_cdb_files>;clan=<path_to_clan_files>;team=<path_to_team_files>;default=/path/to/default/account   #
+#  storage_path = file:mode=cdb;dir=<path_to_cdb_files>;clan=<path_to_clan_files>;default=/path/to/default/account   #
 # * for sql/sql2 driver:                                                     #
 #  storage_path = sql:variable=value;...;default=0 (0 is the default uid)    #
 # or storage_path = sql2:variable=value;...;default=0 (0 is the default uid) #
@@ -35,19 +52,22 @@
 # - "prefix" : prefix to use for all pvpgn tables (default "")               #
 #                                                                            #
 # Examples:                                                                  #
-# storage_path = file:mode=plain;dir=var\users;clan=var\clans;team=var\teams\;default=conf\bnetd_default_user.plain
-# storage_path = file:mode=cdb;dir=var\userscdb;clan=var\clans;team=var\teams\;default=conf\bnetd_default_user.cdb
-# storage_path = sql:mode=mysql;host=127.0.0.1;name=PVPGN;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn_
-# storage_path = sql:mode=pgsql;host=127.0.0.1;name=pvpgn;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn_
-# storage_path = sql:mode=sqlite3;name=var\users.db;default=0;prefix=pvpgn_
-# storage_path = sql:mode=odbc;name=PVPGN;prefix=pvpgn_
-# storage_path = sql2:mode=mysql;host=127.0.0.1;name=PVPGN;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn_
-# storage_path = sql2:mode=pgsql;host=127.0.0.1;name=pvpgn;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn_
-# storage_path = sql2:mode=sqlite3;name=var\users.db;default=0;prefix=pvpgn_
-# storage_path = sql2:mode=odbc;name=PVPGN;prefix=pvpgn_
+# storage_path = "file:mode=plain;dir=var\users;clan=var\clans;team=var\teams;default=conf\bnetd_default_user.plain"
+# storage_path = "file:mode=cdb;dir=var\userscdb;clan=var\clans;team=var\teams;default=conf\bnetd_default_user.cdb"
+# storage_path = "sql:mode=mysql;host=127.0.0.1;name=PVPGN;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn_"
+# storage_path = "sql:mode=pgsql;host=127.0.0.1;name=pvpgn;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn_"
+# storage_path = "sql:mode=sqlite3;name=var\users.db;default=0;prefix=pvpgn_"
+# storage_path = "sql:mode=odbc;name=PVPGN;prefix=pvpgn_"
+#
+# WARNING!! you MUST change "DBlayoutfile" bellow configuration directive to 
+# sql_DB_layout2.conf to be able to use "sql2" !!!
+# storage_path = "sql2:mode=mysql;host=127.0.0.1;name=PVPGN;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn2_"
+# storage_path = "sql2:mode=pgsql;host=127.0.0.1;name=pvpgn;user=pvpgn;pass=pvpgnrocks;default=0;prefix=pvpgn2_"
+# storage_path = "sql2:mode=sqlite3;name=var\users.db;default=0;prefix=pvpgn2_"
+# storage_path = "sql2:mode=odbc;name=PVPGN;prefix=pvpgn2_"
 #----------------------------------------------------------------------------#
 
-storage_path = file:mode=plain;dir=var\users;clan=var\clans;team=var\teams;default=conf\bnetd_default_user.plain
+storage_path = "file:mode=plain;dir=var\users;clan=var\clans;team=var\teams;default=conf\bnetd_default_user.plain"
 
 #                                                                            #
 ##############################################################################
@@ -58,35 +78,37 @@ storage_path = file:mode=plain;dir=var\users;clan=var\clans;team=var\teams;defau
 # Use absolute paths in these lines to avoid problems!                       #
 #----------------------------------------------------------------------------#
 
-filedir     = files
-reportdir   = var\reports
-chanlogdir  = var\chanlogs
-motdfile    = conf\bnmotd.txt
-issuefile   = conf\bnissue.txt
-channelfile = conf\channel.conf
-newsfile    = conf\news.txt
-adfile      = conf\ad.conf
-topicfile   = conf\topics.conf
-ipbanfile   = conf\bnban.conf
-helpfile    = conf\bnhelp.conf
-transfile   = conf\address_translation.conf
-mpqfile     = conf\autoupdate.conf
-logfile     = var\bnetd.log
-realmfile   = conf\realm.conf
-versioncheck_file = conf\versioncheck.conf
-mapsfile    = conf\bnmaps.conf
-xplevelfile = conf\bnxplevel.conf
-xpcalcfile  = conf\bnxpcalc.conf
-#pidfile    = var\bnetd.pid
-ladderdir    = var\ladders
-command_groups_file = conf\command_groups.conf
-statusdir   = var\status
-aliasfile   = conf\bnalias.conf
-anongame_infos_file = conf\anongame_infos.conf
-DBlayoutfile = conf\sql_DB_layout.conf
-supportfile = conf\supportfile.conf
+filedir     = "var\files"
+reportdir   = "var\reports"
+chanlogdir  = "var\chanlogs"
+motdfile    = "conf\bnmotd-enUS.txt"
+issuefile   = "conf\bnissue.txt"
+channelfile = "conf\channel.conf"
+newsfile    = "conf\news.txt"
+adfile      = "conf\ad.conf"
+topicfile   = "conf\topics.conf"
+ipbanfile   = "conf\bnban.conf"
+helpfile    = "conf\bnhelp.conf"
+mpqfile     = "conf\autoupdate.conf"
+logfile     = "var\bnetd.log"
+realmfile   = "conf\realm.conf"
+maildir     = "var\bnmail"
+versioncheck_file = "conf\versioncheck.conf"
+mapsfile    = "conf\bnmaps.conf"
+xplevelfile = "conf\bnxplevel.conf"
+xpcalcfile  = "conf\bnxpcalc.conf"
+#pidfile    = "var\bnetd.pid"
+ladderdir   = "var\ladders"
+command_groups_file = "conf\command_groups.conf"
+tournament_file = "conf\tournament.conf"
+statusdir   = "var\status"
+aliasfile   = "conf\bnalias.conf"
+anongame_infos_file = "conf\anongame_infos.conf"
+DBlayoutfile = "conf\sql_DB_layout.conf"
+supportfile = "conf\supportfile.conf"
+transfile   = "conf\address_translation.conf"
 
-fortunecmd  = bin\fortune.exe
+fortunecmd  = /usr/games/fortune
 
 #                                                                            #
 ##############################################################################
@@ -105,8 +127,8 @@ fortunecmd  = bin\fortune.exe
 #   warn
 #   error
 #   fatal
-#loglevels = fatal,error,warn,info,debug,trace
 loglevels = fatal,error,warn,info,debug,trace
+#loglevels = fatal,error,warn,info
 
 #                                                                            #
 ##############################################################################
@@ -169,8 +191,9 @@ tosfile = "tos.txt"
 # noxx : client type Nox
 # noxq : client type Nox Quest
 # rngd : client type Renegade
+# rfds : client type Renegade Free Dedicated Server
 # yuri : client type Yuri's Revenge
-# empr : client type Emperor: Battle for Dune
+# ebfd : client type Emperor: Battle for Dune
 #
 # Example: allowed_clients = war3,w3xp
 allowed_clients = all
@@ -267,7 +290,7 @@ new_accounts = true
 kick_old_login = true
 #kick_old_login = false
 # With no passwords, this is bad to have enabled --NonReal
-		
+
 # load_new_account option has been eliminated and the functionality now is 
 # always active in PvPGN
 
@@ -542,7 +565,7 @@ wol_autoupdate_password = "world96"
 # This specifies the addresses where IRC connections should be accepted. See
 # the description of servaddrs for formatting information. Leave this field
 # blank if you do not want to accept IRC connections.  If the port is not
-# specifed then 6667 will be used.
+# specified then 6667 will be used.
 #ircaddrs = ":6667"
 
 # This is the IRC network name. If this is not specified then the default of
@@ -550,7 +573,7 @@ wol_autoupdate_password = "world96"
 #irc_network_name = "PvPGN"
 
 # This is the hostname used for IRC connections. Set this to your
-# hostname, if the automatic detection doesn't correctly.
+# hostname, if the automatic detection doesn't correctly. 
 #hostname = "none"
 
 # Set this to the desired IRC connection timeout in seconds.
@@ -570,9 +593,6 @@ wol_autoupdate_password = "world96"
 # is not specifed then 23 will be used.
 #telnetaddrs = ":23"
 
-#                                                                            #
-##############################################################################
-
 ###############################################################################
 # war3 ladder textual output                                                  #
 #-----------------------------------------------------------------------------#
@@ -586,9 +606,8 @@ wol_autoupdate_password = "world96"
 war3_ladder_update_secs = 300
 
 # jfro's latest ladder is based on XML... so we can switch to XML output of ladder
-# on demand. Maybe we should set update interval bigger cause XML output version
-# is much more verbose than the standard output
-XML_output_ladder = false
+# on demand
+XML_output_ladder = true
 
 ###############################################################################
 # server status textual output                                           #
@@ -605,7 +624,7 @@ output_update_secs = 60
 # jfro's latest ladder is based on XML... so we can switch to XML output of ladder
 # on demand. Maybe we should set update interval bigger cause XML output version
 # is much more verbose than the standard output
-XML_status_output = false
+XML_status_output = true
 
 ###############################################################################
 # clan settings                                                               #
@@ -624,4 +643,4 @@ clan_channel_default_private = 0
 # Minimum accepted invites for create new clan. 0 = clans will be created
 # without accepted invitations need. This does not affect WAR3/W3XP ingame
 # clan management.
-clan_min_invites = 2
+clan_min_invites = 2 
