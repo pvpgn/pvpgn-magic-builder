@@ -3,7 +3,7 @@ a4722ac3c1ecdab74dff1e66caf69753 *build_d2gs.bat
 a63374a795cd7bce96de4a71c079a200 *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
 b0dda7bac4fcbcafc16608c2c7bc5497 *module\i18n.inc.bat
-99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
+40d1dcb850b4c0de162dc4ac2737adb9 *module\replace_line.vbs
 aa823eeacdffae234889198ba7abeaaa *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
 ad5f6548ae986d22a6dc620858180eae *module\autoupdate\check_for_update.inc.bat
