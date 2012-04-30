@@ -2,6 +2,11 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 =============================================
 
+v1.6 (30.04.2012)
+- added D2GS Magic Builder
+- added MOTD translations for many languages
+- fixed minor issues
+
 v1.55 (23.02.2012)
 - fixed "storagepath" replace (into bnetd.conf) on pvpgn rebuild batch
 - updated includes for MySQL (5.5.16 -> 5.5.21)

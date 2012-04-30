@@ -8,12 +8,12 @@ set LOG=false
 TITLE PvPGN Magic Builder for Windows
 color 1f
 echo.
-echo ******************* P v P G N  M a g i c  B u i l d e r ***********************
+echo *:*:*:*:*:*:*:*:*-  P v P G N  M a g i c  B u i l d e r  -*:*:*:*:*:*:*:*:*:*:*
 echo *                                                                             *
 echo *   Copyright 2011-2012, HarpyWar (harpywar@gmail.com)                        *
 echo *   http://harpywar.com                                                       *
 echo *                                                                             *
-echo *******************************************************************************
+echo *:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*
 set CURRENT_PATH=%~dp0
 :: change path to where script was run
 cd /D "%CURRENT_PATH%"
@@ -289,6 +289,10 @@ echo ______________________________[ R E L E A S E ]____________________________
 :: {PARAMETER}, :restore_conf only if clean build (not rebuild). Because :backup_conf calls on clean build only
 if [%PARAM_REBUILD%]==[] @call :restore_conf
 
+:: check pvpgn exe for exists 
+if not exist "%PVPGN_BUILD%src\bnetd\Release\bnetd.exe" goto :FAIL
+
+
 @call :save_rebuild_config
 
 if not exist "%PVPGN_RELEASE%" mkdir "%PVPGN_RELEASE%"
@@ -370,10 +374,16 @@ goto THEEND
 	echo build_pvpgn.bat rebuild !PARAM_VS! !PARAM_INTERFACE! !PARAM_DBTYPE!>>!fileName!
 	exit /b 0
 
+:FAIL
+	echo SOMETHING GONE WRONG :(
+	pause
+	goto :eof
+	
+	
 	
 :THEEND
 echo.
 echo ___________________________[ C O M P L E T E ]__________________________________
 :: wait for any key
-echo %PARAM_REBUILD%
-if not [%PARAM_REBUILD%]==[rebuild_total] Pause
+
+if not [%PARAM_REBUILD%]==[rebuild_total] pause

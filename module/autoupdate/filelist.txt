@@ -1,22 +1,25 @@
-3e5dd7349bab3185fb70cfeecdbc7023 *build_pvpgn.bat
-550c6b4f1964d1900cc565ae81cffab5 *version-history.txt
+a4722ac3c1ecdab74dff1e66caf69753 *build_d2gs.bat
+0850a690a01482c3e9b42bd8b27ea02b *build_pvpgn.bat
+a63374a795cd7bce96de4a71c079a200 *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
-723d94906e7ff7fa09e905864ac2a3d1 *i18n.inc.bat
+b0dda7bac4fcbcafc16608c2c7bc5497 *module\i18n.inc.bat
 99d672d08ec2fbf08d527cd3ac180bcd *module\replace_line.vbs
 aa823eeacdffae234889198ba7abeaaa *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
-e692631f2ccf569810704b53b6e93360 *module\autoupdate\check_for_update.inc.bat
+ad5f6548ae986d22a6dc620858180eae *module\autoupdate\check_for_update.inc.bat
 b3a7555a97efdf9b9f147e144227b02c *module\autoupdate\wget.vbs
+bd126a7b59d5d1f97ba89a3e71425731 *module\autoupdate\wget.exe
 733a2f58c4325eb856de21dd60387628 *module\choice.exe
-374a332578a48f31246a17e89169f3bf *module\tortoisesvn\patch_source.inc.bat
+
+254d1ea7445ac5bc7b59beff09b319e2 *module\bnhash.exe
 
 32122e1f4540ac37e3f4b8a65c074feb *module\include\source_replace\CMakeLists.txt
 b70429bc2b344431ff1df78c1f468363 *module\include\source_replace\ConfigureChecks.cmake
 d09fe9af29b9ccb7c2c8757328ee05da *module\include\source_replace\src\CMakeLists.txt
 b79d824aef3d961b28cc78fa1c632bdd *module\include\source_replace\src\bnetd\CMakeLists.txt
-82b933e23fd456a8e4ce24971d32209e *module\include\source_replace\conf\bnetd.conf.in
-12e2359d0f2a0a8c27474f8f91da81c0 *module\include\source_replace\conf\d2cs.conf.in
-2cfe56ab715f8f62149ed5fcb9c8725d *module\include\source_replace\conf\d2dbs.conf.in
+89d0c48480179f2c4353abb3822c5076 *module\include\source_replace\conf\bnetd.conf.in
+53b60a65830d89bd084e556d19d2496b *module\include\source_replace\conf\d2cs.conf.in
+4683954c260f12a7940760aa53a0d8b0 *module\include\source_replace\conf\d2dbs.conf.in
 6e49deef9bffd83373ecaa09c3770ef1 *module\include\source_replace\conf\versioncheck.conf.in
 78420f7409a04fe2bb0ce1a67d8a7770 *module\include\source_replace\cmake\Modules\DefineInstallationPaths.cmake
 af4b1101fe7569e71a70327ba301f2e9 *module\include\source_replace\cmake\Modules\FindODBC.cmake
@@ -36,6 +39,7 @@ ded3065c76355e308f7cd4ef88800cd2 *module\include\source_replace\conf\bnmotd-svSE
 812862267cd02aa46ce7717f26ccd426 *module\include\source_replace\conf\bnmotd-zhCN.txt.in
 b75b95b94e301f5723533465b034f1ff *module\include\source_replace\conf\bnmotd-zhTW.txt.in
 
+374a332578a48f31246a17e89169f3bf *module\tortoisesvn\patch_source.inc.bat
 bf38660a9125935658cfa3e53fdc7d65 *module\tortoisesvn\msvcr100.dll
 
 c7e5bea0c29b515484b57d68bfba1c73 *module\include\sqlite\3.7.10\sqlite3.dll
@@ -121,3 +125,63 @@ d581f19530f242b48e3a1d0d182ccc04 *module\include\odbc\3.8\sqlucode.h
 203dd664b581c147dba1f1a67d20c942 *module\include\odbc\3.52\sqlext.h
 05f77907395e8ccbbcc99b9c44878f3e *module\include\odbc\3.52\sqltypes.h
 c5425e5eafa8294588dc56be70d222e6 *module\include\odbc\3.52\sqlucode.h
+
+
+0f47e0a94407581fd2b76bba69906089 *module\include\d2gs\filelist.txt
+
+d41d8cd98f00b204e9800998ecf8427e *module\include\d2gs\1.09d\D2Client.dll
+c0129f8a798c0d9d6a33867bdf0eacda *module\include\d2gs\1.09d\D2GS.exe
+dce02d8354489e243ddffda7e23dbcfc *module\include\d2gs\1.09d\d2gs.reg
+5428aa1848f82075f552c2b63c425a10 *module\include\d2gs\1.09d\D2GSSVC.exe
+df37505179eeefe184c364f936bde8df *module\include\d2gs\1.09d\d2server.dll
+b11f55f6b6092ac55c94fe15c96aa6b6 *module\include\d2gs\1.09d\filelist.txt
+db6eb846e3924197dbed1436ade278cf *module\include\d2gs\1.09d\install.bat
+81d6400c8b9352ffab036121b534e2b8 *module\include\d2gs\1.09d\readme.txt
+
+2355619f2596beb5dbbfb5e7fd29337a *module\include\d2gs\1.10\D2GS.exe
+dce02d8354489e243ddffda7e23dbcfc *module\include\d2gs\1.10\d2gs.reg
+cc5c133e2800931de5f39a0dd51066c2 *module\include\d2gs\1.10\D2GSSVC.exe
+95cd0c90a997fa1f6d8505e199a3538c *module\include\d2gs\1.10\D2GS_LICENSE_CN.TXT
+cc828cebc9bb619542c913895cdc9306 *module\include\d2gs\1.10\D2GS_README.TXT
+0c64db7e3be4f6685a2e979fb624cca4 *module\include\d2gs\1.10\D2GS_README_CN.TXT
+db4437f38f18b488b014a098bb233b5c *module\include\d2gs\1.10\d2server.dll
+eb86fe353b4aa5b2f49adb731331b96c *module\include\d2gs\1.10\d2server.ini
+bff4337d6b2003a930f74f6744bc01de *module\include\d2gs\1.10\filelist.txt
+db6eb846e3924197dbed1436ade278cf *module\include\d2gs\1.10\install.bat
+3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.10\ItemConfig.dat
+
+4a71a0349a7325a4fed96053778863e0 *module\include\d2gs\1.11b\3ea42f5ac80f0d2deb35d99b4e9a780b.mod
+2355619f2596beb5dbbfb5e7fd29337a *module\include\d2gs\1.11b\D2GS.exe
+dce02d8354489e243ddffda7e23dbcfc *module\include\d2gs\1.11b\d2gs.reg
+e9aac468ce7bab24f534377a57df5ed8 *module\include\d2gs\1.11b\d2gs.script
+cc5c133e2800931de5f39a0dd51066c2 *module\include\d2gs\1.11b\D2GSSVC.exe
+e6deaa00cc1d4dfd93c64fb811e237b6 *module\include\d2gs\1.11b\D2GS_1.11b_Readme.txt
+95cd0c90a997fa1f6d8505e199a3538c *module\include\d2gs\1.11b\D2GS_LICENSE_CN.TXT
+cc828cebc9bb619542c913895cdc9306 *module\include\d2gs\1.11b\D2GS_README.TXT
+0c64db7e3be4f6685a2e979fb624cca4 *module\include\d2gs\1.11b\D2GS_README_CN.TXT
+167387621459388a0208da14ee1e0b45 *module\include\d2gs\1.11b\d2server.dll
+9ef40f30e28972ebdfac21907662d2fe *module\include\d2gs\1.11b\d2server.ini
+e2101d39cbab25f7b0a251c98933021e *module\include\d2gs\1.11b\d2warden.dll
+e225160636ada96484b6bc734451596b *module\include\d2gs\1.11b\d2warden.ini
+56b01508f6004877ccc6c8b114bfb505 *module\include\d2gs\1.11b\filelist.txt
+db6eb846e3924197dbed1436ade278cf *module\include\d2gs\1.11b\install.bat
+3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.11b\ItemConfig.dat
+
+4a71a0349a7325a4fed96053778863e0 *module\include\d2gs\1.13c\3ea42f5ac80f0d2deb35d99b4e9a780b.mod
+d41d8cd98f00b204e9800998ecf8427e *module\include\d2gs\1.13c\D2Client.dll
+2355619f2596beb5dbbfb5e7fd29337a *module\include\d2gs\1.13c\D2GS.exe
+dce02d8354489e243ddffda7e23dbcfc *module\include\d2gs\1.13c\d2gs.reg
+e9aac468ce7bab24f534377a57df5ed8 *module\include\d2gs\1.13c\d2gs.script
+cc5c133e2800931de5f39a0dd51066c2 *module\include\d2gs\1.13c\D2GSSVC.exe
+a6d327a9bb5824cd11ccc63c5631649b *module\include\d2gs\1.13c\D2GS_1.13c_Readme.txt
+95cd0c90a997fa1f6d8505e199a3538c *module\include\d2gs\1.13c\D2GS_LICENSE_CN.TXT
+cc828cebc9bb619542c913895cdc9306 *module\include\d2gs\1.13c\D2GS_README.TXT
+0c64db7e3be4f6685a2e979fb624cca4 *module\include\d2gs\1.13c\D2GS_README_CN.TXT
+9227d43f57619ea80f69d86f24b34194 *module\include\d2gs\1.13c\D2Loader-1.13c.exe
+ddad9af85131b8a3118336bb0bac1a42 *module\include\d2gs\1.13c\d2server.dll
+9ef40f30e28972ebdfac21907662d2fe *module\include\d2gs\1.13c\d2server.ini
+4a08183c93ba5bc5db8789b08c4fa5a7 *module\include\d2gs\1.13c\d2warden.dll
+6dbcd2fe8d2ae1d5f98e68118a89d572 *module\include\d2gs\1.13c\d2warden.ini
+3057c4627ffd5e637e88504aafb3f86b *module\include\d2gs\1.13c\filelist.txt
+db6eb846e3924197dbed1436ade278cf *module\include\d2gs\1.13c\install.bat
+3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.13c\ItemConfig.dat
