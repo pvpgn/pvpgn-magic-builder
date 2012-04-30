@@ -138,6 +138,12 @@ goto :eof
 	set PHRASE_4_7=Applying patch %2 ...
 	set PHRASE_4_8=Finished. Please, check for conflicts.
 	set PHRASE_4_9=Do you want to continue building a PvPGN?
+	
+	set PHRASE_9_1=Select your D2GS version:
+	set PHRASE_9_2=Enter admin password for telnet (connect to port 8888)
+	set PHRASE_9_3=Password hash will saved in %2
+	set PHRASE_9_4=Do you want to download needed original MPQ files? (size 1GB)
+	set PHRASE_9_9=^^!^^!^^! To completely setup D2GS edit d2gs.reg and run install.bat ^^!^^!^^!
 
 	goto switch_lang
 
@@ -196,6 +202,12 @@ goto :eof
 	set PHRASE_4_7=Применяется патч %2 ...
 	set PHRASE_4_8=Завершено. Проверьте наличие конфликтов.
 	set PHRASE_4_9=Продолжить построение PvPGN?
+
+	set PHRASE_9_1=Выберите версию D2GS:
+	set PHRASE_9_2=Введите пароль админа для Telnet'a (работает на порт 8888)
+	set PHRASE_9_3=Хеш пароля будет сохранен в файле %2
+	set PHRASE_9_4=Вы хотите загрузить необходимые для работы сервера MPQ файлы? (размер 1ГБ)
+	set PHRASE_9_9=^^!^^!^^! Для завершения установки D2GS измените d2gs.reg и запустите install.bat ^^!^^!^^!
 
 	goto echo_phrase
 
