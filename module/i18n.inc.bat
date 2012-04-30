@@ -140,7 +140,7 @@ goto :eof
 	set PHRASE_4_9=Do you want to continue building a PvPGN?
 	
 	set PHRASE_9_1=Select your D2GS version:
-	set PHRASE_9_2=Enter admin password for telnet (connect to port 8888)
+	set PHRASE_9_2=Enter admin password for Telnet connection (listening on port 8888)
 	set PHRASE_9_3=Password hash will saved in %2
 	set PHRASE_9_4=Do you want to download needed original MPQ files? (size 1GB)
 	set PHRASE_9_9=^^!^^!^^! To completely setup D2GS edit d2gs.reg and run install.bat ^^!^^!^^!
@@ -154,7 +154,7 @@ goto :eof
 	set PHRASE_1_0=  Visual Studio не установлена
 	set PHRASE_1_1=Выберите версию Visual Studio для компиляции PvPGN:
 	set PHRASE_1_2=%2 выбрана в качестве компилятора
-	set PHRASE_1_3=Скачать/обновить последние исходники PvPGN из SVN (в папке %2)?
+	set PHRASE_1_3=Скачать/обновить последние исходники PvPGN из SVN (в папку %2)?
 	set PHRASE_1_4=   PvPGN будет обновлен из SVN
 	set PHRASE_1_5=   PvPGN не будет обновлен
 	set PHRASE_1_6=Выберите интерфейс для PvPGN: 
@@ -204,7 +204,7 @@ goto :eof
 	set PHRASE_4_9=Продолжить построение PvPGN?
 
 	set PHRASE_9_1=Выберите версию D2GS:
-	set PHRASE_9_2=Введите пароль админа для Telnet'a (работает на порт 8888)
+	set PHRASE_9_2=Введите пароль админа для Telnet соединения (работает на порту 8888)
 	set PHRASE_9_3=Хеш пароля будет сохранен в файле %2
 	set PHRASE_9_4=Вы хотите загрузить необходимые для работы сервера MPQ файлы? (размер 1ГБ)
 	set PHRASE_9_9=^^!^^!^^! Для завершения установки D2GS измените d2gs.reg и запустите install.bat ^^!^^!^^!
@@ -266,6 +266,12 @@ goto :eof
 	set PHRASE_4_7=Patch %2 toevoegen ...
 	set PHRASE_4_8=Voltooid. Gelieve na te kijken voor conflicten
 	set PHRASE_4_9=Wilt u doorgaan met het bouwen van PvPGN?
+
+	set PHRASE_9_1=Selecteer jou D2GS versie:
+	set PHRASE_9_2=Geef een administrator wachtwoord op voor de Telnet connectie (Luisterend op poort 8888)
+	set PHRASE_9_3=Wachtwoord wordt opgeslagen in %2
+	set PHRASE_9_4=Wilt u de vereiste originele MPQ-bestanden downloaden? (Grote: 1GB)
+	set PHRASE_9_9=^^!^^!^^! Pas d2gs.reg aan en start install.bat om de setup te voltooien ^^!^^!^^!
 
 	goto echo_phrase
 	
