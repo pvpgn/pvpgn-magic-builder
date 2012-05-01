@@ -74,6 +74,35 @@ if %errorlevel%==2 ( set CHOICE_MPQ=n) else ( set CHOICE_MPQ=y)
 
 
 
+:: -----------  Download files ------------ 
+echo.
+echo _____________________________[ D O W N L O A D ]________________________________
+
+if not exist "%D2GS_RELEASE%" mkdir "%D2GS_RELEASE%"
+
+:: Download DLLs to the directory with selected version, so files will cached and not downloaded again next time
+pushd module\include\d2gs
+
+:: iterate files from filelist.txt
+for /f "tokens=1,2 delims=: " %%a in ('%CURRENT_PATH%module\autoupdate\md5sum.exe -c %D2GSVER%\filelist.txt') do (
+	:: if checksum is wrong or file does not exists, then download
+	if ["%%b"]==["FAILED"] @call :download %%a
+)
+
+
+:: Download MPQs if required
+popd
+pushd %D2GS_RELEASE%
+
+if not [%CHOICE_MPQ%]==[n] (
+	:: iterate files from filelist.txt
+	for /f "tokens=1,2 delims=: " %%a in ('%CURRENT_PATH%module\autoupdate\md5sum.exe -c %CURRENT_PATH%module\include\d2gs\filelist.txt') do (
+		:: if checksum is wrong or file does not exists, then download
+		if ["%%b"]==["FAILED"] @call :download %%a
+	)
+)
+popd
+
 
 :: -----------  Copy D2GS files ------------
 echo.
@@ -90,50 +119,13 @@ echo _______________________________[ B U I L D ]_______________________________
 
 :: 4) copy d2gs files directory
 @copy /Y "module\include\d2gs\%D2GSVER%" "%D2GS_RELEASE%"
-
+@copy /Y "module\include\d2gs\*" "%D2GS_RELEASE%"
 @del "%D2GS_RELEASE%filelist.txt"
 
 :: 5) change password hash in d2gs.reg
 set str_replace=[[quote]]AdminPassword[[quote]]=[[quote]]%PASSHASH%[[quote]]
 for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "d2gs\d2gs.reg" "[[quote]]AdminPassword[[quote]]" "!str_replace!"') do set res=%%a
 if ["!res!"]==["ok"] ( echo AdminPassword updated in %D2GS_RELEASE%d2gs.reg ) else ( echo Error: AdminPassword was not updated in %D2GS_RELEASE%d2gs.reg)
-
-
-
-
-
-
-
-
-:: -----------  Download files ------------ 
-echo.
-echo _____________________________[ D O W N L O A D ]________________________________
-
-if not exist "%D2GS_RELEASE%" mkdir "%D2GS_RELEASE%"
-
-:: Download DLLs
-pushd module\include\d2gs
-
-:: iterate files from filelist.txt
-for /f "tokens=1,2 delims=: " %%a in ('..\..\autoupdate\md5sum.exe -c %D2GSVER%\filelist.txt') do (
-	pushd %D2GS_RELEASE%
-	:: if checksum is wrong or file does not exists, then download
-	if ["%%b"]==["FAILED"] @call :download %%a
-	popd
-)
-
-
-:: Download MPQs if required
-pushd %D2GS_RELEASE%
-
-if not [%CHOICE_MPQ%]==[n] (
-	:: iterate files from filelist.txt
-	for /f "tokens=1,2 delims=: " %%a in ('..\module\autoupdate\md5sum.exe -c ..\module\include\d2gs\filelist.txt') do (
-		:: if checksum is wrong or file does not exists, then download
-		if ["%%b"]==["FAILED"] @call :download %%a
-	)
-)
-popd
 
 
 
@@ -148,11 +140,11 @@ goto :THEEND
 	set f_tmp=%URL_MPQ%%1
 	set f_remote=%f_tmp:\=/%
 	:: get filename from path
-	for %%x in (%1.META) do set f_name=%%~nx
+	rem for %%x in (%1.META) do set f_name=%%~nx
 	
 	call %i18n% 3_8 "%f_local%"
 	:: download file from the remote url to local file with overwrite
-	for /f "delims=" %%a in ('..\module\autoupdate\wget.exe "%f_remote%" -O "%f_name%"') do echo.
+	for /f "delims=" %%a in ('%CURRENT_PATH%module\autoupdate\wget.exe "%f_remote%" -O "%1"') do echo.
 
 	exit /b 0
 	
