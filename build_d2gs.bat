@@ -123,12 +123,21 @@ echo _______________________________[ B U I L D ]_______________________________
 @del "%D2GS_RELEASE%filelist.txt"
 
 :: 5) change password hash in d2gs.reg
+echo.
+set str_find=[[quote]]AdminPassword[[quote]]
 set str_replace=[[quote]]AdminPassword[[quote]]=[[quote]]%PASSHASH%[[quote]]
-for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "d2gs\d2gs.reg" "[[quote]]AdminPassword[[quote]]" "!str_replace!"') do set res=%%a
+for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "d2gs\d2gs.reg" "!str_find!" "!str_replace!"') do set res=%%a
 if ["!res!"]==["ok"] ( echo AdminPassword updated in %D2GS_RELEASE%d2gs.reg ) else ( echo Error: AdminPassword was not updated in %D2GS_RELEASE%d2gs.reg)
 
-
-
+:: 5) if 64-bit OS then change registry path in d2gs.reg
+if defined ProgramFiles(x86) (
+	echo.
+	echo 64-bit OS detected, registry path will changed...
+	set str_find=[HKEY_LOCAL_MACHINE\SOFTWARE\D2Server\D2GS]
+	set str_replace=[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\D2Server\D2GS]
+	for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "d2gs\d2gs.reg" "!str_find!" "!str_replace!"') do set res=%%a
+	if ["!res!"]==["ok"] ( echo Registry path updated in %D2GS_RELEASE%d2gs.reg ) else ( echo Error: Registry path was not updated in %D2GS_RELEASE%d2gs.reg)
+)
 
 
 
