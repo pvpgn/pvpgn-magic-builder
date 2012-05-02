@@ -138,7 +138,7 @@ goto :eof
 	set PHRASE_4_7=Applying patch %2 ...
 	set PHRASE_4_8=Finished. Please, check for conflicts.
 	set PHRASE_4_9=Do you want to continue building a PvPGN?
-	
+
 	set PHRASE_9_1=Select your D2GS version:
 	set PHRASE_9_2=Enter admin password for Telnet connection (listening on port 8888)
 	set PHRASE_9_3=Password hash will saved in %2
@@ -206,7 +206,7 @@ goto :eof
 	set PHRASE_9_1=Выберите версию D2GS:
 	set PHRASE_9_2=Введите пароль админа для Telnet соединения (работает на порту 8888)
 	set PHRASE_9_3=Хеш пароля будет сохранен в файле %2
-	set PHRASE_9_4=Вы хотите загрузить необходимые для работы сервера MPQ файлы? (размер 1ГБ)
+	set PHRASE_9_4=Вы хотите загрузить MPQ файлы, необходимые для работы сервера? (размер 1ГБ)
 	set PHRASE_9_9=^^!^^!^^! Для завершения установки D2GS измените d2gs.reg и запустите install.bat ^^!^^!^^!
 
 	goto echo_phrase
@@ -275,7 +275,7 @@ goto :eof
 
 	goto echo_phrase
 	
-:: Polish - translation by Grzegorz Nakonieczny (Naki-BoT)
+:: Polish - translation by Grzegorz Nakonieczny (Naki)
 :PLK
 	set MOTD_LANGUAGE=plPL
 
@@ -330,7 +330,13 @@ goto :eof
 	set PHRASE_4_7=Nakladanie latki %2 ...
 	set PHRASE_4_8=Zakonczono. Prosze sprawdzic czy nie wystapily konflikty.
 	set PHRASE_4_9=Czy chcesz kontynuowac kompilowanie PvPGN?
-
+	
+	set PHRASE_9_1=Wybierz wersje serwera D2GS:
+	set PHRASE_9_2=Wpisz haslo administratora wymagane do polaczenia z konsola Telnet (port 8888)
+	set PHRASE_9_3=Haslo zostanie zapisane w pliku %2
+	set PHRASE_9_4=Czy chcesz pobrac oryginalne pliki MPQ z internetu ? (rozmiar 1GB)
+	set PHRASE_9_9=^^!^^!^^! Aby zakonczyc instalacje wyedytuj plik d2gs.reg i uruchom install.bat ^^!^^!^^!
+   
 	goto echo_phrase
 	
 :: German - translation by Natalya Lyovkina (SKY777)
