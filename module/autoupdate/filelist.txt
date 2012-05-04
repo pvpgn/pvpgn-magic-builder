@@ -1,4 +1,4 @@
-cb506c64855f529ca080286648350ffc *build_d2gs.bat
+e0994d1871f566f519f7cae9125fb833 *build_d2gs.bat
 0850a690a01482c3e9b42bd8b27ea02b *build_pvpgn.bat
 d637e352be4343e3a777d58df36b3f08 *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat

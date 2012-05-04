@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 TITLE D2GS Magic Builder for Windows
-color 1f
+color 4f
 echo.
 echo /-\-/-\-/-\-/-\-/-\-  D 2 G S  M a g i c  B u i l d e r  -\-/-\-/-\-/-\-/-\-/-\
 echo \                                                                             /
