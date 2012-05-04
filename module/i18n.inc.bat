@@ -89,61 +89,61 @@ goto :eof
 
 	set PHRASE_1_0=  Visual Studio is not installed
 	set PHRASE_1_1=Select a Visual Studio version to build PvPGN:
-	set PHRASE_1_2=%2 chosen as a build environment
+	set PHRASE_1_2=%2 is selected as a build environment
 	set PHRASE_1_3=Do you want to download/update the latest PvPGN source from the SVN (into %2 directory)?
-	set PHRASE_1_4=   PvPGN will update from the SVN
+	set PHRASE_1_4=   PvPGN will be updated from the SVN
 	set PHRASE_1_5=   PvPGN will not update
-	set PHRASE_1_6=Select a PvPGN interface: 
+	set PHRASE_1_6=Select PvPGN interface: 
 	set PHRASE_1_7=   1) Console (defaut)
 	set PHRASE_1_8=   2) GUI
-	set PHRASE_1_9=Choose a number
+	set PHRASE_1_9=Select a number
 	set PHRASE_1_10=   Set PvPGN interface as Console
 	set PHRASE_1_11=   Set PvPGN interface as GUI (Graphical User Interface)
 	set PHRASE_1_12=Select a database type: 
 	set PHRASE_1_13=   1) Plain / CDB (default)
 	set PHRASE_1_14=
-	set PHRASE_1_15=   PvPGN will build without database support
+	set PHRASE_1_15=   PvPGN will be built without database support
 	set PHRASE_1_16=CMake configuration failed
 
 	set PHRASE_2_1=Available %2 versions (you can add your own into %3):
-	set PHRASE_2_2=   Choose a number
-	set PHRASE_2_3=   Wrong choice... try again
-	set PHRASE_2_4=   PvPGN will compile with support %2 v%3
+	set PHRASE_2_2=   Enter a number
+	set PHRASE_2_3=   Wrong number... try again
+	set PHRASE_2_4=   PvPGN will be compiled with %2 v%3 support
 	set PHRASE_2_5=Do you want to configure settings for %2 now?
 	set PHRASE_2_6=    Connection host
 	set PHRASE_2_7=    Connection user
 	set PHRASE_2_8=    Connection password
 	set PHRASE_2_9=    Database name
 	set PHRASE_2_10=    Tables prefix (default is %2)
-	set PHRASE_2_11=%2 configuration saved
+	set PHRASE_2_11=%2 configuration is saved
 
 	set PHRASE_3_1=Checking for update ...
 	set PHRASE_3_2="v%2" is your version
 	set PHRASE_3_3="v%2" is remote version
 	set PHRASE_3_4= You have the latest PvPGN Magic Builder
-	set PHRASE_3_5=Remote version of PvPGN Magic Builder is not equals with yours. Do you want to automatically update to the new version?
+	set PHRASE_3_5=Remote version of PvPGN Magic Builder doesn't equal yours. Do you want to update to the latest version automatically?
 	set PHRASE_3_6= Update was cancelled by user
-	set PHRASE_3_6_1= Can not connect to update server
+	set PHRASE_3_6_1= There is no connection with update server
 	set PHRASE_3_7=Starting update ...
 	set PHRASE_3_8= Downloading file %2 ...
-	set PHRASE_3_9=Update finished
+	set PHRASE_3_9=Update is finished
 	set PHRASE_3_10=Please, check file %2 for more information about changes
 
 	set PHRASE_4_1=Do you want to apply patch(es) to your PvPGN source code?
-	set PHRASE_4_2=Please, first put your patch files to the %2 directory. You could download patches from the url: %3
+	set PHRASE_4_2=Please, first put your patch files to the %2 directory. You can download patches from the url: %3
 	set PHRASE_4_3=*** WARNING ***
-	set PHRASE_4_4=Paths into your *.patch files should set to relative of the root to the source code (it placed in the SVN at %2)
-	set PHRASE_4_5=For example: you want to apply patch to %2, so path to this file should be %3
+	set PHRASE_4_4=Paths in your *.patch files should be relative to the root of the source code directory (it is in the SVN at %2)
+	set PHRASE_4_5=If you want to apply patch to %2, path to this file should be %3
 	set PHRASE_4_6=Are you ready to patch?
 	set PHRASE_4_7=Applying patch %2 ...
 	set PHRASE_4_8=Finished. Please, check for conflicts.
 	set PHRASE_4_9=Do you want to continue building a PvPGN?
-
+	
 	set PHRASE_9_1=Select your D2GS version:
 	set PHRASE_9_2=Enter admin password for Telnet connection (listening on port 8888)
-	set PHRASE_9_3=Password hash will saved in %2
-	set PHRASE_9_4=Do you want to download needed original MPQ files? (size 1GB)
-	set PHRASE_9_9=^^!^^!^^! To completely setup D2GS edit d2gs.reg and run install.bat ^^!^^!^^!
+	set PHRASE_9_3=Password hash will be saved in %2
+	set PHRASE_9_4=Do you want to download essential original MPQ files? (size 1GB)
+	set PHRASE_9_9=^^!^^!^^! To complete setup D2GS edit d2gs.reg and run install.bat ^^!^^!^^!
 
 	goto switch_lang
 
@@ -196,8 +196,8 @@ goto :eof
 	set PHRASE_4_1=Вы хотите применить патч(и) к исходному коду PvPGN?
 	set PHRASE_4_2=Сначала поместите файлы патчей в папку %2. Скачать патчи можно по ссылке: %3
 	set PHRASE_4_3=*** ОБРАТИТЕ ВНИМАНИЕ ***
-	set PHRASE_4_4=Пути внутри ваших *.patch файлов должны быть установлены относительно корневой папки к исходному коду (в SVN он размещается в %2)
-	set PHRASE_4_5=Например: вы хотите применить патч к файлу %2, тогда путь к этому файлу должен быть %3
+	set PHRASE_4_4=Пути внутри ваших *.patch файлов должны являться относительными к корневой папке исходного кода (в SVN он находится в %2)
+	set PHRASE_4_5=Если вы хотите применить патч к файлу %2, тогда путь к этому файлу должен быть %3
 	set PHRASE_4_6=Вы готовы начать применение патчей?
 	set PHRASE_4_7=Применяется патч %2 ...
 	set PHRASE_4_8=Завершено. Проверьте наличие конфликтов.
@@ -387,14 +387,20 @@ goto :eof
 	
 	set PHRASE_4_1=Mochten Sie  Patch(es) auf die PvPGN-Programmcode anwenden?
 	set PHRASE_4_2=Bringen Sie zuerst die Patch-Dateien in den %2-Order. Die Patches konnen per Link %3 heruntergeladen werden: 
-	set PHRASE_4_3=*** BEACHTEN SIE BITTE***
+	set PHRASE_4_3=*** BEACHTEN SIE BITTE ***
 	set PHRASE_4_4=Die Pfade in Ihren Patch-Dateien (*.patch) sollen bezuglich auf den Ordner zur Programmcode eingestellt werden (in SVN wird sie in %2 platziert)
-	set PHRASE_4_5=Zum Beispiel: Sie mochten einen Patch auf die %2-Datei anwenden, dann soll der Pfad zu dieser Datei %3 sein
+	set PHRASE_4_5=Wenn Sie einen Patch auf die %2-Datei anwenden wollen, dann soll der Pfad zu dieser Datei %3 sein
 	set PHRASE_4_6=Sind Sie bereit, Patches anzuwenden?
 	set PHRASE_4_7=Der Patch %2 wird angewendet ...
 	set PHRASE_4_8=Beendet. Prufen Sie, ob es Konflikte gibt.
 	set PHRASE_4_9=Mochten Sie die PvPGN-Compilierung fortsetzen?
-	
+
+	set PHRASE_9_1=Wahlen Sie Ihre D2GS Version:
+	set PHRASE_9_2=Geben Sie das Admin-Passwort fur Telnet-Verbindungen (auf Port 8888)
+	set PHRASE_9_3=Passwort-Hash wird in der Datei %2 gespeichert
+	set PHRASE_9_4=Wollen Sie wesentliche ursprungliche MPQ-Dateien herunterladen? (1GB)
+	set PHRASE_9_9=^^!^^!^^! Andern Sie d2gs.reg und schliesswn Sie install.bat ab ^^!^^!^^!
+
 	goto echo_phrase
 
 :: Serbian - translation by kingW3
