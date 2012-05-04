@@ -2,6 +2,13 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 =============================================
 
+v1.61 (04.05.2012)
+(D2GS Builder updates)
+- bug fix in bnhash.exe (thanks to Naki)
+- if 64-bit OS then auto change registry path (thanks to Naki)
+- diablo II DLLs are downloaded one time and cached by D2GS Builder in module\include\d2gs\VERSION
+- updated translations 
+
 v1.6 (30.04.2012)
 - added D2GS Magic Builder
 - added MOTD translations for many languages

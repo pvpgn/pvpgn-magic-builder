@@ -1,6 +1,6 @@
-a4722ac3c1ecdab74dff1e66caf69753 *build_d2gs.bat
+cb506c64855f529ca080286648350ffc *build_d2gs.bat
 0850a690a01482c3e9b42bd8b27ea02b *build_pvpgn.bat
-a63374a795cd7bce96de4a71c079a200 *version-history.txt
+d637e352be4343e3a777d58df36b3f08 *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
 b0dda7bac4fcbcafc16608c2c7bc5497 *module\i18n.inc.bat
 40d1dcb850b4c0de162dc4ac2737adb9 *module\replace_line.vbs
@@ -11,7 +11,7 @@ b3a7555a97efdf9b9f147e144227b02c *module\autoupdate\wget.vbs
 bd126a7b59d5d1f97ba89a3e71425731 *module\autoupdate\wget.exe
 733a2f58c4325eb856de21dd60387628 *module\choice.exe
 
-254d1ea7445ac5bc7b59beff09b319e2 *module\bnhash.exe
+bc25aa70888b9dfdfd5f25ac87266024 *module\bnhash.exe
 
 32122e1f4540ac37e3f4b8a65c074feb *module\include\source_replace\CMakeLists.txt
 b70429bc2b344431ff1df78c1f468363 *module\include\source_replace\ConfigureChecks.cmake
