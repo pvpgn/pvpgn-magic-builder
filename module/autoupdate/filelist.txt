@@ -1,6 +1,6 @@
 e0994d1871f566f519f7cae9125fb833 *build_d2gs.bat
 344e37a3a9551c4e8e6e6a56644d006f *build_pvpgn.bat
-9c81993364a2ff1ad4bbf68de8c0e51f *version-history.txt
+98da3ee6529e09a9a9a17b76bdf6b435 *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
 ac0e6dbc17fae6a8fc5c8542512ed2ed *module\i18n.inc.bat
 40d1dcb850b4c0de162dc4ac2737adb9 *module\replace_line.vbs
@@ -47,41 +47,41 @@ c7e5bea0c29b515484b57d68bfba1c73 *module\include\sqlite\3.7.10\sqlite3.dll
 c34b510bad3af2d9b9ec40a10120b4c7 *module\include\sqlite\3.7.10\sqlite3.lib
 
 
-87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.3.17\comerr32.dll
-20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.3.17\gssapi32.dll
-960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.3.17\k5sprt32.dll
-ba0093dcda4d0b299ee2be305a978abd *module\include\pgsql\8.3.17\krb5_32.dll
-205c285cb7f954e472ab601d3617e93a *module\include\pgsql\8.3.17\libiconv-2.dll
-2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\8.3.17\libintl-8.dll
-f8b892a21e0cb94d49a37eea692ec056 *module\include\pgsql\8.3.17\libpq-fe.h
-8621954d0d591e1c0461c6a8abe3646e *module\include\pgsql\8.3.17\libpq.dll
-db2505edcfa082d149e3f8251d3e7d30 *module\include\pgsql\8.3.17\libpq.lib
-9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.3.17\postgres_ext.h
+f8b892a21e0cb94d49a37eea692ec056 *module\include\pgsql\8.3.19\libpq-fe.h
+9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.3.19\postgres_ext.h
+fcf833066cab6d69575e4dc7891d6940 *module\include\pgsql\8.3.19\libpq.lib
+205c285cb7f954e472ab601d3617e93a *module\include\pgsql\8.3.19\libiconv-2.dll
+2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\8.3.19\libintl-8.dll
+3ab406619908eeec19b1c5175035ef06 *module\include\pgsql\8.3.19\libpq.dll
+87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.3.19\comerr32.dll
+20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.3.19\gssapi32.dll
+960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.3.19\k5sprt32.dll
+ba0093dcda4d0b299ee2be305a978abd *module\include\pgsql\8.3.19\krb5_32.dll
 
-87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.4.10\comerr32.dll
-20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.4.10\gssapi32.dll
-960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.4.10\k5sprt32.dll
-ba0093dcda4d0b299ee2be305a978abd *module\include\pgsql\8.4.10\krb5_32.dll
-205c285cb7f954e472ab601d3617e93a *module\include\pgsql\8.4.10\libiconv-2.dll
-2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\8.4.10\libintl-8.dll
-6085b6b9477c0379326aaae48790efc9 *module\include\pgsql\8.4.10\libpq-fe.h
-038330e05b9a52fa6ad52e3209e53a22 *module\include\pgsql\8.4.10\libpq.dll
-6b9fcd82caeb92cc7a587b644f3e24fa *module\include\pgsql\8.4.10\libpq.lib
-9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.4.10\postgres_ext.h
+a9fdab934a6e6ccdd683d98f2d9ce6e0 *module\include\pgsql\8.4.12\libpq.lib
+9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.4.12\postgres_ext.h
+6085b6b9477c0379326aaae48790efc9 *module\include\pgsql\8.4.12\libpq-fe.h
+2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\8.4.12\libintl-8.dll
+60481c3f7c98108ff451c67b8534b98a *module\include\pgsql\8.4.12\libpq.dll
+87352e8f6a4c18df7f99bbde61f84f59 *module\include\pgsql\8.4.12\comerr32.dll
+20b5c88c2e48ee2ef9713a38e9b779a7 *module\include\pgsql\8.4.12\gssapi32.dll
+960054d7b055009ababefc972c4ba3a7 *module\include\pgsql\8.4.12\k5sprt32.dll
+ba0093dcda4d0b299ee2be305a978abd *module\include\pgsql\8.4.12\krb5_32.dll
+205c285cb7f954e472ab601d3617e93a *module\include\pgsql\8.4.12\libiconv-2.dll
 
-205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.0.6\libiconv-2.dll
-2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.0.6\libintl-8.dll
-d2775a244287dc9f918921e05429b798 *module\include\pgsql\9.0.6\libpq-fe.h
-ac876e7da5bf10dccab3cba0dc1e9a2e *module\include\pgsql\9.0.6\libpq.dll
-c66f10b047b2265f2d0078efdc77725f *module\include\pgsql\9.0.6\libpq.lib
-9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\9.0.6\postgres_ext.h
+5167eaa611e1b2a6bb82fe27787a3a73 *module\include\pgsql\9.0.8\libpq.lib
+2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.0.8\libintl-8.dll
+e82ff8d2cd8f03ecf0349d65cc1e3d2a *module\include\pgsql\9.0.8\libpq.dll
+205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.0.8\libiconv-2.dll
+9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\9.0.8\postgres_ext.h
+d2775a244287dc9f918921e05429b798 *module\include\pgsql\9.0.8\libpq-fe.h
 
-205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.1.2\libiconv-2.dll
-2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.1.2\libintl-8.dll
-f0916ce17f26a197442fcc362a2a8266 *module\include\pgsql\9.1.2\libpq-fe.h
-1ff8ce621694819bf7918fdaf450dcca *module\include\pgsql\9.1.2\libpq.dll
-22bb0fde61333a9455fb026aecb2abfd *module\include\pgsql\9.1.2\libpq.lib
-49b1a8226c7f0d3c89de874baa26826f *module\include\pgsql\9.1.2\postgres_ext.h
+e0163db549af8b034d6a648004d3bef0 *module\include\pgsql\9.1.4\libpq.lib
+49b1a8226c7f0d3c89de874baa26826f *module\include\pgsql\9.1.4\postgres_ext.h
+f0916ce17f26a197442fcc362a2a8266 *module\include\pgsql\9.1.4\libpq-fe.h
+2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.1.4\libintl-8.dll
+9103678c53544785eefe44b96e8a96f6 *module\include\pgsql\9.1.4\libpq.dll
+205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.1.4\libiconv-2.dll
 
 
 96a9beb7b7c93d87db8a64a07d156e5b *module\include\mysql\4.1.21\libmySQL.dll

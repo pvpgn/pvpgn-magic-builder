@@ -4,6 +4,9 @@ http://code.google.com/p/pvpgn-magic-builder/
 
 v1.62 (08.06.2012)
 - fixed check if visual studio is not istalled
+- updated includes for MySQL (5.5.21 -> 5.5.25)
+- updated includes for PostgreSQL (8.3.17 -> 8.3.19, 8.4.10 -> 8.4.12, 9.0.6 -> 9.0.8, 9.1.2 -> 9.1.4)
+- updated includes for SQLite (3.7.10 -> 3.7.12.1)
 
 v1.61 (04.05.2012)
 (D2GS Builder updates)
