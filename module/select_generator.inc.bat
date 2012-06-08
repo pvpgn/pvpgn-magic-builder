@@ -9,6 +9,7 @@
 
 :: fill array-map with vs names
 set _vs_map=1-Visual Studio 2003;2-Visual Studio 2005;3-Visual Studio 2008;4-Visual Studio 2010
+
 :: array with installed vs
 set _vs_installed=
 set _vs_choice=0

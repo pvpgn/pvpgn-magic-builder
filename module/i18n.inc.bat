@@ -140,7 +140,7 @@ goto :eof
 	set PHRASE_4_9=Do you want to continue building a PvPGN?
 	
 	set PHRASE_9_1=Select your D2GS version:
-	set PHRASE_9_2=Enter admin password for Telnet connection (listening on port 8888)
+	set PHRASE_9_2=Setup admin password for Telnet connection (listening on port 8888)
 	set PHRASE_9_3=Password hash will be saved in %2
 	set PHRASE_9_4=Do you want to download essential original MPQ files? (size 1GB)
 	set PHRASE_9_9=^^!^^!^^! To complete setup D2GS edit d2gs.reg and run install.bat ^^!^^!^^!
@@ -204,7 +204,7 @@ goto :eof
 	set PHRASE_4_9=Продолжить построение PvPGN?
 
 	set PHRASE_9_1=Выберите версию D2GS:
-	set PHRASE_9_2=Введите пароль админа для Telnet соединения (работает на порту 8888)
+	set PHRASE_9_2=Установите пароль админа для Telnet соединения (работает на порту 8888)
 	set PHRASE_9_3=Хеш пароля будет сохранен в файле %2
 	set PHRASE_9_4=Вы хотите загрузить MPQ файлы, необходимые для работы сервера? (размер 1ГБ)
 	set PHRASE_9_9=^^!^^!^^! Для завершения установки D2GS измените d2gs.reg и запустите install.bat ^^!^^!^^!
@@ -332,7 +332,7 @@ goto :eof
 	set PHRASE_4_9=Czy chcesz kontynuowac kompilowanie PvPGN?
 	
 	set PHRASE_9_1=Wybierz wersje serwera D2GS:
-	set PHRASE_9_2=Wpisz haslo administratora wymagane do polaczenia z konsola Telnet (port 8888)
+	set PHRASE_9_2=Ustalcie haslo administratora wymagane do polaczenia z konsola Telnet (port 8888)
 	set PHRASE_9_3=Haslo zostanie zapisane w pliku %2
 	set PHRASE_9_4=Czy chcesz pobrac oryginalne pliki MPQ z internetu ? (rozmiar 1GB)
 	set PHRASE_9_9=^^!^^!^^! Aby zakonczyc instalacje wyedytuj plik d2gs.reg i uruchom install.bat ^^!^^!^^!
@@ -396,7 +396,7 @@ goto :eof
 	set PHRASE_4_9=Mochten Sie die PvPGN-Compilierung fortsetzen?
 
 	set PHRASE_9_1=Wahlen Sie Ihre D2GS Version:
-	set PHRASE_9_2=Geben Sie das Admin-Passwort fur Telnet-Verbindungen (auf Port 8888)
+	set PHRASE_9_2=Einfuhren Sie das Admin-Passwort fur Telnet-Verbindungen (auf Port 8888)
 	set PHRASE_9_3=Passwort-Hash wird in der Datei %2 gespeichert
 	set PHRASE_9_4=Wollen Sie wesentliche ursprungliche MPQ-Dateien herunterladen? (1GB)
 	set PHRASE_9_9=^^!^^!^^! Andern Sie d2gs.reg und schliesswn Sie install.bat ab ^^!^^!^^!

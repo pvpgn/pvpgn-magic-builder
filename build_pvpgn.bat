@@ -78,7 +78,7 @@ echo _______________________________[ S E T U P ]_______________________________
 :select_vs
 :: try to find a visual studio
 @call module\select_generator.inc.bat
-if [VS_NOT_INSTALLED]==[true] call %i18n% 1_1 & goto THEEND
+if [%VS_NOT_INSTALLED%]==[true] call %i18n% 1_0 & goto THEEND
 
 
 echo.

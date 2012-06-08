@@ -1,10 +1,10 @@
 e0994d1871f566f519f7cae9125fb833 *build_d2gs.bat
-0850a690a01482c3e9b42bd8b27ea02b *build_pvpgn.bat
-d637e352be4343e3a777d58df36b3f08 *version-history.txt
+344e37a3a9551c4e8e6e6a56644d006f *build_pvpgn.bat
+9c81993364a2ff1ad4bbf68de8c0e51f *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
-b0dda7bac4fcbcafc16608c2c7bc5497 *module\i18n.inc.bat
+ac0e6dbc17fae6a8fc5c8542512ed2ed *module\i18n.inc.bat
 40d1dcb850b4c0de162dc4ac2737adb9 *module\replace_line.vbs
-aa823eeacdffae234889198ba7abeaaa *module\select_generator.inc.bat
+9238722aecaca6c1186fadbdab97a33c *module\select_generator.inc.bat
 4e12412d21fb545771101b370275ab85 *module\recursive_copy.inc.bat
 ad5f6548ae986d22a6dc620858180eae *module\autoupdate\check_for_update.inc.bat
 b3a7555a97efdf9b9f147e144227b02c *module\autoupdate\wget.vbs

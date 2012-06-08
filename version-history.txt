@@ -2,6 +2,9 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 =============================================
 
+v1.62 (08.06.2012)
+- fixed check if visual studio is not istalled
+
 v1.61 (04.05.2012)
 (D2GS Builder updates)
 - bug fix in bnhash.exe (thanks to Naki)
