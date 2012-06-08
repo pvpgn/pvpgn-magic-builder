@@ -42,10 +42,10 @@ b75b95b94e301f5723533465b034f1ff *module\include\source_replace\conf\bnmotd-zhTW
 374a332578a48f31246a17e89169f3bf *module\tortoisesvn\patch_source.inc.bat
 bf38660a9125935658cfa3e53fdc7d65 *module\tortoisesvn\msvcr100.dll
 
-c7e5bea0c29b515484b57d68bfba1c73 *module\include\sqlite\3.7.10\sqlite3.dll
-9743f0cf00f8b30fe5ce26a4181f0855 *module\include\sqlite\3.7.10\sqlite3.h
-c34b510bad3af2d9b9ec40a10120b4c7 *module\include\sqlite\3.7.10\sqlite3.lib
 
+b47d4478cc51f0b4ebb8de60171a1240 *module\include\sqlite\3.7.12.1\sqlite3.dll
+c5abff22500963966012bb2001eeb45b *module\include\sqlite\3.7.12.1\sqlite3.h
+89f8004587c9f78c17daa1404552ef8e *module\include\sqlite\3.7.12.1\sqlite3.lib
 
 f8b892a21e0cb94d49a37eea692ec056 *module\include\pgsql\8.3.19\libpq-fe.h
 9acabec3734ef3cc9a470396dbe2df97 *module\include\pgsql\8.3.19\postgres_ext.h
@@ -104,16 +104,15 @@ b83a01c58711060a798b7c57beb81649 *module\include\mysql\5.0.91\mysql_version.h
 a122c49b9ce955ac16ecd2434d2a5c40 *module\include\mysql\5.0.91\my_list.h
 35bc549a34171163e1ff73eb2142665a *module\include\mysql\5.0.91\typelib.h
 
-d3278b0a73cfd50b46bdae1455303796 *module\include\mysql\5.5.21\libmysql.dll
-80ff66cdaf59f6c64cbef072d2e4b715 *module\include\mysql\5.5.21\libmysql.lib
-75d22f03c20bf9f97331d35f2724f4ba *module\include\mysql\5.5.21\mysql.h
-9bd77350e4da356b61a0ade2ab697e49 *module\include\mysql\5.5.21\mysql_com.h
-a1c579412cba83f2ce8c3b1a0a3d7d41 *module\include\mysql\5.5.21\mysql_time.h
-b83dfcfae16b34891ef830b74fbf4117 *module\include\mysql\5.5.21\mysql_version.h
-b6e84c12ea72b972f39866394389660f *module\include\mysql\5.5.21\my_alloc.h
-5a849989a9d60263bf9e00c9614feaed *module\include\mysql\5.5.21\my_list.h
-9cd4d930dafefade2f0fdc4dc49e09b9 *module\include\mysql\5.5.21\typelib.h
-
+d7dafc66ec6506306a2d17393acf5cf4 *module\include\mysql\5.5.25\libmysql.dll
+09120d2e4ac9fa3a38239c7ce70973ec *module\include\mysql\5.5.25\libmysql.lib
+75d22f03c20bf9f97331d35f2724f4ba *module\include\mysql\5.5.25\mysql.h
+9bd77350e4da356b61a0ade2ab697e49 *module\include\mysql\5.5.25\mysql_com.h
+a1c579412cba83f2ce8c3b1a0a3d7d41 *module\include\mysql\5.5.25\mysql_time.h
+78324a41dfbab1848fcdcc3b8ca24999 *module\include\mysql\5.5.25\mysql_version.h
+b6e84c12ea72b972f39866394389660f *module\include\mysql\5.5.25\my_alloc.h
+5a849989a9d60263bf9e00c9614feaed *module\include\mysql\5.5.25\my_list.h
+9cd4d930dafefade2f0fdc4dc49e09b9 *module\include\mysql\5.5.25\typelib.h
 
 6c6c38b2965bc0a29f9695ee4de4128f *module\include\odbc\3.8\odbc32.lib
 1b711552643755cf396c6becd97f0930 *module\include\odbc\3.8\sql.h
