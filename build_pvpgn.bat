@@ -328,17 +328,18 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 @copy /B /Y "%PVPGN_BUILD%src\client\Release\bnftp.exe" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\client\Release\bnstat.exe" "%PVPGN_RELEASE%"
 
-:: copy files directory
-if not exist "%PVPGN_RELEASE%files" mkdir "%PVPGN_RELEASE%files"
-@copy /Y "%PVPGN_SOURCE%files" "%PVPGN_RELEASE%files"
-@del "%PVPGN_RELEASE%files\CMakeLists.txt"
-@del "%PVPGN_RELEASE%files\Makefile.am"
-
-:: copy pvpgnsupport to files directory
-@copy /Y "%SUPPORTFILES_PATH%" "%PVPGN_RELEASE%files"
 
 :: copy var directories (they're empty)
 @xcopy "%PVPGN_BUILD%\files\var\*" "%PVPGN_RELEASE%\var\" /E
+
+:: copy files directory
+if not exist "%PVPGN_RELEASE%var\files" mkdir "%PVPGN_RELEASE%var\files"
+@copy /Y "%PVPGN_SOURCE%files" "%PVPGN_RELEASE%var\files"
+@del "%PVPGN_RELEASE%var\files\CMakeLists.txt"
+@del "%PVPGN_RELEASE%var\files\Makefile.am"
+
+:: copy pvpgnsupport to files directory
+@copy /Y "%SUPPORTFILES_PATH%" "%PVPGN_RELEASE%var\files"
 
 :: create bnmotd from the determined language
 @copy /Y "%PVPGN_RELEASE%conf\bnmotd-%MOTD_LANGUAGE%.txt" "%PVPGN_RELEASE%conf\bnmotd.txt"
