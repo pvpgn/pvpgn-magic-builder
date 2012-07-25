@@ -1,6 +1,6 @@
 e0994d1871f566f519f7cae9125fb833 *build_d2gs.bat
-344e37a3a9551c4e8e6e6a56644d006f *build_pvpgn.bat
-98da3ee6529e09a9a9a17b76bdf6b435 *version-history.txt
+50c55a63384af6bc3767e3866eee1648 *build_pvpgn.bat
+e9f80fa58b220cf9431e1c4ce59efc15 *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
 ac0e6dbc17fae6a8fc5c8542512ed2ed *module\i18n.inc.bat
 40d1dcb850b4c0de162dc4ac2737adb9 *module\replace_line.vbs

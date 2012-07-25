@@ -2,6 +2,9 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 =============================================
 
+v1.63 (25.07.2012)
+- "files" directory moved into "var" directory as unix style
+
 v1.62 (08.06.2012)
 - fixed check if visual studio is not istalled
 - updated includes for MySQL (5.5.21 -> 5.5.25)
