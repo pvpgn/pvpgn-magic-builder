@@ -2,6 +2,10 @@ PvPGN Magic Builder. Version history.
 http://code.google.com/p/pvpgn-magic-builder/
 =============================================
 
+
+v1.64 (11.09.2012)
+- fix path to var\files\newbie.save in d2cs.conf
+
 v1.63 (25.07.2012)
 - "files" directory moved into "var" directory as unix style
 

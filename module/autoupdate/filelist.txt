@@ -1,6 +1,6 @@
 e0994d1871f566f519f7cae9125fb833 *build_d2gs.bat
 50c55a63384af6bc3767e3866eee1648 *build_pvpgn.bat
-e9f80fa58b220cf9431e1c4ce59efc15 *version-history.txt
+406551122984f9b76124c9fe6dfa35fe *version-history.txt
 1dd7e9e0bcdf59bcbd2af59374a9364a *module\dbchoice.inc.bat
 ac0e6dbc17fae6a8fc5c8542512ed2ed *module\i18n.inc.bat
 40d1dcb850b4c0de162dc4ac2737adb9 *module\replace_line.vbs
@@ -18,7 +18,7 @@ b70429bc2b344431ff1df78c1f468363 *module\include\source_replace\ConfigureChecks.
 d09fe9af29b9ccb7c2c8757328ee05da *module\include\source_replace\src\CMakeLists.txt
 b79d824aef3d961b28cc78fa1c632bdd *module\include\source_replace\src\bnetd\CMakeLists.txt
 89d0c48480179f2c4353abb3822c5076 *module\include\source_replace\conf\bnetd.conf.in
-53b60a65830d89bd084e556d19d2496b *module\include\source_replace\conf\d2cs.conf.in
+4b31e279214996085c333048a19e58c0 *module\include\source_replace\conf\d2cs.conf.in
 4683954c260f12a7940760aa53a0d8b0 *module\include\source_replace\conf\d2dbs.conf.in
 6e49deef9bffd83373ecaa09c3770ef1 *module\include\source_replace\conf\versioncheck.conf.in
 78420f7409a04fe2bb0ce1a67d8a7770 *module\include\source_replace\cmake\Modules\DefineInstallationPaths.cmake
