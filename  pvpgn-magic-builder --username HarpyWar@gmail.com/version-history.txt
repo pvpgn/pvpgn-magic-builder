@@ -1,0 +1,94 @@
+PvPGN Magic Builder. Version history.
+http://code.google.com/p/pvpgn-magic-builder/
+=============================================
+
+
+v1.64 (11.09.2012)
+- fix path to var\files\newbie.save in d2cs.conf
+
+v1.63 (25.07.2012)
+- "files" directory moved into "var" directory as unix style
+
+v1.62 (08.06.2012)
+- fixed check if visual studio is not istalled
+- updated includes for MySQL (5.5.21 -> 5.5.25)
+- updated includes for PostgreSQL (8.3.17 -> 8.3.19, 8.4.10 -> 8.4.12, 9.0.6 -> 9.0.8, 9.1.2 -> 9.1.4)
+- updated includes for SQLite (3.7.10 -> 3.7.12.1)
+
+v1.61 (04.05.2012)
+(D2GS Builder updates)
+- bug fix in bnhash.exe (thanks to Naki)
+- if 64-bit OS then auto change registry path (thanks to Naki)
+- diablo II DLLs are downloaded one time and cached by D2GS Builder in module\include\d2gs\VERSION
+- updated translations 
+
+v1.6 (30.04.2012)
+- added D2GS Magic Builder
+- added MOTD translations for many languages
+- fixed minor issues
+
+v1.55 (23.02.2012)
+- fixed "storagepath" replace (into bnetd.conf) on pvpgn rebuild batch
+- updated includes for MySQL (5.5.16 -> 5.5.21)
+- updated includes for PostgreSQL (8.3.1 -> 8.3.17, 8.4.8 -> 8.4.10, 9.0.5 -> 9.0.6, 9.1.1 -> 9.1.2)
+- updated includes for SQLite (3.7.8 -> 3.7.10)
+
+v1.54 (15.10.2011)
+- hot fix - svn path was changed
+
+v1.53 (06.10.2011)
+- added russian motd
+- updated includes for MySQL (5.5.15 -> 5.5.16)
+- updated includes for PostgreSQL (9.0.4 -> 9.0.5), added postgre 9.1.1
+- updated includes for SQLite (3.7.7 -> 3.7.8)
+
+
+v1.52 (04.08.2011)
+- hotfix for the latest MySQL headers (VC++ 2008 needs 3 files more then 2010)
+
+v1.51 (02.08.2011)
+- skip Magic Builder update on pvpgn rebuild
+- added includes for MySQL 5.5.15 
+- updated includes for SQLite (3.7.5 -> 3.7.7)
+
+v1.5 (11.06.2011)
+- added ability to rebuild pvpgn with no action through "rebuild_pvpgn.bat"
+- now after first database configuration, values saves in "[db].conf.bat" file
+- fixed selection for all languages
+
+v1.43 (07.06.2011)
+- added Serbian translation (thanks to kingW3)
+
+v1.42 (09.05.2011)
+- restriction to spaces in the path
+
+v1.41 (07.05.2011)
+- added Polish translation (thanks to Naki-BoT)
+
+v1.4 (04.05.2011)
+- capability to apply patches to your source code (optional)
+- capability to set a Visual Studio version to compile a PvPGN (if you've have several Studious)
+- now compilation with Visual Studio 2010 is faster on multiprocessor systems
+- added files for ODBC 3.8
+- added files for ODBC 3.52
+- added German translation (thanks to SKY777)
+
+v1.3 (01.05.2011)
+- more user-friendly interface, choose an action is become more comfortable
+- added ODBC support
+- added latest versioncheck.conf
+- added includes for MySQL 4.1.21
+- added includes for MySQL 5.0.91
+
+v1.2 (30.04.2011)
+- autoupdate fix (now it creates directories in the middle of the path, if it's not exists)
+- added PostgreSQL support
+- added SQLite3 support
+
+v1.1 (29.04.2011)
+- bnmotd.txt creates from the determined OS language
+- interactive configuring database connection settings (optional)
+- added Dutch translation (thanks to MusicDemon)
+
+v1.0 (28.04.2011)
+- first release
