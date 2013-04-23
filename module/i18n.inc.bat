@@ -133,7 +133,7 @@ goto :eof
 	set PHRASE_4_2=Please, first put your patch files to the %2 directory. You can download patches from the url: %3
 	set PHRASE_4_3=*** WARNING ***
 	set PHRASE_4_4=Paths in your *.patch files should be relative to the root of the source code directory (it is in the SVN at %2)
-	set PHRASE_4_5=If you want to apply patch to %2, path to this file should be %3
+	set PHRASE_4_5=For example, if you want to apply patch to %2, path to this file should be %3
 	set PHRASE_4_6=Are you ready to patch?
 	set PHRASE_4_7=Applying patch %2 ...
 	set PHRASE_4_8=Finished. Please, check for conflicts.
@@ -197,7 +197,7 @@ goto :eof
 	set PHRASE_4_2=Сначала поместите файлы патчей в папку %2. Скачать патчи можно по ссылке: %3
 	set PHRASE_4_3=*** ОБРАТИТЕ ВНИМАНИЕ ***
 	set PHRASE_4_4=Пути внутри ваших *.patch файлов должны являться относительными к корневой папке исходного кода (в SVN он находится в %2)
-	set PHRASE_4_5=Если вы хотите применить патч к файлу %2, тогда путь к этому файлу должен быть %3
+	set PHRASE_4_5=Например, если вы хотите применить патч к файлу %2, тогда путь к этому файлу должен быть %3
 	set PHRASE_4_6=Вы готовы начать применение патчей?
 	set PHRASE_4_7=Применяется патч %2 ...
 	set PHRASE_4_8=Завершено. Проверьте наличие конфликтов.

@@ -8,7 +8,7 @@
 
 
 :: fill array-map with vs names
-set _vs_map=1-Visual Studio 2003;2-Visual Studio 2005;3-Visual Studio 2008;4-Visual Studio 2010
+set _vs_map=1-Visual Studio 2003;2-Visual Studio 2005;3-Visual Studio 2008;4-Visual Studio 2010;5-Visual Studio 2012
 
 :: array with installed vs
 set _vs_installed=
@@ -20,7 +20,7 @@ set _vs_num=1& if not ["%VS71COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed
 set _vs_num=2& if not ["%VS80COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
 set _vs_num=3& if not ["%VS90COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
 set _vs_num=4& if not ["%VS100COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
-
+set _vs_num=5& if not ["%VS110COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
 
 :: if no vs found
 if %_vs_count% equ 0 set VS_NOT_INSTALLED=true& goto :eof
@@ -60,6 +60,7 @@ if [%_vs_choice%]==[1] set VSCOMNTOOLS=%VS71COMNTOOLS%& set GENERATOR=Visual Stu
 if [%_vs_choice%]==[2] set VSCOMNTOOLS=%VS80COMNTOOLS%& set GENERATOR=Visual Studio 8 2005& set VSVER=v80
 if [%_vs_choice%]==[3] set VSCOMNTOOLS=%VS90COMNTOOLS%& set GENERATOR=Visual Studio 9 2008& set VSVER=v90
 if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10& set VSVER=v100
+if [%_vs_choice%]==[5] set VSCOMNTOOLS=%VS110COMNTOOLS%& set GENERATOR=Visual Studio 11& set VSVER=v110
 set PARAM_VS=%_vs_choice%
 
 call %i18n% 1_2 "%GENERATOR%"
