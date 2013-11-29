@@ -10,8 +10,10 @@ set DB_DIR=%2
 :: database configuration file with preset values
 set config_file=%DB_ENGINE%.conf.bat
 
-:: if db configuration file exists, call it
-if exist %config_file% @call %config_file%
+:: if automatic rebuild && db configuration file exists, then call it
+if not [%PARAM_REBUILD%]==[] (
+	if exist %config_file% @call %config_file%
+)
 
 :: {PARAMETER}, if not empty skip db configuration choice
 if not [%DB_VERSION%]==[] set CHOICE_DB_CONF=y& goto :db_configured

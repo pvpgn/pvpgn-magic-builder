@@ -109,7 +109,7 @@ goto :eof
 	set PHRASE_2_2=   Enter a number
 	set PHRASE_2_3=   Wrong number... try again
 	set PHRASE_2_4=   PvPGN will be compiled with %2 v%3 support
-	set PHRASE_2_5=Do you want to configure settings for %2 now?
+	set PHRASE_2_5=Do you want to configure settings for %2 now (bnetd.conf ^> storage_path)?
 	set PHRASE_2_6=    Connection host
 	set PHRASE_2_7=    Connection user
 	set PHRASE_2_8=    Connection password
@@ -140,7 +140,7 @@ goto :eof
 	set PHRASE_4_9=Do you want to continue building a PvPGN?
 	
 	set PHRASE_9_1=Select your D2GS version:
-	set PHRASE_9_2=Setup admin password for Telnet connection (listening on port 8888)
+	set PHRASE_9_2=Setup admin password for Telnet connection (listening on port 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Password hash will be saved in %2
 	set PHRASE_9_4=Do you want to download essential original MPQ files? (size 1GB)
 	set PHRASE_9_9=^^!^^!^^! To complete setup D2GS edit d2gs.reg and run install.bat ^^!^^!^^!
@@ -173,7 +173,7 @@ goto :eof
 	set PHRASE_2_2=   Введите номер
 	set PHRASE_2_3=   Неправильный номер... попробуйте ещё раз
 	set PHRASE_2_4=   PvPGN будет скомпилирован с поддержкой %2 v%3
-	set PHRASE_2_5=Изменить сейчас настройки для %2?
+	set PHRASE_2_5=Изменить сейчас настройки для %2 (bnetd.conf ^> storage_path)?
 	set PHRASE_2_6=    Адрес сервера (хост)
 	set PHRASE_2_7=    Пользователь
 	set PHRASE_2_8=    Пароль
@@ -204,7 +204,7 @@ goto :eof
 	set PHRASE_4_9=Продолжить построение PvPGN?
 
 	set PHRASE_9_1=Выберите версию D2GS:
-	set PHRASE_9_2=Установите пароль админа для Telnet соединения (работает на порту 8888)
+	set PHRASE_9_2=Установите пароль админа для Telnet соединения (работает на порту 8888), будет сохранен в d2gs.reg
 	set PHRASE_9_3=Хеш пароля будет сохранен в файле %2
 	set PHRASE_9_4=Вы хотите загрузить MPQ файлы, необходимые для работы сервера? (размер 1ГБ)
 	set PHRASE_9_9=^^!^^!^^! Для завершения установки D2GS измените d2gs.reg и запустите install.bat ^^!^^!^^!
@@ -237,7 +237,7 @@ goto :eof
 	set PHRASE_2_2=   Kies een nummer
 	set PHRASE_2_3=   Verkeerde keuze... Probeer het opnieuw
 	set PHRASE_2_4=   PvPGN word gebouwd met %2 ondersteuning op v%3
-	set PHRASE_2_5=Wilt u %2 nu configureren?
+	set PHRASE_2_5=Wilt u %2 nu configureren (bnetd.conf ^> storage_path)?
 	set PHRASE_2_6=    Connectie host
 	set PHRASE_2_7=    Connectie gebruiker
 	set PHRASE_2_8=    Connectie wachtwoord
@@ -268,7 +268,7 @@ goto :eof
 	set PHRASE_4_9=Wilt u doorgaan met het bouwen van PvPGN?
 
 	set PHRASE_9_1=Selecteer jou D2GS versie:
-	set PHRASE_9_2=Geef een administrator wachtwoord op voor de Telnet connectie (Luisterend op poort 8888)
+	set PHRASE_9_2=Geef een administrator wachtwoord op voor de Telnet connectie (Luisterend op poort 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Wachtwoord wordt opgeslagen in %2
 	set PHRASE_9_4=Wilt u de vereiste originele MPQ-bestanden downloaden? (Grote: 1GB)
 	set PHRASE_9_9=^^!^^!^^! Pas d2gs.reg aan en start install.bat om de setup te voltooien ^^!^^!^^!
@@ -301,7 +301,7 @@ goto :eof
 	set PHRASE_2_2=   Podaj liczbe
 	set PHRASE_2_3=   Bledny wybor... sprobuj ponownie
 	set PHRASE_2_4=   PvPGN zostanie skompilowany z obsluga %2 v%3
-	set PHRASE_2_5=Czy chcesz teraz dokonac konfiguracji %2?
+	set PHRASE_2_5=Czy chcesz teraz dokonac konfiguracji %2 (bnetd.conf ^> storage_path)?
 	set PHRASE_2_6=    Adres serwera bazy danych
 	set PHRASE_2_7=    Nazwa uzytkownika bazy danych
 	set PHRASE_2_8=    Haslo do bazy danych
@@ -332,7 +332,7 @@ goto :eof
 	set PHRASE_4_9=Czy chcesz kontynuowac kompilowanie PvPGN?
 	
 	set PHRASE_9_1=Wybierz wersje serwera D2GS:
-	set PHRASE_9_2=Ustalcie haslo administratora wymagane do polaczenia z konsola Telnet (port 8888)
+	set PHRASE_9_2=Ustalcie haslo administratora wymagane do polaczenia z konsola Telnet (port 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Haslo zostanie zapisane w pliku %2
 	set PHRASE_9_4=Czy chcesz pobrac oryginalne pliki MPQ z internetu ? (rozmiar 1GB)
 	set PHRASE_9_9=^^!^^!^^! Aby zakonczyc instalacje wyedytuj plik d2gs.reg i uruchom install.bat ^^!^^!^^!
@@ -365,7 +365,7 @@ goto :eof
 	set PHRASE_2_2=   Geben Sie eine Nummer ein
 	set PHRASE_2_3=   Falsche Nummer... versuchen Sie noch einmal 
 	set PHRASE_2_4=   PvPGN wird mit der %2 v%3-Unterstutzung kompiliert
-	set PHRASE_2_5=Mochten Sie jetzt die %2-Einstellungen andern?
+	set PHRASE_2_5=Mochten Sie jetzt die %2-Einstellungen andern (bnetd.conf ^> storage_path)?
 	set PHRASE_2_6=    Serveradresse (Host)
 	set PHRASE_2_7=    Benutzer
 	set PHRASE_2_8=    Passwort
@@ -396,7 +396,7 @@ goto :eof
 	set PHRASE_4_9=Mochten Sie die PvPGN-Compilierung fortsetzen?
 
 	set PHRASE_9_1=Wahlen Sie Ihre D2GS Version:
-	set PHRASE_9_2=Einfuhren Sie das Admin-Passwort fur Telnet-Verbindungen (auf Port 8888)
+	set PHRASE_9_2=Einfuhren Sie das Admin-Passwort fur Telnet-Verbindungen (auf Port 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Passwort-Hash wird in der Datei %2 gespeichert
 	set PHRASE_9_4=Wollen Sie wesentliche ursprungliche MPQ-Dateien herunterladen? (1GB)
 	set PHRASE_9_9=^^!^^!^^! Andern Sie d2gs.reg und schliesswn Sie install.bat ab ^^!^^!^^!
@@ -429,7 +429,7 @@ goto :eof
 	set PHRASE_2_2=   izaberi broj
 	set PHRASE_2_3=   lose izabrano... probajte opet
 	set PHRASE_2_4=   PvPGN ce compilirati pomocu %2 v%3
-	set PHRASE_2_5=dali zelite da konfigurisete %2 now?
+	set PHRASE_2_5=dali zelite da konfigurisete %2 now (bnetd.conf ^> storage_path)?
 	set PHRASE_2_6=    host baze podataka
 	set PHRASE_2_7=    korisnik baze podataka
 	set PHRASE_2_8=    pasvord korisnika
