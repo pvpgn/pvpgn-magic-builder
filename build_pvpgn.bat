@@ -10,12 +10,12 @@ color 1f
 echo.
 echo *:*:*:*:*:*:*:*:*-  P v P G N  M a g i c  B u i l d e r  -*:*:*:*:*:*:*:*:*:*:*
 echo *                                                                             *
-echo *   Copyright 2011-2012, HarpyWar (harpywar@gmail.com)                        *
+echo *   Copyright 2011-2013, HarpyWar (harpywar@gmail.com)                        *
 echo *   http://harpywar.com                                                       *
 echo *                                                                             *
 echo *:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*
 set CURRENT_PATH=%~dp0
-:: change path to where script was run
+:: change path to where script is runned
 cd /D "%CURRENT_PATH%"
 
 
@@ -201,26 +201,30 @@ if [%CHOICE_DBTYPE%]==[5] (
 )
 
 
-:: {PARAMETER}, if not empty, skip SVN checkout and CMake configure
-if not [%PARAM_REBUILD%]==[] goto :build
 
 echo.
 echo _____________________[ P V P G N  S O U R C E  C O D E]_________________________
 
-:: do you want to apply patches? 
-call %i18n% 4_1
-module\choice
-if %errorlevel%==2 ( set CHOICE_PATCH=n) else ( set CHOICE_PATCH=y)
 
 :: ----------- DOWNLOAD ------------
-if [%LOG%]==[true] set _svn_log=^>svn.log
-if not exist %PVPGN_SOURCE% mkdir %PVPGN_SOURCE%
 
-:: download latest pvpgn from the svn
-if [%CHOICE_SVN%]==[y] module\tortoisesvn\svn.exe checkout %PVPGN_SVN% %PVPGN_SOURCE% %_svn_log%
+:: {PARAMETER}, if empty then SVN checkout
+if [%PARAM_REBUILD%]==[] (
+	if [%LOG%]==[true] set _svn_log=^>svn.log
+	if not exist %PVPGN_SOURCE% mkdir %PVPGN_SOURCE%
 
-:: applying patches
-if [%CHOICE_PATCH%]==[y] @call module\tortoisesvn\patch_source.inc.bat
+	:: download latest pvpgn from the svn
+	if [%CHOICE_SVN%]==[y] module\tortoisesvn\svn.exe checkout %PVPGN_SVN% %PVPGN_SOURCE% %_svn_log%
+)
+
+echo 1
+
+:: replace custom source code files
+@call :backup_conf
+
+
+:: {PARAMETER}, if not empty then skip CMake configuration
+if not [%PARAM_REBUILD%]==[] goto :build
 
 
 
@@ -230,8 +234,7 @@ echo ______________________[ C M A K E  C O N F I G U R E ]_____________________
 if [%LOG%]==[true] set _cmake_log= ^>cmake.log
 if not exist "%PVPGN_BUILD%" mkdir "%PVPGN_BUILD%"
 
-:: use win32 configs
-@call :backup_conf
+@call :clean_build_release
 
 :: delete cmake cache
 del %PVPGN_BUILD%CMakeCache.txt
@@ -286,8 +289,8 @@ echo ______________________________[ R E L E A S E ]____________________________
 
 :: restore unix configs (only after build! because it uses source directory while compile)
 
-:: {PARAMETER}, :restore_conf only if clean build (not rebuild). Because :backup_conf calls on clean build only
-if [%PARAM_REBUILD%]==[] @call :restore_conf
+:: restore custom source files
+@call :restore_conf
 
 :: check pvpgn exe for exists 
 if not exist "%PVPGN_BUILD%src\bnetd\Release\bnetd.exe" goto :FAIL
@@ -352,11 +355,13 @@ if ["%CHOICE_DB_CONF%"]==["y"] (
 
 goto THEEND
 
-:backup_conf
-	:: erase build and release directories
+:: erase build and release directories
+:clean_build_release
 	@erase /S /Q "%PVPGN_RELEASE%*.*">nul
 	@erase /S /Q "%PVPGN_BUILD%*.*">nul
+	exit /b 0
 	
+:backup_conf
 	@call module\recursive_copy.inc.bat module\include\source_replace\ ..\..\..\source\ backup
 	exit /b 0
 

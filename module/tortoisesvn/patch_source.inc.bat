@@ -27,11 +27,6 @@ echo.
 echo.
 call %i18n% 4_8
 
-:: ask for continue building or not (exit program if not)
-echo.
-call %i18n% 4_9
-module\choice
-if %errorlevel%==2 exit 1
 
 goto :eof
 
