@@ -173,6 +173,7 @@ function(CONFIGURE_PACKAGE_CONFIG_FILE _inputFile _outputFile)
   else()
     set(absInstallDir "${CMAKE_INSTALL_PREFIX}/${CCF_INSTALL_DESTINATION}")
   endif()
+
   file(RELATIVE_PATH PACKAGE_RELATIVE_PATH "${absInstallDir}" "${CMAKE_INSTALL_PREFIX}" )
 
   foreach(var ${CCF_PATH_VARS})
@@ -188,10 +189,30 @@ function(CONFIGURE_PACKAGE_CONFIG_FILE _inputFile _outputFile)
     endif()
   endforeach()
 
+  get_filename_component(inputFileName "${_inputFile}" NAME)
+
   set(PACKAGE_INIT "
 ####### Expanded from @PACKAGE_INIT@ by configure_package_config_file() #######
+####### Any changes to this file will be overwritten by the next CMake run ####
+####### The input file was ${inputFileName}                            ########
+
 get_filename_component(PACKAGE_PREFIX_DIR \"\${CMAKE_CURRENT_LIST_DIR}/${PACKAGE_RELATIVE_PATH}\" ABSOLUTE)
 ")
+
+  if("${absInstallDir}" MATCHES "^(/usr)?/lib(64)?/.+")
+    # Handle "/usr move" symlinks created by some Linux distros.
+    set(PACKAGE_INIT "${PACKAGE_INIT}
+# Use original install prefix when loaded through a \"/usr move\"
+# cross-prefix symbolic link such as /lib -> /usr/lib.
+get_filename_component(_realCurr \"\${CMAKE_CURRENT_LIST_DIR}\" REALPATH)
+get_filename_component(_realOrig \"${absInstallDir}\" REALPATH)
+if(_realCurr STREQUAL _realOrig)
+  set(PACKAGE_PREFIX_DIR \"${CMAKE_INSTALL_PREFIX}\")
+endif()
+unset(_realOrig)
+unset(_realCurr)
+")
+  endif()
 
   if(NOT CCF_NO_SET_AND_CHECK_MACRO)
     set(PACKAGE_INIT "${PACKAGE_INIT}

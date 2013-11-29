@@ -47,7 +47,7 @@
 #     ...
 #   };
 #
-# The CMake fragment will generate a file in the ${CMAKE_CURRENT_BUILD_DIR}
+# The CMake fragment will generate a file in the ${CMAKE_CURRENT_BINARY_DIR}
 # called somelib_export.h containing the macros SOMELIB_EXPORT, SOMELIB_NO_EXPORT,
 # SOMELIB_DEPRECATED, SOMELIB_DEPRECATED_EXPORT and SOMELIB_DEPRECATED_NO_EXPORT.
 # The resulting file should be installed with other headers in the library.
@@ -156,15 +156,11 @@ macro(_test_compiler_hidden_visibility)
 
   if(CMAKE_COMPILER_IS_GNUCXX AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.2")
     set(GCC_TOO_OLD TRUE)
-    message(WARNING "GCC version older than 4.2")
   elseif(CMAKE_COMPILER_IS_GNUC AND CMAKE_C_COMPILER_VERSION VERSION_LESS "4.2")
     set(GCC_TOO_OLD TRUE)
-    message(WARNING "GCC version older than 4.2")
   elseif(CMAKE_CXX_COMPILER_ID MATCHES Intel AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "12.0")
     set(_INTEL_TOO_OLD TRUE)
-    message(WARNING "Intel compiler older than 12.0")
   endif()
-
 
   # Exclude XL here because it misinterprets -fvisibility=hidden even though
   # the check_cxx_compiler_flag passes
@@ -271,6 +267,7 @@ macro(_DO_GENERATE_EXPORT_HEADER TARGET_LIBRARY)
   if(_GEH_EXPORT_MACRO_NAME)
     set(EXPORT_MACRO_NAME ${_GEH_PREFIX_NAME}${_GEH_EXPORT_MACRO_NAME})
   endif()
+  string(MAKE_C_IDENTIFIER ${EXPORT_MACRO_NAME} EXPORT_MACRO_NAME)
   if(_GEH_EXPORT_FILE_NAME)
     if(IS_ABSOLUTE ${_GEH_EXPORT_FILE_NAME})
       set(EXPORT_FILE_NAME ${_GEH_EXPORT_FILE_NAME})
@@ -281,12 +278,15 @@ macro(_DO_GENERATE_EXPORT_HEADER TARGET_LIBRARY)
   if(_GEH_DEPRECATED_MACRO_NAME)
     set(DEPRECATED_MACRO_NAME ${_GEH_PREFIX_NAME}${_GEH_DEPRECATED_MACRO_NAME})
   endif()
+  string(MAKE_C_IDENTIFIER ${DEPRECATED_MACRO_NAME} DEPRECATED_MACRO_NAME)
   if(_GEH_NO_EXPORT_MACRO_NAME)
     set(NO_EXPORT_MACRO_NAME ${_GEH_PREFIX_NAME}${_GEH_NO_EXPORT_MACRO_NAME})
   endif()
+  string(MAKE_C_IDENTIFIER ${NO_EXPORT_MACRO_NAME} NO_EXPORT_MACRO_NAME)
   if(_GEH_STATIC_DEFINE)
     set(STATIC_DEFINE ${_GEH_PREFIX_NAME}${_GEH_STATIC_DEFINE})
   endif()
+  string(MAKE_C_IDENTIFIER ${STATIC_DEFINE} STATIC_DEFINE)
 
   if(_GEH_DEFINE_NO_DEPRECATED)
     set(DEFINE_NO_DEPRECATED TRUE)
@@ -296,6 +296,7 @@ macro(_DO_GENERATE_EXPORT_HEADER TARGET_LIBRARY)
     set(NO_DEPRECATED_MACRO_NAME
       ${_GEH_PREFIX_NAME}${_GEH_NO_DEPRECATED_MACRO_NAME})
   endif()
+  string(MAKE_C_IDENTIFIER ${NO_DEPRECATED_MACRO_NAME} NO_DEPRECATED_MACRO_NAME)
 
   set(INCLUDE_GUARD_NAME "${EXPORT_MACRO_NAME}_H")
 
@@ -304,6 +305,7 @@ macro(_DO_GENERATE_EXPORT_HEADER TARGET_LIBRARY)
   if(NOT EXPORT_IMPORT_CONDITION)
     set(EXPORT_IMPORT_CONDITION ${TARGET_LIBRARY}_EXPORTS)
   endif()
+  string(MAKE_C_IDENTIFIER ${EXPORT_IMPORT_CONDITION} EXPORT_IMPORT_CONDITION)
 
   configure_file("${_GENERATE_EXPORT_HEADER_MODULE_DIR}/exportheader.cmake.in"
     "${EXPORT_FILE_NAME}" @ONLY)
@@ -311,11 +313,9 @@ endmacro()
 
 function(GENERATE_EXPORT_HEADER TARGET_LIBRARY)
   get_property(type TARGET ${TARGET_LIBRARY} PROPERTY TYPE)
-  if(${type} STREQUAL "MODULE")
-    message(WARNING "This macro should not be used with libraries of type MODULE")
-    return()
-  endif()
-  if(NOT ${type} STREQUAL "STATIC_LIBRARY" AND NOT ${type} STREQUAL "SHARED_LIBRARY")
+  if(NOT ${type} STREQUAL "STATIC_LIBRARY"
+      AND NOT ${type} STREQUAL "SHARED_LIBRARY"
+      AND NOT ${type} STREQUAL "MODULE_LIBRARY")
     message(WARNING "This macro can only be used with libraries")
     return()
   endif()

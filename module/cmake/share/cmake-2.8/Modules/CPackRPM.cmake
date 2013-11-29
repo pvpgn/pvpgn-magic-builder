@@ -163,6 +163,8 @@
 #     May be set by the user in order to specify a USER binary spec file
 #     to be used by CPackRPM instead of generating the file.
 #     The specified file will be processed by configure_file( @ONLY).
+#     One can provide a component specific file by setting
+#     CPACK_RPM_<componentName>_USER_BINARY_SPECFILE.
 ##end
 ##variable
 #  CPACK_RPM_GENERATE_USER_BINARY_SPECFILE_TEMPLATE - Spec file template.
@@ -222,6 +224,24 @@
 #     May be used to embed a changelog in the spec file.
 #     The refered file will be read and directly put after the %changelog
 #     section.
+##end
+##variable
+#  CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST - list of path to be excluded.
+#     Mandatory : NO
+#     Default   : /etc /etc/init.d /usr /usr/share /usr/share/doc /usr/bin /usr/lib /usr/lib64 /usr/include
+#     May be used to exclude path (directories or files) from the auto-generated
+#     list of paths discovered by CPack RPM. The defaut value contains a reasonable
+#     set of values if the variable is not defined by the user. If the variable
+#     is defined by the user then CPackRPM will NOT any of the default path.
+#     If you want to add some path to the default list then you can use
+#     CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION variable.
+##end
+##variable
+#  CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION - additional list of path to be excluded.
+#     Mandatory : NO
+#     Default   : -
+#     May be used to add more exclude path (directories or files) from the initial
+#     default list of excluded paths. See CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST.
 ##end
 
 #=============================================================================
@@ -311,13 +331,11 @@ endif()
 # Are we packaging components ?
 if(CPACK_RPM_PACKAGE_COMPONENT)
   set(CPACK_RPM_PACKAGE_COMPONENT_PART_NAME "-${CPACK_RPM_PACKAGE_COMPONENT}")
-  set(CPACK_RPM_PACKAGE_COMPONENT_PART_PATH "/${CPACK_RPM_PACKAGE_COMPONENT}")
-  set(WDIR "${CPACK_TOPLEVEL_DIRECTORY}/${CPACK_PACKAGE_FILE_NAME}/${CPACK_RPM_PACKAGE_COMPONENT}")
 else()
   set(CPACK_RPM_PACKAGE_COMPONENT_PART_NAME "")
-  set(CPACK_RPM_PACKAGE_COMPONENT_PART_PATH "")
-  set(WDIR "${CPACK_TOPLEVEL_DIRECTORY}/${CPACK_PACKAGE_FILE_NAME}")
 endif()
+
+set(WDIR "${CPACK_TOPLEVEL_DIRECTORY}/${CPACK_PACKAGE_FILE_NAME}${CPACK_RPM_PACKAGE_COMPONENT_PART_PATH}")
 
 #
 # Use user-defined RPM specific variables value
@@ -453,31 +471,41 @@ endif()
 
 # Check if additional fields for RPM spec header are given
 # There may be some COMPONENT specific variables as well
+# If component specific var is not provided we use the global one
+# for each component
 foreach(_RPM_SPEC_HEADER URL REQUIRES SUGGESTS PROVIDES OBSOLETES PREFIX CONFLICTS AUTOPROV AUTOREQ AUTOREQPROV)
     if(CPACK_RPM_PACKAGE_DEBUG)
       message("CPackRPM:Debug: processing ${_RPM_SPEC_HEADER}")
     endif()
     if(CPACK_RPM_PACKAGE_COMPONENT)
-        if(CPACK_RPM_${CPACK_RPM_PACKAGE_COMPONENT}_PACKAGE_${_RPM_SPEC_HEADER})
+        if(DEFINED CPACK_RPM_${CPACK_RPM_PACKAGE_COMPONENT}_PACKAGE_${_RPM_SPEC_HEADER})
             if(CPACK_RPM_PACKAGE_DEBUG)
               message("CPackRPM:Debug: using CPACK_RPM_${CPACK_RPM_PACKAGE_COMPONENT}_PACKAGE_${_RPM_SPEC_HEADER}")
             endif()
             set(CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}_TMP ${CPACK_RPM_${CPACK_RPM_PACKAGE_COMPONENT}_PACKAGE_${_RPM_SPEC_HEADER}})
         else()
-            if(CPACK_RPM_PACKAGE_DEBUG)
-              message("CPackRPM:Debug: CPACK_RPM_${CPACK_RPM_PACKAGE_COMPONENT}_PACKAGE_${_RPM_SPEC_HEADER} not defined")
-              message("CPackRPM:Debug: using CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}")
+            if(DEFINED CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER})
+              if(CPACK_RPM_PACKAGE_DEBUG)
+                message("CPackRPM:Debug: CPACK_RPM_${CPACK_RPM_PACKAGE_COMPONENT}_PACKAGE_${_RPM_SPEC_HEADER} not defined")
+                message("CPackRPM:Debug: using CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}")
+              endif()
+              set(CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}_TMP ${CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}})
             endif()
-            set(CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}_TMP ${CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}})
         endif()
     else()
-        if(CPACK_RPM_PACKAGE_DEBUG)
-          message("CPackRPM:Debug: using CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}")
+        if(DEFINED CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER})
+          if(CPACK_RPM_PACKAGE_DEBUG)
+            message("CPackRPM:Debug: using CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}")
+          endif()
+          set(CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}_TMP ${CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}})
         endif()
-        set(CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}_TMP ${CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}})
     endif()
 
-  if(CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}_TMP)
+  # Treat the RPM Spec keyword iff it has been properly defined
+  if(DEFINED CPACK_RPM_PACKAGE_${_RPM_SPEC_HEADER}_TMP)
+    # Transform NAME --> Name e.g. PROVIDES --> Provides
+    # The Upper-case first letter and lowercase tail is the
+    # appropriate value required in the final RPM spec file.
     string(LENGTH ${_RPM_SPEC_HEADER} _PACKAGE_HEADER_STRLENGTH)
     math(EXPR _PACKAGE_HEADER_STRLENGTH "${_PACKAGE_HEADER_STRLENGTH} - 1")
     string(SUBSTRING ${_RPM_SPEC_HEADER} 1 ${_PACKAGE_HEADER_STRLENGTH} _PACKAGE_HEADER_TAIL)
@@ -609,7 +637,7 @@ if(CPACK_RPM_CHANGELOG_FILE)
     message(SEND_ERROR "CPackRPM:Warning: CPACK_RPM_CHANGELOG_FILE <${CPACK_RPM_CHANGELOG_FILE}> does not exists - ignoring")
   endif()
 else()
-  set(CPACK_RPM_SPEC_CHANGELOG "* Sun Jul 4 2010 Erk <eric.noulard@gmail.com>\n  Generated by CPack RPM (no Changelog file were provided)")
+  set(CPACK_RPM_SPEC_CHANGELOG "* Sun Jul 4 2010 Eric Noulard <eric.noulard@gmail.com> - ${CPACK_RPM_PACKAGE_VERSION}-${CPACK_RPM_PACKAGE_RELEASE}\n  Generated by CPack RPM (no Changelog file were provided)")
 endif()
 
 # CPACK_RPM_SPEC_MORE_DEFINE
@@ -656,6 +684,30 @@ if(CPACK_RPM_PACKAGE_RELOCATABLE)
     separate_arguments(_OMIT_DIR)
     list(APPEND _RPM_DIRS_TO_OMIT ${_OMIT_DIR})
   endforeach()
+endif()
+
+if (CPACK_RPM_PACKAGE_DEBUG)
+   message("CPackRPM:Debug: Initial list of path to OMIT in RPM: ${_RPM_DIRS_TO_OMIT}")
+endif()
+
+if (NOT DEFINED CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST)
+  set(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST /etc /etc/init.d /usr /usr/share /usr/share/doc /usr/bin /usr/lib /usr/lib64 /usr/include)
+  if (CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION)
+    message("CPackRPM:Debug: Adding ${CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION} to builtin omit list.")
+    list(APPEND CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST "${CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST_ADDITION}")
+  endif()
+endif()
+
+if(CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST)
+  if (CPACK_RPM_PACKAGE_DEBUG)
+   message("CPackRPM:Debug: CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST= ${CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST}")
+ endif()
+  foreach(_DIR ${CPACK_RPM_EXCLUDE_FROM_AUTO_FILELIST})
+    list(APPEND _RPM_DIRS_TO_OMIT "-o;-path;.${_DIR}")
+  endforeach()
+endif()
+if (CPACK_RPM_PACKAGE_DEBUG)
+   message("CPackRPM:Debug: Final list of path to OMIT in RPM: ${_RPM_DIRS_TO_OMIT}")
 endif()
 
 # Use files tree to construct files command (spec file)
@@ -824,11 +876,25 @@ if(CPACK_RPM_PACKAGE_DEBUG)
    message("CPackRPM:Debug: CPACK_TEMPORARY_PACKAGE_FILE_NAME = ${CPACK_TEMPORARY_PACKAGE_FILE_NAME}")
 endif()
 
-# USER generated spec file handling.
-# We should generate a spec file template:
+# protect @ in pathname in order to avoid their
+# interpretation during the configure_file step
+set(CPACK_RPM_INSTALL_FILES_LIST "${CPACK_RPM_INSTALL_FILES}")
+set(PROTECTED_AT "@")
+string(REPLACE "@" "\@PROTECTED_AT\@" CPACK_RPM_INSTALL_FILES "${CPACK_RPM_INSTALL_FILES_LIST}")
+set(CPACK_RPM_INSTALL_FILES_LIST "")
+
+#
+# USER generated/provided spec file handling.
+#
+
+# We can have a component specific spec file.
+if(CPACK_RPM_PACKAGE_COMPONENT AND CPACK_RPM_${CPACK_RPM_PACKAGE_COMPONENT}_USER_BINARY_SPECFILE)
+  set(CPACK_RPM_USER_BINARY_SPECFILE ${CPACK_RPM_${CPACK_RPM_PACKAGE_COMPONENT}_USER_BINARY_SPECFILE})
+endif()
+
+# We should generate a USER spec file template:
 #  - either because the user asked for it : CPACK_RPM_GENERATE_USER_BINARY_SPECFILE_TEMPLATE
 #  - or the user did not provide one : NOT CPACK_RPM_USER_BINARY_SPECFILE
-#
 if(CPACK_RPM_GENERATE_USER_BINARY_SPECFILE_TEMPLATE OR NOT CPACK_RPM_USER_BINARY_SPECFILE)
    file(WRITE ${CPACK_RPM_BINARY_SPECFILE}.in
       "# -*- rpm-spec -*-
@@ -894,9 +960,9 @@ mv \"\@CPACK_TOPLEVEL_DIRECTORY\@/tmpBBroot\" $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-${CPACK_RPM_INSTALL_FILES}
-${CPACK_RPM_ABSOLUTE_INSTALL_FILES}
-${CPACK_RPM_USER_INSTALL_FILES}
+\@CPACK_RPM_INSTALL_FILES\@
+\@CPACK_RPM_ABSOLUTE_INSTALL_FILES\@
+\@CPACK_RPM_USER_INSTALL_FILES\@
 
 %changelog
 \@CPACK_RPM_SPEC_CHANGELOG\@
@@ -922,6 +988,9 @@ else()
   # Note the just created file is processed for @var replacement
   configure_file(${CPACK_RPM_BINARY_SPECFILE}.in ${CPACK_RPM_BINARY_SPECFILE} @ONLY)
 endif()
+
+# remove AT protection
+unset(PROTECTED_AT)
 
 if(RPMBUILD_EXECUTABLE)
   # Now call rpmbuild using the SPECFILE

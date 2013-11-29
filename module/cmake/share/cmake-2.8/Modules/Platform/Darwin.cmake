@@ -30,6 +30,11 @@ set(CMAKE_SHARED_MODULE_SUFFIX ".so")
 set(CMAKE_MODULE_EXISTS 1)
 set(CMAKE_DL_LIBS "")
 
+# Enable rpath support for 10.5 and greater where it is known to work.
+if("${DARWIN_MAJOR_VERSION}" GREATER 8)
+  set(CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG "-Wl,-rpath,")
+endif()
+
 set(CMAKE_C_OSX_COMPATIBILITY_VERSION_FLAG "-compatibility_version ")
 set(CMAKE_C_OSX_CURRENT_VERSION_FLAG "-current_version ")
 set(CMAKE_CXX_OSX_COMPATIBILITY_VERSION_FLAG "${CMAKE_C_OSX_COMPATIBILITY_VERSION_FLAG}")
@@ -127,9 +132,25 @@ elseif("${CMAKE_GENERATOR}" MATCHES Xcode
     # specially named SDKs.
     set(_CMAKE_OSX_SDKS_VER_SUFFIX_10.4 "u")
     set(_CMAKE_OSX_SDKS_VER_SUFFIX_10.3 ".9")
-    set(_CMAKE_OSX_SDKS_VER ${_CURRENT_OSX_VERSION}${_CMAKE_OSX_SDKS_VER_SUFFIX_${_CURRENT_OSX_VERSION}})
-    set(_CMAKE_OSX_SYSROOT_DEFAULT
-      "${_CMAKE_OSX_SDKS_DIR}/MacOSX${_CMAKE_OSX_SDKS_VER}.sdk")
+    if(CMAKE_OSX_DEPLOYMENT_TARGET)
+      set(_CMAKE_OSX_SDKS_VER ${CMAKE_OSX_DEPLOYMENT_TARGET}${_CMAKE_OSX_SDKS_VER_SUFFIX_${CMAKE_OSX_DEPLOYMENT_TARGET}})
+      set(_CMAKE_OSX_SYSROOT_CHECK "${_CMAKE_OSX_SDKS_DIR}/MacOSX${_CMAKE_OSX_SDKS_VER}.sdk")
+      if(IS_DIRECTORY "${_CMAKE_OSX_SYSROOT_CHECK}")
+        set(_CMAKE_OSX_SYSROOT_DEFAULT "${_CMAKE_OSX_SYSROOT_CHECK}")
+      else()
+        set(_CMAKE_OSX_SDKS_VER ${_CURRENT_OSX_VERSION}${_CMAKE_OSX_SDKS_VER_SUFFIX_${_CURRENT_OSX_VERSION}})
+        set(_CMAKE_OSX_SYSROOT_DEFAULT "${_CMAKE_OSX_SDKS_DIR}/MacOSX${_CMAKE_OSX_SDKS_VER}.sdk")
+        message(WARNING
+          "CMAKE_OSX_DEPLOYMENT_TARGET is '${CMAKE_OSX_DEPLOYMENT_TARGET}' "
+          "but the matching SDK does not exist at:\n \"${_CMAKE_OSX_SYSROOT_CHECK}\"\n"
+          "Instead using SDK:\n \"${_CMAKE_OSX_SYSROOT_DEFAULT}\"\n"
+          "matching the host OS X version."
+          )
+      endif()
+    else()
+      set(_CMAKE_OSX_SDKS_VER ${_CURRENT_OSX_VERSION}${_CMAKE_OSX_SDKS_VER_SUFFIX_${_CURRENT_OSX_VERSION}})
+      set(_CMAKE_OSX_SYSROOT_DEFAULT "${_CMAKE_OSX_SDKS_DIR}/MacOSX${_CMAKE_OSX_SDKS_VER}.sdk")
+    endif()
   else()
     # Assume developer files are in root (such as Xcode 4.5 command-line tools).
     set(_CMAKE_OSX_SYSROOT_DEFAULT "")
@@ -207,12 +228,8 @@ if("${CMAKE_BACKWARDS_COMPATIBILITY}" MATCHES "^1\\.[0-6]$")
     "${CMAKE_SHARED_MODULE_CREATE_C_FLAGS} -flat_namespace -undefined suppress")
 endif()
 
-if(NOT XCODE)
-  # Enable shared library versioning.  This flag is not actually referenced
-  # but the fact that the setting exists will cause the generators to support
-  # soname computation.
-  set(CMAKE_SHARED_LIBRARY_SONAME_C_FLAG "-install_name")
-endif()
+# Enable shared library versioning.
+set(CMAKE_SHARED_LIBRARY_SONAME_C_FLAG "-install_name")
 
 # Xcode does not support -isystem yet.
 if(XCODE)
@@ -256,12 +273,56 @@ set(CMAKE_CXX_CREATE_MACOSX_FRAMEWORK
 if(NOT DEFINED CMAKE_FIND_FRAMEWORK)
   set(CMAKE_FIND_FRAMEWORK FIRST)
 endif()
+
+# Older OS X linkers do not report their framework search path
+# with -v but "man ld" documents the following locations.
+set(CMAKE_PLATFORM_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES
+  ${_CMAKE_OSX_SYSROOT_PATH}/Library/Frameworks
+  ${_CMAKE_OSX_SYSROOT_PATH}/System/Library/Frameworks
+  )
+if(_CMAKE_OSX_SYSROOT_PATH)
+  # Treat some paths as implicit so we do not override the SDK versions.
+  list(APPEND CMAKE_PLATFORM_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES
+    /System/Library/Frameworks)
+endif()
+if("${_CURRENT_OSX_VERSION}" VERSION_LESS "10.5")
+  # Older OS X tools had more implicit paths.
+  list(APPEND CMAKE_PLATFORM_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES
+    ${_CMAKE_OSX_SYSROOT_PATH}/Network/Library/Frameworks)
+endif()
+
 # set up the default search directories for frameworks
 set(CMAKE_SYSTEM_FRAMEWORK_PATH
   ~/Library/Frameworks
+  )
+if(_CMAKE_OSX_SYSROOT_PATH)
+  list(APPEND CMAKE_SYSTEM_FRAMEWORK_PATH
+    ${_CMAKE_OSX_SYSROOT_PATH}/Library/Frameworks
+    ${_CMAKE_OSX_SYSROOT_PATH}/Network/Library/Frameworks
+    ${_CMAKE_OSX_SYSROOT_PATH}/System/Library/Frameworks
+    )
+endif()
+list(APPEND CMAKE_SYSTEM_FRAMEWORK_PATH
   /Library/Frameworks
   /Network/Library/Frameworks
   /System/Library/Frameworks)
+
+# Warn about known system mis-configuration case.
+if(CMAKE_OSX_SYSROOT)
+  get_property(_IN_TC GLOBAL PROPERTY IN_TRY_COMPILE)
+  if(NOT _IN_TC AND
+     NOT IS_SYMLINK "${CMAKE_OSX_SYSROOT}/Library/Frameworks"
+     AND IS_SYMLINK "${CMAKE_OSX_SYSROOT}/Library/Frameworks/Frameworks")
+    message(WARNING "The SDK Library/Frameworks path\n"
+      " ${CMAKE_OSX_SYSROOT}/Library/Frameworks\n"
+      "is not set up correctly on this system.  "
+      "This is known to occur when installing Xcode 3.2.6:\n"
+      " http://bugs.python.org/issue14018\n"
+      "The problem may cause build errors that report missing system frameworks.  "
+      "Fix your SDK symlinks to resolve this issue and avoid this warning."
+      )
+  endif()
+endif()
 
 # default to searching for application bundles first
 if(NOT DEFINED CMAKE_FIND_APPBUNDLE)
@@ -286,6 +347,12 @@ set(CMAKE_SYSTEM_APPBUNDLE_PATH
 unset(_apps_paths)
 
 include(Platform/UnixPaths)
+if(_CMAKE_OSX_SYSROOT_PATH AND EXISTS ${_CMAKE_OSX_SYSROOT_PATH}/usr/include)
+  list(APPEND CMAKE_SYSTEM_PREFIX_PATH ${_CMAKE_OSX_SYSROOT_PATH}/usr)
+  foreach(lang C CXX)
+    list(APPEND CMAKE_${lang}_IMPLICIT_INCLUDE_DIRECTORIES ${_CMAKE_OSX_SYSROOT_PATH}/usr/include)
+  endforeach()
+endif()
 list(APPEND CMAKE_SYSTEM_PREFIX_PATH
   /sw        # Fink
   /opt/local # MacPorts

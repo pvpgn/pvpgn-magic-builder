@@ -64,7 +64,7 @@ set(CMAKE_CREATE_CONSOLE_EXE "${_tC}" )
 set (CMAKE_BUILD_TYPE Debug CACHE STRING
      "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel.")
 
-set (CMAKE_EXE_LINKER_FLAGS_INIT "${_tM} -lS:10000000 -lSc:10000000 ")
+set (CMAKE_EXE_LINKER_FLAGS_INIT "${_tM} -lS:1048576 -lSc:4098 -lH:1048576 -lHc:8192 ")
 set (CMAKE_EXE_LINKER_FLAGS_DEBUG_INIT "-v")
 set (CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO_INIT "-v")
 set (CMAKE_SHARED_LINKER_FLAGS_INIT ${CMAKE_EXE_LINKER_FLAGS_INIT})
@@ -78,23 +78,24 @@ set (CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO_INIT ${CMAKE_SHARED_LINKER_FLAGS_R
 macro(__embarcadero_language lang)
   set(CMAKE_${lang}_COMPILE_OPTIONS_DLL "${_tD}") # Note: This variable is a ';' separated list
   set(CMAKE_SHARED_LIBRARY_${lang}_FLAGS "${_tD}") # ... while this is a space separated string.
+  set(CMAKE_${lang}_USE_RESPONSE_FILE_FOR_INCLUDES 1)
 
   # compile a source file into an object file
   # place <DEFINES> outside the response file because Borland refuses
   # to parse quotes from the response file.
   set(CMAKE_${lang}_COMPILE_OBJECT
-    "<CMAKE_${lang}_COMPILER> ${_tR} <DEFINES> ${CMAKE_START_TEMP_FILE}-DWIN32 -o<OBJECT> <FLAGS> ${_COMPILE_${lang}} <SOURCE>${CMAKE_END_TEMP_FILE}"
+    "<CMAKE_${lang}_COMPILER> ${_tR} <DEFINES> -DWIN32 -o<OBJECT> <FLAGS> ${_COMPILE_${lang}} <SOURCE>"
     )
 
   set(CMAKE_${lang}_LINK_EXECUTABLE
-    "<CMAKE_${lang}_COMPILER> ${_tR} -e<TARGET> ${CMAKE_START_TEMP_FILE}<LINK_FLAGS> <FLAGS> <LINK_LIBRARIES> <OBJECTS>${CMAKE_END_TEMP_FILE}"
+    "<CMAKE_${lang}_COMPILER> ${_tR} -e<TARGET> <LINK_FLAGS> <FLAGS> ${CMAKE_START_TEMP_FILE} <LINK_LIBRARIES> <OBJECTS>${CMAKE_END_TEMP_FILE}"
     # "implib -c -w <TARGET_IMPLIB> <TARGET>"
     )
 
   # place <DEFINES> outside the response file because Borland refuses
   # to parse quotes from the response file.
   set(CMAKE_${lang}_CREATE_PREPROCESSED_SOURCE
-    "cpp32 <DEFINES> ${CMAKE_START_TEMP_FILE}-DWIN32 <FLAGS> -o<PREPROCESSED_SOURCE> ${_COMPILE_${lang}} <SOURCE>${CMAKE_END_TEMP_FILE}"
+    "cpp32 <DEFINES> -DWIN32 <FLAGS> -o<PREPROCESSED_SOURCE> ${_COMPILE_${lang}} <SOURCE>"
     )
   # Borland >= 5.6 allows -P option for cpp32, <= 5.5 does not
 

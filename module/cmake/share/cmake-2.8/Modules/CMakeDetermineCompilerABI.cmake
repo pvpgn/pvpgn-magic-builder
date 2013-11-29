@@ -38,6 +38,7 @@ function(CMAKE_DETERMINE_COMPILER_ABI lang src)
                   "--no-warn-unused-cli"
       OUTPUT_VARIABLE OUTPUT
       COPY_FILE "${BIN}"
+      COPY_FILE_ERROR _copy_error
       )
     # Move result from cache to normal variable.
     set(CMAKE_${lang}_ABI_COMPILED ${CMAKE_${lang}_ABI_COMPILED})
@@ -45,7 +46,7 @@ function(CMAKE_DETERMINE_COMPILER_ABI lang src)
     set(CMAKE_${lang}_ABI_COMPILED ${CMAKE_${lang}_ABI_COMPILED} PARENT_SCOPE)
 
     # Load the resulting information strings.
-    if(CMAKE_${lang}_ABI_COMPILED)
+    if(CMAKE_${lang}_ABI_COMPILED AND NOT _copy_error)
       message(STATUS "Detecting ${lang} compiler ABI info - done")
       file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeOutput.log
         "Detecting ${lang} compiler ABI info compiled with the following output:\n${OUTPUT}\n\n")
@@ -72,19 +73,9 @@ function(CMAKE_DETERMINE_COMPILER_ABI lang src)
       # Parse implicit linker information for this language, if available.
       set(implicit_dirs "")
       set(implicit_libs "")
-      set(MULTI_ARCH FALSE)
-      if(DEFINED CMAKE_OSX_ARCHITECTURES)
-        if( "${CMAKE_OSX_ARCHITECTURES}" MATCHES ";" )
-          set(MULTI_ARCH TRUE)
-        endif()
-      endif()
-      if(CMAKE_${lang}_VERBOSE_FLAG
-          # Implicit link information cannot be used explicitly for
-          # multiple OS X architectures, so we skip it.
-          AND NOT MULTI_ARCH
-          # Skip this with Xcode for now.
-          AND NOT "${CMAKE_GENERATOR}" MATCHES Xcode)
-        CMAKE_PARSE_IMPLICIT_LINK_INFO("${OUTPUT}" implicit_libs implicit_dirs log
+      set(implicit_fwks "")
+      if(CMAKE_${lang}_VERBOSE_FLAG)
+        CMAKE_PARSE_IMPLICIT_LINK_INFO("${OUTPUT}" implicit_libs implicit_dirs implicit_fwks log
           "${CMAKE_${lang}_IMPLICIT_OBJECT_REGEX}")
         file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeOutput.log
           "Parsed ${lang} implicit link information from above output:\n${log}\n\n")
@@ -112,8 +103,17 @@ function(CMAKE_DETERMINE_COMPILER_ABI lang src)
         message(STATUS "${_desc}")
       endif()
 
+      # Implicit link libraries cannot be used explicitly for multiple
+      # OS X architectures, so we skip it.
+      if(DEFINED CMAKE_OSX_ARCHITECTURES)
+        if("${CMAKE_OSX_ARCHITECTURES}" MATCHES ";")
+          set(implicit_libs "")
+        endif()
+      endif()
+
       set(CMAKE_${lang}_IMPLICIT_LINK_LIBRARIES "${implicit_libs}" PARENT_SCOPE)
       set(CMAKE_${lang}_IMPLICIT_LINK_DIRECTORIES "${implicit_dirs}" PARENT_SCOPE)
+      set(CMAKE_${lang}_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "${implicit_fwks}" PARENT_SCOPE)
 
       # Detect library architecture directory name.
       if(CMAKE_LIBRARY_ARCHITECTURE_REGEX)
@@ -129,7 +129,7 @@ function(CMAKE_DETERMINE_COMPILER_ABI lang src)
     else()
       message(STATUS "Detecting ${lang} compiler ABI info - failed")
       file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeError.log
-        "Detecting ${lang} compiler ABI info failed to compile with the following output:\n${OUTPUT}\n\n")
+        "Detecting ${lang} compiler ABI info failed to compile with the following output:\n${OUTPUT}\n${_copy_error}\n\n")
     endif()
   endif()
 endfunction()
