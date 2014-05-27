@@ -129,16 +129,6 @@ goto :eof
 	set PHRASE_3_9=Update is finished
 	set PHRASE_3_10=Please, check file %2 for more information about changes
 
-	set PHRASE_4_1=Do you want to apply patch(es) to your PvPGN source code?
-	set PHRASE_4_2=Please, first put your patch files to the %2 directory. You can download patches from the url: %3
-	set PHRASE_4_3=*** WARNING ***
-	set PHRASE_4_4=Paths in your *.patch files should be relative to the root of the source code directory (it is in the SVN at %2)
-	set PHRASE_4_5=For example, if you want to apply patch to %2, path to this file should be %3
-	set PHRASE_4_6=Are you ready to patch?
-	set PHRASE_4_7=Applying patch %2 ...
-	set PHRASE_4_8=Finished. Please, check for conflicts.
-	set PHRASE_4_9=Do you want to continue building a PvPGN?
-	
 	set PHRASE_9_1=Select your D2GS version:
 	set PHRASE_9_2=Setup admin password for Telnet connection (listening on port 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Password hash will be saved in %2
@@ -192,16 +182,6 @@ goto :eof
 	set PHRASE_3_8= Загрузка файла %2 ...
 	set PHRASE_3_9=Обновление завершено
 	set PHRASE_3_10=Информацию об изменениях можно посмотреть в файле %2
-
-	set PHRASE_4_1=Вы хотите применить патч(и) к исходному коду PvPGN?
-	set PHRASE_4_2=Сначала поместите файлы патчей в папку %2. Скачать патчи можно по ссылке: %3
-	set PHRASE_4_3=*** ОБРАТИТЕ ВНИМАНИЕ ***
-	set PHRASE_4_4=Пути внутри ваших *.patch файлов должны являться относительными к корневой папке исходного кода (в SVN он находится в %2)
-	set PHRASE_4_5=Например, если вы хотите применить патч к файлу %2, тогда путь к этому файлу должен быть %3
-	set PHRASE_4_6=Вы готовы начать применение патчей?
-	set PHRASE_4_7=Применяется патч %2 ...
-	set PHRASE_4_8=Завершено. Проверьте наличие конфликтов.
-	set PHRASE_4_9=Продолжить построение PvPGN?
 
 	set PHRASE_9_1=Выберите версию D2GS:
 	set PHRASE_9_2=Установите пароль админа для Telnet соединения (работает на порту 8888), будет сохранен в d2gs.reg
@@ -257,16 +237,6 @@ goto :eof
 	set PHRASE_3_9=Update voltooid
 	set PHRASE_3_10=Controleer het bestand %2 voor meer informatie over wijzigingen
 	
-	set PHRASE_4_1=Wilt u patches toevoegen aan uw PvPGN bron code?
-	set PHRASE_4_2=Gelieve de patch bestanden in %2 te plaatsen. U kunt the patches downloaden vanaf: %3
-	set PHRASE_4_3=*** WAARSCHUWING ***
-	set PHRASE_4_4=Paden in uw *.patch-bestand(en) moeten relatief zijn naar het begin of naar de bron code (Het is geplaatst in de SVN op %2)
-	set PHRASE_4_5=Voorbeeld: U wilt patch %2 toevoegen, dus het patch-bestand moet %3 zijn
-	set PHRASE_4_6=Bent u klaar om te patchen?
-	set PHRASE_4_7=Patch %2 toevoegen ...
-	set PHRASE_4_8=Voltooid. Gelieve na te kijken voor conflicten
-	set PHRASE_4_9=Wilt u doorgaan met het bouwen van PvPGN?
-
 	set PHRASE_9_1=Selecteer jou D2GS versie:
 	set PHRASE_9_2=Geef een administrator wachtwoord op voor de Telnet connectie (Luisterend op poort 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Wachtwoord wordt opgeslagen in %2
@@ -321,16 +291,6 @@ goto :eof
 	set PHRASE_3_9=Aktualizacja zakonczona
 	set PHRASE_3_10=Aby dowiedziec sie wiecej o wprowadzonych zmianach sprawdz plik %2
 
-	set PHRASE_4_1=Czy chcesz zastosowac dodatkowe latki do kodu zrodlowego PvPGN?
-	set PHRASE_4_2=Umiesc latki w katalogu %2. Latki mozesz pobrac ze strony: %3
-	set PHRASE_4_3=*** UWAGA ***
-	set PHRASE_4_4=Sciezki w plikach *.patch powinny byc relatywne do katalogu glownego kodu zrodlowego (w repozytorium SVN znajduje sie on w %2)
-	set PHRASE_4_5=Przykladowo: jesli chcesz zastosowac latke do pliku %2, sciezka do niego powinna byc %3
-	set PHRASE_4_6=Czy jestes gotowy zastosowac latki?
-	set PHRASE_4_7=Nakladanie latki %2 ...
-	set PHRASE_4_8=Zakonczono. Prosze sprawdzic czy nie wystapily konflikty.
-	set PHRASE_4_9=Czy chcesz kontynuowac kompilowanie PvPGN?
-	
 	set PHRASE_9_1=Wybierz wersje serwera D2GS:
 	set PHRASE_9_2=Ustalcie haslo administratora wymagane do polaczenia z konsola Telnet (port 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Haslo zostanie zapisane w pliku %2
@@ -385,16 +345,6 @@ goto :eof
 	set PHRASE_3_9=Das Update wurde beendet 
 	set PHRASE_3_10=Die Information uber die Anderungen kann man im %2-Datei sehen
 	
-	set PHRASE_4_1=Mochten Sie  Patch(es) auf die PvPGN-Programmcode anwenden?
-	set PHRASE_4_2=Bringen Sie zuerst die Patch-Dateien in den %2-Order. Die Patches konnen per Link %3 heruntergeladen werden: 
-	set PHRASE_4_3=*** BEACHTEN SIE BITTE ***
-	set PHRASE_4_4=Die Pfade in Ihren Patch-Dateien (*.patch) sollen bezuglich auf den Ordner zur Programmcode eingestellt werden (in SVN wird sie in %2 platziert)
-	set PHRASE_4_5=Wenn Sie einen Patch auf die %2-Datei anwenden wollen, dann soll der Pfad zu dieser Datei %3 sein
-	set PHRASE_4_6=Sind Sie bereit, Patches anzuwenden?
-	set PHRASE_4_7=Der Patch %2 wird angewendet ...
-	set PHRASE_4_8=Beendet. Prufen Sie, ob es Konflikte gibt.
-	set PHRASE_4_9=Mochten Sie die PvPGN-Compilierung fortsetzen?
-
 	set PHRASE_9_1=Wahlen Sie Ihre D2GS Version:
 	set PHRASE_9_2=Einfuhren Sie das Admin-Passwort fur Telnet-Verbindungen (auf Port 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Passwort-Hash wird in der Datei %2 gespeichert
@@ -448,16 +398,6 @@ goto :eof
 	set PHRASE_3_8= skidanje fajlova %2 ...
 	set PHRASE_3_9=Updejt zavrsen
 	set PHRASE_3_10=Molimo vas, proverite fajl %2 za vise informacija oko promena
-
-	set PHRASE_4_1=Dali zelite da primenite patch u sourcu fajl ?
-	set PHRASE_4_2=Molimo vas, prvo stavite patch fajl(ove) u %2 directorijum. Mozete skinuti patchs sa ove webstranice: %3
-	set PHRASE_4_3=*** Upozorenje ***
-	set PHRASE_4_4=Lokacije u vasim *.patch fajlovima treba staviti kao u source codu (its placed in the SVN at %2)
-	set PHRASE_4_5=Na primer: dali zelite da primenite patch to %2, tako da lokacija za ovaj fajl treba da bude %3
-	set PHRASE_4_6=dali ste spremni da patcujete?
-	set PHRASE_4_7=primenjuje patch %2 ...
-	set PHRASE_4_8=Zavrseno. Molimo vas, pogledajte da nema sukoba.
-	set PHRASE_4_9=Dali zelite da nastavite pravljenjem pvpgn-a?
 
 	goto echo_phrase
 
