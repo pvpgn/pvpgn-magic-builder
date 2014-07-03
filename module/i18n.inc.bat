@@ -4,10 +4,10 @@
 ::  Windows Language abbreveations - http://msdn.microsoft.com/en-us/library/ms903928.aspx
 ::	MOTD Language identifiers - http://www.i18nguy.com/unicode/language-identifiers.html
 
-set Key="HKEY_CURRENT_USER\Control Panel\International"
-for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE=%%a
-
-
+if [%Key%]==[] (
+	set Key="HKEY_CURRENT_USER\Control Panel\International"
+	for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE=%%a
+)
 
 
 :: default is English
@@ -90,9 +90,9 @@ goto :eof
 	set PHRASE_1_0=  Visual Studio is not installed
 	set PHRASE_1_1=Select a Visual Studio version to build PvPGN:
 	set PHRASE_1_2=%2 is selected as a build environment
-	set PHRASE_1_3=Do you want to download/update the latest PvPGN source from the SVN (into %2 directory)?
-	set PHRASE_1_4=   PvPGN will be updated from the SVN
-	set PHRASE_1_5=   PvPGN will not update
+	set PHRASE_1_3=Do you want to download/replace the latest PvPGN source from the GIT (into %2 directory)?
+	set PHRASE_1_4=   PvPGN source code will be replaced from the GIT
+	set PHRASE_1_5=   PvPGN source code will not be updated
 	set PHRASE_1_6=Select PvPGN interface: 
 	set PHRASE_1_7=   1) Console (defaut)
 	set PHRASE_1_8=   2) GUI
@@ -144,8 +144,8 @@ goto :eof
 	set PHRASE_1_0=  Visual Studio не установлена
 	set PHRASE_1_1=Выберите версию Visual Studio для компиляции PvPGN:
 	set PHRASE_1_2=%2 выбрана в качестве компилятора
-	set PHRASE_1_3=Скачать/обновить последние исходники PvPGN из SVN (в папку %2)?
-	set PHRASE_1_4=   PvPGN будет обновлен из SVN
+	set PHRASE_1_3=Скачать/заменить последние исходники PvPGN из GIT (в папку %2)?
+	set PHRASE_1_4=   PvPGN будет обновлен из GIT
 	set PHRASE_1_5=   PvPGN не будет обновлен
 	set PHRASE_1_6=Выберите интерфейс для PvPGN: 
 	set PHRASE_1_7=   1) Консольный (по-умолчанию)
@@ -198,8 +198,8 @@ goto :eof
 	set PHRASE_1_0= Visual Studio is niet geinstaleerd
 	set PHRASE_1_1=Selecteer een Visual Studio versie om PvPGN te bouwen:
     set PHRASE_1_2=%2 is gekozen als bouw omgeving
-	set PHRASE_1_3=Download/update de laatste PvPGN broncode van de SVN (in de %2 directory)?
-	set PHRASE_1_4=   PvPGN zal updaten van de SVN
+	set PHRASE_1_3=Download/replace de laatste PvPGN broncode van de GIT (in de %2 directory)?
+	set PHRASE_1_4=   PvPGN zal updaten van de GIT
 	set PHRASE_1_5=   PvPGN zal niet worden geupdate
 	set PHRASE_1_6=Selecteer PvPGN omgeving:
 	set PHRASE_1_7=   1) Console (defaut)
@@ -252,8 +252,8 @@ goto :eof
 	set PHRASE_1_0=  Program Visual Studio nie jest zainstalowany na komputerze
 	set PHRASE_1_1=Wybierz wersje programu Visual Studio przy uzyciu ktorej chcesz skompilowac PvPGN:
 	set PHRASE_1_2=Wybrano %2 jako srodowisko programistyczne
-	set PHRASE_1_3=Czy chcesz pobrac/zaktualizowac PvPGN do najnowszej wersji z repozytorium SVN (w katalogu %2)?
-	set PHRASE_1_4=   PvPGN zostanie zaktualizowany do najnowszej wersji z repozytorium SVN
+	set PHRASE_1_3=Czy chcesz pobrac/zastapic PvPGN do najnowszej wersji z repozytorium GIT (w katalogu %2)?
+	set PHRASE_1_4=   PvPGN zostanie zaktualizowany do najnowszej wersji z repozytorium GIT
 	set PHRASE_1_5=   PvPGN nie zostanie zaktualizowany
 	set PHRASE_1_6=Wybierz interfejs PvPGN jaki chcesz uzywac: 
 	set PHRASE_1_7=   1) Konsola - Wiersz polecen (domyslnie)
@@ -306,8 +306,8 @@ goto :eof
 	set PHRASE_1_0=  Visual Studio ist nicht installiert
 	set PHRASE_1_1=Wahlen Sie eine Visual Studio-Version fur die PvPGN-Compilierung:
 	set PHRASE_1_2=%2 wurde als Compiler gewahlt
-	set PHRASE_1_3=Mochten Sie die letzten PvPGN-Programmcoden aus SVN (im %2-Ordner) herunterladen / aktualisieren?
-	set PHRASE_1_4=   PvPGN wird aus SVN aktualisiert werden
+	set PHRASE_1_3=Mochten Sie die letzten PvPGN-Programmcoden aus GIT (im %2-Ordner) herunterladen / ersetzen?
+	set PHRASE_1_4=   PvPGN wird aus GIT aktualisiert werden
 	set PHRASE_1_5=   PvPGN wird nicht aktualisieret werden
 	set PHRASE_1_6=Wahlen Sie eine Schnittstelle fur PvPGN: 
 	set PHRASE_1_7=   1) Konsolenschnittstelle (Standardeinstellung)
@@ -360,9 +360,9 @@ goto :eof
 	set PHRASE_1_0=  Visual Studio nije instaliran
 	set PHRASE_1_1=Izaberi kojom verzijom Visual Studia ces da Napravis pvpgn:
 	set PHRASE_1_2=%2 izabran kao kompajler
-	set PHRASE_1_3=da li zelis da downloadujes/updejtujes zadnji pvpgn iz svn-a (u %2 folder)?
-	set PHRASE_1_4=   PvPGN ce updejtovati iz svn-a
-	set PHRASE_1_5=   PvPGN nece updejtovati iz svn-a
+	set PHRASE_1_3=da li zelis da downloadujes/updejtujes zadnji pvpgn iz GIT-a (u %2 folder)?
+	set PHRASE_1_4=   PvPGN ce updejtovati iz GIT-a
+	set PHRASE_1_5=   PvPGN nece updejtovati iz GIT-a
 	set PHRASE_1_6=Izaberi PvPGN izgled: 
 	set PHRASE_1_7=   1) Consola (defaut)
 	set PHRASE_1_8=   2) GUI(Graficki prikaz)
