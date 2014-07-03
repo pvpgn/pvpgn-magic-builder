@@ -10,7 +10,7 @@ color 1f
 echo.
 echo *:*:*:*:*:*:*:*:*-  P v P G N  M a g i c  B u i l d e r  -*:*:*:*:*:*:*:*:*:*:*
 echo *                                                                             *
-echo *   Copyright 2011-2013, HarpyWar (harpywar@gmail.com)                        *
+echo *   Copyright 2011-2014, HarpyWar (harpywar@gmail.com)                        *
 echo *   http://harpywar.com                                                       *
 echo *                                                                             *
 echo *:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*
@@ -34,7 +34,7 @@ if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
 
 
 :: ----------- VARIABLES ------------
-@set URL_UPDATE=http://pvpgn-magic-builder.googlecode.com/svn/trunk/
+@set URL_UPDATE=https://raw.githubusercontent.com/HarpyWar/pvpgn-magic-builder/master/
 
 :: path where this batch placed
 @set CUR_PATH=%~dp0%~1
@@ -43,7 +43,7 @@ if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
 @set PVPGN_BUILD=build\
 @set PVPGN_RELEASE=release\
 
-@set PVPGN_SVN=http://svn.berlios.de/svnroot/repos/pvpgn/trunk/pvpgn
+@set PVPGN_ZIP=https://github.com/HarpyWar/pvpgn/archive/master.zip
 
 @set ZLIB_PATH=module\include\zlib\125\
 @set SUPPORTFILES_PATH=module\include\pvpgn-support-1.2\
@@ -89,10 +89,10 @@ if not [%PARAM_REBUILD%]==[] goto :choose_interface
 
 call %i18n% 1_3 "source"
 module\choice
-if %errorlevel%==2 ( set CHOICE_SVN=n) else ( set CHOICE_SVN=y)
+if %errorlevel%==2 ( set CHOICE_GIT=n) else ( set CHOICE_GIT=y)
 
 :: if not "n", set to "y"
-if not [%CHOICE_SVN%]==[n] ( 
+if not [%CHOICE_GIT%]==[n] ( 
 	call %i18n% 1_4
 ) else (
 	call %i18n% 1_5
@@ -210,14 +210,22 @@ echo _____________________[ P V P G N  S O U R C E  C O D E]____________________
 
 :: {PARAMETER}, if empty then SVN checkout
 if [%PARAM_REBUILD%]==[] (
-	if [%LOG%]==[true] set _svn_log=^>svn.log
+	if [%LOG%]==[true] set _zip_log=^>download.log
 	if not exist %PVPGN_SOURCE% mkdir %PVPGN_SOURCE%
 
-	:: download latest pvpgn from the svn
-	if [%CHOICE_SVN%]==[y] module\tortoisesvn\svn.exe checkout %PVPGN_SVN% %PVPGN_SOURCE% %_svn_log%
+	if not [%CHOICE_GIT%]==[n] ( 
+		:: download source.zip
+		module\autoupdate\wget.exe -O source.zip --no-check-certificate %PVPGN_ZIP% %_zip_log%
+		:: extract files into current directory (pvpgn-master directory is in archive)
+		module\autoupdate\7z.exe x source.zip -y %_zip_log%
+		:: copy files from pvpgn-master to source
+		xcopy /E /R /K /Y pvpgn-master source\ %_zip_log%
+		:: remove pvpgn-master
+		rmdir /Q /S pvpgn-master\
+		:: remove downloaded zip
+		del /F /Q source.zip
+	)
 )
-
-echo 1
 
 :: replace custom source code files
 @call :backup_conf
@@ -307,7 +315,7 @@ if not exist "%PVPGN_RELEASE%conf" mkdir "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_BUILD%conf\bnetd_default_user.plain" "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_SOURCE%conf\bnetd_default_user.cdb" "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_SOURCE%conf\d2server.ini" "%PVPGN_RELEASE%conf"
-
+@copy /Y "%PVPGN_BUILD%conf\*.conf" "%PVPGN_RELEASE%conf"
 
 :: copy libraries to release directory, without prompt
 @copy /B /Y "%ZLIB_PATH%*.dll" "%PVPGN_RELEASE%"
@@ -336,16 +344,16 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 @xcopy "%PVPGN_BUILD%\files\var\*" "%PVPGN_RELEASE%\var\" /E
 
 :: copy files directory
-if not exist "%PVPGN_RELEASE%var\files" mkdir "%PVPGN_RELEASE%var\files"
-@copy /Y "%PVPGN_SOURCE%files" "%PVPGN_RELEASE%var\files"
-@del "%PVPGN_RELEASE%var\files\CMakeLists.txt"
-@del "%PVPGN_RELEASE%var\files\Makefile.am"
+if not exist "%PVPGN_RELEASE%files" mkdir "%PVPGN_RELEASE%files"
+@copy /Y "%PVPGN_SOURCE%files" "%PVPGN_RELEASE%files"
+@del "%PVPGN_RELEASE%files\CMakeLists.txt"
+@del "%PVPGN_RELEASE%files\Makefile.am"
 
-:: copy pvpgnsupport to files directory
-@copy /Y "%SUPPORTFILES_PATH%" "%PVPGN_RELEASE%var\files"
-
-:: create bnmotd from the determined language
-@copy /Y "%PVPGN_RELEASE%conf\bnmotd-%MOTD_LANGUAGE%.txt" "%PVPGN_RELEASE%conf\bnmotd.txt"
+:: copy i18n and lua files with subdirectories
+@xcopy /E /R /K /Y "%PVPGN_SOURCE%lua" "%PVPGN_RELEASE%lua\"
+@xcopy /E /R /K /Y "%PVPGN_SOURCE%conf\i18n" "%PVPGN_RELEASE%conf\i18n\"
+@del "%PVPGN_RELEASE%lua\CMakeLists.txt"
+@del "%PVPGN_RELEASE%conf\i18n\CMakeLists.txt"
 
 :: replace "storage_path"
 if ["%CHOICE_DB_CONF%"]==["y"] (
