@@ -273,6 +273,11 @@ if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_VARS% -D WITH_WIN32_GUI=%_with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
+:: Stop after cmake and setting env vars (feature for appveyor)
+:: Example: build_pvpgn.bat cmake_only 6 2 1 y
+if [%PARAM_REBUILD%]==[cmake_only] exit
+ 
+
 :: ----------- BUILD ------------
 echo.
 echo ______________[ B U I L D  W I T H  V I S U A L  S T U D I O ]__________________
@@ -307,12 +312,6 @@ if not ["%VSVER%"]==["v71"] if not ["%VSVER%"]==["v80"] (
 if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
 :: INFO: each environment should compile with own framework (e.g. 2010 can't compile with 3.5)
 
-
-:: Stop after cmake and setting env vars (feature for appveyor)
-:: Example: build_pvpgn.bat cmake_only 6 2 1 y
-if [%PARAM_REBUILD%]==[cmake_only] exit
- 
- 
 :: compile the solution
 "%FrameworkDir%%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
 
