@@ -296,9 +296,11 @@ if ["%FrameworkDir%"]==[""] (
 	set FrameworkDir=%FrameworkDir32%
 	set FrameworkVersion=%FrameworkVersion32%
 )
-:: add slash if not vs2010, /maxcpucount is supports only vs2010 msbuild
-if not ["%VSVER%"]==["v100"] (
-	set FrameworkDir=%FrameworkDir%\
+:: add slash to framework path if not vs2010
+if not ["%VSVER%"]==["v100"] set FrameworkDir=%FrameworkDir%\
+
+:: /maxcpucount is supported starting from vs2008
+if not ["%VSVER%"]==["v71"] if not ["%VSVER%"]==["v80"] (
 	set _max_cpu=/maxcpucount
 )
 :: use framework 3.5 with vs2008
