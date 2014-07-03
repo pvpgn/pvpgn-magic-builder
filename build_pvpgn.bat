@@ -229,7 +229,7 @@ echo _____________________[ P V P G N  S O U R C E  C O D E]____________________
 
 :: ----------- DOWNLOAD ------------
 
-:: {PARAMETER}, if empty then SVN checkout
+:: {PARAMETER}, if empty then download source code
 if [%PARAM_REBUILD%]==[] (
 	if [%LOG%]==[true] set _zip_log=^>download.log
 	if not exist %PVPGN_SOURCE% mkdir %PVPGN_SOURCE%
@@ -252,9 +252,8 @@ if [%PARAM_REBUILD%]==[] (
 @call :backup_conf
 
 
-:: {PARAMETER}, if not empty then skip CMake configuration
-if not [%PARAM_REBUILD%]==[] goto :build
-
+:: {PARAMETER}, if not empty and not "cmake_only" then skip CMake configuration
+if not [%PARAM_REBUILD%]==[] if not [%PARAM_REBUILD%]==[cmake_only] goto :build
 
 
 :: ----------- MAKE ------------
@@ -266,7 +265,7 @@ if not exist "%PVPGN_BUILD%" mkdir "%PVPGN_BUILD%"
 @call :clean_build_release
 
 :: delete cmake cache
-del %PVPGN_BUILD%CMakeCache.txt
+if exist "%PVPGN_BUILD%CMakeCache.txt" del %PVPGN_BUILD%CMakeCache.txt
 
 if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 
