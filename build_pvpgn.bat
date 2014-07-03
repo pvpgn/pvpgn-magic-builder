@@ -341,6 +341,12 @@ if not exist "%PVPGN_RELEASE%conf" mkdir "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_SOURCE%conf\bnetd_default_user.cdb" "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_SOURCE%conf\d2server.ini" "%PVPGN_RELEASE%conf"
 @copy /Y "%PVPGN_BUILD%conf\*.conf" "%PVPGN_RELEASE%conf"
+:: replace main configs with win32 versions
+@copy /Y "%PVPGN_SOURCE%conf\bnetd.conf.win32" "%PVPGN_RELEASE%conf\bnetd.conf"
+@copy /Y "%PVPGN_SOURCE%conf\d2cs.conf.win32" "%PVPGN_RELEASE%conf\d2cs.conf"
+@copy /Y "%PVPGN_SOURCE%conf\d2dbs.conf.win32" "%PVPGN_RELEASE%conf\d2dbs.conf"
+
+
 
 :: copy libraries to release directory, without prompt
 @copy /B /Y "%ZLIB_PATH%*.dll" "%PVPGN_RELEASE%"
@@ -354,8 +360,8 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 
 :: copy release binaries
 @copy /B /Y "%PVPGN_BUILD%src\bnetd\Release\bnetd.exe" "%PVPGN_RELEASE%PvPGN%postfix%.exe"
-@copy /B /Y "%PVPGN_BUILD%src\d2cs\Release\d2cs.exe" "%PVPGN_RELEASE%d2cs%postfix%.exe"
-@copy /B /Y "%PVPGN_BUILD%src\d2dbs\Release\d2dbs.exe" "%PVPGN_RELEASE%d2dbs%postfix%.exe"
+@copy /B /Y "%PVPGN_BUILD%src\d2cs\Release\d2cs.exe" "%PVPGN_RELEASE%D2CS%postfix%.exe"
+@copy /B /Y "%PVPGN_BUILD%src\d2dbs\Release\d2dbs.exe" "%PVPGN_RELEASE%D2DBS%postfix%.exe"
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bni2tga.exe" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bnibuild.exe" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bniextract.exe" "%PVPGN_RELEASE%"
@@ -417,7 +423,7 @@ goto THEEND
 	exit /b 0
 
 :FAIL
-	echo SOMETHING GONE WRONG :(
+	echo SOMETHING GONE WRONG :-(
 	pause
 	goto :eof
 	
