@@ -12,6 +12,8 @@ set DST=%2
 ::  backup || restore
 set ACTION=%3
 
+if not exist "%SRC%" goto :eof
+
 rem 1) set dir
 pushd %SRC%
 
