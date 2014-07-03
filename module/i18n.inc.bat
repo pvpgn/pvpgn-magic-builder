@@ -130,8 +130,7 @@ goto :eof
 	set PHRASE_3_10=Please, check file %2 for more information about changes
 	
 	set PHRASE_4_1=Enable Lua scripting support?
-	set PHRASE_4_2=   Lua enabled
-	set PHRASE_4_3=   Lua disabled
+	set PHRASE_4_2=   PvPGN will be compiled with Lua support
 	
 	set PHRASE_9_1=Select your D2GS version:
 	set PHRASE_9_2=Setup admin password for Telnet connection (listening on port 8888), will be saved in d2gs.reg
@@ -188,8 +187,7 @@ goto :eof
 	set PHRASE_3_10=Информацию об изменениях можно посмотреть в файле %2
 	
 	set PHRASE_4_1=Включить поддержку Lua скриптов?
-	set PHRASE_4_2=   Lua включен
-	set PHRASE_4_3=   Lua отключен
+	set PHRASE_4_2=   PvPGN будет скомпилирован с поддержкой Lua
 
 	set PHRASE_9_1=Выберите версию D2GS:
 	set PHRASE_9_2=Установите пароль админа для Telnet соединения (работает на порту 8888), будет сохранен в d2gs.reg
