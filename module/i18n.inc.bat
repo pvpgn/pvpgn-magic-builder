@@ -115,7 +115,7 @@ goto :eof
 	set PHRASE_2_8=    Connection password
 	set PHRASE_2_9=    Database name
 	set PHRASE_2_10=    Tables prefix (default is %2)
-	set PHRASE_2_11=%2 configuration is saved
+	set PHRASE_2_11=%2 configuration is saved to %2.conf.bat
 
 	set PHRASE_3_1=Checking for update ...
 	set PHRASE_3_2="v%2" is your version
@@ -128,7 +128,11 @@ goto :eof
 	set PHRASE_3_8= Downloading file %2 ...
 	set PHRASE_3_9=Update is finished
 	set PHRASE_3_10=Please, check file %2 for more information about changes
-
+	
+	set PHRASE_4_1=Enable Lua scripting support?
+	set PHRASE_4_2=   Lua enabled
+	set PHRASE_4_3=   Lua disabled
+	
 	set PHRASE_9_1=Select your D2GS version:
 	set PHRASE_9_2=Setup admin password for Telnet connection (listening on port 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Password hash will be saved in %2
@@ -169,7 +173,7 @@ goto :eof
 	set PHRASE_2_8=    Пароль
 	set PHRASE_2_9=    Название базы данных
 	set PHRASE_2_10=    Префикс для таблиц (по-умолчанию %2):
-	set PHRASE_2_11=Конфигурация %2 сохранена
+	set PHRASE_2_11=Конфигурация %2 сохранена в %2.conf.bat
 
 	set PHRASE_3_1=Проверка обновлений ...
 	set PHRASE_3_2="v%2" ваша версия
@@ -182,6 +186,10 @@ goto :eof
 	set PHRASE_3_8= Загрузка файла %2 ...
 	set PHRASE_3_9=Обновление завершено
 	set PHRASE_3_10=Информацию об изменениях можно посмотреть в файле %2
+	
+	set PHRASE_4_1=Включить поддержку Lua скриптов?
+	set PHRASE_4_2=   Lua включен
+	set PHRASE_4_3=   Lua отключен
 
 	set PHRASE_9_1=Выберите версию D2GS:
 	set PHRASE_9_2=Установите пароль админа для Telnet соединения (работает на порту 8888), будет сохранен в d2gs.reg
@@ -223,7 +231,7 @@ goto :eof
 	set PHRASE_2_8=    Connectie wachtwoord
 	set PHRASE_2_9=    Database naam
 	set PHRASE_2_10=    Tafel voorvoegsel (Table prefix, standaard is %2)
-	set PHRASE_2_11=%2 configuratie opgeslagen
+	set PHRASE_2_11=%2 configuratie opgeslagen (%2.conf.bat)
 
 	set PHRASE_3_1=Checken voor updates...
 	set PHRASE_3_2=U hebt versie "v%2"
@@ -277,7 +285,7 @@ goto :eof
 	set PHRASE_2_8=    Haslo do bazy danych
 	set PHRASE_2_9=    Nazwa bazy danych
 	set PHRASE_2_10=    Prefiks tabel w bazie danych (domyslny %2)
-	set PHRASE_2_11=Konfiguracja %2 zapisana
+	set PHRASE_2_11=Konfiguracja %2 zapisana w %2.conf.bat
 
 	set PHRASE_3_1=Sprawdzanie aktualizacji ...
 	set PHRASE_3_2=Twoja wersja "v%2"
@@ -331,7 +339,7 @@ goto :eof
 	set PHRASE_2_8=    Passwort
 	set PHRASE_2_9=    Datenbankname
 	set PHRASE_2_10=    Vorsatzkode fur Tabellen (Standardeinstellung %2)
-	set PHRASE_2_11=Die %2 -Konfiguration wurde gespeichert
+	set PHRASE_2_11=Die %2 -Konfiguration wurde gespeichert in %2.conf.bat
 
 	set PHRASE_3_1=Update-Prufung ...
 	set PHRASE_3_2=Ihre "v%2"-Version 
@@ -385,7 +393,7 @@ goto :eof
 	set PHRASE_2_8=    pasvord korisnika
 	set PHRASE_2_9=    ime baze podataka
 	set PHRASE_2_10=    prefix tabele (default is %2)
-	set PHRASE_2_11=%2 konfiguracija sacuvana
+	set PHRASE_2_11=%2 konfiguracija sacuvana u %2.conf.bat
 
 	set PHRASE_3_1=Gledanje za updejt ...
 	set PHRASE_3_2="v%2" je tvoja verzija

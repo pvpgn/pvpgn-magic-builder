@@ -46,7 +46,7 @@ if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
 @set PVPGN_ZIP=https://github.com/HarpyWar/pvpgn/archive/master.zip
 
 @set ZLIB_PATH=module\include\zlib\125\
-@set SUPPORTFILES_PATH=module\include\pvpgn-support-1.2\
+@set LUA_PATH=module\include\lua\5.1\
 @set VCEXPRESS_INCLUDE_PATH=%CUR_PATH%module\include\vsexpress_include\
 
 
@@ -56,6 +56,7 @@ set PARAM_REBUILD=%1
 set PARAM_VS=%2
 set PARAM_INTERFACE=%3
 set PARAM_DBTYPE=%4
+set PARAM_LUA=%5
 
 
 :: {PARAMETER}, if not empty, skip autoupdate
@@ -122,6 +123,7 @@ if not [%CHOICE_INTERFACE%]==[2] (
 ) else (
 	call %i18n% 1_11
 )
+
 echo.
 echo --------------------------------------------------------------------------------
 
@@ -161,7 +163,7 @@ if [%CHOICE_DBTYPE%]==[2] (
 	set DB_LIB=libmysql
 
 	:: cmake vars to add to command line
-	set CMAKE_DB_VARS=-D MYSQL_INCLUDE_DIR=!DB_PATH! -D MYSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_MYSQL=true -D WITH_ANSI=false
+	set CMAKE_VARS=-D MYSQL_INCLUDE_DIR=!DB_PATH! -D MYSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_MYSQL=true -D WITH_ANSI=false
 )
 :: PostgreSQL
 if [%CHOICE_DBTYPE%]==[3] (
@@ -173,7 +175,7 @@ if [%CHOICE_DBTYPE%]==[3] (
 	set DB_LIB=libpq
 
 	:: cmake vars to add to command line
-	set CMAKE_DB_VARS=-D PGSQL_INCLUDE_DIR=!DB_PATH! -D PGSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_PGSQL=true
+	set CMAKE_VARS=-D PGSQL_INCLUDE_DIR=!DB_PATH! -D PGSQL_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_PGSQL=true
 )
 :: SQLite
 if [%CHOICE_DBTYPE%]==[4] (
@@ -185,7 +187,7 @@ if [%CHOICE_DBTYPE%]==[4] (
 	set DB_LIB=sqlite3
 
 	:: cmake vars to add to command line
-	set CMAKE_DB_VARS=-D SQLITE3_INCLUDE_DIR=!DB_PATH! -D SQLITE3_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_SQLITE3=true
+	set CMAKE_VARS=-D SQLITE3_INCLUDE_DIR=!DB_PATH! -D SQLITE3_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_SQLITE3=true
 )
 :: ODBC
 if [%CHOICE_DBTYPE%]==[5] (
@@ -197,7 +199,26 @@ if [%CHOICE_DBTYPE%]==[5] (
 	set DB_LIB=odbc32
 
 	:: cmake vars to add to command line
-	set CMAKE_DB_VARS=-D ODBC_INCLUDE_DIR=!DB_PATH! -D ODBC_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_ODBC=true
+	set CMAKE_VARS=-D ODBC_INCLUDE_DIR=!DB_PATH! -D ODBC_LIBRARY=!DB_PATH!!DB_LIB!.lib -D WITH_ODBC=true
+)
+
+echo.
+echo --------------------------------------------------------------------------------
+
+:: {PARAMETER}, if not empty replace value and skip choice
+if not [%PARAM_LUA%]==[] set CHOICE_LUA=%PARAM_LUA%& goto :lua_chosen
+
+call %i18n% 4_1
+module\choice
+if %errorlevel%==2 ( set CHOICE_LUA=n) else ( set CHOICE_LUA=y)
+
+:: lua has choosen or not
+:lua_chosen
+if not [%CHOICE_LUA%]==[n] ( 
+	call %i18n% 4_2
+	set CMAKE_VARS=%CMAKE_VARS% -D LUA_INCLUDE_DIR=%LUA_PATH% -D LUA_LIBRARY=%LUA_PATH%lua5.1.lib -D WITH_LUA=true
+) else (
+	call %i18n% 4_3
 )
 
 
@@ -250,7 +271,7 @@ del %PVPGN_BUILD%CMakeCache.txt
 if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 
 :: configure and generate solution
-module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_DB_VARS% -D WITH_WIN32_GUI=%_with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_VARS% -D WITH_WIN32_GUI=%_with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
 :: ----------- BUILD ------------
@@ -320,6 +341,10 @@ if not exist "%PVPGN_RELEASE%conf" mkdir "%PVPGN_RELEASE%conf"
 :: copy libraries to release directory, without prompt
 @copy /B /Y "%ZLIB_PATH%*.dll" "%PVPGN_RELEASE%"
 if not [%DB_LIB%]==[] @copy /B /Y "%DB_PATH%*.dll" "%PVPGN_RELEASE%"
+if not [%CHOICE_LUA%]==[n] (
+	@copy /B /Y "%LUA_PATH%*.dll" "%PVPGN_RELEASE%"
+	@xcopy /E /R /K /Y "%PVPGN_SOURCE%lua" "%PVPGN_RELEASE%lua\"
+)
 
 if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 
@@ -350,7 +375,6 @@ if not exist "%PVPGN_RELEASE%files" mkdir "%PVPGN_RELEASE%files"
 @del "%PVPGN_RELEASE%files\Makefile.am"
 
 :: copy i18n and lua files with subdirectories
-@xcopy /E /R /K /Y "%PVPGN_SOURCE%lua" "%PVPGN_RELEASE%lua\"
 @xcopy /E /R /K /Y "%PVPGN_SOURCE%conf\i18n" "%PVPGN_RELEASE%conf\i18n\"
 @del "%PVPGN_RELEASE%lua\CMakeLists.txt"
 @del "%PVPGN_RELEASE%conf\i18n\CMakeLists.txt"
@@ -385,7 +409,7 @@ goto THEEND
 	
 	:: save to file
 	echo @echo off>!fileName!
-	echo build_pvpgn.bat rebuild !PARAM_VS! !PARAM_INTERFACE! !PARAM_DBTYPE!>>!fileName!
+	echo build_pvpgn.bat rebuild !PARAM_VS! !PARAM_INTERFACE! !PARAM_DBTYPE! !PARAM_LUA!>>!fileName!
 	exit /b 0
 
 :FAIL
