@@ -229,24 +229,6 @@ echo _____________________[ P V P G N  S O U R C E  C O D E]____________________
 
 :: ----------- DOWNLOAD ------------
 
-:: {PARAMETER}, if empty then download source code
-if [%PARAM_REBUILD%]==[] (
-	if [%LOG%]==[true] set _zip_log=^>download.log
-	if not exist %PVPGN_SOURCE% mkdir %PVPGN_SOURCE%
-
-	if not [%CHOICE_GIT%]==[n] ( 
-		:: download source.zip
-		module\autoupdate\wget.exe -O source.zip --no-check-certificate %PVPGN_ZIP% %_zip_log%
-		:: extract files into current directory (pvpgn-master directory is in archive)
-		module\autoupdate\7z.exe x source.zip -y %_zip_log%
-		:: copy files from pvpgn-master to source
-		xcopy /E /R /K /Y pvpgn-master source\ %_zip_log%
-		:: remove pvpgn-master
-		rmdir /Q /S pvpgn-master\
-		:: remove downloaded zip
-		del /F /Q source.zip
-	)
-)
 
 :: replace custom source code files
 @call :backup_conf
@@ -273,10 +255,6 @@ if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_VARS% -D WITH_WIN32_GUI=%_with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
-:: Stop after cmake (feature for appveyor)
-:: Example: build_pvpgn.bat cmake_only 6 2 1 y
-if [%PARAM_REBUILD%]==[cmake_only] exit
-
 :: ----------- BUILD ------------
 echo.
 echo ______________[ B U I L D  W I T H  V I S U A L  S T U D I O ]__________________
@@ -288,7 +266,7 @@ if [%LOG%]==[true] set _vs_log=^>visualstudio.log
 IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
 
 :: load visual studio variables
-@call "%VSCOMNTOOLS%vsvars32.bat"
+@call "%VSCOMNTOOLS%%VS120COMNTOOLS%vsvars32.bat"
 
 :: vcexpress include dir
 set INCLUDE=%VCEXPRESS_INCLUDE_PATH%;%INCLUDE%
@@ -308,6 +286,11 @@ if not ["%VSVER%"]==["v100"] (
 :: use framework 3.5 with vs2008
 if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
 :: INFO: each environment should compile with own framework (e.g. 2010 can't compile with 3.5)
+
+
+:: Stop after cmake and setting env vars (feature for appveyor)
+:: Example: build_pvpgn.bat cmake_only 6 2 1 y
+if [%PARAM_REBUILD%]==[cmake_only] exit
 
 
 :: compile the solution
