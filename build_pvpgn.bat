@@ -89,7 +89,7 @@ if [%VS_NOT_INSTALLED%]==[true] call %i18n% 1_0 & goto THEEND
 echo.
 echo --------------------------------------------------------------------------------
 
-:: {PARAMETER}, if not empty, skip SVN update
+:: {PARAMETER}, if not empty, skip GIT update
 if not [%PARAM_REBUILD%]==[] goto :choose_interface
 
 call %i18n% 1_3 "source"
@@ -215,6 +215,7 @@ if not [%PARAM_LUA%]==[] set CHOICE_LUA=%PARAM_LUA%& goto :lua_chosen
 call %i18n% 4_1
 module\choice
 if %errorlevel%==2 ( set CHOICE_LUA=n) else ( set CHOICE_LUA=y)
+set PARAM_LUA=%CHOICE_LUA%
 
 :: lua has choosen or not
 :lua_chosen
