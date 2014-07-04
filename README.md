@@ -1,3 +1,5 @@
+PvPGN Magic Builder
+=====
 PvPGN Magic Builder gives you an easy way to build your own PvPGN binaries from the latest
 source code for Windows.
 
@@ -17,7 +19,7 @@ Features
  * Doesn’t require additional files - all built in
  * Has a multilanguage command line interface: Russian, English, Dutch, German, Polish, Serbian (please, translate [this file](https://github.com/HarpyWar/pvpgn-magic-builder/blob/master/module/i18n.inc.bat) if you know others)
  * (optional) [Auto updates](https://code.google.com/p/pvpgn-magic-builder/wiki/AutoUpdate)
- * (optional) Auto downloads the latest PvPGN source code from the GIT
+ * (optional) Auto downloads actual PvPGN source code from the GIT
  * Auto configurates and compilates PvPGN source code
  * Auto create `release\` directory with a PvPGN binaries and support files that are ready to use immediately
 
@@ -42,7 +44,7 @@ Issues
   
   2) Start `build_pvpgn.bat` and then `.log` files will appear in the same directory when the process is finished. 
   
-  3) Attach logs to your message in the [https://github.com/HarpyWar/pvpgn-magic-builder/issues Issues list]:
+  3) Attach logs to your message in the [Issues list](https://github.com/HarpyWar/pvpgn-magic-builder/issues):
     * cmake.log
     * svn.log
     * visualstudio.log
