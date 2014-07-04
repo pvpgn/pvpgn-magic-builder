@@ -4,9 +4,9 @@
 ::  Windows Language abbreveations - http://msdn.microsoft.com/en-us/library/ms903928.aspx
 ::	MOTD Language identifiers - http://www.i18nguy.com/unicode/language-identifiers.html
 
-if [%Key%]==[] (
+if [!Key!]==[] (
 	set Key="HKEY_CURRENT_USER\Control Panel\International"
-	for /F "tokens=3" %%a in ('reg query %Key%  ^| find /i "sLang"') do set LANGUAGE=%%a
+	for /F "tokens=3" %%a in ('reg query !Key!  ^| find /i "sLang"') do set LANGUAGE=%%a
 )
 
 
