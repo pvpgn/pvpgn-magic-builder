@@ -16,12 +16,12 @@ set _vs_choice=0
 set /a _vs_count=0
 
 :: fill array with installed vs
-set _vs_num=1& if not ["%VS71COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
-set _vs_num=2& if not ["%VS80COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
-set _vs_num=3& if not ["%VS90COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
-set _vs_num=4& if not ["%VS100COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
-set _vs_num=5& if not ["%VS110COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
-set _vs_num=6& if not ["%VS120COMNTOOLS%"]==[""] set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
+set _vs_num=1& if not ["%VS71COMNTOOLS%"]==[""] if exist "%VS71COMNTOOLS%..\IDE\devenv.exe" set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
+set _vs_num=2& if not ["%VS80COMNTOOLS%"]==[""] if exist "%VS80COMNTOOLS%..\IDE\devenv.exe" set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
+set _vs_num=3& if not ["%VS90COMNTOOLS%"]==[""] if exist "%VS90COMNTOOLS%..\IDE\devenv.exe" set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
+set _vs_num=4& if not ["%VS100COMNTOOLS%"]==[""] if exist "%VS100COMNTOOLS%..\IDE\devenv.exe" set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
+set _vs_num=5& if not ["%VS110COMNTOOLS%"]==[""] if exist "%VS110COMNTOOLS%..\IDE\devenv.exe" set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
+set _vs_num=6& if not ["%VS120COMNTOOLS%"]==[""] if exist "%VS120COMNTOOLS%..\IDE\devenv.exe" set _vs_installed=%_vs_installed%!_vs_num! & set /a _vs_count+=1 & set _vs_choice=!_vs_num!
 
 :: if no vs found
 if %_vs_count% equ 0 set VS_NOT_INSTALLED=true& goto :eof
