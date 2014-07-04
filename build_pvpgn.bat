@@ -47,7 +47,7 @@ if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
 
 @set ZLIB_PATH=module\include\zlib\125\
 @set LUA_PATH=module\include\lua\5.1\
-@set VCEXPRESS_INCLUDE_PATH=%CUR_PATH%module\include\vsexpress_include\
+@set ATLMFC_INCLUDE_PATH=%CUR_PATH%module\include\atlmfc\
 
 
 :: PARAMETERS TO REBUILD
@@ -292,7 +292,7 @@ IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
 @call "%VSCOMNTOOLS%vsvars32.bat"
 
 :: vcexpress include dir
-set INCLUDE=%VCEXPRESS_INCLUDE_PATH%;%INCLUDE%
+set INCLUDE=%ATLMFC_INCLUDE_PATH%;%INCLUDE%
 :: use environments is different on each visual studio
 if ["%VSVER%"]==["v100"] ( set useEnv=UseEnv=true) else ( set useEnv=VCBuildUseEnvironment=true)
 
