@@ -24,11 +24,15 @@ cd /D "%CURRENT_PATH%"
 set i18n=module\i18n.inc.bat
 
 
-:: do not allow spaces in the path
-if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
+:: disallow invalid characters in the path (otherwise cmake fails configuration)
+for /f "delims=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789:\-_" %%a in ("%CURRENT_PATH%") do set invalid_path=true
+if [%invalid_path%]==[true] (
 	echo.
-	echo Please, put all the files into directory without spaces and unicode letters. 
-	echo For example C:\pvpgn_magic_builder\
+	call %i18n% 0_0
+	echo.
+	call %i18n% 0_1
+	echo.
+	call %i18n% 0_2 C:\pvpgn-magic-builder\
 	goto THEEND
 )
 

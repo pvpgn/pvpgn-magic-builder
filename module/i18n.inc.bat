@@ -87,6 +87,10 @@ goto :eof
 :ENU
 	set MOTD_LANGUAGE=enUS
 
+	set PHRASE_0_0=^^!^^!^^! WARNING ^^!^^!^^!
+	set PHRASE_0_1=Magic Builder have to be located in a path without spaces, unicode letters and special symbols (_- are allowed).
+	set PHRASE_0_2=For example: %2
+	
 	set PHRASE_1_0=  Visual Studio is not installed
 	set PHRASE_1_1=Select a Visual Studio version to build PvPGN:
 	set PHRASE_1_2=%2 is selected as a build environment
@@ -144,7 +148,11 @@ goto :eof
 :: Russian
 :RUS
 	set MOTD_LANGUAGE=ruRU
-
+	
+	set PHRASE_0_0=^^!^^!^^! ВНИМАНИЕ ^^!^^!^^!
+	set PHRASE_0_1=Magic Builder должен размещаться по пути без пробелов, русских символов и специальных символов (_- разрешены).
+	set PHRASE_0_2=Например: %2
+	
 	set PHRASE_1_0=  Visual Studio не установлена
 	set PHRASE_1_1=Выберите версию Visual Studio для компиляции PvPGN:
 	set PHRASE_1_2=%2 выбрана в качестве компилятора
