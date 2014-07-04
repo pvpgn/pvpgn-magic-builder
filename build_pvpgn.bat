@@ -45,7 +45,7 @@ if not ["%CURRENT_PATH%"]==["%CURRENT_PATH: =%"] (
 
 @set PVPGN_ZIP=https://github.com/HarpyWar/pvpgn/archive/master.zip
 
-@set ZLIB_PATH=module\include\zlib\125\
+@set ZLIB_PATH=module\include\zlib\1.2.8\
 @set LUA_PATH=module\include\lua\5.1\
 @set ATLMFC_INCLUDE_PATH=%CUR_PATH%module\include\atlmfc\
 
@@ -270,7 +270,7 @@ if exist "%PVPGN_BUILD%CMakeCache.txt" del %PVPGN_BUILD%CMakeCache.txt
 if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 
 :: configure and generate solution
-module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zlibwapi.lib %CMAKE_VARS% -D WITH_WIN32_GUI=%_with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D WITH_WIN32_GUI=%_with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
 :: Stop after cmake and setting env vars (feature for appveyor)
