@@ -10,7 +10,6 @@ Let's see how it works in one-minute video: http://www.youtube.com/watch?v=70KYe
 
 
 _*Note: use [Development Kit](https://github.com/HarpyWar/pvpgn-magic-builder/wiki/PvPGN-Development-Kit) to modify and debug your source code.*_
-
  
 Features
 --
@@ -33,26 +32,6 @@ Requirements
 
 ("Express" is the light edition of Visual Studio. It's free to [download](http://www.microsoft.com/visualstudio/downloads))
 
-Issues
---
- * Check write/modify permissions of the directory where Magic Builder is placed.
- * Put modified files into `source\` directory to build your own source code
-
- Do you have a trouble? Please, follow these steps:
- 
-  1) Open `build_pvpgn.bat` and change var "`set LOG=true`" at beginning of the file. 
-  
-  2) Start `build_pvpgn.bat` and then `.log` files will appear in the same directory when the process is finished. 
-  
-  3) Attach logs to your message in the [Issues list](https://github.com/HarpyWar/pvpgn-magic-builder/issues):
-    * cmake.log
-    * svn.log
-    * visualstudio.log
-    * build\CMakeCache.txt
-    * build\CMakeFiles\CMakeError.log
-    * build\CMakeFiles\CMakeOutput.log
-
-_*Note: Magic Builder can't build PvPGN 1.8.5. It works with [PvPGN 2.x](https://github.com/HarpyWar/pvpgn) only.*_
 
 Discussions
 --
