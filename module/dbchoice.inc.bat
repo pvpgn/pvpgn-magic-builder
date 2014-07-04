@@ -24,10 +24,15 @@ call %i18n% 2_1 %DB_ENGINE% "module\include\%DB_ENGINE%"
 :: iterate and display directories, filling array
 set numbers=
 set /A counter=0
-for /F %%v in ('dir /B /AD-H %DB_DIR%') do (
+:: sort by descending and mark with number only first 9 items
+for /F %%v in ('dir /B /AD-H /O-N %DB_DIR%') do (
 	set /A counter+=1
-	set numbers=!numbers!!counter!
-	if not [%%v]==[""] echo    !counter!^) %%v
+	if !counter! gtr 9 (
+		if not [%%v]==[""] echo    x^  %%v
+	) else (
+		set numbers=!numbers!!counter!
+		if not [%%v]==[""] echo    !counter!^) %%v
+	)
 )
 
 echo.
@@ -38,7 +43,7 @@ set _db_choice=%errorlevel%
 
 :: iterate again to search chosen number of directory
 set /A counter=0
-for /F %%v in ('dir /B /AD-H %DB_DIR%') do (
+for /F %%v in ('dir /B /AD-H /O-N %DB_DIR%') do (
 	set /A counter+=1
 	if [%_db_choice%]==[!counter!] set DB_VERSION=%%v
 )
