@@ -2,16 +2,20 @@ PvPGN Magic Builder. Version history.
 https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
-Starting from 2.x Magic Builder supports PvPGN 2.x-PRO only. 
+Starting from 2.x Magic Builder supports PvPGN 2.x only. 
 Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 
 [Featured 2.x]
 
+v2.01 (05.07.2013)
+- fix Visual Studio Express selection
+- extract translations into different files
+
 v2.0 (04.07.2013)
-- full support for PvPGN 2.x-PRO (with Lua)
+- full support for PvPGN 2.x (with Lua)
 - rapid download for PvPGN source code from Git
-- update versions MySQL, PostgreSQL, SQLite, zlib to the latest for the current day
+- update versions MySQL, PostgreSQL, SQLite, zlib, cmake to the latest for the current day
 - fix Visual Studio selection
 - fix database version selection
 - full restriction for invalid program path
