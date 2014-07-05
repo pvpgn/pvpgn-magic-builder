@@ -243,7 +243,7 @@ if [%PARAM_REBUILD%]==[] (
 		:: download source.zip
 		module\autoupdate\wget.exe -O source.zip --no-check-certificate %PVPGN_ZIP% %_zip_log%
 		:: extract files into current directory (pvpgn-master directory is in archive)
-		module\autoupdate\7z.exe x source.zip -y %_zip_log%
+		module\autoupdate\unzip.exe -o source.zip %_zip_log%
 		:: copy files from pvpgn-master to source
 		xcopy /E /R /K /Y pvpgn-master source\ %_zip_log%
 		:: remove pvpgn-master

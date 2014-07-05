@@ -1,9 +1,10 @@
-a03576d1a8029ea5a7b12b6e8cda2205 *build_pvpgn.bat
-8b663f11864027f0699ac2dce93e4951 *version-history.txt
+3c35b2248375be879f4bf0c3108d46d7 *build_pvpgn.bat
+4c453c3debe0fd3d711f3ce149bb3054 *version-history.txt
 10e5c1e8535c1ea0e3bb77439db316b5 *rebuild_total.bat
 e0097306ddab1ed6bd6fdad629d13b8a *module\dbchoice.inc.bat
 49d9b60248649436699edbc7f30ea16b *module\recursive_copy.inc.bat
 623dcf246b66d3366f700eefe9ae1b27 *module\select_generator.inc.bat
+75375c22c72f1beb76bea39c22a1ed68 *module\autoupdate\unzip.exe
 
 a17f64a3a8fc7088fbf411bfa09863eb *module\i18n.inc.bat
 0b601c8ee4f0c05e3a7323a4aa1d9688 *module\i18n\DEU.bat
