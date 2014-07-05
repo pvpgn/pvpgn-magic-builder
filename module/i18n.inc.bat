@@ -88,14 +88,14 @@ goto :eof
 	set MOTD_LANGUAGE=enUS
 
 	set PHRASE_0_0=^^!^^!^^! WARNING ^^!^^!^^!
-	set PHRASE_0_1=Magic Builder have to be located in a path without spaces, unicode letters and special symbols (_- are allowed).
+	set PHRASE_0_1=Magic Builder must be located in a path without spaces, unicode letters, and special symbols (_- are allowed).
 	set PHRASE_0_2=For example: %2
 	
 	set PHRASE_1_0=  Visual Studio is not installed
 	set PHRASE_1_1=Select a Visual Studio version to build PvPGN:
 	set PHRASE_1_2=%2 is selected as a build environment
-	set PHRASE_1_3=Do you want to download/replace the latest PvPGN source from the GIT (into %2 directory)?
-	set PHRASE_1_4=   PvPGN source code will be replaced from the GIT
+	set PHRASE_1_3=Do you want to download/replace the latest PvPGN source from GIT (into %2 directory)?
+	set PHRASE_1_4=   PvPGN source code will be replaced from GIT
 	set PHRASE_1_5=   PvPGN source code will not be updated
 	set PHRASE_1_6=Select PvPGN interface: 
 	set PHRASE_1_7=   1) Console (defaut)
@@ -111,7 +111,7 @@ goto :eof
 
 	set PHRASE_2_1=Available %2 versions (you can add your own into %3):
 	set PHRASE_2_2=   Enter a number
-	set PHRASE_2_3=   Wrong number... try again
+	set PHRASE_2_3=   Invalid number... try again
 	set PHRASE_2_4=   PvPGN will be compiled with %2 v%3 support
 	set PHRASE_2_5=Do you want to configure settings for %2 now (bnetd.conf ^> storage_path)?
 	set PHRASE_2_6=    Connection host
@@ -123,22 +123,22 @@ goto :eof
 
 	set PHRASE_3_1=Checking for update ...
 	set PHRASE_3_2="v%2" is your version
-	set PHRASE_3_3="v%2" is remote version
+	set PHRASE_3_3="v%2" is the latest version
 	set PHRASE_3_4= You have the latest PvPGN Magic Builder
-	set PHRASE_3_5=Remote version of PvPGN Magic Builder doesn't equal yours. Do you want to update to the latest version automatically?
-	set PHRASE_3_6= Update was cancelled by user
-	set PHRASE_3_6_1= There is no connection with update server
+	set PHRASE_3_5=Your local version of PvPGN Magic Builder is outdated. Do you want to update to the latest version automatically?
+	set PHRASE_3_6= Update has been canceled by user
+	set PHRASE_3_6_1= There is no connection with the update server
 	set PHRASE_3_7=Starting update ...
 	set PHRASE_3_8= Downloading file %2 ...
 	set PHRASE_3_9=Update is finished
-	set PHRASE_3_10=Please, check file %2 for more information about changes
+	set PHRASE_3_10=Please check file %2 for more information about the update
 	
 	set PHRASE_4_1=Enable Lua scripting support?
 	set PHRASE_4_2=   PvPGN will be compiled with Lua
 	set PHRASE_4_3=   PvPGN will be compiled without Lua
 	
-	set PHRASE_9_1=Select your D2GS version:
-	set PHRASE_9_2=Setup admin password for Telnet connection (listening on port 8888), will be saved in d2gs.reg
+	set PHRASE_9_1=Select a D2GS version:
+	set PHRASE_9_2=Setup an admin password for Telnet connection (listening on port 8888), will be saved in d2gs.reg
 	set PHRASE_9_3=Password hash will be saved in %2
 	set PHRASE_9_4=Do you want to download essential original MPQ files? (size 1GB)
 	set PHRASE_9_9=^^!^^!^^! To complete setup D2GS edit d2gs.reg and run install.bat ^^!^^!^^!
@@ -149,61 +149,61 @@ goto :eof
 :RUS
 	set MOTD_LANGUAGE=ruRU
 	
-	set PHRASE_0_0=^^!^^!^^! ВНИМАНИЕ ^^!^^!^^!
-	set PHRASE_0_1=Magic Builder должен размещаться по пути без пробелов, русских символов и специальных символов (_- разрешены).
-	set PHRASE_0_2=Например: %2
+	set PHRASE_0_0=^^!^^!^^! я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ ^^!^^!^^!
+	set PHRASE_0_1=Magic Builder я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ разя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ я┐╜робя┐╜я┐╜я┐╜я┐╜, я┐╜я┐╜я┐╜ския┐╜ симя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ специая┐╜я┐╜я┐╜я┐╜я┐╜ симя┐╜я┐╜я┐╜я┐╜я┐╜ (_- разя┐╜я┐╜шеня┐╜).
+	set PHRASE_0_2=я┐╜я┐╜я┐╜римя┐╜я┐╜: %2
 	
-	set PHRASE_1_0=  Visual Studio не установлена
-	set PHRASE_1_1=Выберите версию Visual Studio для компиляции PvPGN:
-	set PHRASE_1_2=%2 выбрана в качестве компилятора
-	set PHRASE_1_3=Скачать/заменить последние исходники PvPGN из GIT (в папку %2)?
-	set PHRASE_1_4=   PvPGN будет обновлен из GIT
-	set PHRASE_1_5=   PvPGN не будет обновлен
-	set PHRASE_1_6=Выберите интерфейс для PvPGN: 
-	set PHRASE_1_7=   1) Консольный (по-умолчанию)
-	set PHRASE_1_8=   2) Оконный
-	set PHRASE_1_9=Введите номер
-	set PHRASE_1_10=   Для PvPGN выбран консольный интерфейс
-	set PHRASE_1_11=   Для PvPGN выбран оконный интерфейс
-	set PHRASE_1_12=Выберите тип базы данных: 
-	set PHRASE_1_13=   1) Текстовые файлы / CDB (по-умолчанию)
+	set PHRASE_1_0=  Visual Studio я┐╜я┐╜ я┐╜я┐╜таня┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_1_1=я┐╜ыбея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ Visual Studio я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ции PvPGN:
+	set PHRASE_1_2=%2 я┐╜я┐╜я┐╜раня┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜тве я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_1_3=я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜/я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ходя┐╜я┐╜я┐╜я┐╜ PvPGN я┐╜я┐╜ GIT (я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ %2)?
+	set PHRASE_1_4=   PvPGN я┐╜удея┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ GIT
+	set PHRASE_1_5=   PvPGN я┐╜я┐╜ я┐╜удея┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_1_6=я┐╜ыбея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜фейя┐╜ я┐╜я┐╜я┐╜ PvPGN: 
+	set PHRASE_1_7=   1) я┐╜я┐╜я┐╜соля┐╜я┐╜я┐╜я┐╜ (я┐╜я┐╜-умоя┐╜чаня┐╜я┐╜)
+	set PHRASE_1_8=   2) я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_1_9=я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_1_10=   я┐╜я┐╜я┐╜ PvPGN я┐╜я┐╜я┐╜ран я┐╜я┐╜я┐╜соля┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜фейя┐╜
+	set PHRASE_1_11=   я┐╜я┐╜я┐╜ PvPGN я┐╜я┐╜я┐╜ран я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜фейя┐╜
+	set PHRASE_1_12=я┐╜ыбея┐╜я┐╜я┐╜я┐╜ тип я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜: 
+	set PHRASE_1_13=   1) я┐╜я┐╜я┐╜я┐╜товя┐╜я┐╜ файя┐╜я┐╜ / CDB (я┐╜я┐╜-умоя┐╜чаня┐╜я┐╜)
 	set PHRASE_1_14=
-	set PHRASE_1_15=   PvPGN будет собран без поддержки базы данных
-	set PHRASE_1_16=При конфигурации CMake возникли ошибки
+	set PHRASE_1_15=   PvPGN я┐╜удея┐╜ собран я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ржкя┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_1_16=я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜фигя┐╜я┐╜я┐╜ции CMake я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜шибя┐╜я┐╜
 
-	set PHRASE_2_1=Доступные версии %2 (можно добавить свою в %3):
-	set PHRASE_2_2=   Введите номер
-	set PHRASE_2_3=   Неправильный номер... попробуйте ещё раз
-	set PHRASE_2_4=   PvPGN будет скомпилирован с поддержкой %2 v%3
-	set PHRASE_2_5=Изменить сейчас настройки для %2 (bnetd.conf ^> storage_path)?
-	set PHRASE_2_6=    Адрес сервера (хост)
-	set PHRASE_2_7=    Пользователь
-	set PHRASE_2_8=    Пароль
-	set PHRASE_2_9=    Название базы данных
-	set PHRASE_2_10=    Префикс для таблиц (по-умолчанию %2):
-	set PHRASE_2_11=Конфигурация %2 сохранена в %2.conf.bat
+	set PHRASE_2_1=я┐╜я┐╜я┐╜я┐╜упня┐╜я┐╜ я┐╜я┐╜я┐╜сии %2 (я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ своя┐╜ я┐╜ %3):
+	set PHRASE_2_2=   я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_2_3=   я┐╜я┐╜я┐╜равя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜... я┐╜я┐╜я┐╜робя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ раз
+	set PHRASE_2_4=   PvPGN я┐╜удея┐╜ скоя┐╜я┐╜я┐╜я┐╜я┐╜ровя┐╜я┐╜ я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ржкя┐╜я┐╜ %2 v%3
+	set PHRASE_2_5=я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ сейя┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ройя┐╜я┐╜ я┐╜я┐╜я┐╜ %2 (bnetd.conf ^> storage_path)?
+	set PHRASE_2_6=    я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜рвея┐╜я┐╜ (я┐╜я┐╜я┐╜я┐╜)
+	set PHRASE_2_7=    я┐╜я┐╜я┐╜ьзоя┐╜я┐╜теля┐╜
+	set PHRASE_2_8=    я┐╜я┐╜роля┐╜
+	set PHRASE_2_9=    я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_2_10=    я┐╜я┐╜я┐╜фикя┐╜ я┐╜я┐╜я┐╜ табя┐╜я┐╜я┐╜ (я┐╜я┐╜-умоя┐╜чаня┐╜я┐╜ %2):
+	set PHRASE_2_11=я┐╜я┐╜я┐╜фигя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ %2 я┐╜я┐╜я┐╜раня┐╜я┐╜я┐╜ я┐╜ %2.conf.bat
 
-	set PHRASE_3_1=Проверка обновлений ...
-	set PHRASE_3_2="v%2" ваша версия
-	set PHRASE_3_3="v%2" последняя версия
-	set PHRASE_3_4= У вас последний PvPGN Magic Builder
-	set PHRASE_3_5=Версия PvPGN Magic Builder на сервере не совпадает с вашей. Хотите автоматически обновиться до последней версии?
-	set PHRASE_3_6= Обновление отменено пользователем
-	set PHRASE_3_6_1= Нет соединения с сервером обновлений
-	set PHRASE_3_7=Начинаю обновление ...
-	set PHRASE_3_8= Загрузка файла %2 ...
-	set PHRASE_3_9=Обновление завершено
-	set PHRASE_3_10=Информацию об изменениях можно посмотреть в файле %2
+	set PHRASE_3_1=я┐╜ровя┐╜рка я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ ...
+	set PHRASE_3_2="v%2" я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_3_3="v%2" я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_3_4= я┐╜ я┐╜я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ PvPGN Magic Builder
+	set PHRASE_3_5=я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ PvPGN Magic Builder я┐╜я┐╜ я┐╜я┐╜рвея┐╜я┐╜ я┐╜я┐╜ совя┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜шей. я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜томя┐╜я┐╜я┐╜я┐╜я┐╜ски я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜слея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜сии?
+	set PHRASE_3_6= я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜тмея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ьзоя┐╜я┐╜теля┐╜я┐╜
+	set PHRASE_3_6_1= я┐╜я┐╜я┐╜ соея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ я┐╜я┐╜рвером я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜
+	set PHRASE_3_7=я┐╜я┐╜чиня┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ ...
+	set PHRASE_3_8= я┐╜я┐╜я┐╜я┐╜узкя┐╜ файя┐╜я┐╜ %2 ...
+	set PHRASE_3_9=я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜шеня┐╜
+	set PHRASE_3_10=я┐╜я┐╜я┐╜я┐╜рмая┐╜я┐╜я┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜смоя┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜ файя┐╜я┐╜ %2
 	
-	set PHRASE_4_1=Включить поддержку Lua скриптов?
-	set PHRASE_4_2=   PvPGN будет скомпилирован с Lua
-	set PHRASE_4_3=   PvPGN будет скомпилирован без Lua
+	set PHRASE_4_1=я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ржкя┐╜ Lua я┐╜я┐╜риптов?
+	set PHRASE_4_2=   PvPGN я┐╜удея┐╜ скоя┐╜я┐╜я┐╜я┐╜я┐╜ровя┐╜я┐╜ я┐╜ Lua
+	set PHRASE_4_3=   PvPGN я┐╜удея┐╜ скоя┐╜я┐╜я┐╜я┐╜я┐╜ровя┐╜я┐╜ я┐╜я┐╜я┐╜ Lua
 
-	set PHRASE_9_1=Выберите версию D2GS:
-	set PHRASE_9_2=Установите пароль админа для Telnet соединения (работает на порту 8888), будет сохранен в d2gs.reg
-	set PHRASE_9_3=Хеш пароля будет сохранен в файле %2
-	set PHRASE_9_4=Вы хотите загрузить MPQ файлы, необходимые для работы сервера? (размер 1ГБ)
-	set PHRASE_9_9=^^!^^!^^! Для завершения установки D2GS измените d2gs.reg и запустите install.bat ^^!^^!^^!
+	set PHRASE_9_1=я┐╜ыбея┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ D2GS:
+	set PHRASE_9_2=я┐╜я┐╜таня┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜роля┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ Telnet соея┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ (рабя┐╜таея┐╜ я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜ 8888), я┐╜удея┐╜ я┐╜я┐╜я┐╜раня┐╜я┐╜ я┐╜ d2gs.reg
+	set PHRASE_9_3=я┐╜я┐╜я┐╜ я┐╜я┐╜роля┐╜ я┐╜удея┐╜ я┐╜я┐╜я┐╜раня┐╜я┐╜ я┐╜ файя┐╜я┐╜ %2
+	set PHRASE_9_4=я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜узия┐╜я┐╜ MPQ файя┐╜я┐╜, я┐╜я┐╜я┐╜я┐╜ходя┐╜я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜ рабя┐╜я┐╜я┐╜ я┐╜я┐╜рвея┐╜я┐╜? (разя┐╜я┐╜я┐╜ 1я┐╜я┐╜)
+	set PHRASE_9_9=^^!^^!^^! я┐╜я┐╜я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜шеня┐╜я┐╜ я┐╜я┐╜таня┐╜я┐╜я┐╜я┐╜ D2GS я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ d2gs.reg я┐╜ я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜я┐╜ install.bat ^^!^^!^^!
 
 	goto echo_phrase
 
