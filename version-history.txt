@@ -8,10 +8,12 @@ Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 [Featured 2.x]
 
+v2.02
+- hotfix: replace 7z.exe to unzip.exe
+
 v2.01 (05.07.2013)
 - fix Visual Studio Express selection
 - extract translations into different files
-- replace 7z.exe to unzip.exe
 
 v2.0 (04.07.2013)
 - full support for PvPGN 2.x (with Lua)
