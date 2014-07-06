@@ -25,7 +25,7 @@ set i18n=module\i18n.inc.bat
 
 
 :: disallow invalid characters in the path (otherwise cmake fails configuration)
-for /f "delims=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789:\-_" %%a in ("%CURRENT_PATH%") do set invalid_path=true
+for /f "delims=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789:\-_." %%a in ("%CURRENT_PATH%") do set invalid_path=true
 if [%invalid_path%]==[true] (
 	echo.
 	call %i18n% 0_0
