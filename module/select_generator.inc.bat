@@ -87,7 +87,7 @@ goto :eof
 	if exist "!VSCOMNTOOLS!..\IDE\devenv.exe" set found=true
 	:: ... or express version
 	if exist "!VSCOMNTOOLS!..\IDE\VCExpress.exe" set found=true
-	if exist "!VSCOMNTOOLS!..\IDE\VSWinExpress.exe" set found=true
+	if exist "!VSCOMNTOOLS!..\IDE\WDExpress.exe" set found=true
 	
 	if %found%==true (
 		set _vs_installed=!_vs_installed!%1 

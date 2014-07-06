@@ -298,8 +298,13 @@ IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
 
 :: vcexpress include dir
 set INCLUDE=%ATLMFC_INCLUDE_PATH%;%INCLUDE%
-:: use environments is different on each visual studio
-if ["%VSVER%"]==["v100"] ( set useEnv=UseEnv=true) else ( set useEnv=VCBuildUseEnvironment=true)
+
+:: use environments is different starting from version 2010
+if not ["%VSVER%"]==["v71"] if not ["%VSVER%"]==["v80"] if not ["%VSVER%"]==["v90"] ( 
+	set useEnv=UseEnv=true
+) else (
+	set useEnv=VCBuildUseEnvironment=true
+)
 
 :: vars correction from the vcvars32.bat
 if ["%FrameworkDir%"]==[""] (
