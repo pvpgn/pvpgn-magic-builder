@@ -60,9 +60,9 @@ if %_vs_count% gtr 1 (
 if [%_vs_choice%]==[1] set VSCOMNTOOLS=%VS71COMNTOOLS%& set GENERATOR=Visual Studio 7 .NET 2003& set VSVER=v71
 if [%_vs_choice%]==[2] set VSCOMNTOOLS=%VS80COMNTOOLS%& set GENERATOR=Visual Studio 8 2005& set VSVER=v80
 if [%_vs_choice%]==[3] set VSCOMNTOOLS=%VS90COMNTOOLS%& set GENERATOR=Visual Studio 9 2008& set VSVER=v90
-if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10& set VSVER=v100
-if [%_vs_choice%]==[5] set VSCOMNTOOLS=%VS110COMNTOOLS%& set GENERATOR=Visual Studio 11& set VSVER=v110
-if [%_vs_choice%]==[6] set VSCOMNTOOLS=%VS120COMNTOOLS%& set GENERATOR=Visual Studio 12& set VSVER=v120
+if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10 2010& set VSVER=v100
+if [%_vs_choice%]==[5] set VSCOMNTOOLS=%VS110COMNTOOLS%& set GENERATOR=Visual Studio 11 2012& set VSVER=v110
+if [%_vs_choice%]==[6] set VSCOMNTOOLS=%VS120COMNTOOLS%& set GENERATOR=Visual Studio 12 2013& set VSVER=v120
 set PARAM_VS=%_vs_choice%
 
 call %i18n% 1_2 "%GENERATOR%"
