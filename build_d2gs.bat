@@ -23,9 +23,6 @@ set i18n=module\i18n.inc.bat
 :: ----------- VARIABLES ------------
 @set URL_MPQ=http://pvpgn-magic-builder.googlecode.com/svn/branches/diablo2/
 
-:: path where this batch placed
-@set CUR_PATH=%~dp0%~1
-
 @set D2GS_RELEASE=d2gs\
 
 

@@ -40,9 +40,6 @@ if [%invalid_path%]==[true] (
 :: ----------- VARIABLES ------------
 @set URL_UPDATE=https://raw.githubusercontent.com/HarpyWar/pvpgn-magic-builder/master/
 
-:: path where this batch placed
-@set CUR_PATH=%~dp0%~1
-
 @set PVPGN_SOURCE=source\
 @set PVPGN_BUILD=build\
 @set PVPGN_RELEASE=release\
@@ -51,7 +48,7 @@ if [%invalid_path%]==[true] (
 
 @set ZLIB_PATH=module\include\zlib\1.2.8\
 @set LUA_PATH=module\include\lua\5.1\
-@set ATLMFC_INCLUDE_PATH=%CUR_PATH%module\include\atlmfc\
+@set ATLMFC_INCLUDE_PATH=%CURRENT_PATH%module\include\atlmfc\
 
 
 :: PARAMETERS TO REBUILD
@@ -444,3 +441,5 @@ goto THEEND
 echo.
 echo ___________________________[ C O M P L E T E ]__________________________________
 :: wait for any key
+
+if not [%PARAM_REBUILD%]==[rebuild_total] pause
