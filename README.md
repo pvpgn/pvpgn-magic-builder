@@ -28,7 +28,7 @@ Requirements
  * Visual C++ 2008 (Express is supported)
  * Visual C++ 2010 (Express is supported)
  * Visual C++ 2012 (Express is supported)
- * Visual C++ 2013 (Express is supported, but you must install [Windows SDK](http://msdn.microsoft.com/en-US/windows/desktop/ff851942.aspx))
+ * Visual C++ 2013 (Express is supported, make sure you have installed a version for Windows Desktop)
 
 ("Express" is the light edition of Visual Studio. It's free to [download](http://www.microsoft.com/visualstudio/downloads))
 
