@@ -439,5 +439,3 @@ goto THEEND
 echo.
 echo ___________________________[ C O M P L E T E ]__________________________________
 :: wait for any key
-
-if not [%PARAM_REBUILD%]==[rebuild_total] pause
