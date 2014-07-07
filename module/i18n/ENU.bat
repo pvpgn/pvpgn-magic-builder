@@ -8,7 +8,7 @@
 
 
 set PHRASE_0_0=^^!^^!^^! WARNING ^^!^^!^^!
-set PHRASE_0_1=Magic Builder must be located in a path without spaces, unicode letters, and special symbols (_- are allowed).
+set PHRASE_0_1=Magic Builder must be located in a path without spaces, unicode letters, and special symbols (_.- are allowed).
 set PHRASE_0_2=For example: %2
 
 set PHRASE_1_0=  Visual Studio is not installed
