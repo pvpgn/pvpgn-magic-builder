@@ -1,15 +1,16 @@
-3c35b2248375be879f4bf0c3108d46d7 *build_pvpgn.bat
-676ed92cb5d26089a7b32abf48569dd8 *version-history.txt
-10e5c1e8535c1ea0e3bb77439db316b5 *rebuild_total.bat
+00000000000000000000000000000000 *version-history.txt
+2695e7d6f870a774e895825fcae9cc5d *build_pvpgn.bat
+061ecd5280ca30531612d9f3ee45e6ae *build_d2gs.bat
 e0097306ddab1ed6bd6fdad629d13b8a *module\dbchoice.inc.bat
 49d9b60248649436699edbc7f30ea16b *module\recursive_copy.inc.bat
-623dcf246b66d3366f700eefe9ae1b27 *module\select_generator.inc.bat
+14c025a449076c4caa0a185b277c7f14 *module\select_generator.inc.bat
 75375c22c72f1beb76bea39c22a1ed68 *module\autoupdate\unzip.exe
 
 a17f64a3a8fc7088fbf411bfa09863eb *module\i18n.inc.bat
-0b601c8ee4f0c05e3a7323a4aa1d9688 *module\i18n\DEU.bat
-f69bcd1be4db8f3b478813db188f755e *module\i18n\ENU.bat
-7db8655a90e4b9275cbcc33025aa02eb *module\i18n\NLD.bat
-e7643820a302695262c09ab380e6d884 *module\i18n\PLK.bat
-ea24351021c173d92e0905c502851af4 *module\i18n\RUS.bat
-8f9a9bbc836c76aa497ec874dd97b60d *module\i18n\SRL.bat
+52ce15918e8d330a66886be8e23179b5 *module\i18n\DEU.bat
+8d14bd3fbfbde10716e03bde28748f18 *module\i18n\ENU.bat
+bb70da8f71d5fb071ba9e4f75165b93e *module\i18n\ESN.bat
+669f9af4c376c46f90f142d3329fd538 *module\i18n\NLD.bat
+0f57619659b2b9f10bad67ba981f7650 *module\i18n\PLK.bat
+824aa7c9d80af74dcc094045942b833a *module\i18n\RUS.bat
+01bea32d44a9ef4e6f08bbc9f48833f8 *module\i18n\SRL.bat
