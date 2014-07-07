@@ -4,7 +4,7 @@
 :: Author:      Joaquin Cabrera (jmcc3001@gmail.com)
 :: -----------------------------------------------
 :: Code Page:   850
-:: Encoding:    ANSI
+:: Encoding:    OEM 850
 
 
 set PHRASE_0_0=^^!^^!^^! PELIGRO ^^!^^!^^!
