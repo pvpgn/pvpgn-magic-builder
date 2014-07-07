@@ -1,9 +1,10 @@
 @echo off
 :: -----------------------------------------------
-:: Language: 	English (default)
-:: 
+:: Language:    English (default)
+:: Author:      HarpyWar (harpywar@gmail.com)
 :: -----------------------------------------------
-:: File encoding: ANSI
+:: Code Page:   437
+:: Encoding:    ANSI
 
 
 set PHRASE_0_0=^^!^^!^^! WARNING ^^!^^!^^!

@@ -1,9 +1,10 @@
 @echo off
 :: -----------------------------------------------
-:: Language: 	Serbian
-:: Author:		kingW3
+:: Language:    Serbian
+:: Author:      kingW3 (http://forums.pvpgn.org/index.php?action=profile;u=9527)
 :: -----------------------------------------------
-:: File encoding: ANSI
+:: Code Page:   21025 (INCORRECT?)
+:: Encoding:    ANSI
 
 
 set PHRASE_1_0=  Visual Studio nije instaliran

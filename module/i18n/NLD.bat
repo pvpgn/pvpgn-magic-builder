@@ -1,9 +1,10 @@
 @echo off
 :: -----------------------------------------------
-:: Language: 	Dutch / Netherlands
-:: Author:		MusicDemon
+:: Language:    Dutch / Netherlands
+:: Author:      MusicDemon (musicdemon@live.nl)
 :: -----------------------------------------------
-:: File encoding: ANSI
+:: Code Page:   850 (INCORRECT?)
+:: Encoding:    ANSI
 
 
 set PHRASE_1_0=  Visual Studio is niet geinstaleerd

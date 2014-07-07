@@ -1,9 +1,10 @@
 @echo off
 :: -----------------------------------------------
-:: Language:	Russian
-:: Author:		HarpyWar (harpywar@gmail.com)
+:: Language:    Russian
+:: Author:      HarpyWar (harpywar@gmail.com)
 :: -----------------------------------------------
-:: File encoding: OEM 866
+:: Code Page:   866
+:: Encoding:    OEM 866
 
 
 set PHRASE_0_0=^^!^^!^^! ÇçàåÄçàÖ ^^!^^!^^!
