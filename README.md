@@ -9,7 +9,7 @@ Let's see how it works in one-minute video: http://www.youtube.com/watch?v=70KYe
 
 
 
-_*Note: use [Development Kit](https://github.com/HarpyWar/pvpgn-magic-builder/wiki/PvPGN-Development-Kit) to modify and debug your source code.*_
+_*Note: use [Development Kit](https://github.com/HarpyWar/pvpgn-magic-builder/releases/tag/pvpgn-dev-kit) to modify and debug your source code.*_
  
 Features
 --
