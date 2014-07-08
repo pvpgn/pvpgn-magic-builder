@@ -6,7 +6,7 @@ e0097306ddab1ed6bd6fdad629d13b8a *module\dbchoice.inc.bat
 14c025a449076c4caa0a185b277c7f14 *module\select_generator.inc.bat
 75375c22c72f1beb76bea39c22a1ed68 *module\autoupdate\unzip.exe
 
-a17f64a3a8fc7088fbf411bfa09863eb *module\i18n.inc.bat
+f672fbc073af6226d34afb29a6666e6c *module\i18n.inc.bat
 52ce15918e8d330a66886be8e23179b5 *module\i18n\DEU.bat
 8d14bd3fbfbde10716e03bde28748f18 *module\i18n\ENU.bat
 bb70da8f71d5fb071ba9e4f75165b93e *module\i18n\ESN.bat
@@ -14,3 +14,4 @@ bb70da8f71d5fb071ba9e4f75165b93e *module\i18n\ESN.bat
 0f57619659b2b9f10bad67ba981f7650 *module\i18n\PLK.bat
 824aa7c9d80af74dcc094045942b833a *module\i18n\RUS.bat
 01bea32d44a9ef4e6f08bbc9f48833f8 *module\i18n\SRL.bat
+9a1cdc0293a013030e1c2bae8fdafa82 *module\i18n\UKR.bat

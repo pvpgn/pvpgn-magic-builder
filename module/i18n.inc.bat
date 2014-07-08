@@ -6,7 +6,6 @@ if [!Key!]==[] (
 	set Key="HKEY_CURRENT_USER\Control Panel\International"
 	for /F "tokens=3" %%a in ('reg query !Key!  ^| find /i "sLang"') do set LANGUAGE=%%a
 )
-set LANGUAGE=KKZ
 
 :: initialize English as default
 call module\i18n\ENU.bat %1 %2 %3 %4 %5
