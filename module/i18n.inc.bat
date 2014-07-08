@@ -1,7 +1,6 @@
 @echo off
 :: Gets localization strings depending user's system locale
-::  Windows Language abbreveations - http://msdn.microsoft.com/en-us/library/ms903928.aspx
-::	DOS Codepage identifiers - http://msdn.microsoft.com/en-us/library/windows/desktop/dd317756(v=vs.85).aspx
+::  Windows Languages http://msdn.microsoft.com/en-us/goglobal/bb896001.aspx
 
 if [!Key!]==[] (
 	set Key="HKEY_CURRENT_USER\Control Panel\International"
@@ -16,7 +15,6 @@ call module\i18n\ENU.bat %1 %2 %3 %4 %5
 if [%LANGUAGE%]==[UZB] set LANGUAGE=RUS
 if [%LANGUAGE%]==[KKZ] set LANGUAGE=RUS
 if [%LANGUAGE%]==[TTT] set LANGUAGE=RUS
-if [%LANGUAGE%]==[UKR] set LANGUAGE=RUS
 :: Serbian
 if [%LANGUAGE%]==[SRL] set LANGUAGE=SRL
 if [%LANGUAGE%]==[SRB] set LANGUAGE=SRL
