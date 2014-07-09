@@ -14,6 +14,7 @@ call module\i18n\ENU.bat %1 %2 %3 %4 %5
 if [%LANGUAGE%]==[UZB] set LANGUAGE=RUS
 if [%LANGUAGE%]==[KKZ] set LANGUAGE=RUS
 if [%LANGUAGE%]==[TTT] set LANGUAGE=RUS
+if [%LANGUAGE%]==[AZE] set LANGUAGE=RUS
 :: Serbian
 if [%LANGUAGE%]==[SRL] set LANGUAGE=SRL
 if [%LANGUAGE%]==[SRB] set LANGUAGE=SRL
