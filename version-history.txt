@@ -7,6 +7,9 @@ Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 
 [Featured 2.x]
+v2.04 (09.07.2013)
+- add Ukrainian translation
+- add multiple language variations
 
 v2.03 (08.07.2013)
 - hotfix: fix Visual Studio 2013 Express selection
