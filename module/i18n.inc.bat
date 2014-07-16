@@ -1,6 +1,6 @@
 @echo off
 :: Gets localization strings depending user's system locale
-::  Windows Languages http://msdn.microsoft.com/en-us/goglobal/bb896001.aspx
+::  Windows Languages http://www.microsoft.com/resources/msdn/goglobal/default.mspx
 
 if [!Key!]==[] (
 	set Key="HKEY_CURRENT_USER\Control Panel\International"
