@@ -5,6 +5,7 @@ e0097306ddab1ed6bd6fdad629d13b8a *module\dbchoice.inc.bat
 49d9b60248649436699edbc7f30ea16b *module\recursive_copy.inc.bat
 14c025a449076c4caa0a185b277c7f14 *module\select_generator.inc.bat
 75375c22c72f1beb76bea39c22a1ed68 *module\autoupdate\unzip.exe
+fabdfaa9a66bab0d96d11a3c652cb2aa *module\include\atlmfc\stdint.h
 
 5bab3fb2be10abb11925d9076e9c4209 *module\i18n.inc.bat
 52ce15918e8d330a66886be8e23179b5 *module\i18n\DEU.bat
@@ -14,4 +15,4 @@ bb70da8f71d5fb071ba9e4f75165b93e *module\i18n\ESN.bat
 0f57619659b2b9f10bad67ba981f7650 *module\i18n\PLK.bat
 824aa7c9d80af74dcc094045942b833a *module\i18n\RUS.bat
 01bea32d44a9ef4e6f08bbc9f48833f8 *module\i18n\SRL.bat
-9a1cdc0293a013030e1c2bae8fdafa82 *module\i18n\UKR.bat
+93dff6353e8d0180c938bc71d57e8317 *module\i18n\UKR.bat

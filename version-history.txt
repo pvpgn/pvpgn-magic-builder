@@ -7,24 +7,28 @@ Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 
 [Featured 2.x]
-v2.04 (09.07.2013)
+v2.05 (05.08.2014)
+- fix complie with Visual C++ 2008/2005
+- fix Ukrainian translation
+
+v2.04 (09.07.2014)
 - add Ukrainian translation
 - add multiple language variations
 
-v2.03 (08.07.2013)
+v2.03 (08.07.2014)
 - hotfix: fix Visual Studio 2013 Express selection
 - allow dot in the program path
 - add Spanish translation
 - corrections for German and Polish translations (native encoding)
 
-v2.02 (06.07.2013)
+v2.02 (06.07.2014)
 - hotfix: replace 7z.exe to unzip.exe (smaller size)
 
-v2.01 (05.07.2013)
+v2.01 (05.07.2014)
 - fix Visual Studio Express selection
 - extract translations into different files
 
-v2.0 (04.07.2013)
+v2.0 (04.07.2014)
 - full support for PvPGN 2.x (with Lua)
 - rapid download for PvPGN source code from Git
 - update versions MySQL, PostgreSQL, SQLite, zlib, cmake to the latest for the current day
