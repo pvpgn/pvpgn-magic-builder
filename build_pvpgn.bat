@@ -272,7 +272,7 @@ if exist "%PVPGN_BUILD%CMakeCache.txt" del %PVPGN_BUILD%CMakeCache.txt
 if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 
 :: configure and generate solution
-module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D WITH_WIN32_GUI=%_with_gui% -D CMAKE_INSTALL_PREFIX="" -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
 :: Stop after cmake and setting env vars (feature for appveyor)
