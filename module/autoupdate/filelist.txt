@@ -1,5 +1,5 @@
 00000000000000000000000000000000 *version-history.txt
-2695e7d6f870a774e895825fcae9cc5d *build_pvpgn.bat
+ad7922d45c3b9908f12c44cb7984bce6 *build_pvpgn.bat
 061ecd5280ca30531612d9f3ee45e6ae *build_d2gs.bat
 e0097306ddab1ed6bd6fdad629d13b8a *module\dbchoice.inc.bat
 49d9b60248649436699edbc7f30ea16b *module\recursive_copy.inc.bat
@@ -16,3 +16,6 @@ bb70da8f71d5fb071ba9e4f75165b93e *module\i18n\ESN.bat
 824aa7c9d80af74dcc094045942b833a *module\i18n\RUS.bat
 01bea32d44a9ef4e6f08bbc9f48833f8 *module\i18n\SRL.bat
 93dff6353e8d0180c938bc71d57e8317 *module\i18n\UKR.bat
+
+a21ecc044d7d47b2ae33ee4395508b16 *module\include\d2gs\1.13c\d2server.dll
+e02a34b6284060f426b6474800cbf6ad *module\include\d2gs\1.13c\README.txt
