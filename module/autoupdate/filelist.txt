@@ -17,5 +17,17 @@ bb70da8f71d5fb071ba9e4f75165b93e *module\i18n\ESN.bat
 01bea32d44a9ef4e6f08bbc9f48833f8 *module\i18n\SRL.bat
 93dff6353e8d0180c938bc71d57e8317 *module\i18n\UKR.bat
 
-a21ecc044d7d47b2ae33ee4395508b16 *module\include\d2gs\1.13c\d2server.dll
-e02a34b6284060f426b6474800cbf6ad *module\include\d2gs\1.13c\README.txt
+ddad9af85131b8a3118336bb0bac1a42 *module\include\d2gs\1.13c\d2server.dll
+
+4a71a0349a7325a4fed96053778863e0 *module\include\d2gs\1.13c_m\3ea42f5ac80f0d2deb35d99b4e9a780b.mod
+529379cf24b15a4a7246c2c1e8a9eaae *module\include\d2gs\1.13c_m\D2GE.exe
+e4ebc27b84ade011c07c7c1ab499934f *module\include\d2gs\1.13c_m\D2GS.exe
+a65403ad3a6e540e635b5c20b294e01d *module\include\d2gs\1.13c_m\d2gs.reg
+e9aac468ce7bab24f534377a57df5ed8 *module\include\d2gs\1.13c_m\d2gs.script
+a21ecc044d7d47b2ae33ee4395508b16 *module\include\d2gs\1.13c_m\d2server.dll
+4a08183c93ba5bc5db8789b08c4fa5a7 *module\include\d2gs\1.13c_m\d2warden.dll
+6dbcd2fe8d2ae1d5f98e68118a89d572 *module\include\d2gs\1.13c_m\d2warden.ini
+d975a1a3338d06baca0bc9724e6a59e5 *module\include\d2gs\1.13c_m\filelist.txt
+0e275ac64d1f93f19fbb832d1abe460e *module\include\d2gs\1.13c_m\install.bat
+3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.13c_m\ItemConfig.dat
+421b50af147b44f72cf15e2149c8d605 *module\include\d2gs\1.13c_m\README.txt

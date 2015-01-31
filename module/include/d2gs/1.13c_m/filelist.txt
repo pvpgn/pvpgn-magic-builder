@@ -1,0 +1,14 @@
+f5860c629d309b8fc1f96174babcf633 *1.13c_m\D2Client.dll
+555b795747c9e032e379b0cca58ed9eb *1.13c_m\D2CMP.dll
+ee1238806ef6d6d9801d12a09d128fe1 *1.13c_m\D2Common.dll
+978f6f74cd031bce6ecee602cd5988cc *1.13c_m\D2Game.dll
+ff48757b0164d03d7bde143a86e75864 *1.13c_m\D2gfx.dll
+284623566350f8e0aa84208d4395d36a *1.13c_m\D2Lang.dll
+0a7d02dfd330860f320c8f26391f8361 *1.13c_m\D2MCPClient.dll
+7dec18e98a52816086950824f695b220 *1.13c_m\D2Net.dll
+b07372c8e740cf04f45b8e2e63a01346 *1.13c_m\D2sound.dll
+32b35919f174681bb2b80a582e5c19d0 *1.13c_m\D2Win.dll
+da590a7ea422ca7931c510e46b6ea93a *1.13c_m\Fog.dll
+c83f7b62cf00de8c468fe78dcdc114bd *1.13c_m\Patch_D2.mpq
+adb3aecd6c91328f79f16be555bb1784 *1.13c_m\Storm.dll
+a0ce0247d48fecaac607edb1e2d87fd8 *ijl11.dll
