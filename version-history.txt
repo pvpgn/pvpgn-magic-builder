@@ -7,6 +7,10 @@ Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 
 [Featured 2.x]
+v2.07 (31.01.2015)
+- update D2GS 1.13c multithreaded version
+- return original D2GS 1.13c from marsgod to the selection list
+
 v2.06 (01.09.2014)
 - update cmake install arguments to support latest changes in PvPGN
 - replace D2GS 1.13c with multithreaded version from https://github.com/tesseract2048/d2gs/
