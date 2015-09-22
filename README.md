@@ -14,8 +14,8 @@ _*Note: use [Development Kit](https://github.com/HarpyWar/pvpgn-magic-builder/re
 Features
 --
  * Builds a [PvPGN](https://github.com/HarpyWar/pvpgn) with one of the databases support: [MySQL](http://wikipedia.org/wiki/MySQL), [PostgreSQL](http://wikipedia.org/wiki/PostgreSQL), [SQLite3](http://wikipedia.org/wiki/SQLite) or [ODBC](http://wikipedia.org/wiki/Open_Database_Connectivity). Feature to enable [Lua](http://en.wikipedia.org/wiki/Lua_(programming_language)) scripting
- * Builds any version of [D2GS](http://harpywar.com/?a=articles&b=2&c=2&d=21), feature to download all DLL and MPQ that are necessary to start your server
- * Doesn’t require additional files - all built in
+ * Builds any version of [D2GS](http://harpywar.com/?a=articles&b=2&c=2&d=21), including [multithreaded D2GS](https://github.com/tesseract2048/d2gs), feature to download all DLL and MPQ that are necessary to start your server
+ * Doesn’t require additional files &mdash; all built in
  * Has a multilanguage command line interface: Russian, English, Dutch, German, Polish, Serbian, Spanish, Ukrainian (please, translate [this file](https://github.com/HarpyWar/pvpgn-magic-builder/blob/master/module/i18n/ENU.bat) if you know others)
  * (optional) [Auto updates](https://code.google.com/p/pvpgn-magic-builder/wiki/AutoUpdate)
  * (optional) Auto downloads actual PvPGN source code from the GIT

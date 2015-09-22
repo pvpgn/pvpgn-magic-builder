@@ -40,7 +40,7 @@ echo    4) 1.10
 echo    5) 1.09d
 echo.
 call %i18n% 1_9
-module\choice /c:1234
+module\choice /c:12345
 set CHOICE_D2GSVER=%errorlevel%
 
 if [%CHOICE_D2GSVER%]==[1] set D2GSVER=1.13c_m
