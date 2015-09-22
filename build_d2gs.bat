@@ -6,7 +6,7 @@ color 4f
 echo.
 echo /-\-/-\-/-\-/-\-/-\-  D 2 G S  M a g i c  B u i l d e r  -\-/-\-/-\-/-\-/-\-/-\
 echo \                                                                             /
-echo /   Copyright 2012-2015, HarpyWar (harpywar@gmail.com)                             \
+echo /   Copyright 2012-2015, HarpyWar (harpywar@gmail.com)                        \
 echo \   http://harpywar.com                                                       /
 echo /                                                                             \
 echo \-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/
