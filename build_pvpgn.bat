@@ -38,13 +38,13 @@ if [%invalid_path%]==[true] (
 
 
 :: ----------- VARIABLES ------------
-@set URL_UPDATE=https://raw.githubusercontent.com/HarpyWar/pvpgn-magic-builder/master/
+@set URL_UPDATE=https://raw.githubusercontent.com/pvpgn/pvpgn-magic-builder/master/
 
 @set PVPGN_SOURCE=source\
 @set PVPGN_BUILD=build\
 @set PVPGN_RELEASE=release\
 
-@set PVPGN_ZIP=https://github.com/HarpyWar/pvpgn/archive/master.zip
+@set PVPGN_ZIP=https://github.com/pvpgn/pvpgn-server/archive/master.zip
 
 @set ZLIB_PATH=module\include\zlib\1.2.8\
 @set LUA_PATH=module\include\lua\5.1\
@@ -303,25 +303,29 @@ if not ["%VSVER%"]==["v71"] if not ["%VSVER%"]==["v80"] if not ["%VSVER%"]==["v9
 	set useEnv=VCBuildUseEnvironment=true
 )
 
-:: vars correction from the vcvars32.bat
-if ["%FrameworkDir%"]==[""] (
-	set FrameworkDir=%FrameworkDir32%
-	set FrameworkVersion=%FrameworkVersion32%
-)
-:: add slash to framework path if not vs2010
-if not ["%VSVER%"]==["v100"] set FrameworkDir=%FrameworkDir%\
-
 :: /maxcpucount is supported starting from vs2008
 if not ["%VSVER%"]==["v71"] if not ["%VSVER%"]==["v80"] (
-	set _max_cpu=/maxcpucount
+	set _max_cpu=/m
 )
+
+:: vars correction from the vcvars32.bat
+rem if ["%FrameworkDir%"]==[""] (
+rem 	set FrameworkDir=%FrameworkDir32%
+rem 	set FrameworkVersion=%FrameworkVersion32%
+rem )
+
+:: add slash to framework path if version less than vs2010
+rem if not ["%VSVER%"]==["v100"] if not ["%VSVER%"]==["v120"] if not ["%VSVER%"]==["v140"] set FrameworkDir=%FrameworkDir%\
+
 :: use framework 3.5 with vs2008
-if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
+rem if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
 :: INFO: each environment should compile with own framework (e.g. 2010 can't compile with 3.5)
+rem "%FrameworkDir%%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
+
 
 :: compile the solution
-"%FrameworkDir%%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
-
+:: FIXME: use MSBuild may fails on in old VS versions, it can be selected from a different framework. But if use MSBuild from %FrameworkDir% then it will fail in VS2015
+"MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
 
 
 :: ----------- RELEASE ------------
