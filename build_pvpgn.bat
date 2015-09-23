@@ -254,8 +254,8 @@ if [%PARAM_REBUILD%]==[] (
 @call :backup_conf
 
 
-:: {PARAMETER}, if not empty and not "cmake_only" then skip CMake configuration
-if not [%PARAM_REBUILD%]==[] if not [%PARAM_REBUILD%]==[cmake_only] goto :build
+:: {PARAMETER}, if not empty | "auto" | "cmake_only" then skip CMake configuration
+if not [%PARAM_REBUILD%]==[] if not [%PARAM_REBUILD%]==[auto] if not [%PARAM_REBUILD%]==[cmake_only] goto :build
 
 
 :: ----------- MAKE ------------
@@ -436,7 +436,7 @@ goto THEEND
 
 :FAIL
 	echo SOMETHING GONE WRONG :-(
-	pause
+	if not [%PARAM_REBUILD%]==[auto] pause
 	goto :eof
 	
 	
@@ -446,4 +446,4 @@ echo.
 echo ___________________________[ C O M P L E T E ]__________________________________
 :: wait for any key
 
-if not [%PARAM_REBUILD%]==[rebuild_total] pause
+if not [%PARAM_REBUILD%]==[auto] pause
