@@ -16,11 +16,11 @@ if not [%PARAM_REBUILD%]==[] (
 )
 
 :: {PARAMETER}, if not empty skip db configuration choice
-if not [%DB_VERSION%]==[] set CHOICE_DB_CONF=y& goto :db_configured
+if not [%DB_VERSION%]==[] set CHOICE_DB_CONF=y& goto :db_chosen
 
 call %i18n% 2_1 %DB_ENGINE% "module\include\%DB_ENGINE%"
 
-:choose_db
+:show_db_list
 :: iterate and display directories, filling array
 set numbers=
 set /A counter=0
@@ -38,8 +38,16 @@ for /F %%v in ('dir /B /AD-H /O-N %DB_DIR%') do (
 echo.
 :: user input is number of directory 
 call %i18n% 2_2
-module\choice /c:%numbers%
-set _db_choice=%errorlevel%
+
+:choose_db
+
+:: set first number if automatic build
+if [%PARAM_REBUILD%]==[auto] (
+	set _db_choice=1
+) else (
+	module\choice /c:%numbers%
+	set _db_choice=%errorlevel%
+)
 
 :: iterate again to search chosen number of directory
 set /A counter=0
@@ -48,9 +56,11 @@ for /F %%v in ('dir /B /AD-H /O-N %DB_DIR%') do (
 	if [%_db_choice%]==[!counter!] set DB_VERSION=%%v
 )
 
+:db_chosen
+
 :: check for wrong input
 ::  FIXME: it's not need, because choice.exe don't allow wrong input
-if [%DB_VERSION%]==[] call %i18n% 2_3  &  echo.  &  goto choose_db
+if [%DB_VERSION%]==[] call %i18n% 2_3  &  echo.  &  goto show_db_list
 
 call %i18n% 2_4 %DB_ENGINE% %DB_VERSION%
 
@@ -67,10 +77,21 @@ set _db_password=
 set _db_name=pvpgn
 set _db_prefix=
 
+
+:: pass choice if automatic build
+if not [%PARAM_REBUILD%]==[] (
+	set CHOICE_DB_CONF=n & goto :db_configured
+)
+
 echo.
 call module\i18n.inc.bat 2_5 %DB_ENGINE%
+
 module\choice 
-if %errorlevel%==2 ( set CHOICE_DB_CONF=n & goto :db_configured) else ( set CHOICE_DB_CONF=y)
+if %errorlevel%==2 (
+	set CHOICE_DB_CONF=n & goto :db_configured
+) else (
+	set CHOICE_DB_CONF=y
+)
 
 :: SQLite and ODBC has not connection settings
 if not [%DB_ENGINE%]==[SQLite] if not [%DB_ENGINE%]==[ODBC] (
