@@ -437,6 +437,7 @@ goto THEEND
 :FAIL
 	echo SOMETHING GONE WRONG :-(
 	if not [%PARAM_REBUILD%]==[auto] pause
+	exit /b 1
 	goto :eof
 	
 	
