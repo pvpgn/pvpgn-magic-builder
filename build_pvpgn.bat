@@ -239,12 +239,12 @@ if [%PARAM_REBUILD%]==[] (
 	if not [%CHOICE_GIT%]==[n] ( 
 		:: download source.zip
 		module\autoupdate\wget.exe -O source.zip --no-check-certificate %PVPGN_ZIP% %_zip_log%
-		:: extract files into current directory (pvpgn-master directory is in archive)
+		:: extract files into current directory (pvpgn-server-master directory is in archive)
 		module\autoupdate\unzip.exe -o source.zip %_zip_log%
 		:: copy files from pvpgn-master to source
-		xcopy /E /R /K /Y pvpgn-master source\ %_zip_log%
+		xcopy /E /R /K /Y pvpgn-server-master source\ %_zip_log%
 		:: remove pvpgn-master
-		rmdir /Q /S pvpgn-master\
+		rmdir /Q /S pvpgn-server-master\
 		:: remove downloaded zip
 		del /F /Q source.zip
 	)
