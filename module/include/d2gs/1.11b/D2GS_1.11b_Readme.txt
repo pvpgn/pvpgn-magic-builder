@@ -1,0 +1,148 @@
+D2GS 1.11b (build 45) by marsgod
+
+First, this is a TRUE Diablo 1.11b D2GS, not the 1.10+MOD!
+So, you need a 1.11b Diablo to make it work. I strongly recommend that you use the Patch_D2.mpq (version 1.11b) from battle.net.
+
+You can follow the instruction in D2GS_README.TXT to install the d2gs.
+Please NOTE: The re-based storm.dll in previous release of D2GS 1.11b has been removed from the release package. You should use the orig storm.dll from Blizzard!
+And, the d2gs.script should be copied to your Diablo installed directory with d2server.dll.
+
+
+This D2GS can work with the latest PVPGN.
+Build 46: 2010-03-31
+  1. New feature:
+      d2warden.ini: SupportD2ClientVersion=1,2,3  #you can use this option force the player use a special d2 client version,1=1.11b 2=1.12a 3=1.13a....
+  2. Remove a monster damage bug introduce after build 42.....
+Build 45: 2010-03-07
+  1. New feature:
+	DisableDCSpawnInSomeArea=1; This will not spawn DiabloClone in 'The Chaos Sanctuary' 'Arreat Summit' and Uber Boss Levels.Because spawn DiabloClone in these levels have some bug, this is just a workaround.
+  2. Cast 'Cloak of Shadows' on ancient barbarians will not crash the game.
+Build 44: 2010-01-15
+  1. New features: 
+	EnableEthSocketBugFix=1  ; This will disable additional 50% reward of eth armor when use the cube. 
+	DisableBugMF=1	; This will disable all ACT boss quest drop within a non-quest drop game.
+  2. d2warden.ini update: you can detect Redvex plugin now. See [Redvex1][Redvex2] in d2warden.ini 
+Build 43: 2009-03-01
+  1. Make the d2warden more stable;
+  2. d2warden can support MM.bot check now. Please set EnableMMBotCheck in your d2warden.ini;
+  3. New Feature! EnablePreCalculateTCNoDropTbl, When set to 1, the multiply players TC NoDrop floating-point calculation will be pre-calculated, and this can improve your server performance;
+  4. Remove unnecessary Monster Damage calculation from server side;
+  5. Slightly modify the Uber Tristram boss's behavior.
+Build 42: 2009-02-17
+  Only start warden after player enter game. Hope this can fix some crash/corrupt problems.
+Build 41: 2009-02-13
+  Fix a bug in d2warden, which will cause the NEC set create a no Animation hack log.
+Build 40: 2009-02-11
+  Greatly enchance d2warden. Now it can detect following hack or bot:
+  1. packet based bot, such as kuk-bot(EnablePlayerMouseCheck=1);
+  2. js32 based bot, such as d2jsp based bot, NT bot;
+  3. d2launch with cguard support. cguard cheat the warden, so don't use cguard;
+  4. TMCBP Mod, which modify the client side AnimData.d2;
+  5. d2hackit based hack or bot;
+  6. some drop notify hack, pickit?
+  7. other anti-warden hack or bot;
+  8. d2hackmap, if you want... :)
+
+Build 39: 2009-02-01
+  NewFeatures! You can enable warden in d2gs now! Please set EnableWarden=1 in NewFeatures section.
+  Currently, the warden support detect the d2jsp and d2hackmap in client side.
+  You can configure the warden in d2warden.ini file.
+  Warden log will be in d2warden.log, including the player kick log.
+  NOTE: This use the BN mod for warden work, no need to update your d2loader or client side program.
+Build 38: 2008-11-24
+  Fix a crash bug when reloading the config file.
+Build 37: 2008-11-23
+  You can enable DiabloClone spawned only in the game where the key sold.
+  Add "DcItemRate=1000" in your d2server.ini [World Event] section. Where 1000 mean 1000/1000=100% problity spawn DiabloClone in game. When you set DcItemRate=0, this will disable this feature.
+
+Build 36: 2008-08-26
+  When EnableUnicodeCharName=1, you pickup a Ear or Personalize your item will not cause a save data corrupt. (But your unicode name on ear or item will not display correctly, this is because the save file use 7 bits save char name, not 8 bits.)
+
+Build 35: 2008-07-14
+  Now the server support Unicode Char Name.
+  Please set EnableUnicodeCharName=1 in your d2server.ini
+  For Unicode Char Name support, you need a modified version of D2CS.
+  For more detail, please check the UnicodeCharName directory.
+
+Build 34: 2008-07-11
+  You can now set some new features via the d2server.ini, please check the d2server.ini file!
+
+;EnableMeleeHireableAI: When set to 1, the ACT2&ACT5 hireable's AI will be fixed, when the hireable is cursed by IM, he will stop attack monster, until the cruse disappear or replace by another curse.(Your melee pet will be more safer!)
+;EnableNeroPetAI: When set to 1, the Nero Golem's AI will be fixed, when the golem is cursed by IM, it will stop attack monster, until the cruse disappear or replace by another curse.(Your Pride Nero Iron Golem will be more safer!)
+;EnableExpGlitchFix: When set to 1, the experience that player get when in party will be fixed.(The orig program has some bug, you will get only 1 exp when in 8pp party killing hell diablo.)
+;DisableUberUp: When set to 1, you will get 0 exp when killing the monster summon by Uber Boss(including Uber Meph and Uber Diablo). This will prevent the Uber Up.
+
+  Also, these new features will log in to d2ge.log file.
+
+Build 33: 2008-07-09
+  Fix the Experience Glitch. For more info,please check
+	http://newd2event.net/index.php?id=methods/The_Act_2_Minions_Experience_Glitch
+	http://newd2event.net/index.php?id=methods/Baal_Experience_Glitch
+  Also, this should work for classic game when 8pp party kill Diablo. No need leave party anymore. All players will get correct experience.
+
+Build 32: 2008-06-28
+  Now the classic dru or classic asn can't enter game anymore.
+  Also, you can't create a classic dru or classic asn.
+
+Build 31: 2008-05-10
+	Fixed the Aura bug caused by PET & Player Trade. The old method has some bug... ^_^
+	
+Build 30: 2008-05-03
+  Creating a town portal when corpses or other objects entirely fill the area where the portal will appear in town will no longer crash the game. 
+
+
+Build 29: 2007-10-22
+  Fix a bug when trying to create a second Final Portal;
+  The trade player aura bug has been fixed;
+
+Build 28: 2007-08-27
+  Fixed a bug in d2server.dll and make it can work with the orig storm.dll(also the re-based storm.dll);
+  Fix d2gs.script and make it can work with the orig storm.dll(also the re-based storm.dll);
+  Remove the re-based storm.dll from the release package;
+
+
+Some Features:
+1. It support DiabloClone;
+2. It support Uber Quest;
+3. It support trade USC\ULC\UGC\BOX in the trade window;
+4. The Forgotten Sands Waypoint bug has been patched(Also the ACT5 in D2C has been patched);
+5. The lag cause by the ULC DiabWall skill has been removed from the server side, and it cause no damage calculation on server side;
+6. It can be configured to not show the "XX SOJ sell to ..." message in the d2server.ini;
+7. The dual aura bug pet has been patched;
+8. The player aura bug by trade has been patched;
+9. Town portal game crash bug has been patched;
+
+TODO:
+1. Maybe a tiny warden support;
+2. Tradehack patch;
+3. Other game drop patch;
+4. The ULC DiabWall lag should be fixed;
+
+
+;UberQuest configuration in d2server.ini
+;SpawnProbability: The probability that the Uber bosses try to spawn a monster, should be a int between 0~99;
+;MaxSpawnNum: Max spawn number of monsters in a single game;
+;SpawnInterval: the interval time between two spawns;
+;ActivArea: how far ways that the uber boss try to spawn a monster;
+;StallTime: After spawn a monster, the boss should stall for some time;
+;SpawnMonsters: The monster type that a boss can spawn, should be a 0~733. You can look up the monststat.txt to get some hits. A boss can spawn 10 types of monsters at most;
+
+[UberMephisto]
+SpawnProbability=30
+MaxSpawnNum=50
+SpawnInterval=10
+ActivArea=40
+StallTime=10
+SpawnMonsters=725,726,727,728,729,730
+
+[UberDiablo]
+SpawnProbability=30
+MaxSpawnNum=50
+SpawnInterval=10
+ActivArea=40
+StallTime=10
+SpawnMonsters=712,731,732
+
+
+
+BTW: The conf directory in the package is my PVPGN-1.8.0-RC2 configure files, hope it can help you setup the server.
