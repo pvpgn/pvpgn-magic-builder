@@ -1,7 +1,7 @@
 00000000000000000000000000000000 *version-history.txt
 bf8a60b5a6a4af8358cc9c825fc0e946 *build_pvpgn.bat
-dbdd618ad5e2145a1b725f0e483bfb24 *build_d2gs.bat
-e0097306ddab1ed6bd6fdad629d13b8a *module\dbchoice.inc.bat
+bc2f275191349ba952b80bb46a35b398 *build_d2gs.bat
+1238039d9633f04c40a9a471cef0e376 *module\dbchoice.inc.bat
 49d9b60248649436699edbc7f30ea16b *module\recursive_copy.inc.bat
 14c025a449076c4caa0a185b277c7f14 *module\select_generator.inc.bat
 75375c22c72f1beb76bea39c22a1ed68 *module\autoupdate\unzip.exe
@@ -31,3 +31,21 @@ d975a1a3338d06baca0bc9724e6a59e5 *module\include\d2gs\1.13c_m\filelist.txt
 0e275ac64d1f93f19fbb832d1abe460e *module\include\d2gs\1.13c_m\install.bat
 3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.13c_m\ItemConfig.dat
 421b50af147b44f72cf15e2149c8d605 *module\include\d2gs\1.13c_m\README.txt
+
+
+4a71a0349a7325a4fed96053778863e0 *module\include\d2gs\1.13d\3ea42f5ac80f0d2deb35d99b4e9a780b.mod
+2355619f2596beb5dbbfb5e7fd29337a *module\include\d2gs\1.13d\D2GS.exe
+c40608b344b57a652ceb751f51f36576 *module\include\d2gs\1.13d\d2gs.reg
+e9aac468ce7bab24f534377a57df5ed8 *module\include\d2gs\1.13d\d2gs.script
+cc5c133e2800931de5f39a0dd51066c2 *module\include\d2gs\1.13d\D2GSSVC.exe
+ecd6cb70da330ab35ea4c147943a4614 *module\include\d2gs\1.13d\D2GS_1.13d_Readme.txt
+cc828cebc9bb619542c913895cdc9306 *module\include\d2gs\1.13d\D2GS_README.TXT
+2dee7ce6edb7094067c7df0ca99343b5 *module\include\d2gs\1.13d\d2gs_x64.reg
+ee753e5fb55afa8784ef7bcc5189c504 *module\include\d2gs\1.13d\d2server.dll
+9ef40f30e28972ebdfac21907662d2fe *module\include\d2gs\1.13d\d2server.ini
+e19400a3fc20e4746229a473c32d5178 *module\include\d2gs\1.13d\d2warden.dll
+e225160636ada96484b6bc734451596b *module\include\d2gs\1.13d\d2warden.ini
+a69aa96669db225e594a6693be1403b9 *module\include\d2gs\1.13d\filelist.txt
+db6eb846e3924197dbed1436ade278cf *module\include\d2gs\1.13d\install.bat
+19e4000205b2ab79c9304af2fb04ca00 *module\include\d2gs\1.13d\install_x64.bat
+3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.13d\ItemConfig.dat

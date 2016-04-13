@@ -36,8 +36,6 @@ for /F %%v in ('dir /B /AD-H /O-N %DB_DIR%') do (
 )
 
 echo.
-:: user input is number of directory 
-call %i18n% 2_2
 
 :choose_db
 
@@ -45,6 +43,8 @@ call %i18n% 2_2
 if [%PARAM_REBUILD%]==[auto] (
 	set _db_choice=1
 ) else (
+	:: user input is number of directory 
+	call %i18n% 2_2
 	module\choice /c:%numbers%
 	set _db_choice=%errorlevel%
 )
