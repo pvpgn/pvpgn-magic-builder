@@ -26,7 +26,12 @@ Requirements
 --
  * Visual C++ 2015 (Community is supported)
 
-("Community" is the light edition of Visual Studio. It's free to [download](http://www.microsoft.com/visualstudio/downloads))
+"Community" is the light edition of Visual Studio. It's free to [download](http://www.microsoft.com/visualstudio/downloads)
+setup
+
+*Note: Visual Studio 2015 doesn't install C++ by default. If you already have it installed then you have to rerun the setup, select `Modify` and then check `Programming Language -> C++`.*
+
+*Without C++ installed Magic Builder throws an error `The CXX compiler identification is unknown`*
 
 
 Downloads

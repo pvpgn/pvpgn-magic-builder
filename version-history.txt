@@ -7,14 +7,17 @@ Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 
 [Featured 2.x]
+v2.11
+- add D2GS 1.13d
+- set Visual Studio 2015 as a minimal requirements to compile PvPGN-PRO
 
-v2.10
+v2.10 (22.09.2015)
 - add support Visual Studio 2015
 - update versions MySQL, PostgreSQL, SQLite, cmake, Lua to the latest
 - update PvPGN and Magic Builder source urls (it was moved to "pvpgn" organization on GitHub), so this version can't be updated automatically from a previous
 
 v2.07 (31.01.2015)
-- update D2GS 1.13c multithreaded version
+- update D2GS 1.13c multithreaded version (not use it if you don't know how)
 - return original D2GS 1.13c from marsgod to the selection list
 
 v2.06 (01.09.2014)
