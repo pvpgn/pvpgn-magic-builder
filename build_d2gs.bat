@@ -6,7 +6,7 @@ color 4f
 echo.
 echo /-\-/-\-/-\-/-\-/-\-  D 2 G S  M a g i c  B u i l d e r  -\-/-\-/-\-/-\-/-\-/-\
 echo \                                                                             /
-echo /   Copyright 2012-2015, HarpyWar (harpywar@gmail.com)                        \
+echo /   Copyright 2012-2016, HarpyWar (harpywar@gmail.com)                        \
 echo \   http://harpywar.com                                                       /
 echo /                                                                             \
 echo \-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/
@@ -21,7 +21,7 @@ set i18n=module\i18n.inc.bat
 
 
 :: ----------- VARIABLES ------------
-@set URL_MPQ=http://pvpgn-magic-builder.googlecode.com/svn/branches/diablo2/
+@set URL_MPQ=http://cdn.pvpgn.pro/diablo2/
 
 @set D2GS_RELEASE=d2gs\
 
