@@ -7,7 +7,10 @@ Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 
 [Featured 2.x]
-v2.11
+v2.12 (18.05.2016)
+- hotfix: update url for Diablo 2 data files
+
+v2.11 (13.04.2016)
 - add D2GS 1.13d
 - set Visual Studio 2015 as a minimal requirements to compile PvPGN-PRO
 

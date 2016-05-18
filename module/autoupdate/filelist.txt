@@ -1,6 +1,6 @@
 00000000000000000000000000000000 *version-history.txt
-bf8a60b5a6a4af8358cc9c825fc0e946 *build_pvpgn.bat
-bc2f275191349ba952b80bb46a35b398 *build_d2gs.bat
+da194f7f31ea58aefb31b38bda24297d *build_pvpgn.bat
+d024c680d4923afc1db180569c2e2573 *build_d2gs.bat
 1238039d9633f04c40a9a471cef0e376 *module\dbchoice.inc.bat
 49d9b60248649436699edbc7f30ea16b *module\recursive_copy.inc.bat
 14c025a449076c4caa0a185b277c7f14 *module\select_generator.inc.bat
