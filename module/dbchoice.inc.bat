@@ -45,8 +45,8 @@ if [%PARAM_REBUILD%]==[auto] (
 ) else (
 	:: user input is number of directory 
 	call %i18n% 2_2
-	module\choice /c:%numbers%
-	set _db_choice=%errorlevel%
+	module\choice /c:!numbers!
+	set _db_choice=!errorlevel!
 )
 
 :: iterate again to search chosen number of directory
@@ -87,7 +87,7 @@ echo.
 call module\i18n.inc.bat 2_5 %DB_ENGINE%
 
 module\choice 
-if %errorlevel%==2 (
+if !errorlevel!==2 (
 	set CHOICE_DB_CONF=n & goto :db_configured
 ) else (
 	set CHOICE_DB_CONF=y
