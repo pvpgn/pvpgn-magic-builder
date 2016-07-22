@@ -34,8 +34,8 @@ call %i18n% 9_1
 
 :choose_version
 echo    1) 1.13d
-echo    2) 1.13c (multithreaded, read https://github.com/tesseract2048/d2gs)
-echo    3) 1.13c
+echo    2) 1.13c
+echo    3) 1.13c (multithreaded, read https://github.com/pvpgn/pvpgn-magic-builder/issues/17)
 echo    4) 1.11b
 echo    5) 1.10
 echo    6) 1.09d
@@ -45,8 +45,8 @@ module\choice /c:12345
 set CHOICE_D2GSVER=%errorlevel%
 
 if [%CHOICE_D2GSVER%]==[1] set D2GSVER=1.13d
-if [%CHOICE_D2GSVER%]==[2] set D2GSVER=1.13c_m
-if [%CHOICE_D2GSVER%]==[3] set D2GSVER=1.13c
+if [%CHOICE_D2GSVER%]==[2] set D2GSVER=1.13c
+if [%CHOICE_D2GSVER%]==[3] set D2GSVER=1.13c_m
 if [%CHOICE_D2GSVER%]==[4] set D2GSVER=1.11b
 if [%CHOICE_D2GSVER%]==[5] set D2GSVER=1.10
 if [%CHOICE_D2GSVER%]==[6] set D2GSVER=1.09d
