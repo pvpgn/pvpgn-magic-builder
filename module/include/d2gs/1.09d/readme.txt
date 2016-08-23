@@ -1,3 +1,17 @@
+Google translate: CN -> EN:
+
+1. Prevent from sending large number of packets to server. 
+	Need to add to registry dword value: MaxPacketPerSecond = 1200
+
+2. (Pickup body after dead if You don't have enough attribute points fix)
+	"One can use the attribute points to amend inadequate equipment and goods, pick up the body after death caused by correction of the items to copy or server bug."
+
+3. (You will no longer get any item from body if You don't have enough space in inventory for full pick up)
+	"Increasing the body pick up and equipment are prohibited items to determine, avoid burst 109 dead. That can no longer pick up the body before the error occurs click on the items on the ground after the death of the body caused by pick-up items broke.
+	When the player who is equipped to pick up the body after item, the pick-up action fails, and will receive a warning line of a red font."
+
+---
+
 installation in Windows NT/2k
 
 1. copy the files in this package to a diretory;
