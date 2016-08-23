@@ -8,6 +8,10 @@ Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 [Featured 2.x]
 
+v2.14 (23.08.2016)
+- fix D2GS 1.09d version selection
+- update D2GS 1.09d to build8
+
 v2.13 (22.07.2016)
 - add copy config files with json extension when deploying to release folder
 - fix bug when db version selection is different from a chosen number

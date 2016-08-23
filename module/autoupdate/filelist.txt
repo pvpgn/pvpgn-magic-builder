@@ -32,7 +32,6 @@ d975a1a3338d06baca0bc9724e6a59e5 *module\include\d2gs\1.13c_m\filelist.txt
 3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.13c_m\ItemConfig.dat
 421b50af147b44f72cf15e2149c8d605 *module\include\d2gs\1.13c_m\README.txt
 
-
 4a71a0349a7325a4fed96053778863e0 *module\include\d2gs\1.13d\3ea42f5ac80f0d2deb35d99b4e9a780b.mod
 2355619f2596beb5dbbfb5e7fd29337a *module\include\d2gs\1.13d\D2GS.exe
 c40608b344b57a652ceb751f51f36576 *module\include\d2gs\1.13d\d2gs.reg
@@ -49,6 +48,10 @@ a69aa96669db225e594a6693be1403b9 *module\include\d2gs\1.13d\filelist.txt
 db6eb846e3924197dbed1436ade278cf *module\include\d2gs\1.13d\install.bat
 19e4000205b2ab79c9304af2fb04ca00 *module\include\d2gs\1.13d\install_x64.bat
 3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.13d\ItemConfig.dat
+
+60311ca198dba7cd6aa989e5e993d078 *module\include\d2gs\1.09d\D2GS.exe
+d93534f0fc8436f67f505668b8777c55 *module\include\d2gs\1.09d\d2server.dll
+b23c0c625f9008db031b7fd242865577 *module\include\d2gs\1.09d\readme.txt
 
 
 16a1612789dc9063ebea1cb55433b45b *module\include\sqlite\3.13.0\sqlite3.dll
