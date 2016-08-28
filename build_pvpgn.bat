@@ -42,7 +42,6 @@ if [%invalid_path%]==[true] (
 
 @set PVPGN_SOURCE=source\
 @set PVPGN_BUILD=build\
-@set PVPGN_RELEASE=release\
 
 @set PVPGN_ZIP=https://github.com/pvpgn/pvpgn-server/archive/master.zip
 
@@ -58,6 +57,19 @@ set PARAM_VS=%2
 set PARAM_INTERFACE=%3
 set PARAM_DBTYPE=%4
 set PARAM_LUA=%5
+set PARAM_BUILDTYPE=%6
+
+:: build type can be Debug or Release
+if "%PARAM_BUILDTYPE%"=="Debug" (
+	@set PVPGN_RELEASE=debug\
+	echo.
+	echo    Debug build type is selected
+	echo.
+) else ( 
+	set PARAM_BUILDTYPE=Release
+	:: directory with ready files
+	set PVPGN_RELEASE=release\
+)
 
 
 :: {PARAMETER}, if not empty, skip autoupdate
@@ -320,12 +332,12 @@ rem if not ["%VSVER%"]==["v100"] if not ["%VSVER%"]==["v120"] if not ["%VSVER%"]
 :: use framework 3.5 with vs2008
 rem if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
 :: INFO: each environment should compile with own framework (e.g. 2010 can't compile with 3.5)
-rem "%FrameworkDir%%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
+rem "%FrameworkDir%%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE%;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
 
 
 :: compile the solution
 :: FIXME: use MSBuild may fails on in old VS versions, it can be selected from a different framework. But if use MSBuild from %FrameworkDir% then it will fail in VS2015
-"MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=Release;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
+"MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE%;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
 
 
 :: ----------- RELEASE ------------
@@ -338,7 +350,7 @@ echo ______________________________[ R E L E A S E ]____________________________
 @call :restore_conf
 
 :: check pvpgn exe for exists 
-if not exist "%PVPGN_BUILD%src\bnetd\Release\bnetd.exe" goto :FAIL
+if not exist "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.exe" goto :FAIL
 
 
 @call :save_rebuild_config
@@ -370,20 +382,37 @@ if not [%CHOICE_LUA%]==[n] (
 if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 
 :: copy release binaries
-@copy /B /Y "%PVPGN_BUILD%src\bnetd\Release\bnetd.exe" "%PVPGN_RELEASE%PvPGN%postfix%.exe"
-@copy /B /Y "%PVPGN_BUILD%src\d2cs\Release\d2cs.exe" "%PVPGN_RELEASE%D2CS%postfix%.exe"
-@copy /B /Y "%PVPGN_BUILD%src\d2dbs\Release\d2dbs.exe" "%PVPGN_RELEASE%D2DBS%postfix%.exe"
-@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bni2tga.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bnibuild.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bniextract.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\bnilist.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\bniutils\Release\tgainfo.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\bnpass\Release\bnpass.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\bnpass\Release\sha1hash.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\client\Release\bnbot.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\client\Release\bnchat.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\client\Release\bnftp.exe" "%PVPGN_RELEASE%"
-@copy /B /Y "%PVPGN_BUILD%src\client\Release\bnstat.exe" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.exe" "%PVPGN_RELEASE%PvPGN%postfix%.exe"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.pdb" "%PVPGN_RELEASE%PvPGN%postfix%.pdb"
+@copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.exe" "%PVPGN_RELEASE%D2CS%postfix%.exe"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.pdb" "%PVPGN_RELEASE%D2CS%postfix%.pdb"
+@copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.exe" "%PVPGN_RELEASE%D2DBS%postfix%.exe"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.pdb" "%PVPGN_RELEASE%D2DBS%postfix%.pdb"
+
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnibuild.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnibuild.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bniextract.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bniextract.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnilist.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnilist.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\tgainfo.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\tgainfo.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\bnpass.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\bnpass.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\sha1hash.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\sha1hash.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnbot.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnbot.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnchat.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnchat.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnftp.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnftp.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnstat.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnstat.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bntrackd\%PARAM_BUILDTYPE%\bntrackd.exe" "%PVPGN_RELEASE%"
+if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bntrackd\%PARAM_BUILDTYPE%\bntrackd.pdb" "%PVPGN_RELEASE%"
 
 
 :: copy var directories (they're empty)
@@ -402,7 +431,7 @@ if not exist "%PVPGN_RELEASE%files" mkdir "%PVPGN_RELEASE%files"
 
 :: replace "storage_path"
 if ["%CHOICE_DB_CONF%"]==["y"] (
-	for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "release\conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
+	for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "%PVPGN_RELEASE%conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
 	if ["!res!"]==["ok"] ( echo storage_path updated in bnetd.conf ) else ( echo Error: storage_path was not updated in bnetd.conf )
 )
 
@@ -431,6 +460,16 @@ goto THEEND
 	:: save to file
 	echo @echo off>!fileName!
 	echo build_pvpgn.bat rebuild !PARAM_VS! !PARAM_INTERFACE! !PARAM_DBTYPE! !PARAM_LUA!>>!fileName!
+	
+	rem *** the same for debug ***
+	set fileName=rebuild_pvpgn_debug.bat
+	:: if DB_ENGINE is not empty
+	if not [%DB_ENGINE%]==[] set fileName=rebuild_pvpgn_with_%DB_ENGINE%_debug.bat
+	
+	:: save to file
+	echo @echo off>!fileName!
+	echo build_pvpgn.bat rebuild !PARAM_VS! !PARAM_INTERFACE! !PARAM_DBTYPE! !PARAM_LUA! Debug>>!fileName!
+
 	exit /b 0
 
 :FAIL
