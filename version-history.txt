@@ -7,6 +7,8 @@ Magic Builder can't be upgraded automatically from 1.x to 2.x.
 
 
 [Featured 2.x]
+v2.15 (28.08.2016)
+- add feature to build Debug version with *.pdb symbol files using a file "rebuild_pvpgn*_debug.bat"; it's necessary to auto-generate a dump when crash pvpgn
 
 v2.14 (23.08.2016)
 - fix D2GS 1.09d version selection
