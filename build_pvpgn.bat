@@ -10,8 +10,8 @@ color 1f
 echo.
 echo *:*:*:*:*:*:*:*:*-  P v P G N  M a g i c  B u i l d e r  -*:*:*:*:*:*:*:*:*:*:*
 echo *                                                                             *
-echo *   Copyright 2011-2016, HarpyWar (harpywar@gmail.com)                        *
-echo *   http://harpywar.com                                                       *
+echo *   Copyright 2011-2017, HarpyWar (harpywar@gmail.com)                        *
+echo *   https://pvpgn.pro                                                         *
 echo *                                                                             *
 echo *:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*
 set CURRENT_PATH=%~dp0
@@ -45,7 +45,7 @@ if [%invalid_path%]==[true] (
 
 @set PVPGN_ZIP=https://github.com/pvpgn/pvpgn-server/archive/master.zip
 
-@set ZLIB_PATH=module\include\zlib\1.2.8\
+@set ZLIB_PATH=module\include\zlib\1.2.11\
 @set LUA_PATH=module\include\lua\5.1\
 @set ATLMFC_INCLUDE_PATH=%CURRENT_PATH%module\include\atlmfc\
 
