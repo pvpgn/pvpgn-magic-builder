@@ -46,6 +46,7 @@ echo ---------------------------------------------------------------------------
 if %errorlevel%==2 goto :THEEND
 
 
+if not exist %PVPGN_DEVKIT% mkdir %PVPGN_DEVKIT%
 
 :: copy config.h
 copy /Y "%PVPGN_BUILD%\config.h" "%PVPGN_DEVKIT%\"
