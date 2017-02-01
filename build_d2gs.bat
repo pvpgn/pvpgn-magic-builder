@@ -6,8 +6,8 @@ color 4f
 echo.
 echo /-\-/-\-/-\-/-\-/-\-  D 2 G S  M a g i c  B u i l d e r  -\-/-\-/-\-/-\-/-\-/-\
 echo \                                                                             /
-echo /   Copyright 2012-2016, HarpyWar (harpywar@gmail.com)                        \
-echo \   http://harpywar.com                                                       /
+echo /   Copyright 2012-2017, HarpyWar (harpywar@gmail.com)                        \
+echo \   https://pvpgn.pro                                                         /
 echo /                                                                             \
 echo \-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/
 set CURRENT_PATH=%~dp0

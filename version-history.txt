@@ -2,11 +2,16 @@ PvPGN Magic Builder. Version history.
 https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
-Starting from 2.x Magic Builder supports PvPGN 2.x only. 
-Magic Builder can't be upgraded automatically from 1.x to 2.x.
-
-
 [Featured 2.x]
+v2.17 (01.02.2017)
+- add script build_pvpgn_dev.bat that generates ready to use PvPGN Visual Studio projects
+
+v2.16 (28.01.2017)
+- update MySQL (5.5.54, 5.6.35, 5.7.17)
+- update PostgreSQL (9.1.24, 9.2.19, 9.3.15, 9.4.10, 9.5.5, 9.6.1)
+- update SQLite (3.16.2)
+- update zlib (1.2.11)
+
 v2.15 (28.08.2016)
 - add feature to build Debug version with *.pdb symbol files using a file "rebuild_pvpgn*_debug.bat"; it's necessary to auto-generate a dump when crash pvpgn
 
@@ -72,6 +77,11 @@ v2.0 (04.07.2014)
 - several minor fixes
 - new rebuild flag "cmake_only" that allows stop program after cmake configuration (it used in AppVeyor for PvPGN repository)
 
+
+--------------------------------------------------------------
+Starting from 2.x Magic Builder supports PvPGN-PRO only. 
+Magic Builder can't be upgraded automatically from 1.x to 2.x.
+--------------------------------------------------------------
 
 [Legacy 1.x]
 
