@@ -8,9 +8,6 @@ Let's see how it works in one-minute video: http://www.youtube.com/watch?v=70KYe
 [![PvPGN Builder](http://i.imgur.com/7VVSjji.png)](http://i.imgur.com/ySKCB8G.png) [![D2GS Builder](http://i.imgur.com/c5YaCs3.png)](http://i.imgur.com/0ezOHmm.png)
 
 
-
-_*Note: use [Development Kit](https://github.com/pvpgn/pvpgn-magic-builder/releases/tag/pvpgn-dev-kit) to modify and debug your source code.*_
- 
 Features
 --
  * Builds a [PvPGN](https://github.com/pvpgn/pvpgn-server) with one of the databases support: [MySQL](http://wikipedia.org/wiki/MySQL), [PostgreSQL](http://wikipedia.org/wiki/PostgreSQL), [SQLite3](http://wikipedia.org/wiki/SQLite) or [ODBC](http://wikipedia.org/wiki/Open_Database_Connectivity). Feature to enable [Lua](http://en.wikipedia.org/wiki/Lua_(programming_language)) scripting
@@ -21,6 +18,7 @@ Features
  * (optional) Auto downloads actual PvPGN source code from the GIT
  * Auto configurates and compilates PvPGN source code
  * Auto create `release\` directory with a PvPGN binaries and support files that are ready to use immediately
+ * Auto create Visual Studio projects and `pvpgn.sln`, with it you can immediately start a development (use `build_pvpgn_dev.bat`)
 
 Requirements
 --
