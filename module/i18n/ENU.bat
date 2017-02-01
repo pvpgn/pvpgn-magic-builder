@@ -62,3 +62,14 @@ set PHRASE_9_2=Setup an admin password for Telnet connection (listening on port 
 set PHRASE_9_3=Password hash will be saved in %2
 set PHRASE_9_4=Do you want to download essential original MPQ files? (size 1GB)
 set PHRASE_9_9=^^!^^!^^! To complete setup D2GS edit d2gs.reg and run install.bat ^^!^^!^^!
+
+:: the following two lines must have fixed length of 99 characters from first to last sharp symbol(#)
+::              #                                                                             #
+set PHRASE_10_0_0=#   This script generates pvpgn.sln and project files that can be used        #
+set PHRASE_10_0_1=#   to build PvPGN from Visual Studio and use it for debug and development.   #
+
+set PHRASE_10_1=Error: First build PvPGN using build_pvpgn.bat
+set PHRASE_10_2=Project files will be created/replaced in %2. Confirm to start the process.
+set PHRASE_10_3=Well done^^! All project files were generated into %2 directory.
+set PHRASE_10_4= A shortcut %2 refers to %3
+set PHRASE_10_5= A working directory for all projects is %2
