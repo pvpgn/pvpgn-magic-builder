@@ -230,7 +230,7 @@ set PARAM_LUA=%CHOICE_LUA%
 :lua_chosen
 if not [%CHOICE_LUA%]==[n] ( 
 	call %i18n% 4_2
-	set CMAKE_VARS=%CMAKE_VARS% -D LUA_INCLUDE_DIR=%LUA_PATH% -D LUA_LIBRARY=%LUA_PATH%lua5.1.lib -D WITH_LUA=true -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true
+	set CMAKE_VARS=%CMAKE_VARS% -D LUA_INCLUDE_DIR=%LUA_PATH% -D LUA_LIBRARY=%LUA_PATH%lua5.1.lib -D WITH_LUA=true
 ) else (
 	call %i18n% 4_3
 )
@@ -284,7 +284,7 @@ if exist "%PVPGN_BUILD%CMakeCache.txt" del %PVPGN_BUILD%CMakeCache.txt
 if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 
 :: configure and generate solution
-module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
 :: Stop after cmake and setting env vars (feature for appveyor)
