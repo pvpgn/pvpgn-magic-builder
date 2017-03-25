@@ -86,7 +86,7 @@ pushd %D2GS_RELEASE%
 
 if not [%CHOICE_MPQ%]==[n] (
 	:: iterate files from filelist.txt
-	for /f "tokens=1,2 delims=: " %%a in ('call %EXEC_TOOL% md5sum.exe -c %CURRENT_PATH%module\include\d2gs\filelist.txt') do (
+	for /f "tokens=1,2 delims=: " %%a in ('call %EXEC_TOOL% md5sum.exe -c ..\module\include\d2gs\filelist.txt') do (
 		:: if checksum is wrong or file does not exists, then download
 		if ["%%b"]==["FAILED"] @call :download %%a
 	)

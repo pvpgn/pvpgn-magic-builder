@@ -1,6 +1,7 @@
 @echo off
 
-for %%A in ("%~dp0\..") do set "CURRENT_PATH=%%~fA"
+:: current path with a slash \
+for %%A in ("%~dp0\..") do set "CURRENT_PATH=%%~fA\"
 
 :: change path to where script was run (root dir)
 cd /D "%CURRENT_PATH%"
@@ -10,7 +11,7 @@ cd /D "%CURRENT_PATH%"
 set i18n=module\i18n.inc.bat
 
 
-set TOOLS_PATH=%CURRENT_PATH%\module\tools\
+set TOOLS_PATH=%CURRENT_PATH%module\tools\
 set EXEC_TOOL=%TOOLS_PATH%exec_tool.bat
 set URL_TOOL_WGET=http://mirror.ufs.ac.za/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-bin.zip
 set URL_TOOL_WGET_DEP=http://mirror.ufs.ac.za/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-dep.zip
@@ -50,7 +51,7 @@ set URL_BNHASH_API=http://harpywar.pvpgn.pl/api.php?method=hash^&password=
 
 :: ----------- build_pvpgn_dev VARIABLES ------------
 
-:: current path with slash /
+:: current path with a backslash /
 set CURRENT_PATH_BACKSLASH=%CURRENT_PATH:\=/%
 
 :: root dir for any project

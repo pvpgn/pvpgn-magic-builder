@@ -3,6 +3,8 @@ setlocal enabledelayedexpansion
 ::
 :: Copyright (c) 2017, HarpyWar (harpywar@gmail.com)
 ::
+@call module\config.inc.bat
+
 echo.
 echo ###############################################################################
 echo #                    PvPGN Visual Studio Solution Builder                     #
@@ -13,10 +15,8 @@ echo # -------------------------------------------------------------------------
 echo ###############################################################################
 echo.
 
-@call module\config.inc.bat
 
-
-:: redefind %PVPGN_BUILD% without a slash
+:: redefine %PVPGN_BUILD% without a slash
 set PVPGN_BUILD=build
 
 
@@ -105,8 +105,8 @@ goto :THEEND
 	:: replace release and debug paths
 	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%%PVPGN_BUILD%\src\%1\Debug" "%PROJECT_ROOT_DIR%release"
 	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%%PVPGN_BUILD%\src\%1\Release" "%PROJECT_ROOT_DIR%release"
-	:: replace unix build path
-	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH_UNIXSLASH%%PVPGN_BUILD%/src/%1" "../%2"
+	:: replace unix like build path
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH_BACKSLASH%%PVPGN_BUILD%/src/%1" "../%2"
 	:: replace path for magic builder module 
 	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%module" "%PROJECT_ROOT_DIR%module"
 	:: replace new path in pvpgn.sln
