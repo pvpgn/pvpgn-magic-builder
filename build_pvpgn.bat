@@ -1,10 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: LOG=false output cmake and vs output to console
-:: LOG=true logs cmake and vs output to cmake.log, visualstudio.log
-set LOG=false
-
 TITLE PvPGN Magic Builder for Windows
 color 1f
 echo.
@@ -14,14 +10,8 @@ echo *   Copyright 2011-2017, HarpyWar (harpywar@gmail.com)                     
 echo *   https://pvpgn.pro                                                         *
 echo *                                                                             *
 echo *:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*
-set CURRENT_PATH=%~dp0
-:: change path to where script is runned
-cd /D "%CURRENT_PATH%"
 
-
-:: localization
-@call module\i18n.inc.bat
-set i18n=module\i18n.inc.bat
+@call module\config.inc.bat
 
 
 :: disallow invalid characters in the path (otherwise cmake fails configuration)
@@ -36,18 +26,6 @@ if [%invalid_path%]==[true] (
 	goto THEEND
 )
 
-
-:: ----------- VARIABLES ------------
-@set URL_UPDATE=https://raw.githubusercontent.com/pvpgn/pvpgn-magic-builder/master/
-
-@set PVPGN_SOURCE=source\
-@set PVPGN_BUILD=build\
-
-@set PVPGN_ZIP=https://github.com/pvpgn/pvpgn-server/archive/master.zip
-
-@set ZLIB_PATH=module\include\zlib\1.2.11\
-@set LUA_PATH=module\include\lua\5.1\
-@set ATLMFC_INCLUDE_PATH=%CURRENT_PATH%module\include\atlmfc\
 
 
 :: PARAMETERS TO REBUILD
@@ -102,7 +80,7 @@ echo ---------------------------------------------------------------------------
 if not [%PARAM_REBUILD%]==[] goto :choose_interface
 
 call %i18n% 1_3 "source"
-module\choice
+choice
 if %errorlevel%==2 ( set CHOICE_GIT=n) else ( set CHOICE_GIT=y)
 
 :: if not "n", set to "y"
@@ -125,7 +103,7 @@ call %i18n% 1_7
 call %i18n% 1_8
 echo.
 call %i18n% 1_9
-module\choice /c:12
+choice /c:12
 set CHOICE_INTERFACE=%errorlevel%
 set PARAM_INTERFACE=%CHOICE_INTERFACE%
 
@@ -152,7 +130,7 @@ echo    4) SQLite3
 echo    5) ODBC
 echo.
 call %i18n% 1_9
-module\choice /c:12345
+choice /c:12345
 set CHOICE_DBTYPE=%errorlevel%
 set PARAM_DBTYPE=%CHOICE_DBTYPE%
 
@@ -222,7 +200,7 @@ echo ---------------------------------------------------------------------------
 if not [%PARAM_LUA%]==[] set CHOICE_LUA=%PARAM_LUA%& goto :lua_chosen
 
 call %i18n% 4_1
-module\choice
+choice
 if %errorlevel%==2 ( set CHOICE_LUA=n) else ( set CHOICE_LUA=y)
 set PARAM_LUA=%CHOICE_LUA%
 
@@ -250,9 +228,11 @@ if [%PARAM_REBUILD%]==[] (
 
 	if not [%CHOICE_GIT%]==[n] ( 
 		:: download source.zip
-		module\autoupdate\wget.exe -O source.zip --no-check-certificate %PVPGN_ZIP% %_zip_log%
+		call %EXEC_TOOL% wget.exe -O source.zip --no-check-certificate %PVPGN_ZIP% %_zip_log%
+
 		:: extract files into current directory (pvpgn-server-master directory is in archive)
-		module\autoupdate\unzip.exe -o source.zip %_zip_log%
+		call %EXEC_TOOL% unzip.exe -o source.zip %_zip_log%
+
 		:: copy files from pvpgn-master to source
 		xcopy /E /R /K /Y pvpgn-server-master source\ %_zip_log%
 		:: remove pvpgn-master
@@ -273,6 +253,8 @@ if not [%PARAM_REBUILD%]==[] if not [%PARAM_REBUILD%]==[auto] if not [%PARAM_REB
 :: ----------- MAKE ------------
 echo.
 echo ______________________[ C M A K E  C O N F I G U R E ]__________________________
+
+
 if [%LOG%]==[true] set _cmake_log= ^>cmake.log
 if not exist "%PVPGN_BUILD%" mkdir "%PVPGN_BUILD%"
 
@@ -284,7 +266,7 @@ if exist "%PVPGN_BUILD%CMakeCache.txt" del %PVPGN_BUILD%CMakeCache.txt
 if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 
 :: configure and generate solution
-module\cmake\bin\cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+call %EXEC_TOOL% cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
 :: Stop after cmake and setting env vars (feature for appveyor)
@@ -338,6 +320,7 @@ rem "%FrameworkDir%%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:R
 :: compile the solution
 :: FIXME: use MSBuild may fails on in old VS versions, it can be selected from a different framework. But if use MSBuild from %FrameworkDir% then it will fail in VS2015
 "MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE%;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
+
 
 
 :: ----------- RELEASE ------------
@@ -431,7 +414,7 @@ if not exist "%PVPGN_RELEASE%files" mkdir "%PVPGN_RELEASE%files"
 
 :: replace "storage_path"
 if ["%CHOICE_DB_CONF%"]==["y"] (
-	for /f "delims=" %%a in ('cscript "module\replace_line.vbs" "%PVPGN_RELEASE%conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
+	for /f "delims=" %%a in ('cscript "%TOOLS_PATH%replace_line.vbs" "%PVPGN_RELEASE%conf\bnetd.conf" "storage_path" "!CONF_storage_path!"') do set res=%%a
 	if ["!res!"]==["ok"] ( echo storage_path updated in bnetd.conf ) else ( echo Error: storage_path was not updated in bnetd.conf )
 )
 
@@ -444,11 +427,11 @@ goto THEEND
 	exit /b 0
 	
 :backup_conf
-	@call module\recursive_copy.inc.bat module\include\source_replace\ ..\..\..\source\ backup
+	@call %TOOLS_PATH%recursive_copy.bat module\include\source_replace\ ..\..\..\source\ backup
 	exit /b 0
 
 :restore_conf
-	@call module\recursive_copy.inc.bat module\include\source_replace\ ..\..\..\source\ restore
+	@call %TOOLS_PATH%recursive_copy.bat module\include\source_replace\ ..\..\..\source\ restore
 	exit /b 0
 
 

@@ -1,28 +1,9 @@
 @echo off
-
+setlocal enabledelayedexpansion
 ::
 :: Copyright (c) 2017, HarpyWar (harpywar@gmail.com)
 ::
-
-setlocal enabledelayedexpansion
-
-:: definitions
-set CURRENT_PATH=%~dp0
-set PVPGN_BUILD=build
-
-:: current path with slash /
-set CURRENT_PATH_UNIXSLASH=%CURRENT_PATH:\=/%
-:: root dir for any project
-set ROOT_DIR=..\..\..\
-
-set PVPGN_DEVKIT=dev\
-
-
-:: localization
-@call module\i18n.inc.bat
-set i18n=module\i18n.inc.bat
-
-
+echo.
 echo ###############################################################################
 echo #                    PvPGN Visual Studio Solution Builder                     #
 echo # --------------------------------------------------------------------------- #
@@ -32,6 +13,12 @@ echo # -------------------------------------------------------------------------
 echo ###############################################################################
 echo.
 
+@call module\config.inc.bat
+
+
+:: redefind %PVPGN_BUILD% without a slash
+set PVPGN_BUILD=build
+
 
 if not exist %PVPGN_BUILD%\pvpgn.sln (
 	call %i18n% 10_1
@@ -39,7 +26,7 @@ if not exist %PVPGN_BUILD%\pvpgn.sln (
 )
 
 call %i18n% 10_2 "%PVPGN_DEVKIT%"
-module\choice
+choice
 echo.
 echo --------------------------------------------------------------------------------
 
@@ -111,28 +98,28 @@ goto :THEEND
 	rem replace paths
 	
 	:: set atlmfc and release into additional include dir section
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%%PVPGN_BUILD%;%CURRENT_PATH%source\src;" "..\..\;%ROOT_DIR%source\src;%ROOT_DIR%release;%ROOT_DIR%module\include\atlmfc;"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%%PVPGN_BUILD%;%CURRENT_PATH%source\src;" "..\..\;%PROJECT_ROOT_DIR%source\src;%PROJECT_ROOT_DIR%release;%PROJECT_ROOT_DIR%module\include\atlmfc;"
 	:: replace source path
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%source" "%ROOT_DIR%source"
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj.filters" "%CURRENT_PATH%source" "%ROOT_DIR%source"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%source" "%PROJECT_ROOT_DIR%source"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj.filters" "%CURRENT_PATH%source" "%PROJECT_ROOT_DIR%source"
 	:: replace release and debug paths
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%%PVPGN_BUILD%\src\%1\Debug" "%ROOT_DIR%release"
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%%PVPGN_BUILD%\src\%1\Release" "%ROOT_DIR%release"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%%PVPGN_BUILD%\src\%1\Debug" "%PROJECT_ROOT_DIR%release"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%%PVPGN_BUILD%\src\%1\Release" "%PROJECT_ROOT_DIR%release"
 	:: replace unix build path
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH_UNIXSLASH%%PVPGN_BUILD%/src/%1" "../%2"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH_UNIXSLASH%%PVPGN_BUILD%/src/%1" "../%2"
 	:: replace path for magic builder module 
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%module" "%ROOT_DIR%module"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "%CURRENT_PATH%module" "%PROJECT_ROOT_DIR%module"
 	:: replace new path in pvpgn.sln
-	@call module\replacer.bat "%PVPGN_DEVKIT%pvpgn.sln" "src\%1\%2" "projects\%2\%2"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%pvpgn.sln" "src\%1\%2" "projects\%2\%2"
 	
 	:: libs now build into release
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\common\Debug\common.lib" "%ROOT_DIR%release\common.lib"
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\compat\Debug\compat.lib" "%ROOT_DIR%release\compat.lib"
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\tinycdb\Debug\tinycdb.lib" "%ROOT_DIR%release\tinycdb.lib"
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\win32\Debug\win32.lib" "%ROOT_DIR%release\win32.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\common\Debug\common.lib" "%PROJECT_ROOT_DIR%release\common.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\compat\Debug\compat.lib" "%PROJECT_ROOT_DIR%release\compat.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\tinycdb\Debug\tinycdb.lib" "%PROJECT_ROOT_DIR%release\tinycdb.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\win32\Debug\win32.lib" "%PROJECT_ROOT_DIR%release\win32.lib"
 	:: this replacement only for bncdb project
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "Debug\tinycdb.lib" "%ROOT_DIR%release\tinycdb.lib"
-	@call module\replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "Release\tinycdb.lib" "%ROOT_DIR%release\tinycdb.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "Debug\tinycdb.lib" "%PROJECT_ROOT_DIR%release\tinycdb.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "Release\tinycdb.lib" "%PROJECT_ROOT_DIR%release\tinycdb.lib"
 
 	:: remove reduntant cmake node that executes cmake.exe on each build
 	call :remove_xml_node "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" Project/ItemGroup/CustomBuild
@@ -145,11 +132,11 @@ goto :THEEND
 	echo ^<?xml version="1.0" encoding="utf-8"?^> > %1
 	echo ^<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"^> >> %1
 	echo   ^<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"^> >> %1
-	echo 	^<LocalDebuggerWorkingDirectory^>%ROOT_DIR%release^</LocalDebuggerWorkingDirectory^> >> %1
+	echo 	^<LocalDebuggerWorkingDirectory^>%PROJECT_ROOT_DIR%release^</LocalDebuggerWorkingDirectory^> >> %1
 	echo 	^<DebuggerFlavor^>WindowsLocalDebugger^</DebuggerFlavor^> >> %1
 	echo   ^</PropertyGroup^> >> %1
 	echo   ^<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"^> >> %1
-	echo 	^<LocalDebuggerWorkingDirectory^>%ROOT_DIR%release^</LocalDebuggerWorkingDirectory^> >> %1
+	echo 	^<LocalDebuggerWorkingDirectory^>%PROJECT_ROOT_DIR%release^</LocalDebuggerWorkingDirectory^> >> %1
 	echo 	^<DebuggerFlavor^>WindowsLocalDebugger^</DebuggerFlavor^> >> %1
 	echo   ^</PropertyGroup^> >> %1
 	echo ^</Project^> >> %1
