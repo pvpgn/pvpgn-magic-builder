@@ -285,43 +285,17 @@ if [%LOG%]==[true] set _vs_log=^>visualstudio.log
 IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
 
 :: load visual studio variables
-@call "%VSCOMNTOOLS%vsvars32.bat"
+if ["%VSVER%"]==["v160"] (
+	@call "%VSCOMNTOOLS%vcvars32.bat"
+) else (
+	@call "%VSCOMNTOOLS%vsvars32.bat"
+)
 
-:: vcexpress include dir
+:: atlmfc include dir for VC Express version
 set INCLUDE=%ATLMFC_INCLUDE_PATH%;%INCLUDE%
 
-:: use environments is different starting from version 2010
-if not ["%VSVER%"]==["v71"] if not ["%VSVER%"]==["v80"] if not ["%VSVER%"]==["v90"] ( 
-	set useEnv=UseEnv=true
-) else (
-	set useEnv=VCBuildUseEnvironment=true
-)
-
-:: /maxcpucount is supported starting from vs2008
-if not ["%VSVER%"]==["v71"] if not ["%VSVER%"]==["v80"] (
-	set _max_cpu=/m
-)
-
-:: vars correction from the vcvars32.bat
-rem if ["%FrameworkDir%"]==[""] (
-rem 	set FrameworkDir=%FrameworkDir32%
-rem 	set FrameworkVersion=%FrameworkVersion32%
-rem )
-
-:: add slash to framework path if version less than vs2010
-rem if not ["%VSVER%"]==["v100"] if not ["%VSVER%"]==["v120"] if not ["%VSVER%"]==["v140"] set FrameworkDir=%FrameworkDir%\
-
-:: use framework 3.5 with vs2008
-rem if ["%VSVER%"]==["v90"] set FrameworkVersion=%Framework35Version%
-:: INFO: each environment should compile with own framework (e.g. 2010 can't compile with 3.5)
-rem "%FrameworkDir%%FrameworkVersion%\MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE%;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
-
-
 :: compile the solution
-:: FIXME: use MSBuild may fails on in old VS versions, it can be selected from a different framework. But if use MSBuild from %FrameworkDir% then it will fail in VS2015
-"MSBuild.exe" "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE%;%useEnv% /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal %_max_cpu% %_vs_log%
-
-
+MSBuild.exe "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE% /p:Platform="Win32" /p:UseEnv=true /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal /maxcpucount %_vs_log%
 
 :: ----------- RELEASE ------------
 echo.

@@ -8,21 +8,20 @@
 
 
 :: fill array-map with vs names
-set _vs_map=1-Visual Studio 2003;2-Visual Studio 2005;3-Visual Studio 2008;4-Visual Studio 2010;5-Visual Studio 2012;6-Visual Studio 2013;7-Visual Studio 2015
+set _vs_map=1-Visual Studio 2010;2-Visual Studio 2012;3-Visual Studio 2013;4-Visual Studio 2015;5-Visual Studio 2017
 
 :: array with installed vs
 set _vs_installed=
 set _vs_choice=0
 set /a _vs_count=0
 
+
 :: fill array with installed vs
-set VSCOMNTOOLS=%VS71COMNTOOLS%& @call :init_vs 1
-set VSCOMNTOOLS=%VS80COMNTOOLS%& @call :init_vs 2
-set VSCOMNTOOLS=%VS90COMNTOOLS%& @call :init_vs 3
-set VSCOMNTOOLS=%VS100COMNTOOLS%& @call :init_vs 4
-set VSCOMNTOOLS=%VS110COMNTOOLS%& @call :init_vs 5
-set VSCOMNTOOLS=%VS120COMNTOOLS%& @call :init_vs 6
-set VSCOMNTOOLS=%VS140COMNTOOLS%& @call :init_vs 7
+set VSCOMNTOOLS=%VS100COMNTOOLS%& @call :init_vs 1
+set VSCOMNTOOLS=%VS110COMNTOOLS%& @call :init_vs 2
+set VSCOMNTOOLS=%VS120COMNTOOLS%& @call :init_vs 3
+set VSCOMNTOOLS=%VS140COMNTOOLS%& @call :init_vs 4
+set VSCOMNTOOLS=NOTFOUND&         @call :init_vs 5
 
 :: if no vs found
 if %_vs_count% equ 0 set VS_NOT_INSTALLED=true& goto :eof
@@ -48,7 +47,7 @@ if %_vs_count% gtr 1 (
 	:: remove spaces
 	set _c=!_vs_installed: =!
 	echo.
-	module\choice /c:!_choice!
+	choice /c:!_choice!
 	:: redeclare choice with user input
 	set /a _t=!errorlevel!-1
 	@call :_substr !_c! !_t! 1
@@ -58,13 +57,11 @@ if %_vs_count% gtr 1 (
 
 :: set VS VARS
 :select_vs
-if [%_vs_choice%]==[1] set VSCOMNTOOLS=%VS71COMNTOOLS%& set GENERATOR=Visual Studio 7 .NET 2003& set VSVER=v71
-if [%_vs_choice%]==[2] set VSCOMNTOOLS=%VS80COMNTOOLS%& set GENERATOR=Visual Studio 8 2005& set VSVER=v80
-if [%_vs_choice%]==[3] set VSCOMNTOOLS=%VS90COMNTOOLS%& set GENERATOR=Visual Studio 9 2008& set VSVER=v90
-if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10 2010& set VSVER=v100
-if [%_vs_choice%]==[5] set VSCOMNTOOLS=%VS110COMNTOOLS%& set GENERATOR=Visual Studio 11 2012& set VSVER=v110
-if [%_vs_choice%]==[6] set VSCOMNTOOLS=%VS120COMNTOOLS%& set GENERATOR=Visual Studio 12 2013& set VSVER=v120
-if [%_vs_choice%]==[7] set VSCOMNTOOLS=%VS140COMNTOOLS%& set GENERATOR=Visual Studio 14 2015& set VSVER=v140
+if [%_vs_choice%]==[1] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual Studio 10 2010& set VSVER=v100
+if [%_vs_choice%]==[2] set VSCOMNTOOLS=%VS110COMNTOOLS%& set GENERATOR=Visual Studio 11 2012& set VSVER=v110
+if [%_vs_choice%]==[3] set VSCOMNTOOLS=%VS120COMNTOOLS%& set GENERATOR=Visual Studio 12 2013& set VSVER=v120
+if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS140COMNTOOLS%& set GENERATOR=Visual Studio 14 2015& set VSVER=v140
+if [%_vs_choice%]==[5] set VSCOMNTOOLS=%VS160COMNTOOLS%& set GENERATOR=Visual Studio 15 2017& set VSVER=v160
 set PARAM_VS=%_vs_choice%
 
 call %i18n% 1_2 "%GENERATOR%"
@@ -85,12 +82,21 @@ goto :eof
 	
 :init_vs
 	set found=false
-	:: check for exist full visual studio ...
-	if exist "!VSCOMNTOOLS!..\IDE\devenv.exe" set found=true
-	:: ... or express version
-	if exist "!VSCOMNTOOLS!..\IDE\VCExpress.exe" set found=true
-	if exist "!VSCOMNTOOLS!..\IDE\WDExpress.exe" set found=true
-	
+
+	if not !VSCOMNTOOLS!==NOTFOUND (
+		rem check for exist full visual studio ...
+		if exist "!VSCOMNTOOLS!..\IDE\devenv.exe" set found=true
+		rem ... or express version
+		if exist "!VSCOMNTOOLS!..\IDE\VCExpress.exe" set found=true
+		if exist "!VSCOMNTOOLS!..\IDE\WDExpress.exe" set found=true
+	) else (
+		rem ... or newer versions (since 2017)
+		rem vswhere return directories of all installed versions and then we try to find VC++ directory there
+		for /f "usebackq tokens=*" %%i in (`call %EXEC_TOOL% vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath`) do (
+			if exist "%%i\Common7\IDE\devenv.exe" if exist "%%i\VC\Auxiliary\Build\vcvars32.bat" set found=true& set VS160COMNTOOLS=%%i\VC\Auxiliary\Build\
+		)
+	)
+
 	if %found%==true (
 		set _vs_installed=!_vs_installed!%1 
 		set /a _vs_count+=1 & set _vs_choice=%1
