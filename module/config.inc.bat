@@ -18,7 +18,7 @@ set URL_TOOL_MD5SUM=http://www.etree.org/cgi-bin/counter.cgi/software/md5sum.exe
 set URL_TOOL_UNZIP=https://fossies.org/windows/misc/unz600xn.exe/unzip.exe
 set URL_TOOL_VSWHERE=https://github.com/Microsoft/vswhere/releases/download/1.0.58/vswhere.exe
 
-set CMAKE_VERSION=cmake-3.8.0-rc2-win32-x86
+set CMAKE_VERSION=cmake-3.8.0-rc3-win32-x86
 set URL_TOOL_CMAKE=https://cmake.org/files/v3.8/%CMAKE_VERSION%.zip
 
 

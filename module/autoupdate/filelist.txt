@@ -2,18 +2,17 @@
 b58856076a4d165c1c50e0b723060247 *build_d2gs.bat
 541387aa5bc91c9b974920cf7e9483a7 *build_pvpgn.bat
 f523db9fe413da3a491e4e116e777070 *build_pvpgn_dev.bat
-3f97791881a3b09b7f3df775ab120618 *module\config.inc.bat
+a47d52f781151074eb1f9d6974ced1b8 *module\config.inc.bat
 d3ef9e3be4784b8f4f885db0c7672d12 *module\dbchoice.inc.bat
 bba4e7660f2ff922d51024c3f0b3b614 *module\i18n.inc.bat
 fcb1b8ae5a0a59a16e93f45f8e19c664 *module\select_generator.inc.bat
-f310d932a9ae8a66537878a227a42e52 *module\autoupdate\check_for_update.inc.bat
 192084d87e67dde36b06de2193070d5c *module\tools\exec_tool.bat
 49d9b60248649436699edbc7f30ea16b *module\tools\recursive_copy.bat
 f05bb59c82413bf3d3c0e0922eb8a8a2 *module\tools\replacer.bat
 40d1dcb850b4c0de162dc4ac2737adb9 *module\tools\replace_line.vbs
 b3a7555a97efdf9b9f147e144227b02c *module\tools\wget.vbs
+f310d932a9ae8a66537878a227a42e52 *module\autoupdate\check_for_update.inc.bat
 
-fabdfaa9a66bab0d96d11a3c652cb2aa *module\include\atlmfc\stdint.h
 
 bba4e7660f2ff922d51024c3f0b3b614 *module\i18n.inc.bat
 52ce15918e8d330a66886be8e23179b5 *module\i18n\DEU.bat
@@ -24,6 +23,8 @@ bba4e7660f2ff922d51024c3f0b3b614 *module\i18n.inc.bat
 a13a0b354189fd802344220c41ef78ce *module\i18n\RUS.bat
 01bea32d44a9ef4e6f08bbc9f48833f8 *module\i18n\SRL.bat
 93dff6353e8d0180c938bc71d57e8317 *module\i18n\UKR.bat
+
+fabdfaa9a66bab0d96d11a3c652cb2aa *module\include\atlmfc\stdint.h
 
 ddad9af85131b8a3118336bb0bac1a42 *module\include\d2gs\1.13c\d2server.dll
 
