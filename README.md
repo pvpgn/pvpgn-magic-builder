@@ -1,5 +1,6 @@
 PvPGN Magic Builder
 =====
+
 PvPGN Magic Builder gives you an easy way to build your own PvPGN binaries from the latest
 source code for Windows.
 
@@ -42,6 +43,8 @@ setup
 Downloads
 --
 Go to [Release](https://github.com/pvpgn/pvpgn-magic-builder/releases) section and download the latest release.
+
+[![Github Downloads](https://img.shields.io/github/downloads/pvpgn/pvpgn-magic-builder/total.svg?maxAge=2592000)](https://github.com/pvpgn/pvpgn-magic-builder/releases)
 
 
 Discussions
