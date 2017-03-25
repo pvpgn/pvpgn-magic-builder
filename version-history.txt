@@ -3,6 +3,12 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
+v2.2 (25.03.2017)
+- all third-party programs that used for work were excluded from repository and downloaded from trusted locations on demand
+- add Visual Studio 2017 support
+- update PostgreSQL (9.2.20, 9.3.16, 9.4.11, 9.5.6, 9.6.2)
+- update SQLite (3.16.2)
+
 v2.17 (01.02.2017)
 - add script build_pvpgn_dev.bat that generates ready to use PvPGN Visual Studio projects
 

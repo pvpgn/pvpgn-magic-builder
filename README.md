@@ -3,7 +3,11 @@ PvPGN Magic Builder
 PvPGN Magic Builder gives you an easy way to build your own PvPGN binaries from the latest
 source code for Windows.
 
-Let's see how it works in one-minute video: http://www.youtube.com/watch?v=70KYeFqG34M
+Let's see how it works in one-minute video: 
+http://www.youtube.com/watch?v=70KYeFqG34M
+
+Use Magic Builder to build Visual Studio solution:
+https://www.youtube.com/watch?v=98of8yEQt6o
 
 [![PvPGN Builder](http://i.imgur.com/7VVSjji.png)](http://i.imgur.com/ySKCB8G.png) [![D2GS Builder](http://i.imgur.com/c5YaCs3.png)](http://i.imgur.com/0ezOHmm.png)
 
@@ -23,11 +27,14 @@ Features
 Requirements
 --
  * Visual C++ 2015 (Community is supported)
+ * Visual C++ 2017 (Community is supported)
 
-"Community" is the light edition of Visual Studio. It's free to [download](http://www.microsoft.com/visualstudio/downloads)
+"Community" is the light edition of Visual Studio. It's free to [download](https://www.visualstudio.com/downloads/)
 setup
 
-*Note: Visual Studio 2015 doesn't install C++ by default. If you already have it installed then you have to rerun the setup, select `Modify` and then check `Programming Language -> C++`.*
+*Note: Visual Studio doesn't install C++ by default. If you already have it installed then you have to rerun the setup and check `Desktop development with C++`.*
+
+![Visual Studio 2017 C++ Installation](http://i.imgur.com/otoT4qe.png)
 
 *Without C++ installed Magic Builder throws an error `The CXX compiler identification is unknown`*
 
