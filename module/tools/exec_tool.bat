@@ -99,7 +99,8 @@ goto :eof
 	:: download if not exists
 	if not exist %TOOLS_PATH%vswhere.exe (
 		echo "Downloading vswhere..."
-		call %EXEC_TOOL% wget.exe -O %TOOLS_PATH%vswhere.exe %URL_TOOL_VSWHERE% --no-check-certificate 
+		:: download silently
+		call %EXEC_TOOL% wget.exe -O %TOOLS_PATH%vswhere.exe %URL_TOOL_VSWHERE% --no-check-certificate -q 2>nul
 	)
 	if not exist %TOOLS_PATH%vswhere.exe goto :failed
 
