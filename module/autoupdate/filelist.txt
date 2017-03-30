@@ -1,6 +1,6 @@
 00000000000000000000000000000000 *version-history.txt
 85c5802fc4665874f5b6f53e4f9c4883 *build_d2gs.bat
-541387aa5bc91c9b974920cf7e9483a7 *build_pvpgn.bat
+4b0ac8c604c71ca00533e93971da8c89 *build_pvpgn.bat
 eb77ea0bc797835404187d5754e07f96 *build_pvpgn_dev.bat
 b4595fd6baa6d8f4ef571f19592d372c *module\config.inc.bat
 d3ef9e3be4784b8f4f885db0c7672d12 *module\dbchoice.inc.bat
@@ -10,6 +10,7 @@ bba4e7660f2ff922d51024c3f0b3b614 *module\i18n.inc.bat
 49d9b60248649436699edbc7f30ea16b *module\tools\recursive_copy.bat
 f05bb59c82413bf3d3c0e0922eb8a8a2 *module\tools\replacer.bat
 40d1dcb850b4c0de162dc4ac2737adb9 *module\tools\replace_line.vbs
+a03eb20410536694c8e2c216ce4c2e89 *module\tools\pvpgn_version.bat
 b3a7555a97efdf9b9f147e144227b02c *module\tools\wget.vbs
 f310d932a9ae8a66537878a227a42e52 *module\autoupdate\check_for_update.inc.bat
 

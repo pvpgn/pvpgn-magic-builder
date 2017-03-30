@@ -3,6 +3,10 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
+v2.21 (30.03.2017)
+- produce statically linked executables (no need MSCRT*.dll and MSVCR*.dll anymore)
+- pvpgn_version.bat tool (used in AppVeyor for PvPGN repository to read a version string and append a commit there)
+
 v2.2 (25.03.2017)
 - all third-party programs that used for work were excluded from repository and downloaded from trusted locations on demand
 - add Visual Studio 2017 support
