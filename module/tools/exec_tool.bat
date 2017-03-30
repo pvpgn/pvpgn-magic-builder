@@ -21,7 +21,7 @@ goto :eof
 
 	:: download if not exists
 	if not exist %TOOLS_PATH%wget\wget.exe (
-		echo "Downloading wget..."
+		echo Downloading wget...
 		:: download wget silently using vbs because we still not have wget.exe
 		for /f "delims=" %%a in ('cscript "%TOOLS_PATH%wget.vbs" /f "%URL_TOOL_WGET%" "%TOOLS_PATH%wget.zip"') do set res=%%a
 		if not ["!res!"]==["ok"] echo   !res! & goto :failed
@@ -66,7 +66,7 @@ goto :eof
 
 	:: download if not exists
 	if not exist %TOOLS_PATH%unzip.exe (
-		echo "Downloading unzip..."
+		echo Downloading unzip...
 		for /f "delims=" %%a in ('cscript "%TOOLS_PATH%wget.vbs" /f "%URL_TOOL_UNZIP%" "%TOOLS_PATH%unzip.exe"') do set res=%%a
 	)
 	if not exist %TOOLS_PATH%unzip.exe goto :failed
@@ -75,9 +75,13 @@ goto :eof
 
 	
 :download_cmake
+
+	:: first find in PATH
+	call :run_installed cmake.exe
+
 	:: download if not exists
 	if not exist %TOOLS_PATH%%CMAKE_VERSION%\bin\cmake.exe (
-		echo "Downloading CMake..."
+		echo Downloading CMake...
 		:: download archive
 		call %EXEC_TOOL% wget.exe -O %TOOLS_PATH%%CMAKE_VERSION%.zip %URL_TOOL_CMAKE% --no-check-certificate 
 		:: extract files to %TOOLS_PATH%
@@ -98,7 +102,7 @@ goto :eof
 
 	:: download if not exists
 	if not exist %TOOLS_PATH%vswhere.exe (
-		echo "Downloading vswhere..."
+		echo Downloading vswhere...
 		:: download silently
 		call %EXEC_TOOL% wget.exe -O %TOOLS_PATH%vswhere.exe %URL_TOOL_VSWHERE% --no-check-certificate -q 2>nul
 	)
@@ -106,14 +110,19 @@ goto :eof
 
 	exit /b 0
 	
+
+:: find & run installed program if exists in %PATH%
+:run_installed <filename.exe>
+
+	for %%X in (%1) do (set _found_path=%%~$PATH:X)
+	if not "%_found_path%"=="" (
+		echo Use installed program from %_found_path%
+		%EXEC_PATH%
+		goto :eof
+	)
+	exit /b
+
 	
 :failed
 	echo Download failed. Aborting.
 	goto :eof
-
-:halt
-	call :haltHelper 2> nul
-	
-:haltHelper
-	exit /b
-	
