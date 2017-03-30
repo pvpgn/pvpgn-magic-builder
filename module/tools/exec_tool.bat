@@ -114,9 +114,9 @@ goto :eof
 :: find & run installed program if exists in %PATH%
 :run_installed <filename.exe>
 
-	for %%X in (%1) do (set _found_path=%%~$PATH:X)
-	if not "%_found_path%"=="" (
-		echo Use installed program from %_found_path%
+	for %%X in (%1) do (set fullpath=%%~$PATH:X)
+	if not "%fullpath%"=="" (
+		echo Use installed program from %fullpath%
 		%EXEC_PATH%
 		goto :eof
 	)
