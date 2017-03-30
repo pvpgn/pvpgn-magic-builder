@@ -27,7 +27,12 @@ set VSCOMNTOOLS=NOTFOUND&         @call :init_vs 5
 if %_vs_count% equ 0 set VS_NOT_INSTALLED=true& goto :eof
 
 :: {PARAMETER}, if not empty replace value and skip choice
-if not [%PARAM_VS%]==[] set _vs_choice=%PARAM_VS%& goto :select_vs
+if not [%PARAM_VS%]==[] (
+	rem value "auto" automatically selects an available generator
+	if [%PARAM_VS%]==[auto] set PARAM_VS=%_vs_choice%
+
+	set _vs_choice=!PARAM_VS!& goto :select_vs
+)
 
 :: if more then one vs installed, give user to choose it
 if %_vs_count% gtr 1 (
