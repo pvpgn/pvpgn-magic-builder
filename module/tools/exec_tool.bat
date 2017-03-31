@@ -10,6 +10,10 @@ if %TOOL_NAME%==unzip.exe call :download_unzip
 if %TOOL_NAME%==cmake.exe call :download_cmake
 if %TOOL_NAME%==vswhere.exe call :download_vswhere
 
+if errorlevel 5 (
+	exit /b 5
+)
+
 :: execute tool
 %TOOLS_PATH%%EXEC_PATH%
 
@@ -78,6 +82,10 @@ goto :eof
 
 	:: first find in PATH
 	call :run_installed cmake.exe
+	echo.
+	if errorlevel 5 (
+		exit /b 5
+	)
 
 	:: download if not exists
 	if not exist "%TOOLS_PATH%%CMAKE_VERSION%\bin\cmake.exe" (
@@ -114,15 +122,15 @@ goto :eof
 :: find & run installed program if exists in %PATH%
 :run_installed <filename.exe>
 
-	where /q cmake.exe
+	where /q %1
 	if not errorlevel 1 (
 		echo Use installed application from:
-		where cmake.exe
+		where %1
 		:: execute
 		%EXEC_PATH%
-		goto :eof
+		exit /b 5
 	)
-	exit /b
+	exit /b 0
 
 	
 :failed
