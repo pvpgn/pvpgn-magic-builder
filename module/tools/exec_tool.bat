@@ -80,10 +80,10 @@ goto :eof
 	
 :download_cmake
 
+	cmake.exe --version
 	:: first find in PATH
 	call :run_installed cmake.exe
 	echo.
-	echo cmake.exe --version
 	if errorlevel 5 (
 		exit /b 5
 	)
