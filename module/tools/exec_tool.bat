@@ -83,6 +83,7 @@ goto :eof
 	:: first find in PATH
 	call :run_installed cmake.exe
 	echo.
+	echo cmake.exe --version
 	if errorlevel 5 (
 		exit /b 5
 	)
@@ -135,4 +136,4 @@ goto :eof
 	
 :failed
 	echo Download failed. Aborting.
-	goto :eof
+	exit /b 5
