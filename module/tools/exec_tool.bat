@@ -34,9 +34,9 @@ goto :eof
 		if not ["!res!"]==["ok"] echo   !res! & goto :failed
 		
 		:: extract only bin directory to %TOOLS_PATH%
-		call %EXEC_TOOL% unzip.exe -o "%TOOLS_PATH%wget.zip" -d "%TOOLS_PATH%" -C bin\*
+		call %EXEC_TOOL% unzip.exe -o %TOOLS_PATH%wget.zip -d %TOOLS_PATH% -C bin\*
 		:: extract only bin directory to %TOOLS_PATH%
-		call %EXEC_TOOL% unzip.exe -o "%TOOLS_PATH%wget_dep.zip" -d "%TOOLS_PATH%" -C bin\*
+		call %EXEC_TOOL% unzip.exe -o %TOOLS_PATH%wget_dep.zip -d %TOOLS_PATH% -C bin\*
 		:: rename bin to wget
 		ren "%TOOLS_PATH%bin" wget
 		

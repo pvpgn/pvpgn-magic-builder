@@ -256,9 +256,6 @@ echo ______________________[ C M A K E  C O N F I G U R E ]_____________________
 
 :: show visual studio paths to get more details
 call %EXEC_TOOL% vswhere.exe
-echo.
-call %EXEC_TOOL% vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath
-
 
 if [%LOG%]==[true] set _cmake_log= ^>cmake.log
 if not exist "%PVPGN_BUILD%" mkdir "%PVPGN_BUILD%"
