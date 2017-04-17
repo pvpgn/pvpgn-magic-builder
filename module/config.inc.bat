@@ -10,11 +10,10 @@ cd /D "%CURRENT_PATH%"
 @call module\i18n.inc.bat
 set i18n=module\i18n.inc.bat
 
-
 set TOOLS_PATH=%CURRENT_PATH%module\tools\
 set EXEC_TOOL=%TOOLS_PATH%exec_tool.bat
-set URL_TOOL_WGET=http://mirror.ufs.ac.za/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-bin.zip
-set URL_TOOL_WGET_DEP=http://mirror.ufs.ac.za/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-dep.zip
+set URL_TOOL_WGET=https://kent.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-bin.zip
+set URL_TOOL_WGET_DEP=https://kent.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-dep.zip
 set URL_TOOL_MD5SUM=http://www.etree.org/cgi-bin/counter.cgi/software/md5sum.exe
 set URL_TOOL_UNZIP=https://fossies.org/windows/misc/unz600xn.exe/unzip.exe
 set URL_TOOL_VSWHERE=https://github.com/Microsoft/vswhere/releases/download/1.0.58/vswhere.exe
