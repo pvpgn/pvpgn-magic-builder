@@ -12,13 +12,25 @@ set i18n=module\i18n.inc.bat
 
 set TOOLS_PATH=%CURRENT_PATH%module\tools\
 set EXEC_TOOL=%TOOLS_PATH%exec_tool.bat
+
+
+rem ----------- THIRD PARTY TOOLS ------------
+
+:: http://gnuwin32.sourceforge.net/packages/wget.htm
 set URL_TOOL_WGET=https://kent.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-bin.zip
 set URL_TOOL_WGET_DEP=https://kent.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-dep.zip
-set URL_TOOL_MD5SUM=http://www.etree.org/cgi-bin/counter.cgi/software/md5sum.exe
-set URL_TOOL_UNZIP=https://fossies.org/windows/misc/unz600xn.exe/unzip.exe
-set URL_TOOL_VSWHERE=https://github.com/Microsoft/vswhere/releases/download/1.0.58/vswhere.exe
 
-set CMAKE_VERSION=cmake-3.8.0-rc4-win32-x86
+:: http://www.etree.org/md5com.html
+set URL_TOOL_MD5SUM=http://www.etree.org/cgi-bin/counter.cgi/software/md5sum.exe
+
+:: https://fossies.org/windows/misc/unz600xn.exe/
+set URL_TOOL_UNZIP=https://fossies.org/windows/misc/unz600xn.exe/unzip.exe
+
+:: https://github.com/Microsoft/vswhere
+set URL_TOOL_VSWHERE=https://github.com/Microsoft/vswhere/releases/download/1.0.62/vswhere.exe
+
+:: https://cmake.org
+set CMAKE_VERSION=cmake-3.8.1-win32-x86
 set URL_TOOL_CMAKE=https://cmake.org/files/v3.8/%CMAKE_VERSION%.zip
 
 
