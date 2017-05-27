@@ -3,6 +3,12 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
+
+v2.23 (27.05.2017)
+- add unified d2gs after-installation script
+- update cmake and vswhere versions
+- update SQLite (3.19.0)
+
 v2.22 (17.04.2017)
 - update wget download link
 

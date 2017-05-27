@@ -1,5 +1,5 @@
 00000000000000000000000000000000 *version-history.txt
-85c5802fc4665874f5b6f53e4f9c4883 *build_d2gs.bat
+7af527e053b206d2bccaae8a61c245f7 *build_d2gs.bat
 d9936a137632d5d403abb0aaeca49133 *build_pvpgn.bat
 eb77ea0bc797835404187d5754e07f96 *build_pvpgn_dev.bat
 6252cf8d44a334c2e9dcc103455ad2aa *module\config.inc.bat
@@ -64,9 +64,9 @@ d93534f0fc8436f67f505668b8777c55 *module\include\d2gs\1.09d\d2server.dll
 b23c0c625f9008db031b7fd242865577 *module\include\d2gs\1.09d\readme.txt
 
 
-00a91261929192a7facc32a9f330029a *module\include\sqlite\3.17.0\sqlite3.dll
-ccad953baf24dd9509abcf7dd7d526f1 *module\include\sqlite\3.17.0\sqlite3.h
-298d4902b16377ccc09f0e7e7d5116dd *module\include\sqlite\3.17.0\sqlite3.lib
+ebe5066d563c5dde8cde14b4e46f6c22 *module\include\sqlite\3.19.0\sqlite3.dll
+17fa0a0b71882449ae1342b0a0c6793a *module\include\sqlite\3.19.0\sqlite3.h
+3eb039515442de98e3e356e618cb6eef *module\include\sqlite\3.19.0\sqlite3.lib
 
 daa1434f8ab7dbbce71a974548415040 *module\include\mysql\5.5.54\libmysql.dll
 1d6c6869a209940b62bc2ba302b33279 *module\include\mysql\5.5.54\libmysql.lib
