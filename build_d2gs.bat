@@ -21,7 +21,7 @@ echo _______________________________[ S E T U P ]_______________________________
 call %i18n% 9_1
 
 :choose_version
-echo    1) 1.13d
+echo    1) 1.13d (broken uber portals https://github.com/pvpgn/pvpgn-magic-builder/issues/25)
 echo    2) 1.13c
 echo    3) 1.13c (multithreaded, read https://github.com/pvpgn/pvpgn-magic-builder/issues/17)
 echo    4) 1.11b

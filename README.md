@@ -1,3 +1,4 @@
+
 PvPGN Magic Builder
 =====
 
@@ -42,6 +43,11 @@ Requirements
 Downloads
 --
 Go to [Release](https://github.com/pvpgn/pvpgn-magic-builder/releases) section and download the latest release.
+
+***WARNING!***
+
+***DO NOT download by clicking on a green button "Clone or download" at the right top corner on this page. In this auto created archive Github replaces Windows carriage return to UNIX format inside `*.bat` files, because of this scripts may not work properly with wierd errors.***
+
 
 [![Github Downloads](https://img.shields.io/github/downloads/pvpgn/pvpgn-magic-builder/total.svg?maxAge=2592000)](https://github.com/pvpgn/pvpgn-magic-builder/releases)
 
