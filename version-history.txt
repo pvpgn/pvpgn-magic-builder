@@ -4,6 +4,10 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 
 [Featured 2.x]
 
+v2.24 (02.06.2017)
+- add D2GS 1.12a
+- update MySQL (5.7.18)
+
 v2.23 (27.05.2017)
 - add unified d2gs after-installation script
 - update cmake and vswhere versions

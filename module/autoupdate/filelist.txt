@@ -1,5 +1,5 @@
 00000000000000000000000000000000 *version-history.txt
-7af527e053b206d2bccaae8a61c245f7 *build_d2gs.bat
+fb59cec981840f0dfb0a52328ea44961 *build_d2gs.bat
 d9936a137632d5d403abb0aaeca49133 *build_pvpgn.bat
 eb77ea0bc797835404187d5754e07f96 *build_pvpgn_dev.bat
 6252cf8d44a334c2e9dcc103455ad2aa *module\config.inc.bat
@@ -26,6 +26,18 @@ a13a0b354189fd802344220c41ef78ce *module\i18n\RUS.bat
 93dff6353e8d0180c938bc71d57e8317 *module\i18n\UKR.bat
 
 fabdfaa9a66bab0d96d11a3c652cb2aa *module\include\atlmfc\stdint.h
+
+2355619f2596beb5dbbfb5e7fd29337a *module\include\d2gs\1.12a\D2GS.exe
+c40608b344b57a652ceb751f51f36576 *module\include\d2gs\1.12a\d2gs.reg
+23ef9623d5f46b62d5e76a62ffda79a2 *module\include\d2gs\1.12a\d2gs.script
+cc5c133e2800931de5f39a0dd51066c2 *module\include\d2gs\1.12a\D2GSSVC.exe
+1afdc6a364196dfb58af9ea367ca42db *module\include\d2gs\1.12a\D2GS_1.12a_Readme.txt
+95cd0c90a997fa1f6d8505e199a3538c *module\include\d2gs\1.12a\D2GS_LICENSE_CN.TXT
+cc828cebc9bb619542c913895cdc9306 *module\include\d2gs\1.12a\D2GS_README.TXT
+0c64db7e3be4f6685a2e979fb624cca4 *module\include\d2gs\1.12a\D2GS_README_CN.TXT
+3778bc30b115b114acc321c5673bfaa3 *module\include\d2gs\1.12a\d2server.dll
+75d1a39e7667a71e7bef75ebca683b25 *module\include\d2gs\1.12a\d2server.ini
+3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.12a\ItemConfig.dat
 
 ddad9af85131b8a3118336bb0bac1a42 *module\include\d2gs\1.13c\d2server.dll
 
@@ -89,21 +101,22 @@ b6e84c12ea72b972f39866394389660f *module\include\mysql\5.6.35\my_alloc.h
 5a849989a9d60263bf9e00c9614feaed *module\include\mysql\5.6.35\my_list.h
 05524c04815ac8e6971d7fd8787b4426 *module\include\mysql\5.6.35\typelib.h
 
-d1552f65b1767d9e4941ff8b9f9ef0df *module\include\mysql\5.7.17\binary_log_types.h
-a58fdd5ac9e9697da7b2dcf5896bd8c6 *module\include\mysql\5.7.17\libmysql.dll
-1b10c96d90ed36624c290a04e313bda0 *module\include\mysql\5.7.17\libmysql.lib
-6fb4f84670c12222e3c2107201fc6870 *module\include\mysql\5.7.17\mysql.h
-735097aefdf647f109981228af66f1ac *module\include\mysql\5.7.17\mysql_com.h
-93ccc8b77b690f9c08df7bd59836db7f *module\include\mysql\5.7.17\mysql_time.h
-3df6125b194ac0d288ba484ee78ab764 *module\include\mysql\5.7.17\mysql_version.h
-f19152f2e5e84bb1d93b46c31c33a8eb *module\include\mysql\5.7.17\my_alloc.h
-caac311028424ab70c3876641c0fdf13 *module\include\mysql\5.7.17\my_command.h
-5a849989a9d60263bf9e00c9614feaed *module\include\mysql\5.7.17\my_list.h
-05524c04815ac8e6971d7fd8787b4426 *module\include\mysql\5.7.17\typelib.h
-5bbfa3695520793d3dbfa5fb960418e9 *module\include\mysql\5.7.17\mysql\client_plugin.h
-af2c4ed045f06381cf8f314c7d30a1e0 *module\include\mysql\5.7.17\mysql\plugin_auth_common.h
-e270b72eb21bdbca8ff143e4ab215f86 *module\include\mysql\5.7.17\mysql\psi\psi_base.h
-13809edf15e0cebce4928c21a2875efa *module\include\mysql\5.7.17\mysql\psi\psi_memory.h
+d1552f65b1767d9e4941ff8b9f9ef0df *module\include\mysql\5.7.18\binary_log_types.h
+f562e1f234f88637ecd85c8ef04b5b29 *module\include\mysql\5.7.18\libmysql.dll
+173664b04934c4bf414619175553aff3 *module\include\mysql\5.7.18\libmysql.lib
+6fb4f84670c12222e3c2107201fc6870 *module\include\mysql\5.7.18\mysql.h
+4b9d052f5ad993dc180e4dbe659d9db4 *module\include\mysql\5.7.18\mysql_com.h
+93ccc8b77b690f9c08df7bd59836db7f *module\include\mysql\5.7.18\mysql_time.h
+e8f61277f629c0257702aedb52e47d50 *module\include\mysql\5.7.18\mysql_version.h
+f19152f2e5e84bb1d93b46c31c33a8eb *module\include\mysql\5.7.18\my_alloc.h
+caac311028424ab70c3876641c0fdf13 *module\include\mysql\5.7.18\my_command.h
+5a849989a9d60263bf9e00c9614feaed *module\include\mysql\5.7.18\my_list.h
+05524c04815ac8e6971d7fd8787b4426 *module\include\mysql\5.7.18\typelib.h
+5bbfa3695520793d3dbfa5fb960418e9 *module\include\mysql\5.7.18\mysql\client_plugin.h
+af2c4ed045f06381cf8f314c7d30a1e0 *module\include\mysql\5.7.18\mysql\plugin_auth_common.h
+e270b72eb21bdbca8ff143e4ab215f86 *module\include\mysql\5.7.18\mysql\psi\psi_base.h
+13809edf15e0cebce4928c21a2875efa *module\include\mysql\5.7.18\mysql\psi\psi_memory.h
+
 
 205c285cb7f954e472ab601d3617e93a *module\include\pgsql\9.1.24\libiconv-2.dll
 2e7938bffda0b32a45900d8281163a30 *module\include\pgsql\9.1.24\libintl-8.dll
