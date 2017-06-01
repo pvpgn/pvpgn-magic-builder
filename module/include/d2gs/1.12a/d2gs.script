@@ -1,0 +1,65 @@
+#put this script together with the loader, and the
+#loader will read it automatically at startup.
+
+#Any line begin with '#' are ignored
+#all digits here should be hex
+#use tab or space to separate two items
+
+#Format:
+#Module Name	Offset(RVA)	Source Data(for check)		Destnation Data(Change to) Method
+#Offset Format: 	RVA[:Offset, Pattern]
+#You can use pattern searching to get the RVA result now
+#Method:
+#0X00: replace source with dest
+#0X01: relocate src
+#0X02: relocate dest
+#0X20: relocate call address
+
+#you may add your own hack below freely
+
+#For D2 1.11b, the D2Game.dll has been rebase to 0x010C0000, not the 0x6FC20000!!!
+
+#1.12a CompareFileTime workaround
+D2Game.dll	0X1C7F5	7E14	9090	0 #6FC3C7F5
+
+#Town TP corpse crash bug patch
+#Creating a town portal when corpses or other objects entirely fill the area where the portal will appear in town will no longer crash the game. 
+#6802287E
+D2Game.dll	0XAEA19	5DBAF5FF	613E35F8	0 #6FCCEA19 = Patch Call Offset(x-6FCCEA1D)
+
+#Dual Aura Bug Patch(This include the PET & Player)
+#When the item remove from pet or player, the aura event is not removed from the unit.
+D2Game.dll	0XBE028	6A098BC7E81F8CF8FF	FF1510100268909090	0 #6FCDE028(BE028) remove the aura event from unit
+
+#Missile_DO_diabwallmaker Patch
+D2Game.dll	0X106490	F041CC6F	2026CC6F	3 #6FD26490(106490) replace Missile_DO_diabwallmaker with Missile_DO_01
+
+#Carry1 Trade Patch(for USC\ULC\UGC trade), skip the carry1 check in trade
+D2Game.dll	0X844FA	7402	EB02	0 #6FCA44FA(844FA)
+
+
+#Uber Quest Patchs
+
+#openPandPortal=68021BE0
+D2Game.dll	0XFA228	A01ACF6F	E01B0268 1 #6FD1A228(FA228)
+
+#openPandFinalPortal=68021C88
+D2Game.dll	0XFA22C	901ACF6F	881C0268 1 #6FD1A22C(FA22C)
+
+#SpawnUberBossOff=68021D00 ; Hook
+D2Game.dll	0XA850B 014FF6FF	001D0268 20  #6FCC850B(A850B) = Patch Call Offset
+
+#####################################################################################################
+#Marsgod's AI table !! Use Ball\Mephisto\Diablo AI
+#####################################################################################################
+#UberBaal AI
+D2Game.dll	0X10F870	1022CD6F	903BCD6F 3 #6FD2F870(10F870) nullsub->UberBaal_AI(6FCD3B90)
+
+#UberMephisto AI
+D2Game.dll	0X10F880	902ACE6F	9F200268 1 #6FD2F880 nullsub->UberMephisto_AI(6802209F)
+D2Game.dll	0X10F87C	00000000	6C200268 0 #6FD2F87C 0->UberMephisto_AI0(6802206C)
+
+#UberDiablo AI
+D2Game.dll	0X10F890	5062CF6F	EC200268 1 #6FD2F890 nullsub->UberDiablo_AI(680220EC)
+D2Game.dll	0X10F88C	00000000	39200268 0 #6FD2F88C 0->UberDiablo_AI0(68022039)
+
