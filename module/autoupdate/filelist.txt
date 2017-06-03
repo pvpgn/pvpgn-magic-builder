@@ -27,8 +27,13 @@ a13a0b354189fd802344220c41ef78ce *module\i18n\RUS.bat
 
 fabdfaa9a66bab0d96d11a3c652cb2aa *module\include\atlmfc\stdint.h
 
+60311ca198dba7cd6aa989e5e993d078 *module\include\d2gs\1.09d\D2GS.exe
+a7193ae2c6bf05ce36fccbd3c94d6b19 *module\include\d2gs\1.09d\d2gs.reg
+d93534f0fc8436f67f505668b8777c55 *module\include\d2gs\1.09d\d2server.dll
+b23c0c625f9008db031b7fd242865577 *module\include\d2gs\1.09d\readme.txt
+
 2355619f2596beb5dbbfb5e7fd29337a *module\include\d2gs\1.12a\D2GS.exe
-c40608b344b57a652ceb751f51f36576 *module\include\d2gs\1.12a\d2gs.reg
+b6681021d919d1ac0daf0b2c8037c908 *module\include\d2gs\1.12a\d2gs.reg
 23ef9623d5f46b62d5e76a62ffda79a2 *module\include\d2gs\1.12a\d2gs.script
 cc5c133e2800931de5f39a0dd51066c2 *module\include\d2gs\1.12a\D2GSSVC.exe
 1afdc6a364196dfb58af9ea367ca42db *module\include\d2gs\1.12a\D2GS_1.12a_Readme.txt
@@ -39,12 +44,13 @@ cc828cebc9bb619542c913895cdc9306 *module\include\d2gs\1.12a\D2GS_README.TXT
 75d1a39e7667a71e7bef75ebca683b25 *module\include\d2gs\1.12a\d2server.ini
 3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.12a\ItemConfig.dat
 
+a7193ae2c6bf05ce36fccbd3c94d6b19 *module\include\d2gs\1.13c\d2gs.reg
 ddad9af85131b8a3118336bb0bac1a42 *module\include\d2gs\1.13c\d2server.dll
 
 4a71a0349a7325a4fed96053778863e0 *module\include\d2gs\1.13c_m\3ea42f5ac80f0d2deb35d99b4e9a780b.mod
 529379cf24b15a4a7246c2c1e8a9eaae *module\include\d2gs\1.13c_m\D2GE.exe
 e4ebc27b84ade011c07c7c1ab499934f *module\include\d2gs\1.13c_m\D2GS.exe
-a65403ad3a6e540e635b5c20b294e01d *module\include\d2gs\1.13c_m\d2gs.reg
+0d115c92b7bf7b620b22e9be13284ee9 *module\include\d2gs\1.13c_m\d2gs.reg
 e9aac468ce7bab24f534377a57df5ed8 *module\include\d2gs\1.13c_m\d2gs.script
 a21ecc044d7d47b2ae33ee4395508b16 *module\include\d2gs\1.13c_m\d2server.dll
 4a08183c93ba5bc5db8789b08c4fa5a7 *module\include\d2gs\1.13c_m\d2warden.dll
@@ -56,7 +62,7 @@ d975a1a3338d06baca0bc9724e6a59e5 *module\include\d2gs\1.13c_m\filelist.txt
 
 4a71a0349a7325a4fed96053778863e0 *module\include\d2gs\1.13d\3ea42f5ac80f0d2deb35d99b4e9a780b.mod
 2355619f2596beb5dbbfb5e7fd29337a *module\include\d2gs\1.13d\D2GS.exe
-e8d184da42f16b4cedaf062b5d41c400 *module\include\d2gs\1.13d\d2gs.reg
+7c9d59079cdfd6152662d2ee809647b5 *module\include\d2gs\1.13d\d2gs.reg
 e9aac468ce7bab24f534377a57df5ed8 *module\include\d2gs\1.13d\d2gs.script
 cc5c133e2800931de5f39a0dd51066c2 *module\include\d2gs\1.13d\D2GSSVC.exe
 ecd6cb70da330ab35ea4c147943a4614 *module\include\d2gs\1.13d\D2GS_1.13d_Readme.txt
@@ -70,10 +76,6 @@ a69aa96669db225e594a6693be1403b9 *module\include\d2gs\1.13d\filelist.txt
 db6eb846e3924197dbed1436ade278cf *module\include\d2gs\1.13d\install.bat
 19e4000205b2ab79c9304af2fb04ca00 *module\include\d2gs\1.13d\install_x64.bat
 3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.13d\ItemConfig.dat
-
-60311ca198dba7cd6aa989e5e993d078 *module\include\d2gs\1.09d\D2GS.exe
-d93534f0fc8436f67f505668b8777c55 *module\include\d2gs\1.09d\d2server.dll
-b23c0c625f9008db031b7fd242865577 *module\include\d2gs\1.09d\readme.txt
 
 
 ebe5066d563c5dde8cde14b4e46f6c22 *module\include\sqlite\3.19.0\sqlite3.dll

@@ -10,7 +10,7 @@ REGEDIT4
 "D2CSPort"=dword:000017e1
 "D2DBSIP"="192.168.1.1"
 "D2DBSPort"=dword:000017e2
-"MaxGames"=dword:00000001
+"MaxGames"=dword:00000032
 "MaxGameLife"=dword:00003840
 "AdminPassword"="9e75a42100e1b9e0b5d3873045084fae699adcb0"
 "AdminPort"=dword:000022b8
