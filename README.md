@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=98of8yEQt6o
 
 Features
 --
- * Builds a [PvPGN](https://github.com/pvpgn/pvpgn-server) with one of the databases support: [MySQL](http://wikipedia.org/wiki/MySQL), [PostgreSQL](http://wikipedia.org/wiki/PostgreSQL), [SQLite3](http://wikipedia.org/wiki/SQLite) or [ODBC](http://wikipedia.org/wiki/Open_Database_Connectivity). Feature to enable [Lua](http://en.wikipedia.org/wiki/Lua_(programming_language)) scripting
+ * Builds [PvPGN](https://github.com/pvpgn/pvpgn-server) with one of the databases support: [MySQL](http://wikipedia.org/wiki/MySQL), [PostgreSQL](http://wikipedia.org/wiki/PostgreSQL), [SQLite3](http://wikipedia.org/wiki/SQLite) or [ODBC](http://wikipedia.org/wiki/Open_Database_Connectivity). Feature to enable [Lua](http://en.wikipedia.org/wiki/Lua_(programming_language)) scripting. Feature to choose Git branch to download source code from.
  * Builds any version of [D2GS](http://harpywar.com/?a=articles&b=2&c=2&d=21), feature to download all DLL and MPQ that are necessary to start your server
  * Doesn’t require additional files - all built in
  * Has a multilanguage command line interface: Russian, English, Dutch, German, Polish, Serbian, Spanish, Ukrainian (please, translate [this file](https://github.com/pvpgn/pvpgn-magic-builder/blob/master/module/i18n/ENU.bat) if you know others)
@@ -43,11 +43,6 @@ Requirements
 Downloads
 --
 Go to [Release](https://github.com/pvpgn/pvpgn-magic-builder/releases) section and download the latest release.
-
-***WARNING!***
-
-***DO NOT download by clicking on a green button "Clone or download" at the right top corner on this page. In this auto created archive Github replaces Windows carriage return to UNIX format inside `*.bat` files, because of this scripts may not work properly with wierd errors.***
-
 
 [![Github Downloads](https://img.shields.io/github/downloads/pvpgn/pvpgn-magic-builder/total.svg?maxAge=2592000)](https://github.com/pvpgn/pvpgn-magic-builder/releases)
 
