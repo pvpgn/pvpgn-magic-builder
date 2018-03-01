@@ -1,0 +1,4 @@
+# Git will always convert line endings to CRLF on checkout
+# It's very important for BAT files to use CRLF instead of LF
+# https://help.github.com/articles/dealing-with-line-endings/ 
+* text eol=crlf
