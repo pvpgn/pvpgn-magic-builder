@@ -42,7 +42,7 @@ goto :eof
 		
 		:: remove downloaded archives to save disk space
 		rem del "%TOOLS_PATH%wget.zip"
-		drem el "%TOOLS_PATH%wget_dep.zip"
+		rem del "%TOOLS_PATH%wget_dep.zip"
 	)
 	rem if not exist "%TOOLS_PATH%wget\wget.exe" goto :failed
 	rem if not exist "%TOOLS_PATH%wget\libssl32.dll" goto :failed

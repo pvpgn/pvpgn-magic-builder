@@ -12,12 +12,16 @@ Dim args
 args = wscript.Arguments.Count
 
 if args < 2 then
-  wscript.Echo "usage: wget.vbs [flag] [remote_url] {destination_file}" & vbcrlf & " flag = /s - download and return string" & vbcrlf & " flag = /f download file to destination"
+  wscript.Echo "usage: wget.vbs [flag] [remote_url] {destination_file} {filter}" & vbcrlf & " flag = /s - download and return string" & vbcrlf & " flag = /f download file to destination" & vbcrlf & " {filter} = /raw - do not escape string (/escape - by default)"
   wscript.Quit 1
 end if
 
 Flag = wscript.Arguments.Item(0)
 Source = wscript.Arguments.Item(1)
+Encode = "/escape" ' escape by default
+if args = 3 then
+	Encode = wscript.Arguments.Item(2)
+end if
 
 Dim client 
 Dim stream 
@@ -28,7 +32,11 @@ client.Send ""
 ' echo string and quit
 if Flag = "/s" then
 	if client.Status = 200 then
-		wscript.Echo HTMLEncode(client.responseText)
+		response = client.responseText
+		if Encode = "/escape" then
+			response = HTMLEncode(client.responseText)
+		end if
+		wscript.Echo response
 		wscript.Quit
 	else
 		wscript.Echo "error code: " & client.Status

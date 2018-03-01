@@ -10,8 +10,8 @@
 set PHRASE_1_0=  Program Visual Studio nie jest zainstalowany na komputerze
 set PHRASE_1_1=Wybierz wersje programu Visual Studio przy u¾yciu kt¢rej chcesz skompilowa† PvPGN:
 set PHRASE_1_2=Wybrano %2 jako ˜rodowisko programistyczne
-set PHRASE_1_3=Czy chcesz pobra†/zaktualizowa† PvPGN do najnowszej wersji z repozytorium SVN (w katalogu %2)?
-set PHRASE_1_4=   PvPGN zostanie zaktualizowany do najnowszej wersji z repozytorium GIT
+set PHRASE_1_3=Czy chcesz pobra†/zaktualizowa† PvPGN do najnowszej wersji z repozytorium Git (w katalogu %2)?
+set PHRASE_1_4=   PvPGN zostanie zaktualizowany do najnowszej wersji z repozytorium Git oddzialu %2
 set PHRASE_1_5=   PvPGN nie zostanie zaktualizowany
 set PHRASE_1_6=Wybierz interfejs PvPGN jaki chcesz u¾ywa†:
 set PHRASE_1_7=   1) Konsola - Wiersz poleceä (domy˜lnie)

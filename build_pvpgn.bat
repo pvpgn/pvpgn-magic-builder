@@ -85,7 +85,8 @@ if %errorlevel%==2 ( set CHOICE_GIT=n) else ( set CHOICE_GIT=y)
 
 :: if not "n", set to "y"
 if not [%CHOICE_GIT%]==[n] ( 
-	call %i18n% 1_4
+	@call module\select_branch.inc.bat
+	call %i18n% 1_4 "!BRANCH!"
 ) else (
 	call %i18n% 1_5
 )
@@ -227,8 +228,10 @@ if [%PARAM_REBUILD%]==[] (
 	if not exist %PVPGN_SOURCE% mkdir %PVPGN_SOURCE%
 
 	if not [%CHOICE_GIT%]==[n] ( 
+		set PVPGN_ZIP=%PVPGN_PATH%!BRANCH!.zip
+	
 		:: download source.zip
-		call %EXEC_TOOL% wget.exe -O source.zip --no-check-certificate %PVPGN_ZIP% %_zip_log%
+		call %EXEC_TOOL% wget.exe -O source.zip --no-check-certificate !PVPGN_ZIP! %_zip_log%
 
 		:: extract files into current directory (pvpgn-server-master directory is in archive)
 		call %EXEC_TOOL% unzip.exe -o source.zip %_zip_log%

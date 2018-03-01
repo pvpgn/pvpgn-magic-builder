@@ -10,9 +10,9 @@
 set PHRASE_1_0=  Visual Studio nije instaliran
 set PHRASE_1_1=Izaberi kojom verzijom Visual Studia ces da Napravis pvpgn:
 set PHRASE_1_2=%2 izabran kao kompajler
-set PHRASE_1_3=da li zelis da downloadujes/updejtujes zadnji pvpgn iz GIT-a (u %2 folder)?
-set PHRASE_1_4=   PvPGN ce updejtovati iz GIT-a
-set PHRASE_1_5=   PvPGN nece updejtovati iz GIT-a
+set PHRASE_1_3=da li zelis da downloadujes/updejtujes zadnji pvpgn iz Git (u %2 folder)?
+set PHRASE_1_4=   PvPGN ce updejtovati iz Git branch %2
+set PHRASE_1_5=   PvPGN nece updejtovati iz Git
 set PHRASE_1_6=Izaberi PvPGN izgled: 
 set PHRASE_1_7=   1) Consola (defaut)
 set PHRASE_1_8=   2) GUI(Graficki prikaz)

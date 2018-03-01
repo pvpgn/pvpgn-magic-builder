@@ -47,7 +47,7 @@ set PVPGN_BUILD=build\
 
 set URL_UPDATE=https://raw.githubusercontent.com/pvpgn/pvpgn-magic-builder/master/
 
-set PVPGN_ZIP=https://github.com/pvpgn/pvpgn-server/archive/master.zip
+set PVPGN_PATH=https://github.com/pvpgn/pvpgn-server/archive/
 
 set ZLIB_PATH=module\include\zlib\1.2.11\
 set LUA_PATH=module\include\lua\5.1\
