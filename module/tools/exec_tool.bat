@@ -27,28 +27,29 @@ goto :eof
 	if not exist "%TOOLS_PATH%wget\wget.exe" (
 		echo Downloading wget...
 		:: download wget silently using vbs because we still not have wget.exe
-		for /f "delims=" %%a in ('cscript "%TOOLS_PATH%wget.vbs" /f "%URL_TOOL_WGET%" "%TOOLS_PATH%wget.zip"') do set res=%%a
+		for /f "delims=" %%a in ('cscript "%TOOLS_PATH%wget.vbs" /f "%URL_TOOL_WGET%" "%TOOLS_PATH%wget.exe"') do set res=%%a
 		if not ["!res!"]==["ok"] echo   !res! & goto :failed
 		:: download also dll dependencies for wget
-		for /f "delims=" %%a in ('cscript "%TOOLS_PATH%wget.vbs" /f "%URL_TOOL_WGET_DEP%" "%TOOLS_PATH%wget_dep.zip"') do set res=%%a
-		if not ["!res!"]==["ok"] echo   !res! & goto :failed
+		rem for /f "delims=" %%a in ('cscript "%TOOLS_PATH%wget.vbs" /f "%URL_TOOL_WGET_DEP%" "%TOOLS_PATH%wget_dep.zip"') do set res=%%a
+		rem if not ["!res!"]==["ok"] echo   !res! & goto :failed
 		
 		:: extract only bin directory to %TOOLS_PATH%
-		call %EXEC_TOOL% unzip.exe -o %TOOLS_PATH%wget.zip -d %TOOLS_PATH% -C bin\*
+		rem call %EXEC_TOOL% unzip.exe -o %TOOLS_PATH%wget.zip -d %TOOLS_PATH% -C bin\*
 		:: extract only bin directory to %TOOLS_PATH%
-		call %EXEC_TOOL% unzip.exe -o %TOOLS_PATH%wget_dep.zip -d %TOOLS_PATH% -C bin\*
+		rem call %EXEC_TOOL% unzip.exe -o %TOOLS_PATH%wget_dep.zip -d %TOOLS_PATH% -C bin\*
 		:: rename bin to wget
-		ren "%TOOLS_PATH%bin" wget
+		rem ren "%TOOLS_PATH%bin" wget
 		
 		:: remove downloaded archives to save disk space
-		del "%TOOLS_PATH%wget.zip"
-		del "%TOOLS_PATH%wget_dep.zip"
+		rem del "%TOOLS_PATH%wget.zip"
+		drem el "%TOOLS_PATH%wget_dep.zip"
 	)
-	if not exist "%TOOLS_PATH%wget\wget.exe" goto :failed
-	if not exist "%TOOLS_PATH%wget\libssl32.dll" goto :failed
+	rem if not exist "%TOOLS_PATH%wget\wget.exe" goto :failed
+	rem if not exist "%TOOLS_PATH%wget\libssl32.dll" goto :failed
+	if not exist "%TOOLS_PATH%wget.exe" goto :failed
 
 	:: update executable path
-	set EXEC_PATH=wget\%EXEC_PATH%
+	rem set EXEC_PATH=wget\%EXEC_PATH%
 	
 	exit /b 0
 

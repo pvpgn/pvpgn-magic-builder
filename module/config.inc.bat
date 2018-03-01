@@ -17,8 +17,9 @@ set EXEC_TOOL=%TOOLS_PATH%exec_tool.bat
 rem ----------- THIRD PARTY TOOLS ------------
 
 :: http://gnuwin32.sourceforge.net/packages/wget.htm
-set URL_TOOL_WGET=https://kent.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-bin.zip
-set URL_TOOL_WGET_DEP=https://kent.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-dep.zip
+::set URL_TOOL_WGET=https://kent.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-bin.zip
+::set URL_TOOL_WGET_DEP=https://kent.dl.sourceforge.net/project/gnuwin32/wget/1.11.4-1/wget-1.11.4-1-dep.zip
+set URL_TOOL_WGET=https://eternallybored.org/misc/wget/1.19.4/32/wget.exe
 
 :: http://www.etree.org/md5com.html
 set URL_TOOL_MD5SUM=http://www.etree.org/cgi-bin/counter.cgi/software/md5sum.exe
