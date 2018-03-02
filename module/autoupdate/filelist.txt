@@ -2,7 +2,7 @@
 fb59cec981840f0dfb0a52328ea44961 *build_d2gs.bat
 d9936a137632d5d403abb0aaeca49133 *build_pvpgn.bat
 eb77ea0bc797835404187d5754e07f96 *build_pvpgn_dev.bat
-6252cf8d44a334c2e9dcc103455ad2aa *module\config.inc.bat
+9c24b91a99150bc81613bb292c0bd04c *module\config.inc.bat
 d3ef9e3be4784b8f4f885db0c7672d12 *module\dbchoice.inc.bat
 bba4e7660f2ff922d51024c3f0b3b614 *module\i18n.inc.bat
 64db4a7502684561d093a4047e523c1b *module\select_generator.inc.bat
