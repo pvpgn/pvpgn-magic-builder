@@ -3,6 +3,13 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
+v2.24 (02.03.2018)
+- update wget
+- add feature to download PvPGN source code from selected branch
+- set MaxGames = 50 by default for D2GS
+- update MySQL (5.5.59, 5.6.39, 5.7.21)
+- update PostgreSQL (9.2.24, 9.3.22, 9.4.17, 9.5.12, 9.6.8, 10.3.0)
+- update SQLite (3.22.0)
 
 v2.24 (02.06.2017)
 - add D2GS 1.12a

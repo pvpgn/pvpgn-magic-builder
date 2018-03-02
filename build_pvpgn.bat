@@ -6,7 +6,7 @@ color 1f
 echo.
 echo *:*:*:*:*:*:*:*:*-  P v P G N  M a g i c  B u i l d e r  -*:*:*:*:*:*:*:*:*:*:*
 echo *                                                                             *
-echo *   Copyright 2011-2017, HarpyWar (harpywar@gmail.com)                        *
+echo *   Copyright 2011-2018, HarpyWar (harpywar@gmail.com)                        *
 echo *   https://pvpgn.pro                                                         *
 echo *                                                                             *
 echo *:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*
