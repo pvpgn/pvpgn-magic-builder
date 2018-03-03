@@ -237,9 +237,9 @@ if [%PARAM_REBUILD%]==[] (
 		call %EXEC_TOOL% unzip.exe -o source.zip %_zip_log%
 
 		:: copy files from pvpgn-master to source
-		xcopy /E /R /K /Y pvpgn-server-master source\ %_zip_log%
+		xcopy /E /R /K /Y pvpgn-server-!BRANCH! source\ %_zip_log%
 		:: remove pvpgn-master
-		rmdir /Q /S pvpgn-server-master\
+		rmdir /Q /S pvpgn-server-!BRANCH!\
 		:: remove downloaded zip
 		del /F /Q source.zip
 	)
