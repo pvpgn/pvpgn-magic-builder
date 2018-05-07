@@ -353,11 +353,11 @@ if [%CHOICE_INTERFACE%]==[1] set postfix=Console
 
 :: copy release binaries
 @copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.exe" "%PVPGN_RELEASE%PvPGN%postfix%.exe"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.pdb" "%PVPGN_RELEASE%PvPGN%postfix%.pdb"
+@copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.pdb" "%PVPGN_RELEASE%PvPGN%postfix%.pdb"
 @copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.exe" "%PVPGN_RELEASE%D2CS%postfix%.exe"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.pdb" "%PVPGN_RELEASE%D2CS%postfix%.pdb"
+@copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.pdb" "%PVPGN_RELEASE%D2CS%postfix%.pdb"
 @copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.exe" "%PVPGN_RELEASE%D2DBS%postfix%.exe"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.pdb" "%PVPGN_RELEASE%D2DBS%postfix%.pdb"
+@copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.pdb" "%PVPGN_RELEASE%D2DBS%postfix%.pdb"
 
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.exe" "%PVPGN_RELEASE%"
 if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.pdb" "%PVPGN_RELEASE%"
