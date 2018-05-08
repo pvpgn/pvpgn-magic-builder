@@ -270,13 +270,13 @@ if exist "%PVPGN_BUILD%CMakeCache.txt" del %PVPGN_BUILD%CMakeCache.txt
 
 if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
 
-:: make .exe statically linked
+:: set cmake compiler flags
 if "%PARAM_BUILDTYPE%"=="Debug" (
-	set CMAKE_MT_FLAG=CMAKE_CXX_FLAGS_DEBUG="/MTd"
+	set CMAKE_FLAGS=-D CMAKE_CXX_FLAGS_DEBUG="/MTd"
 ) else (
-	set CMAKE_MT_FLAG=CMAKE_CXX_FLAGS_RELEASE="/MT"
+	set CMAKE_FLAGS=-D CMAKE_CXX_FLAGS_RELEASE="/MT /Od"
 )
-set CMAKE_VARS=%CMAKE_VARS% -D %CMAKE_MT_FLAG%
+set CMAKE_VARS=%CMAKE_VARS% %CMAKE_FLAGS%
 
 :: configure and generate solution
 call %EXEC_TOOL% cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
