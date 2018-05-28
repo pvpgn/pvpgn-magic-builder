@@ -1,8 +1,10 @@
 @echo off
 rem ------------------------------------
 rem D2GS Installer Script
-rem (c) 2017 HarpyWar (http://pvpgn.pro)
+rem (c) 2017 HarpyWar (https://pvpgn.pro)
 rem ------------------------------------
+
+title Diablo 2 Game Server - INSTALL
 
 echo You have to run this script as administrator.
 echo (otherwise it may fail without a result).
