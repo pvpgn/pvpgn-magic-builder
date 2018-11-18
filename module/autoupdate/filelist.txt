@@ -8,8 +8,7 @@ bba4e7660f2ff922d51024c3f0b3b614 *module\i18n.inc.bat
 def1cf613cf129cf7445304ff9aeadb5 *module\select_branch.inc.bat
 64db4a7502684561d093a4047e523c1b *module\select_generator.inc.bat
 f310d932a9ae8a66537878a227a42e52 *module\autoupdate\check_for_update.inc.bat
-6687b8323860e45e29ddbd034bcdce9a *module\autoupdate\filelist.txt
-cb62c6920af769b1fe520ef3d68fa84d *module\autoupdate\filelist_.txt
+2d5cda2d76b55fb15a892f4c894efd11 *module\autoupdate\filelist.txt
 53a717fa92cd9b4eb82bd1ed94edb312 *module\autoupdate\version.txt
 c4d48fb4327c178aa1fdba2dbcecd344 *module\i18n\DEU.bat
 db53f68beb4e902a4e8c186afebe5cd8 *module\i18n\ENU.bat
@@ -106,7 +105,6 @@ e19400a3fc20e4746229a473c32d5178 *module\include\d2gs\1.13d\d2warden.dll
 e225160636ada96484b6bc734451596b *module\include\d2gs\1.13d\d2warden.ini
 ab8c4b265dcd25f158d4106de8131a13 *module\include\d2gs\1.13d\filelist.txt
 3f313fe3ca4305ec3de61fda67848e63 *module\include\d2gs\1.13d\ItemConfig.dat
-0a5694d823e504f6d811dadb7c87ab5b *module\include\d2gs\1.13d\Patch_D2.mpq
 34e321b4b0473324cf5ce5c4d44e9da3 *module\include\lua\5.1\lauxlib.h
 65be7c5770d811f1c57497a340edecec *module\include\lua\5.1\lua.h
 5d2dd4ff9f4c38d14220bb0e425b796c *module\include\lua\5.1\lua.hpp
