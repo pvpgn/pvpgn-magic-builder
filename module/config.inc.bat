@@ -22,7 +22,8 @@ rem ----------- THIRD PARTY TOOLS ------------
 set URL_TOOL_WGET=https://eternallybored.org/misc/wget/1.19.4/32/wget.exe
 
 :: http://www.etree.org/md5com.html
-set URL_TOOL_MD5SUM=https://web.archive.org/web/20170430031141/http://www.etree.org:80/cgi-bin/counter.cgi/software/md5sum.exe
+:: (url must be http, because it can be downloaded with wget.vbs which does not support https)
+set URL_TOOL_MD5SUM=http://web.archive.org/web/20170430031141/http://www.etree.org:80/cgi-bin/counter.cgi/software/md5sum.exe
 
 :: https://fossies.org/windows/misc/unz600xn.exe/
 set URL_TOOL_UNZIP=https://fossies.org/windows/misc/unz600xn.exe/unzip.exe

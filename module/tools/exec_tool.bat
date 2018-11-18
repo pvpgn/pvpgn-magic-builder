@@ -24,7 +24,7 @@ goto :eof
 :download_wget
 
 	:: download if not exists
-	if not exist "%TOOLS_PATH%wget\wget.exe" (
+	if not exist "%TOOLS_PATH%wget.exe" (
 		echo Downloading wget...
 		:: download wget silently using vbs because we still not have wget.exe
 		for /f "delims=" %%a in ('cscript "%TOOLS_PATH%wget.vbs" /f "%URL_TOOL_WGET%" "%TOOLS_PATH%wget.exe"') do set res=%%a

@@ -5,6 +5,7 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 [Featured 2.x]
 v2.26 (18.11.2018)
 - update forbidden link to md5sum.exe
+- fix filelist.txt, it's generated automatically now
 
 v2.25 (02.03.2018)
 - update wget
