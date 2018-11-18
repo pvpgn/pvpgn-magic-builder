@@ -22,17 +22,17 @@ rem ----------- THIRD PARTY TOOLS ------------
 set URL_TOOL_WGET=https://eternallybored.org/misc/wget/1.19.4/32/wget.exe
 
 :: http://www.etree.org/md5com.html
-set URL_TOOL_MD5SUM=http://www.etree.org/cgi-bin/counter.cgi/software/md5sum.exe
+set URL_TOOL_MD5SUM=https://web.archive.org/web/20170430031141/http://www.etree.org:80/cgi-bin/counter.cgi/software/md5sum.exe
 
 :: https://fossies.org/windows/misc/unz600xn.exe/
 set URL_TOOL_UNZIP=https://fossies.org/windows/misc/unz600xn.exe/unzip.exe
 
 :: https://github.com/Microsoft/vswhere
-set URL_TOOL_VSWHERE=https://github.com/Microsoft/vswhere/releases/download/2.3.2/vswhere.exe
+set URL_TOOL_VSWHERE=https://github.com/Microsoft/vswhere/releases/download/2.5.2/vswhere.exe
 
 :: https://cmake.org
-set CMAKE_VERSION=cmake-3.10.2-win32-x86
-set URL_TOOL_CMAKE=https://cmake.org/files/v3.10/%CMAKE_VERSION%.zip
+set CMAKE_VERSION=cmake-3.12.4-win32-x86
+set URL_TOOL_CMAKE=https://cmake.org/files/v3.12/%CMAKE_VERSION%.zip
 
 
 :: ----------- build_pvpgn VARIABLES ------------
