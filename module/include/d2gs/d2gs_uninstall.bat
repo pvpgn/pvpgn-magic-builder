@@ -17,7 +17,7 @@ if "%errorlevel%"=="2" goto :eof
 
 :: 1) start D2GS service
 net stop D2GS
-:: 2) install D2GS service
+:: 2) uninstall D2GS service
 %~dp0d2gssvc.exe -u
 
 pause

@@ -2,3 +2,5 @@ build
 d2gs
 source
 release
+module/tools/cmake*
+module/tools/*.exe
