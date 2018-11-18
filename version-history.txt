@@ -3,7 +3,10 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
-v2.24 (02.03.2018)
+v2.26 (18.11.2018)
+- update forbidden link to md5sum.exe
+
+v2.25 (02.03.2018)
 - update wget
 - add feature to download PvPGN source code from selected branch
 - set MaxGames = 50 by default for D2GS
