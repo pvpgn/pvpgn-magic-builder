@@ -1,12 +1,12 @@
 00000000000000000000000000000000 *version-history.txt
 fb59cec981840f0dfb0a52328ea44961 *build_d2gs.bat
-87c5cbe6b499b93c7b478fd1a65cf447 *build_pvpgn.bat
+1670b72c0bf5fe5cfdc5f569c099db69 *build_pvpgn.bat
 eb77ea0bc797835404187d5754e07f96 *build_pvpgn_dev.bat
-2c307fb98ff686b2ef75c997de26af9c *module\config.inc.bat
+bdc2ceb785035c5cd16d9d1994d9a4fa *module\config.inc.bat
 d3ef9e3be4784b8f4f885db0c7672d12 *module\dbchoice.inc.bat
 bba4e7660f2ff922d51024c3f0b3b614 *module\i18n.inc.bat
 def1cf613cf129cf7445304ff9aeadb5 *module\select_branch.inc.bat
-64db4a7502684561d093a4047e523c1b *module\select_generator.inc.bat
+4adf5b0da4f7a7ae3ff85891e7d95de8 *module\select_generator.inc.bat
 f310d932a9ae8a66537878a227a42e52 *module\autoupdate\check_for_update.inc.bat
 2d5cda2d76b55fb15a892f4c894efd11 *module\autoupdate\filelist.txt
 53a717fa92cd9b4eb82bd1ed94edb312 *module\autoupdate\version.txt
@@ -263,7 +263,7 @@ c088ba0d328d3efcdd2015990578a42c *module\include\sqlite\3.22.0\sqlite3.lib
 53fe387a9d99b73e1e23057370a9fc6d *module\include\zlib\1.2.11\zdll.lib
 3389790b3ce3f592d784137ea490d29e *module\include\zlib\1.2.11\zlib.h
 8b81ca8e022d69312675a1ec49f3e191 *module\include\zlib\1.2.11\zlib1.dll
-e49e71fda0abb53b687745eed636bf17 *module\tools\exec_tool.bat
+e12b33b36abc07bf7738e166a234175c *module\tools\exec_tool.bat
 47f46591b4e2b4b6d20f7b8009b71450 *module\tools\fetch_json.vbs
 a03eb20410536694c8e2c216ce4c2e89 *module\tools\pvpgn_version.bat
 49d9b60248649436699edbc7f30ea16b *module\tools\recursive_copy.bat

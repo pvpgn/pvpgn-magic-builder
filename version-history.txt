@@ -3,6 +3,9 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
+v2.27 (02.02.2020)
+- add Visual Studio 2019 support
+
 v2.26 (18.11.2018)
 - update forbidden link to md5sum.exe
 - fix filelist.txt, it's generated automatically now
