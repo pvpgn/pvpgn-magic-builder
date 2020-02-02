@@ -16,12 +16,16 @@ set _vs_choice=0
 set /a _vs_count=0
 
 
-:: fill array with installed vs
+:: fill array with installed vs (OLD versions end with 2015)
 set VSCOMNTOOLS=%VS100COMNTOOLS%& @call :init_vs 1
 set VSCOMNTOOLS=%VS110COMNTOOLS%& @call :init_vs 2
 set VSCOMNTOOLS=%VS120COMNTOOLS%& @call :init_vs 3
 set VSCOMNTOOLS=%VS140COMNTOOLS%& @call :init_vs 4
 set VSCOMNTOOLS=NOTFOUND&         @call :init_vs 5
+set VSCOMNTOOLS=NOTFOUND&         @call :init_vs 6
+set VSCOMNTOOLS=NOTFOUND&         @call :init_vs 7
+set VSCOMNTOOLS=NOTFOUND&         @call :init_vs 8
+rem // TODO: add new Visual Studio versions here
 
 :: if no vs found
 if %_vs_count% equ 0 set VS_NOT_INSTALLED=true& goto :eof
@@ -66,7 +70,13 @@ if [%_vs_choice%]==[1] set VSCOMNTOOLS=%VS100COMNTOOLS%& set GENERATOR=Visual St
 if [%_vs_choice%]==[2] set VSCOMNTOOLS=%VS110COMNTOOLS%& set GENERATOR=Visual Studio 11 2012& set VSVER=v110
 if [%_vs_choice%]==[3] set VSCOMNTOOLS=%VS120COMNTOOLS%& set GENERATOR=Visual Studio 12 2013& set VSVER=v120
 if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS140COMNTOOLS%& set GENERATOR=Visual Studio 14 2015& set VSVER=v140
-if [%_vs_choice%]==[5] set VSCOMNTOOLS=%VS160COMNTOOLS%& set GENERATOR=Visual Studio 15 2017& set VSVER=v160
+:: NEW versions start from 2017
+if [%_vs_choice%]==[5] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 15 2017& set VSVER=v141
+if [%_vs_choice%]==[6] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 16 2019& set VSVER=v142
+if [%_vs_choice%]==[7] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 17 2021& set VSVER=v143
+if [%_vs_choice%]==[8] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 18 2023& set VSVER=v144
+rem // TODO: add new Visual Studio versions here
+
 set PARAM_VS=%_vs_choice%
 
 call %i18n% 1_2 "%GENERATOR%"
@@ -98,12 +108,34 @@ goto :eof
 		rem ... or newer versions (since 2017)
 		rem vswhere return directories of all installed versions and then we try to find VC++ directory there
 		for /f "usebackq tokens=*" %%i in (`call %EXEC_TOOL% vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath`) do (
-			if exist "%%i\Common7\IDE\devenv.exe" if exist "%%i\VC\Auxiliary\Build\vcvars32.bat" set found=true& set VS160COMNTOOLS=%%i\VC\Auxiliary\Build\
+			if exist "%%i\Common7\IDE\devenv.exe" if exist "%%i\VC\Auxiliary\Build\vcvars32.bat" (
+				set find_ver=0000
+				if [%1]==[5] set find_ver=2017
+				if [%1]==[6] set find_ver=2019
+				if [%1]==[7] set find_ver=2021
+				if [%1]==[8] set find_ver=2023
+				rem // TODO: add new Visual Studio versions here
+				
+				:: find in path
+				call :_find_substr "%%i" !find_ver!
+				if [!_result!]==[true] (
+					set found=true& set VSNEWCOMNTOOLS=%%i\VC\Auxiliary\Build\
+				)
+			)
 		)
 	)
 
 	if %found%==true (
 		set _vs_installed=!_vs_installed!%1 
 		set /a _vs_count+=1 & set _vs_choice=%1
+	)
+	exit /b 0
+	
+:_find_substr
+	echo.%1 | findstr /C:"%2" 1>nul
+	if errorlevel 1 (
+	  set _result=false
+	) else (
+	  set _result=true
 	)
 	exit /b 0

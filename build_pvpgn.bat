@@ -6,7 +6,7 @@ color 1f
 echo.
 echo *:*:*:*:*:*:*:*:*-  P v P G N  M a g i c  B u i l d e r  -*:*:*:*:*:*:*:*:*:*:*
 echo *                                                                             *
-echo *   Copyright 2011-2018, HarpyWar (harpywar@gmail.com)                        *
+echo *   Copyright 2011-2020, HarpyWar (harpywar@gmail.com)                        *
 echo *   https://pvpgn.pro                                                         *
 echo *                                                                             *
 echo *:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*:*
@@ -279,7 +279,7 @@ if "%PARAM_BUILDTYPE%"=="Debug" (
 set CMAKE_VARS=%CMAKE_VARS% %CMAKE_FLAGS%
 
 :: configure and generate solution
-call %EXEC_TOOL% cmake.exe -Wno-dev -G "%GENERATOR%" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+call %EXEC_TOOL% cmake.exe -Wno-dev -G "%GENERATOR%" -A "Win32" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
 :: Stop after cmake and setting env vars (feature for appveyor)
@@ -297,9 +297,9 @@ if [%LOG%]==[true] set _vs_log=^>visualstudio.log
 :: check solution for exists 
 IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
 
-:: load visual studio variables
-if ["%VSVER%"]==["v160"] (
-	@call "%VSCOMNTOOLS%vcvars32.bat"
+:: load visual studio variables (new and old vs has different batch files with vars)
+if not ["%VSVER%"]==["v100"] if not ["%VSVER%"]==["v110"] if not ["%VSVER%"]==["v120"] if not ["%VSVER%"]==["v140"] (
+ 	@call "%VSCOMNTOOLS%vcvars32.bat"
 ) else (
 	@call "%VSCOMNTOOLS%vsvars32.bat"
 )
@@ -307,8 +307,12 @@ if ["%VSVER%"]==["v160"] (
 :: atlmfc include dir for VC Express version
 set INCLUDE=%ATLMFC_INCLUDE_PATH%;%INCLUDE%
 
+set msbuild_exec=MSBuild.exe "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE% /p:Platform="Win32" /p:UseEnv=true /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal /maxcpucount %_vs_log%
+
+:: print command
+echo %msbuild_exec%
 :: compile the solution
-MSBuild.exe "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE% /p:Platform="Win32" /p:UseEnv=true /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal /maxcpucount %_vs_log%
+%msbuild_exec%
 
 :: ----------- RELEASE ------------
 echo.

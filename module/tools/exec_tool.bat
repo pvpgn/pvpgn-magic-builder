@@ -82,7 +82,7 @@ goto :eof
 :download_cmake
 
 	cmake.exe --version
-	:: first find in PATH
+	:: first find in PATH and don't download if found
 	call :run_installed cmake.exe
 	echo.
 	if errorlevel 5 (
