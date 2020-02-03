@@ -30,6 +30,7 @@ Requirements
 --
  * Visual C++ 2015 (Community is supported)
  * Visual C++ 2017 (Community is supported)
+ * Visual C++ 2019 (Community is supported)
 
 "Community" is the light edition of Visual Studio. It's free to [download](https://www.visualstudio.com/downloads/).
 
