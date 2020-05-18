@@ -279,7 +279,7 @@ if "%PARAM_BUILDTYPE%"=="Debug" (
 set CMAKE_VARS=%CMAKE_VARS% %CMAKE_FLAGS%
 
 :: configure and generate solution
-call %EXEC_TOOL% cmake.exe -Wno-dev -G "%GENERATOR%" -A "Win32" -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+call %EXEC_TOOL% cmake.exe -Wno-dev -G "%GENERATOR%" -A "Win32" -D ZLIB_ROOT=%ZLIB_PATH% -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 
 
 :: Stop after cmake and setting env vars (feature for appveyor)
