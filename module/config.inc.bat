@@ -51,7 +51,7 @@ set URL_UPDATE=https://raw.githubusercontent.com/pvpgn/pvpgn-magic-builder/maste
 
 set PVPGN_PATH=https://github.com/pvpgn/pvpgn-server/archive/
 
-set ZLIB_PATH=module\include\zlib\1.2.11\
+set ZLIB_PATH=%CURRENT_PATH%module\include\zlib\1.2.11\
 set LUA_PATH=module\include\lua\5.1\
 :: FIXME: important full path?
 set ATLMFC_INCLUDE_PATH=%CURRENT_PATH%module\include\atlmfc\
