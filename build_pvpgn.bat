@@ -110,11 +110,12 @@ choice /c:1234
 set CHOICE_INTERFACE=%errorlevel%
 set PARAM_INTERFACE=%CHOICE_INTERFACE%
 
+:: gui or console has choosen
+:interface_chosen
+
 set ARCH=Win32
 set WITH_GUI=false
 
-:: gui or console has choosen
-:interface_chosen
 if [%CHOICE_INTERFACE%]==[1] (
 	call %i18n% 1_10
 	set exe_postfix=Console
