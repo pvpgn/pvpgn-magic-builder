@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=98of8yEQt6o
 
 Features
 --
- * Builds [PvPGN](https://github.com/pvpgn/pvpgn-server) with one of the databases support: [MySQL](http://wikipedia.org/wiki/MySQL), [PostgreSQL](http://wikipedia.org/wiki/PostgreSQL), [SQLite3](http://wikipedia.org/wiki/SQLite) or [ODBC](http://wikipedia.org/wiki/Open_Database_Connectivity). Feature to enable [Lua](http://en.wikipedia.org/wiki/Lua_(programming_language)) scripting. Feature to choose Git branch to download source code from.
+ * Builds [PvPGN](https://github.com/pvpgn/pvpgn-server) with one of the databases support: [MySQL](http://wikipedia.org/wiki/MySQL), [PostgreSQL](http://wikipedia.org/wiki/PostgreSQL), [SQLite3](http://wikipedia.org/wiki/SQLite) or [ODBC](http://wikipedia.org/wiki/Open_Database_Connectivity). Feature to enable [Lua](http://en.wikipedia.org/wiki/Lua_(programming_language)) scripting. Feature to choose Git branch to download source code from. Feature to build x86 and x64 binaries.
  * Builds any version of [D2GS](http://harpywar.com/?a=articles&b=2&c=2&d=21), feature to download all DLL and MPQ that are necessary to start your server
  * Doesn’t require additional files - all built in
  * Has a multilanguage command line interface: Russian, English, Dutch, German, Polish, Serbian, Spanish, Ukrainian (please, translate [this file](https://github.com/pvpgn/pvpgn-magic-builder/blob/master/module/i18n/ENU.bat) if you know others)
@@ -37,9 +37,6 @@ Requirements
 *Note: Visual Studio doesn't install C++ by default. If you already have it installed then you have to rerun the setup and check `Desktop development with C++`.*
 
 ![Visual Studio 2017 C++ Installation](http://i.imgur.com/otoT4qe.png)
-
-*Without C++ installed Magic Builder throws an error `The CXX compiler identification is unknown`*
-
 
 Downloads
 --
