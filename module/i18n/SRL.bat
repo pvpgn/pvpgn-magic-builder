@@ -7,7 +7,7 @@
 :: Encoding:    ANSI
 
 
-set PHRASE_1_0=  Visual Studio nije instaliran
+set PHRASE_1_0=  Visual C++ nije instaliran
 set PHRASE_1_1=Izaberi kojom verzijom Visual Studia ces da Napravis pvpgn:
 set PHRASE_1_2=%2 izabran kao kompajler
 set PHRASE_1_3=da li zelis da downloadujes/updejtujes zadnji pvpgn iz Git (u %2 folder)?

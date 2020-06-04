@@ -99,16 +99,13 @@ goto :eof
 	set found=false
 
 	if not !VSCOMNTOOLS!==NOTFOUND (
-		rem check for exist full visual studio ...
-		if exist "!VSCOMNTOOLS!..\IDE\devenv.exe" set found=true
-		rem ... or express version
-		if exist "!VSCOMNTOOLS!..\IDE\VCExpress.exe" set found=true
-		if exist "!VSCOMNTOOLS!..\IDE\WDExpress.exe" set found=true
+		rem check for cl compiler
+		if exist "!VSCOMNTOOLS!..\..\VC\bin\cl.exe" set found=true
 	) else (
 		rem ... or newer versions (since 2017)
 		rem vswhere return directories of all installed versions and then we try to find VC++ directory there
-		for /f "usebackq tokens=*" %%i in (`call %EXEC_TOOL% vswhere.exe -products * -requires Microsoft.Component.MSBuild -property installationPath`) do (
-			if exist "%%i\Common7\IDE\devenv.exe" if exist "%%i\VC\Auxiliary\Build\vcvars32.bat" (
+		for /f "usebackq tokens=*" %%i in (`call %EXEC_TOOL% vswhere.exe -products * -requires Microsoft.Component.MSBuild -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+			if exist "%%i\VC\Auxiliary\Build\vcvars32.bat" (
 				set find_ver=0000
 				if [%1]==[5] set find_ver=2017
 				if [%1]==[6] set find_ver=2019

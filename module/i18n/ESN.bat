@@ -11,7 +11,7 @@ set PHRASE_0_0=^^!^^!^^! PELIGRO ^^!^^!^^!
 set PHRASE_0_1=Magic Builder tiene que estar ubicado en una ruta sin espacios, letras unicode y caracteres especiales (_.- están permitidos).
 set PHRASE_0_2=Por ejemplo: %2
 
-set PHRASE_1_0=  Visual Studio no está instalado
+set PHRASE_1_0=  Visual C++ no está instalado
 set PHRASE_1_1=Seleccione una versión de Visual Studio para construir PvPGN:
 set PHRASE_1_2=%2 ha sido seleccionado como entorno de construcción
 set PHRASE_1_3=¿Le gustaría descargar/reemplazar la ultima fuente de PvPGN desde Git (dentro del directorio %2)?

@@ -8,7 +8,7 @@
 
 
 set PHRASE_1_0=  Visual Studio ist nicht installiert
-set PHRASE_1_1=WÑhlen Sie eine Visual Studio-Version fÅr die PvPGN-Compilierung:
+set PHRASE_1_1=WÑhlen Sie eine Visual C++-Version fÅr die PvPGN-Compilierung:
 set PHRASE_1_2=%2 wurde als Compiler gewÑhlt
 set PHRASE_1_3=Mîchten Sie die letzten PvPGN-Programmcoden aus Git (im %2-Ordner) herunterladen / ersetzen?
 set PHRASE_1_4=   PvPGN wird aus Git aktualisiert werden branch %2

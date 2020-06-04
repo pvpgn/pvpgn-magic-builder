@@ -7,7 +7,7 @@
 :: Encoding:    OEM 852
 
 
-set PHRASE_1_0=  Program Visual Studio nie jest zainstalowany na komputerze
+set PHRASE_1_0=  Program Visual C++ nie jest zainstalowany na komputerze
 set PHRASE_1_1=Wybierz wersje programu Visual Studio przy u¾yciu kt¢rej chcesz skompilowa† PvPGN:
 set PHRASE_1_2=Wybrano %2 jako ˜rodowisko programistyczne
 set PHRASE_1_3=Czy chcesz pobra†/zaktualizowa† PvPGN do najnowszej wersji z repozytorium Git (w katalogu %2)?

@@ -7,7 +7,7 @@
 :: Encoding:    ANSI
 
 
-set PHRASE_1_0=  Visual Studio is niet geinstaleerd
+set PHRASE_1_0=  Visual C++ is niet geinstaleerd
 set PHRASE_1_1=Selecteer een Visual Studio versie om PvPGN te bouwen:
 set PHRASE_1_2=%2 is gekozen als bouw omgeving
 set PHRASE_1_3=Download/replace de laatste PvPGN broncode van de Git (in de %2 directory)?

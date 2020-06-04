@@ -11,7 +11,7 @@ set PHRASE_0_0=^^!^^!^^! УВАГА ^^!^^!^^!
 set PHRASE_0_1=Magic Builder повинен розмiщуватися на шляху без пробiлiв, росiйських i спецiальних символiв (_. - дозволенi). 
 set PHRASE_0_2=Наприклад: %2 
  
-set PHRASE_1_0=  Visual Studio не завантажена 
+set PHRASE_1_0=  Visual C++ не завантажен
 set PHRASE_1_1=Виберiть версiю Visual Studio для компiляцiї PvPGN: 
 set PHRASE_1_2=%2 обрана в якостi компiлятора 
 set PHRASE_1_3=Завантажити / замiнити останнi вихiднi коди PvPGN з Git (в папку %2)? 
