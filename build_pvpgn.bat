@@ -102,18 +102,43 @@ if not [%PARAM_INTERFACE%]==[] set CHOICE_INTERFACE=%PARAM_INTERFACE%& goto :int
 call %i18n% 1_6
 call %i18n% 1_7
 call %i18n% 1_8
+call %i18n% 1_7_1
+call %i18n% 1_8_1
 echo.
 call %i18n% 1_9
-choice /c:12
+choice /c:1234
 set CHOICE_INTERFACE=%errorlevel%
 set PARAM_INTERFACE=%CHOICE_INTERFACE%
 
+set ARCH=Win32
+set WITH_GUI=false
+
 :: gui or console has choosen
 :interface_chosen
-if not [%CHOICE_INTERFACE%]==[2] (
+if [%CHOICE_INTERFACE%]==[1] (
 	call %i18n% 1_10
-) else (
+	set exe_postfix=Console
+)
+if [%CHOICE_INTERFACE%]==[2] (
 	call %i18n% 1_11
+	set WITH_GUI=true
+)
+if [%CHOICE_INTERFACE%]==[3] (
+	call %i18n% 1_10_1
+	set exe_postfix=Console
+	set ARCH=x64
+)
+if [%CHOICE_INTERFACE%]==[4] (
+	call %i18n% 1_11_1
+	set WITH_GUI=true
+	set ARCH=x64
+)
+:: update tools and libs versions for x64
+if [%ARCH%]==[x64] (
+	set CMAKE_VERSION=%CMAKE_VERSION_64%
+	set URL_TOOL_CMAKE=%URL_TOOL_CMAKE_64%
+	set ZLIB_PATH=%ZLIB_PATH_64%
+	set LUA_PATH=%LUA_PATH_64%
 )
 
 echo.
@@ -147,10 +172,13 @@ if [%CHOICE_DBTYPE%]==[1] (
 
 :: MySQL
 if [%CHOICE_DBTYPE%]==[2] (
+	set _dbpath=module\include\mysql\
+	if [%ARCH%]==[x64] set _dbpath=!_dbpath!%ARCH%\
+
 	echo.
-	@call module\dbchoice.inc.bat MySQL module\include\mysql\
+	@call module\dbchoice.inc.bat MySQL !_dbpath! %ARCH%
 	:: path to directory with db headers and libs
-	set DB_PATH=module\include\mysql\!DB_VERSION!\
+	set DB_PATH=!_dbpath!!DB_VERSION!\
 	:: lib filename without extension (.lib and .dll)
 	set DB_LIB=libmysql
 
@@ -159,10 +187,13 @@ if [%CHOICE_DBTYPE%]==[2] (
 )
 :: PostgreSQL
 if [%CHOICE_DBTYPE%]==[3] (
+	set _dbpath=module\include\pgsql\
+	if [%ARCH%]==[x64] set _dbpath=!_dbpath!!ARCH!\
+
 	echo.
-	@call module\dbchoice.inc.bat PostgreSQL module\include\pgsql\
+	@call module\dbchoice.inc.bat PostgreSQL !_dbpath! !ARCH!
 	:: path to directory with db headers and libs
-	set DB_PATH=module\include\pgsql\!DB_VERSION!\
+	set DB_PATH=!_dbpath!!DB_VERSION!\
 	:: lib filename without extension (.lib and .dll)
 	set DB_LIB=libpq
 
@@ -171,10 +202,13 @@ if [%CHOICE_DBTYPE%]==[3] (
 )
 :: SQLite
 if [%CHOICE_DBTYPE%]==[4] (
+	set _dbpath=module\include\sqlite\
+	if [%ARCH%]==[x64] set _dbpath=!_dbpath!!ARCH!\
+
 	echo.
-	@call module\dbchoice.inc.bat SQLite module\include\sqlite\
+	@call module\dbchoice.inc.bat SQLite !_dbpath! !ARCH!
 	:: path to directory with db headers and libs
-	set DB_PATH=module\include\sqlite\!DB_VERSION!\
+	set DB_PATH=!_dbpath!!DB_VERSION!\
 	:: lib filename without extension (.lib and .dll)
 	set DB_LIB=sqlite3
 
@@ -183,10 +217,13 @@ if [%CHOICE_DBTYPE%]==[4] (
 )
 :: ODBC
 if [%CHOICE_DBTYPE%]==[5] (
+	set _dbpath=module\include\odbc\
+	if [%ARCH%]==[x64] set _dbpath=!_dbpath!!ARCH!\
+
 	echo.
-	@call module\dbchoice.inc.bat ODBC module\include\odbc\
+	@call module\dbchoice.inc.bat ODBC !_dbpath! !ARCH!
 	:: path to directory with db headers and libs
-	set DB_PATH=module\include\odbc\!DB_VERSION!\
+	set DB_PATH=!_dbpath!!DB_VERSION!\
 	:: lib filename without extension (.lib, ODBC does not need a dll, because it already exists in the system32)
 	set DB_LIB=odbc32
 
@@ -268,8 +305,6 @@ if not exist "%PVPGN_BUILD%" mkdir "%PVPGN_BUILD%"
 :: delete cmake cache
 if exist "%PVPGN_BUILD%CMakeCache.txt" del %PVPGN_BUILD%CMakeCache.txt
 
-if [%CHOICE_INTERFACE%]==[1] ( set _with_gui=false) else ( set _with_gui=true)
-
 :: set cmake compiler flags
 if "%PARAM_BUILDTYPE%"=="Debug" (
 	set CMAKE_FLAGS=-D CMAKE_CXX_FLAGS_DEBUG="/MTd"
@@ -279,7 +314,11 @@ if "%PARAM_BUILDTYPE%"=="Debug" (
 set CMAKE_VARS=%CMAKE_VARS% %CMAKE_FLAGS%
 
 :: configure and generate solution
-call %EXEC_TOOL% cmake.exe -Wno-dev -G "%GENERATOR%" -A "Win32" -D ZLIB_ROOT=%ZLIB_PATH% -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%_with_gui% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+set cmake_exec=cmake.exe -Wno-dev -G "%GENERATOR%" -A "%ARCH%" -D ZLIB_ROOT=%ZLIB_PATH% -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%WITH_GUI% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+:: print command
+echo %cmake_exec%
+:: execute command
+call %EXEC_TOOL% %cmake_exec%
 
 
 :: Stop after cmake and setting env vars (feature for appveyor)
@@ -297,17 +336,20 @@ if [%LOG%]==[true] set _vs_log=^>visualstudio.log
 :: check solution for exists 
 IF NOT EXIST "%PVPGN_BUILD%pvpgn.sln" echo. & call %i18n% 1_16 & goto THEEND
 
+set vars_arch=32
+if [%ARCH%]==[x64] set vars_arch=64
+
 :: load visual studio variables (new and old vs has different batch files with vars)
 if not ["%VSVER%"]==["v100"] if not ["%VSVER%"]==["v110"] if not ["%VSVER%"]==["v120"] if not ["%VSVER%"]==["v140"] (
- 	@call "%VSCOMNTOOLS%vcvars32.bat"
+ 	@call "%VSCOMNTOOLS%vcvars%vars_arch%.bat"
 ) else (
-	@call "%VSCOMNTOOLS%vsvars32.bat"
+	@call "%VSCOMNTOOLS%vsvars%vars_arch%.bat"
 )
 
 :: atlmfc include dir for VC Express version
 set INCLUDE=%ATLMFC_INCLUDE_PATH%;%INCLUDE%
 
-set msbuild_exec=MSBuild.exe "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE% /p:Platform="Win32" /p:UseEnv=true /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal /maxcpucount %_vs_log%
+set msbuild_exec=MSBuild.exe "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE% /p:Platform="%ARCH%" /p:UseEnv=true /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal /maxcpucount %_vs_log%
 
 :: print command
 echo %msbuild_exec%
@@ -353,15 +395,13 @@ if not [%CHOICE_LUA%]==[n] (
 	@xcopy /E /R /K /Y "%PVPGN_SOURCE%lua" "%PVPGN_RELEASE%lua\"
 )
 
-if [%CHOICE_INTERFACE%]==[1] set postfix=Console
-
 :: copy release binaries
-@copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.exe" "%PVPGN_RELEASE%PvPGN%postfix%.exe"
-@copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.pdb" "%PVPGN_RELEASE%PvPGN%postfix%.pdb"
-@copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.exe" "%PVPGN_RELEASE%D2CS%postfix%.exe"
-@copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.pdb" "%PVPGN_RELEASE%D2CS%postfix%.pdb"
-@copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.exe" "%PVPGN_RELEASE%D2DBS%postfix%.exe"
-@copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.pdb" "%PVPGN_RELEASE%D2DBS%postfix%.pdb"
+@copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.exe" "%PVPGN_RELEASE%PvPGN%exe_postfix%.exe"
+@copy /B /Y "%PVPGN_BUILD%src\bnetd\%PARAM_BUILDTYPE%\bnetd.pdb" "%PVPGN_RELEASE%PvPGN%exe_postfix%.pdb"
+@copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.exe" "%PVPGN_RELEASE%D2CS%exe_postfix%.exe"
+@copy /B /Y "%PVPGN_BUILD%src\d2cs\%PARAM_BUILDTYPE%\d2cs.pdb" "%PVPGN_RELEASE%D2CS%exe_postfix%.pdb"
+@copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.exe" "%PVPGN_RELEASE%D2DBS%exe_postfix%.exe"
+@copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.pdb" "%PVPGN_RELEASE%D2DBS%exe_postfix%.pdb"
 
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.exe" "%PVPGN_RELEASE%"
 if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.pdb" "%PVPGN_RELEASE%"

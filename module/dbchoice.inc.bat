@@ -7,6 +7,8 @@
 set DB_ENGINE=%1
 :: directory where to list directories
 set DB_DIR=%2
+:: architecture x64 or Win32
+set ARCH=%3
 :: database configuration file with preset values
 set config_file=%DB_ENGINE%.conf.bat
 
@@ -18,14 +20,16 @@ if not [%PARAM_REBUILD%]==[] (
 :: {PARAMETER}, if not empty skip db configuration choice
 if not [%DB_VERSION%]==[] set CHOICE_DB_CONF=y& goto :db_chosen
 
-call %i18n% 2_1 %DB_ENGINE% "module\include\%DB_ENGINE%"
+if [%ARCH%]==[x64] set x64_str=-x64
+
+call %i18n% 2_1 %DB_ENGINE%%x64_str% "%DB_DIR%"
 
 :show_db_list
 :: iterate and display directories, filling array
 set numbers=
 set /A counter=0
-:: sort by descending and mark with number only first 9 items
-for /F %%v in ('dir /B /AD-H /O-N %DB_DIR%') do (
+:: sort by descending and mark with number only first 9 items (exclude "x64" dir)
+for /F %%v in ('dir /B /AD-H /O-N %DB_DIR% ^| findstr /v /i "x64"') do (
 	set /A counter+=1
 	if !counter! gtr 9 (
 		if not [%%v]==[""] echo    x^  %%v
@@ -51,7 +55,7 @@ if [%PARAM_REBUILD%]==[auto] (
 
 :: iterate again to search chosen number of directory
 set /A counter=0
-for /F %%v in ('dir /B /AD-H /O-N %DB_DIR%') do (
+for /F %%v in ('dir /B /AD-H /O-N %DB_DIR% ^| findstr /v /i "x64"') do (
 	set /A counter+=1
 	if [%_db_choice%]==[!counter!] set DB_VERSION=%%v
 )
@@ -62,7 +66,7 @@ for /F %%v in ('dir /B /AD-H /O-N %DB_DIR%') do (
 ::  FIXME: it's not need, because choice.exe don't allow wrong input
 if [%DB_VERSION%]==[] call %i18n% 2_3  &  echo.  &  goto show_db_list
 
-call %i18n% 2_4 %DB_ENGINE% %DB_VERSION%
+call %i18n% 2_4 %DB_ENGINE%%x64_str% %DB_VERSION%
 
 
 

@@ -32,9 +32,11 @@ set URL_TOOL_UNZIP=https://fossies.org/windows/misc/unz600xn.exe/unzip.exe
 set URL_TOOL_VSWHERE=https://github.com/microsoft/vswhere/releases/download/2.8.4/vswhere.exe
 
 :: https://cmake.org
-set CMAKE_VER=3.16.3
+set CMAKE_VER=3.17.3
 set CMAKE_VERSION=cmake-%CMAKE_VER%-win32-x86
 set URL_TOOL_CMAKE=https://github.com/Kitware/CMake/releases/download/v%CMAKE_VER%/%CMAKE_VERSION%.zip
+set CMAKE_VERSION_64=cmake-%CMAKE_VER%-win64-x64
+set URL_TOOL_CMAKE_64=https://github.com/Kitware/CMake/releases/download/v%CMAKE_VER%/%CMAKE_VERSION_64%.zip
 
 
 :: ----------- build_pvpgn VARIABLES ------------
@@ -52,7 +54,10 @@ set URL_UPDATE=https://raw.githubusercontent.com/pvpgn/pvpgn-magic-builder/maste
 set PVPGN_PATH=https://github.com/pvpgn/pvpgn-server/archive/
 
 set ZLIB_PATH=%CURRENT_PATH%module\include\zlib\1.2.11\
-set LUA_PATH=module\include\lua\5.1\
+set ZLIB_PATH_64=%CURRENT_PATH%module\include\zlib\x64\1.2.11\
+set LUA_PATH=module\include\lua\5.1.5\
+set LUA_PATH_64=module\include\lua\x64\5.1.5\
+
 :: FIXME: important full path?
 set ATLMFC_INCLUDE_PATH=%CURRENT_PATH%module\include\atlmfc\
 
