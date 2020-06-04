@@ -59,10 +59,6 @@ call :build_project client bnftp
 call :build_project client bnstat
 call :build_project d2cs d2cs
 call :build_project d2dbs d2dbs
-call :build_project test bigint
-call :build_project test bnetsrp3_test
-call :build_project test bigint
-call :build_project test bigint
 call :build_project win32 win32
 
 
