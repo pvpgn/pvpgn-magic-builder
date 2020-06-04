@@ -3,6 +3,15 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
+v2.28 (05.06.2020)
+- add feature to build x64 binaries
+- fix locate Visual C++ 
+- patched Pandemonium Portal for D2GS 1.13d https://github.com/pvpgn/pvpgn-magic-builder/issues/25
+- delete non-exist tinycdb and test projects from build
+- update MySQL (5.5.62, 5.6.48, 5.7.30, 8.0.20)
+- update PostgreSQL (9.3.25, 9.4.26, 9.5.22, 9.6.18, 10.13, 11.8, 12.3, 13.0b)
+- update SQLite (3.32.1)
+
 v2.27 (02.02.2020)
 - add Visual Studio 2019 support
 
@@ -15,7 +24,7 @@ v2.25 (02.03.2018)
 - add feature to download PvPGN source code from selected branch
 - set MaxGames = 50 by default for D2GS
 - update MySQL (5.5.59, 5.6.39, 5.7.21)
-- update PostgreSQL (9.2.24, 9.3.22, 9.4.17, 9.5.12, 9.6.8, 10.3.0)
+- update PostgreSQL (9.2.24, 9.3.22, 9.4.17, 9.5.12, 9.6.8, 10.3)
 - update SQLite (3.22.0)
 
 v2.24 (02.06.2017)
