@@ -6,7 +6,7 @@ color 4f
 echo.
 echo /-\-/-\-/-\-/-\-/-\-  D 2 G S  M a g i c  B u i l d e r  -\-/-\-/-\-/-\-/-\-/-\
 echo \                                                                             /
-echo /   Copyright 2012-2017, HarpyWar (harpywar@gmail.com)                        \
+echo /   Copyright 2012-2020, HarpyWar (harpywar@gmail.com)                        \
 echo \   https://pvpgn.pro                                                         /
 echo /                                                                             \
 echo \-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/-\-/
@@ -21,7 +21,7 @@ echo _______________________________[ S E T U P ]_______________________________
 call %i18n% 9_1
 
 :choose_version
-echo    1) 1.13d (broken uber portals https://github.com/pvpgn/pvpgn-magic-builder/issues/25)
+echo    1) 1.13d
 echo    2) 1.13c
 echo    3) 1.13c (multithreaded, read https://github.com/pvpgn/pvpgn-magic-builder/issues/17)
 echo    4) 1.12a
