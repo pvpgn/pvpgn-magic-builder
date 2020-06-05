@@ -113,6 +113,15 @@ goto :THEEND
 	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\compat\Debug\compat.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\src\compat\Debug\compat.lib"
 	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\win32\Debug\win32.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\src\win32\Debug\win32.lib"
 	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\..\lib\fmt\Debug\fmt.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\lib\fmt\Debug\fmt.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\common\Release\common.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\src\common\Release\common.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\compat\Release\compat.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\src\compat\Release\compat.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\win32\Release\win32.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\src\win32\Release\win32.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\..\lib\fmt\Release\fmt.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\lib\fmt\Release\fmt.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\common\RelWithDebInfo\common.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\src\common\RelWithDebInfo\common.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\compat\RelWithDebInfo\compat.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\src\compat\RelWithDebInfo\compat.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\win32\RelWithDebInfo\win32.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\src\win32\RelWithDebInfo\win32.lib"
+	@call %TOOLS_PATH%replacer.bat "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" "..\..\lib\fmt\RelWithDebInfo\fmt.lib" "%PROJECT_ROOT_DIR%%PVPGN_BUILD%\lib\fmt\RelWithDebInfo\fmt.lib"
+
 
 	:: remove reduntant cmake node that executes cmake.exe on each build
 	call :remove_xml_node "%PVPGN_DEVKIT%projects\%2\%2.vcxproj" Project/ItemGroup/CustomBuild
