@@ -3,7 +3,11 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
-v2.28 (05.06.2020)
+v2.29 (05.06.2020)
+- build "RelWithDebInfo" configuration instead of "Release" by default
+  RelWithDebInfohe binaries are optimized as if they were built as Release but they also contain debug information and generate .pdb files like Debug does
+
+v2.28 (04.06.2020)
 - add feature to build x64 binaries
 - fix locate Visual C++ 
 - patched Pandemonium Portal for D2GS 1.13d https://github.com/pvpgn/pvpgn-magic-builder/issues/25

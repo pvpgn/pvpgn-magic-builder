@@ -1,6 +1,6 @@
 00000000000000000000000000000000 *version-history.txt
 66e06312c5679815ef275bc3ceb0e6b1 *build_d2gs.bat
-a9997f8b925c2f12f145280a2d022a49 *build_pvpgn.bat
+ca08c79772bb01d8cb113301e51549a7 *build_pvpgn.bat
 21c4659c78228007795325b2950c14fd *build_pvpgn_dev.bat
 a6117ba02589c4025e6450b10ae254e9 *module\config.inc.bat
 8726dcfc66c94dcb66c432c054ed8b74 *module\dbchoice.inc.bat
