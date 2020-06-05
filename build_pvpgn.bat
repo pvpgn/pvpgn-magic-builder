@@ -43,12 +43,14 @@ if "%PARAM_BUILDTYPE%"=="Debug" (
 	echo.
 	echo    Debug build type is selected
 	echo.
-) else ( 
-	set PARAM_BUILDTYPE=Release
+) else (
+	:: [default] RelWithDebInfohe binaries are optimized as if they were built as Release
+	:: but they also contain debug information and generate .pdb files like Debug does
+	if "%PARAM_BUILDTYPE%"=="" set PARAM_BUILDTYPE=RelWithDebInfo
+	
 	:: directory with ready files
 	set PVPGN_RELEASE=release\
 )
-
 
 :: {PARAMETER}, if not empty, skip autoupdate
 if not [%PARAM_REBUILD%]==[] goto :select_vs
@@ -315,7 +317,7 @@ if "%PARAM_BUILDTYPE%"=="Debug" (
 set CMAKE_VARS=%CMAKE_VARS% %CMAKE_FLAGS%
 
 :: configure and generate solution
-set cmake_exec=cmake.exe -Wno-dev -G "%GENERATOR%" -A "%ARCH%" -D ZLIB_ROOT=%ZLIB_PATH% -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%WITH_GUI% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+set cmake_exec=cmake.exe -Wno-dev -G "%GENERATOR%" -A "%ARCH%" -D ZLIB_ROOT=%ZLIB_PATH% -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release;RelWithDebInfo" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%WITH_GUI% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 :: print command
 echo %cmake_exec%
 :: execute command
@@ -350,7 +352,7 @@ if not ["%VSVER%"]==["v100"] if not ["%VSVER%"]==["v110"] if not ["%VSVER%"]==["
 :: atlmfc include dir for VC Express version
 set INCLUDE=%ATLMFC_INCLUDE_PATH%;%INCLUDE%
 
-set msbuild_exec=MSBuild.exe "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE% /p:Platform="%ARCH%" /p:UseEnv=true /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal /maxcpucount %_vs_log%
+set msbuild_exec=MSBuild.exe "%PVPGN_BUILD%pvpgn.sln" /t:Rebuild /p:Configuration=%PARAM_BUILDTYPE% /p:Platform=%ARCH% /p:UseEnv=true /consoleloggerparameters:Summary;PerformanceSummary;Verbosity=minimal /maxcpucount %_vs_log%
 
 :: print command
 echo %msbuild_exec%
@@ -405,29 +407,29 @@ if not [%CHOICE_LUA%]==[n] (
 @copy /B /Y "%PVPGN_BUILD%src\d2dbs\%PARAM_BUILDTYPE%\d2dbs.pdb" "%PVPGN_RELEASE%D2DBS%exe_postfix%.pdb"
 
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bni2tga.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnibuild.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnibuild.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnibuild.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bniextract.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bniextract.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bniextract.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnilist.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnilist.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\bnilist.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\tgainfo.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\tgainfo.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bniutils\%PARAM_BUILDTYPE%\tgainfo.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\bnpass.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\bnpass.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\bnpass.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\sha1hash.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\sha1hash.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bnpass\%PARAM_BUILDTYPE%\sha1hash.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnbot.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnbot.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnbot.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnchat.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnchat.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnchat.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnftp.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnftp.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnftp.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnstat.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnstat.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\client\%PARAM_BUILDTYPE%\bnstat.pdb" "%PVPGN_RELEASE%"
 @copy /B /Y "%PVPGN_BUILD%src\bntrackd\%PARAM_BUILDTYPE%\bntrackd.exe" "%PVPGN_RELEASE%"
-if "%PARAM_BUILDTYPE%"=="Debug" @copy /B /Y "%PVPGN_BUILD%src\bntrackd\%PARAM_BUILDTYPE%\bntrackd.pdb" "%PVPGN_RELEASE%"
+@copy /B /Y "%PVPGN_BUILD%src\bntrackd\%PARAM_BUILDTYPE%\bntrackd.pdb" "%PVPGN_RELEASE%"
 
 
 :: copy var directories (they're empty)
