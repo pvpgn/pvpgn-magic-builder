@@ -11,9 +11,9 @@ And, the d2gs.script should be copied to your Diablo installed directory with d2
 This D2GS can work with the latest PVPGN.
 Build 01: 2015-11-04
 	1. First port from 1.11b build 46. And it should work now!
+Build 02: 2020-05-18
+	2. Pandemonium Portal fixed by MxCen https://forums.pvpgn.pro/viewtopic.php?id=2215
 	
-
-
 Below are the changelog from D2GS 1.11b (build 46):
 Build 46: 2010-03-31
   1. New feature:

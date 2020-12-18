@@ -3,9 +3,15 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
+v2.30 (18.12.2020)
+- add libcurl
+- fix generate Visual Studio solution + use relative paths in project files;
+  now debugging is working as expected, pvpgn can be running immediately after open pvpgn.sln in Debug, Release or RelWithDebInfo
+
 v2.29 (05.06.2020)
+- fix prepare projects for Visual Studio solution by build_pvpgn_dev.bat
 - build "RelWithDebInfo" configuration instead of "Release" by default
-  RelWithDebInfohe binaries are optimized as if they were built as Release but they also contain debug information and generate .pdb files like Debug does
+  RelWithDebInfo binaries are optimized as if they were built as Release but they also contain debug information and generate .pdb files like Debug does
 
 v2.28 (04.06.2020)
 - add feature to build x64 binaries

@@ -75,7 +75,7 @@ set URL_BNHASH_API=http://harpywar.pvpgn.pl/api.php?method=hash^&password=
 
 :: ----------- build_pvpgn_dev VARIABLES ------------
 
-:: current path with a backslash /
+:: full path to the magic builder directory separated and ends with a backslash "/"
 set CURRENT_PATH_BACKSLASH=%CURRENT_PATH:\=/%
 
 :: root dir for any project
