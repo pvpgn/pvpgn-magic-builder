@@ -142,6 +142,7 @@ if [%ARCH%]==[x64] (
 	set URL_TOOL_CMAKE=%URL_TOOL_CMAKE_64%
 	set ZLIB_PATH=%ZLIB_PATH_64%
 	set LUA_PATH=%LUA_PATH_64%
+	set CURL_PATH=%CURL_PATH_64%
 )
 
 echo.
@@ -254,7 +255,16 @@ if not [%CHOICE_LUA%]==[n] (
 	call %i18n% 4_3
 )
 
+:: ZLIB
+set CMAKE_VARS=%CMAKE_VARS% -D ZLIB_ROOT=%ZLIB_PATH% -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib
 
+:: CURL
+set CMAKE_VARS=%CMAKE_VARS% -D CURL_INCLUDE_DIR=%CURL_PATH%
+if [%ARCH%]==[x64] (
+	set CMAKE_VARS=%CMAKE_VARS% -D CURL_LIBRARY=%CURL_PATH%libcurl.lib
+) else (
+	set CMAKE_VARS=%CMAKE_VARS% -D CURL_LIBRARY=%CURL_PATH%libcurl.lib
+)
 
 echo.
 echo _____________________[ P V P G N  S O U R C E  C O D E]_________________________
@@ -317,7 +327,7 @@ if "%PARAM_BUILDTYPE%"=="Debug" (
 set CMAKE_VARS=%CMAKE_VARS% %CMAKE_FLAGS%
 
 :: configure and generate solution
-set cmake_exec=cmake.exe -Wno-dev -G "%GENERATOR%" -A "%ARCH%" -D ZLIB_ROOT=%ZLIB_PATH% -D ZLIB_INCLUDE_DIR=%ZLIB_PATH% -D ZLIB_LIBRARY=%ZLIB_PATH%zdll.lib %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release;RelWithDebInfo" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%WITH_GUI% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
+set cmake_exec=cmake.exe -Wno-dev -G "%GENERATOR%" -A "%ARCH%" %CMAKE_VARS% -D CMAKE_CONFIGURATION_TYPES="Debug;Release;RelWithDebInfo" -D CMAKE_SUPPRESS_REGENERATION=true -D WITH_WIN32_GUI=%WITH_GUI% -H%PVPGN_SOURCE% -B%PVPGN_BUILD% %_cmake_log%
 :: print command
 echo %cmake_exec%
 :: execute command
@@ -392,6 +402,7 @@ if not exist "%PVPGN_RELEASE%conf" mkdir "%PVPGN_RELEASE%conf"
 
 :: copy libraries to release directory, without prompt
 @copy /B /Y "%ZLIB_PATH%*.dll" "%PVPGN_RELEASE%"
+@copy /B /Y "%CURL_PATH%*.dll" "%PVPGN_RELEASE%"
 if not [%DB_LIB%]==[] @copy /B /Y "%DB_PATH%*.dll" "%PVPGN_RELEASE%"
 if not [%CHOICE_LUA%]==[n] (
 	@copy /B /Y "%LUA_PATH%*.dll" "%PVPGN_RELEASE%"
