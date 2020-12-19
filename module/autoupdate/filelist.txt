@@ -1,6 +1,6 @@
 00000000000000000000000000000000 *version-history.txt
 66e06312c5679815ef275bc3ceb0e6b1 *build_d2gs.bat
-24a5fe44f89d8fa68f5c235143f4592c *build_pvpgn.bat
+b63175af9b4e4a1ff75175dc1f1a7c2b *build_pvpgn.bat
 b1eae607b19426270d6d6e8fd47b833f *build_pvpgn_dev.bat
 42dad8208edd89fe24a6a75ec2624a4a *module\config.inc.bat
 8726dcfc66c94dcb66c432c054ed8b74 *module\dbchoice.inc.bat
@@ -333,8 +333,10 @@ a04da6dd18eb96665bef31d43fa2376a *module\include\curl\7.74.0\urlapi.h
 72425b1f39b5eed131ee2881d2f12942 *module\include\curl\x64\7.74.0\curl.h
 4e42fb18389a29c184955716ea70726a *module\include\curl\x64\7.74.0\curlver.h
 126fe24f2477136f24478b12102d95f4 *module\include\curl\x64\7.74.0\easy.h
-2a89d593bc296f20e56897d9dfd877fd *module\include\curl\x64\7.74.0\libcurl.dll
-731b0815e8204e1a13a956c65d917281 *module\include\curl\x64\7.74.0\libcurl.lib
+75b571acf858893379dbc0c9de15f9bc *libcrypto-1_1-x64.dll
+2a89d593bc296f20e56897d9dfd877fd *module\include\curl\x64\7.74.0\libcurl-64.dll
+b5eb2bbd0f51164780c91bb5a4319646 *module\include\curl\x64\7.74.0\libcurl-64.lib
+8ea2e87cc4e4ac53ac8ba71b8036080a *libssl-1_1-x64.dll
 4eed4bf84411012624f4a25c3bb767ca *module\include\curl\x64\7.74.0\mprintf.h
 da541365500eeff0e23470331d584040 *module\include\curl\x64\7.74.0\multi.h
 885513d17ab74d55c39c89e13cd7c5d9 *module\include\curl\x64\7.74.0\stdcheaders.h
