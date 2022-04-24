@@ -2,7 +2,7 @@
 PvPGN Magic Builder
 =====
 
-PvPGN Magic Builder gives you an easy way to build your own PvPGN binaries from the latest
+PvPGN Magic Builder provides an easy way to build your own PvPGN binaries from the latest
 source code for Windows.
 
 Let's see how it works in one-minute video: 
@@ -31,6 +31,7 @@ Requirements
  * Visual C++ 2015 (Community is supported)
  * Visual C++ 2017 (Community is supported)
  * Visual C++ 2019 (Community is supported)
+ * Visual C++ 2022 (Community is supported)
 
 "Community" is the light edition of Visual Studio. It's free to [download](https://www.visualstudio.com/downloads/).
 

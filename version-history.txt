@@ -1,5 +1,5 @@
 PvPGN Magic Builder. Version history.
-https://github.com/HarpyWar/pvpgn-magic-builder
+https://github.com/pvpgn/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
