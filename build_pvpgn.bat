@@ -27,7 +27,6 @@ if [%invalid_path%]==[true] (
 )
 
 
-
 :: PARAMETERS TO REBUILD
 ::  !order is important!
 set PARAM_REBUILD=%1
@@ -44,10 +43,10 @@ if "%PARAM_BUILDTYPE%"=="Debug" (
 	echo    Debug build type is selected
 	echo.
 ) else (
-	:: [default] RelWithDebInfohe binaries are optimized as if they were built as Release
-	:: but they also contain debug information and generate .pdb files like Debug does
+	rem [default] RelWithDebInfohe binaries are optimized as if they were built as Release
+	rem but they also contain debug information and generate .pdb files like Debug does
 	if "%PARAM_BUILDTYPE%"=="" set PARAM_BUILDTYPE=RelWithDebInfo
-	
+
 	:: directory with ready files
 	set PVPGN_RELEASE=release\
 )
@@ -72,8 +71,13 @@ echo _______________________________[ S E T U P ]_______________________________
 :select_vs
 :: try to find a visual studio
 @call module\select_generator.inc.bat
-if [%VS_NOT_INSTALLED%]==[true] call %i18n% 1_0 & goto THEEND
 
+if [%VS_NOT_INSTALLED%]==[true] (
+	call %i18n% 1_0
+	echo   Free install from https://visualstudio.microsoft.com/vs/community/ 
+	echo   (dont forget to enable checkbox "Desktop environment with C++"^)
+	goto THEEND
+)
 
 echo.
 echo --------------------------------------------------------------------------------

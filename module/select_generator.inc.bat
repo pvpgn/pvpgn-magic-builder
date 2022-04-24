@@ -8,7 +8,7 @@
 
 
 :: fill array-map with vs names
-set _vs_map=1-Visual Studio 2010;2-Visual Studio 2012;3-Visual Studio 2013;4-Visual Studio 2015;5-Visual Studio 2017
+set _vs_map=1-Visual Studio 2010;2-Visual Studio 2012;3-Visual Studio 2013;4-Visual Studio 2015;5-Visual Studio 2017;6-Visual Studio 2019;7-Visual Studio 2022;8-Visual Studio 2025
 
 :: array with installed vs
 set _vs_installed=
@@ -73,7 +73,7 @@ if [%_vs_choice%]==[4] set VSCOMNTOOLS=%VS140COMNTOOLS%& set GENERATOR=Visual St
 :: NEW versions start from 2017
 if [%_vs_choice%]==[5] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 15 2017& set VSVER=v141
 if [%_vs_choice%]==[6] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 16 2019& set VSVER=v142
-if [%_vs_choice%]==[7] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 17 2021& set VSVER=v143
+if [%_vs_choice%]==[7] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 17 2022& set VSVER=v143
 if [%_vs_choice%]==[8] set VSCOMNTOOLS=%VSNEWCOMNTOOLS%& set GENERATOR=Visual Studio 18 2023& set VSVER=v144
 rem // TODO: add new Visual Studio versions here
 
@@ -109,8 +109,8 @@ goto :eof
 				set find_ver=0000
 				if [%1]==[5] set find_ver=2017
 				if [%1]==[6] set find_ver=2019
-				if [%1]==[7] set find_ver=2021
-				if [%1]==[8] set find_ver=2023
+				if [%1]==[7] set find_ver=2022
+				if [%1]==[8] set find_ver=2025
 				rem // TODO: add new Visual Studio versions here
 				
 				:: find in path

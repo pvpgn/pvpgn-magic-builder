@@ -6,6 +6,7 @@
 :: Code Page:   866
 :: Encoding:    OEM 866
 
+set CHCP=866
 
 set PHRASE_0_0=^^!^^!^^! УВАГА ^^!^^!^^! 
 set PHRASE_0_1=Magic Builder повинен розмiщуватися на шляху без пробiлiв, росiйських i спецiальних символiв (_. - дозволенi). 

@@ -6,6 +6,7 @@
 :: Code Page:   852 (INCORRECT?)
 :: Encoding:    OEM 852
 
+chcp 852
 
 set PHRASE_1_0=  Program Visual C++ nie jest zainstalowany na komputerze
 set PHRASE_1_1=Wybierz wersje programu Visual Studio przy u¾yciu kt¢rej chcesz skompilowa† PvPGN:

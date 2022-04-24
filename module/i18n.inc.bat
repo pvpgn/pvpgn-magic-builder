@@ -5,6 +5,8 @@
 if [!Key!]==[] (
 	set Key="HKEY_CURRENT_USER\Control Panel\International"
 	for /F "tokens=3" %%a in ('reg query !Key!  ^| find /i "sLang"') do set LANGUAGE=%%a
+	echo.
+	echo Selected language: !LANGUAGE!
 )
 
 :: initialize English as default
@@ -34,9 +36,18 @@ if "!LANGUAGE:~0,2!"=="NL" set LANGUAGE=NLD
 :: Spanish
 if "!LANGUAGE:~0,2!"=="ES" set LANGUAGE=ESN
 
-
 :: switch to another language, if found
-if exist module\i18n\%LANGUAGE%.bat call module\i18n\%LANGUAGE%.bat %1 %2 %3 %4 %5
+if exist module\i18n\!LANGUAGE!.bat call module\i18n\!LANGUAGE!.bat %1 %2 %3 %4 %5
+
+:: change code page if set
+if [%CHCP_SET%]==[] (
+	if not [%CHCP%]==[] (
+		chcp %CHCP%
+	) else (
+		chcp
+	)
+	set CHCP_SET=true
+)
 
 :: print phrase
 if not [%1]==[] echo !PHRASE_%1!

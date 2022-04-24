@@ -29,15 +29,14 @@ set URL_TOOL_MD5SUM=http://web.archive.org/web/20170430031141/http://www.etree.o
 set URL_TOOL_UNZIP=https://fossies.org/windows/misc/unz600xn.exe/unzip.exe
 
 :: https://github.com/Microsoft/vswhere
-set URL_TOOL_VSWHERE=https://github.com/microsoft/vswhere/releases/download/2.8.4/vswhere.exe
+set URL_TOOL_VSWHERE=https://github.com/microsoft/vswhere/releases/download/3.0.1/vswhere.exe
 
 :: https://cmake.org
-set CMAKE_VER=3.19.2
-set CMAKE_VERSION=cmake-%CMAKE_VER%-win32-x86
+set CMAKE_VER=3.23.1
+set CMAKE_VERSION=cmake-%CMAKE_VER%-windows-i386
 set URL_TOOL_CMAKE=https://github.com/Kitware/CMake/releases/download/v%CMAKE_VER%/%CMAKE_VERSION%.zip
 set CMAKE_VERSION_64=cmake-%CMAKE_VER%-win64-x64
 set URL_TOOL_CMAKE_64=https://github.com/Kitware/CMake/releases/download/v%CMAKE_VER%/%CMAKE_VERSION_64%.zip
-
 
 :: ----------- build_pvpgn VARIABLES ------------
 
