@@ -3,6 +3,11 @@ https://github.com/HarpyWar/pvpgn-magic-builder
 ===============================================
 
 [Featured 2.x]
+v2.31 (24.04.2022)
+- fix i18n
+- add support for Visual Studio 2022
+- update vswhere, cmake
+  
 v2.30 (18.12.2020)
 - add libcurl
 - fix generate Visual Studio solution + use relative paths in project files;
